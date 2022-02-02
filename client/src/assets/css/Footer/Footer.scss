@@ -1,0 +1,64 @@
+$background: #092c4c;
+$font-color: #ffffff;
+
+.container {
+  background-color: $background;
+  width: 375px;
+  display: grid;
+  grid-template-rows: 100px 25px;
+  grid-template-columns: 120px 225px 30px;
+}
+
+.div-about {
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
+  background-color: rgba(217, 217, 217, 0.4);
+  margin: 15px;
+  border-radius: 10px;
+  padding-top: 2px;
+  padding-left: 4px;
+}
+
+.title {
+  color: $font-color;
+  font-size: 10px;
+}
+
+.description {
+  color: $font-color;
+  font-size: 10px;
+}
+
+.copy {
+  grid-column: 0 / 1;
+  grid-row: 2 / 3;
+  color: $font-color;
+  text-align: center;
+  font-size: 10px;
+}
+
+.icons {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+  text-align: center;
+}
+
+.github {
+  font-size: 13px;
+  color: #000000;
+  margin: auto;
+  margin-top: 0px;
+  margin-right: 20px;
+}
+
+hr {
+  width: 333px;
+  margin-top: -7px;
+  margin-left: -100px;
+}
+
+.copy-icon {
+  font-size: 10px;
+  margin-top: 5px;
+  margin-left: 10px;
+}
