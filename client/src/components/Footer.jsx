@@ -1,6 +1,6 @@
 import React from "react";
 import "../assets/css/Footer/Footer.css";
-import { CopyrightOutlined } from "@ant-design/icons";
+import { CopyrightOutlined, GithubOutlined } from "@ant-design/icons";
 
 export default function Footer() {
   return (
@@ -11,11 +11,14 @@ export default function Footer() {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
           exercitationem qui laudantium reiciendis sunt porro voluptatum
           consequuntur atque soluta aut totam corrupti sint in tenetur alias
-          quam, dolorem neque tempora?
+          quam, dolorem neque tempora? Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Id accusamus tempore corporis excepturi aliquid,
+          dolorum illo, distinctio expedita sit qui exercitationem. Tenetur hic
+          distinctio voluptas, rerum quidem eligendi nulla ab?
         </p>
       </div>
 
-      <hr />
+      {/* <hr /> */}
 
       <h3 className="copy">
         <CopyrightOutlined className="copy-icon" /> 2022 HenryHotel, Inc
@@ -26,7 +29,7 @@ export default function Footer() {
         target="_blank"
         className="icons github"
       >
-        <i class="fab fa-github"></i>
+        <GithubOutlined className="icon" />
       </a>
     </div>
   );
