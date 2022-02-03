@@ -4,8 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-.scss
-.map.css
+
 
 # testing
 /coverage
@@ -23,3 +22,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.scss
+.map.css
+/harcodeado.json
