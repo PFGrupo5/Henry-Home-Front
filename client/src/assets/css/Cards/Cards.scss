@@ -4,7 +4,8 @@
   margin: 35px;
   margin-right: 71px;
   border-radius: 36px;
-  box-shadow: 20px 20px 20px 0 rgba(0, 0, 0, 0.364), inset 20px 20px 17px -14px rgba(0, 0, 0, 0.364);
+  box-shadow: 20px 20px 20px 0 rgba(0, 0, 0, 0.364),
+    inset 20px 20px 17px -14px rgba(0, 0, 0, 0.364);
   text-transform: capitalize;
   width: 500px;
   height: 450px;
@@ -19,3 +20,55 @@
 .name {
   font-size: 30px;
 }
+
+.precio{
+  color: black;
+}
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+// Media Querys.
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+$minWidth: 375px;
+$mediWidth1: 446px;
+$mediWidth2: 540px;
+$mediWidth3: 712px;
+$maxWidth1: 1022px;
+$maxWidth2: 1920px;
+
+
+@media (min-width: $minWidth) and (max-width: $mediWidth1) {
+  .ContainerCards{
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (min-width: $mediWidth1) and (max-width: $mediWidth2) {
+  .ContainerCards{
+    width: 450px;
+    height: 300px;
+  }
+}
+
+@media (min-width: $mediWidth2) and (max-width: $mediWidth3) {
+  .ContainerCards{
+    width: 610px;
+    height: 400px;
+  }
+}
+
+@media (min-width: $mediWidth3) and (max-width: $maxWidth1) {
+  .ContainerCards{
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media (min-width: $maxWidth1) and (max-width: $maxWidth2) {
+  .ContainerCards{
+    width: 800px;
+    height: 400px;
+  }
+}
+
