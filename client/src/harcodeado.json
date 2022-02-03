@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Hosteria ",
+    "name": "Hosteria Joaco",
     "location": "casa",
     "facilities": {
       "roms": 10,
@@ -9,21 +9,21 @@
       "bathroms": "true",
       "living": "false"
     },
-    "pricePerNight": 200,
+    "priceXnight": 200,
     "services": {
       "wifi": "true",
-      "airconditioning": "false",
+      "air conditioning": "false",
       "pool": "true",
       "gym": "false"
     },
     "img": "https://th.bing.com/th/id/R.5395a079b7f2d94d88c5d1761d8b42ab?rik=l9mkM%2bAdxqrS7A&riu=http%3a%2f%2f3.bp.blogspot.com%2f-EPayaoS29yY%2fURP7_xYAw9I%2fAAAAAAAAANI%2fJP6rpLc3CbQ%2fw1200-h630-p-k-no-nu%2fcasas-2201.jpg&ehk=8t83%2fpl7PLA6Wq%2fecJW%2f0RgVqT1LysIrF%2feTgxciq2E%3d&risl=&pid=ImgRaw&r=0",
     "descriptions": "asjdkanlsdnflanflkasnflkasdjnfna fnafafajkfnakjfavmfa",
-    "houseRules": "kjasdhlkajdhkajldhkjlhdklasjhdkljashdkjashdjahdkljashkdj"
+    "HouseRules": "kjasdhlkajdhkajldhkjlhdklasjhdkljashdkjashdjahdkljashkdj"
   },
 
   {
     "id": 2,
-    "name": "Caserio ",
+    "name": "Caserio Joaco",
     "location": "casa",
     "facilities": {
       "roms": 10,
@@ -31,20 +31,20 @@
       "bathroms": "true",
       "living": "false"
     },
-    "pricePerNight": 200,
+    "priceXnight": 200,
     "services": {
       "wifi": "true",
-      "airconditioning": "false",
+      "air conditioning": "false",
       "pool": "true",
       "gym": "false"
     },
     "img": "https://th.bing.com/th/id/R.5395a079b7f2d94d88c5d1761d8b42ab?rik=l9mkM%2bAdxqrS7A&riu=http%3a%2f%2f3.bp.blogspot.com%2f-EPayaoS29yY%2fURP7_xYAw9I%2fAAAAAAAAANI%2fJP6rpLc3CbQ%2fw1200-h630-p-k-no-nu%2fcasas-2201.jpg&ehk=8t83%2fpl7PLA6Wq%2fecJW%2f0RgVqT1LysIrF%2feTgxciq2E%3d&risl=&pid=ImgRaw&r=0",
     "descriptions": "asjdkanlsdnflanflkasnflkasdjnfna fnafafajkfnakjfavmfa",
-    "houseRules": "kjasdhlkajdhkajldhkjlhdklasjhdkljashdkjashdjahdkljashkdj"
+    "HouseRules": "kjasdhlkajdhkajldhkjlhdklasjhdkljashdkjashdjahdkljashkdj"
   },
   {
     "id": 3,
-    "name": "Departamento ",
+    "name": "almendo Joaco",
     "location": "casa",
     "facilities": {
       "roms": 10,
@@ -52,20 +52,20 @@
       "bathroms": "true",
       "living": "false"
     },
-    "pricePerNight": 200,
+    "priceXnight": 200,
     "services": {
       "wifi": "true",
-      "airconditioning": "false",
+      "air conditioning": "false",
       "pool": "true",
       "gym": "false"
     },
     "img": "https://th.bing.com/th/id/R.5395a079b7f2d94d88c5d1761d8b42ab?rik=l9mkM%2bAdxqrS7A&riu=http%3a%2f%2f3.bp.blogspot.com%2f-EPayaoS29yY%2fURP7_xYAw9I%2fAAAAAAAAANI%2fJP6rpLc3CbQ%2fw1200-h630-p-k-no-nu%2fcasas-2201.jpg&ehk=8t83%2fpl7PLA6Wq%2fecJW%2f0RgVqT1LysIrF%2feTgxciq2E%3d&risl=&pid=ImgRaw&r=0",
     "descriptions": "asjdkanlsdnflanflkasnflkasdjnfna fnafafajkfnakjfavmfa",
-    "houseRules": "kjasdhlkajdhkajldhkjlhdklasjhdkljashdkjashdjahdkljashkdj"
+    "HouseRules": "kjasdhlkajdhkajldhkjlhdklasjhdkljashdkjashdjahdkljashkdj"
   },
   {
     "id": 4,
-    "name": "Cabaña ",
+    "name": "marokuy Joaco",
     "location": "casa",
     "facilities": {
       "roms": 10,
@@ -73,20 +73,20 @@
       "bathroms": "true",
       "living": "false"
     },
-    "pricePerNight": 200,
+    "priceXnight": 200,
     "services": {
       "wifi": "true",
-      "airconditioning": "false",
+      "air conditioning": "false",
       "pool": "true",
       "gym": "false"
     },
     "img": "https://th.bing.com/th/id/R.5395a079b7f2d94d88c5d1761d8b42ab?rik=l9mkM%2bAdxqrS7A&riu=http%3a%2f%2f3.bp.blogspot.com%2f-EPayaoS29yY%2fURP7_xYAw9I%2fAAAAAAAAANI%2fJP6rpLc3CbQ%2fw1200-h630-p-k-no-nu%2fcasas-2201.jpg&ehk=8t83%2fpl7PLA6Wq%2fecJW%2f0RgVqT1LysIrF%2feTgxciq2E%3d&risl=&pid=ImgRaw&r=0",
     "descriptions": "asjdkanlsdnflanflkasnflkasdjnfna fnafafajkfnakjfavmfa",
-    "houseRules": "kjasdhlkajdhkajldhkjlhdklasjhdkljashdkjashdjahdkljashkdj"
+    "HouseRules": "kjasdhlkajdhkajldhkjlhdklasjhdkljashdkjashdjahdkljashkdj"
   },
   {
     "id": 5,
-    "name": "Alojamiento ",
+    "name": "alojamiento Joaco",
     "location": "casa",
     "facilities": {
       "roms": 10,
@@ -94,20 +94,20 @@
       "bathroms": "true",
       "living": "false"
     },
-    "pricePerNight": 200,
+    "priceXnight": 200,
     "services": {
       "wifi": "true",
-      "airconditioning": "false",
+      "air conditioning": "false",
       "pool": "true",
       "gym": "false"
     },
     "img": "https://th.bing.com/th/id/R.5395a079b7f2d94d88c5d1761d8b42ab?rik=l9mkM%2bAdxqrS7A&riu=http%3a%2f%2f3.bp.blogspot.com%2f-EPayaoS29yY%2fURP7_xYAw9I%2fAAAAAAAAANI%2fJP6rpLc3CbQ%2fw1200-h630-p-k-no-nu%2fcasas-2201.jpg&ehk=8t83%2fpl7PLA6Wq%2fecJW%2f0RgVqT1LysIrF%2feTgxciq2E%3d&risl=&pid=ImgRaw&r=0",
     "descriptions": "asjdkanlsdnflanflkasnflkasdjnfna fnafafajkfnakjfavmfa",
-    "houseRules": "kjasdhlkajdhkajldhkjlhdklasjhdkljashdkjashdjahdkljashkdj"
+    "HouseRules": "kjasdhlkajdhkajldhkjlhdklasjhdkljashdkjashdjahdkljashkdj"
   },
   {
     "id": 6,
-    "name": "Condominio ",
+    "name": "expected Joaco",
     "location": "casa",
     "facilities": {
       "roms": 10,
@@ -115,15 +115,15 @@
       "bathroms": "true",
       "living": "false"
     },
-    "pricePerNight": 200,
+    "priceXnight": 200,
     "services": {
       "wifi": "true",
-      "airconditioning": "false",
+      "air conditioning": "false",
       "pool": "true",
       "gym": "false"
     },
     "img": "https://th.bing.com/th/id/R.5395a079b7f2d94d88c5d1761d8b42ab?rik=l9mkM%2bAdxqrS7A&riu=http%3a%2f%2f3.bp.blogspot.com%2f-EPayaoS29yY%2fURP7_xYAw9I%2fAAAAAAAAANI%2fJP6rpLc3CbQ%2fw1200-h630-p-k-no-nu%2fcasas-2201.jpg&ehk=8t83%2fpl7PLA6Wq%2fecJW%2f0RgVqT1LysIrF%2feTgxciq2E%3d&risl=&pid=ImgRaw&r=0",
     "descriptions": "asjdkanlsdnflanflkasnflkasdjnfna fnafafajkfnakjfavmfa",
-    "houseRules": "kjasdhlkajdhkajldhkjlhdklasjhdkljashdkjashdjahdkljashkdj"
+    "HouseRules": "kjasdhlkajdhkajldhkjlhdklasjhdkljashdkjashdjahdkljashkdj"
   }
 ]
