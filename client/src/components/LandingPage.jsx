@@ -1,38 +1,31 @@
 import React, { useRef, useState } from 'react';
-import "antd/dist/antd.css";
-import "../assets/css/Landing.css"
 
-import { Carousel, Image, Row, Col } from 'antd';
+import "antd/dist/antd.css";
+import "../assets/css/Landing/Landing.css"
 import img1 from "../assets/img/h1.jfif"
 import img2 from "../assets/img/h2.jfif"
+import NavBar from './NavBar';
+import Carrousel from '../pseudoComponents/Carrousel'
+import Button from '../pseudoComponents/Button'
 
-
-const contentStyle = {
-    height: '160px',
-    color: '#fff',
-    lineHeight: '160px',
-    textAlign: 'center',
-    background: '#364d79',
-};
+const stylesButton = {
+    backgroundColor: "#092c4cef",
+    borderRadius: 10,
+    fontSize: 25,
+    paddingBottom: 40,
+    width: "50%",
+    fontWeight: 600,
+}
 
 function LandingPage() {
-
     return (
-        <div className='all'>
-            <Carousel autoplay autoplaySpeed={5000}>
-                <div>
-                    <Image preview={false} pauseOnHover src={img1} className='img' />
-                </div>
-                <div>
-                    <Image preview={false} pauseOnHover src={img2} className='img' />
-                </div>
-                <div>
-                    <Image preview={false} pauseOnHover src={img1} className='img' />
-                </div>
-                <div>
-                    <Image preview={false} pauseOnHover src={img2} className='img' />
-                </div>
-            </Carousel>
+        <div>
+            <NavBar />
+            <div className='allHome'>
+                <h1 className='textHome'>One click away from your new Journey</h1>
+                <Button href="/home" className="btn" styles={stylesButton} types="ghost" text={"HOME"} />
+            </div>
+            <Carrousel imgs={[img1, img2, img1, img2]} />
         </div >
     );
 }
