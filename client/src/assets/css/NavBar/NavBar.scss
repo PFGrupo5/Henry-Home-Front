@@ -1,0 +1,39 @@
+//Colors
+
+$azul:#092c4c;
+$blanco:#ffffff;
+$naranja-opacity:#f2984aa9;
+$naranja:#f2994a;
+$gris:#6f6f6f;
+$gris-claro:#757d87; 
+
+
+.allNav{
+    background-color: #092c4ecc;
+    position: fixed;
+    padding-right: 10px;
+    z-index: 1;
+    width: 100%;
+}
+
+.navLogo{
+    height: 80px;
+    width: 90px;
+    padding: 5px 0px 5px 10px;
+}
+.navInput{
+    position: relative;
+    top: 25px;
+}
+.navBtn{
+    position: relative;
+    top: 25px
+}
+
+.navIcon{
+    position: relative;
+    transform: translateY(-50%);
+    top: 50%;
+    font-size: 50px;
+    color: white;
+}
