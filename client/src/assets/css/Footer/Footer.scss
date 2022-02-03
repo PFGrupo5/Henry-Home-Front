@@ -1,0 +1,131 @@
+$background: #092c4c;
+$font-color: #ffffff;
+
+.container {
+  background-color: $background;
+  width: 375px;
+  display: grid;
+  grid-template-rows: 100px 25px;
+  grid-template-columns: 120px 225px 30px;
+}
+
+.div-about {
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
+  background-color: rgba(217, 217, 217, 0.4);
+  margin: 15px;
+  border-radius: 10px;
+  padding-top: 2px;
+  padding-left: 4px;
+}
+
+.title {
+  color: $font-color;
+  font-size: 10px;
+}
+
+.description {
+  color: $font-color;
+  font-size: 10px;
+}
+
+.copy {
+  grid-column: 0 / 1;
+  grid-row: 2 / 3;
+  color: $font-color;
+  text-align: center;
+  font-size: 10px;
+}
+
+.icon {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+  text-align: center;
+  color: white;
+}
+
+.github {
+  font-size: 13px;
+  color: #000000;
+  margin: auto;
+  margin-top: 0px;
+  margin-right: 20px;
+}
+
+// hr {
+//   // width: 90vw;
+//   margin-top: -7px;
+//   margin-left: -5.625rem;
+// }
+
+.copy-icon {
+  font-size: 10px;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+// Media Querys.
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+@media (min-width: 375px) {
+  .container {
+    width: 100vw;
+    grid-template-columns: 120px 1fr 30px;
+  }
+}
+
+@media (max-width: 712px) {
+  .container {
+    grid-template-rows: 120px 25px;
+  }
+}
+
+@media (max-width: 540px) {
+  .container {
+    grid-template-rows: 130px 25px;
+  }
+}
+
+@media (max-width: 446px) {
+  .container {
+    grid-template-rows: 145px 25px;
+  }
+}
+
+@media (max-width: 446px) {
+  .container {
+    grid-template-rows: 165px 25px;
+  }
+}
+
+@media (min-width: 1022px) {
+  .container {
+    grid-template-rows: 90px 25px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container {
+    grid-template-columns: 150px 1fr 30px;
+  }
+
+  .title {
+    font-size: 13px;
+  }
+
+  .description {
+    font-size: 12px;
+    margin-top: -10px;
+  }
+
+  .copy {
+    font-size: 12px;
+  }
+
+  .icon {
+    font-size: 25px;
+    margin-top: -15px;
+    color: white;
+  }
+}

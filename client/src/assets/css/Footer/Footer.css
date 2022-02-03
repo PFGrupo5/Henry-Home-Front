@@ -1,0 +1,135 @@
+.container {
+  background-color: #092c4c;
+  width: 375px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 100px 25px;
+      grid-template-rows: 100px 25px;
+  -ms-grid-columns: 120px 225px 30px;
+      grid-template-columns: 120px 225px 30px;
+}
+
+.div-about {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1 / 4;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1 / 2;
+  background-color: rgba(217, 217, 217, 0.4);
+  margin: 15px;
+  border-radius: 10px;
+  padding-top: 2px;
+  padding-left: 4px;
+}
+
+.title {
+  color: #ffffff;
+  font-size: 10px;
+}
+
+.description {
+  color: #ffffff;
+  font-size: 10px;
+}
+
+.copy {
+  grid-column: 0 / 1;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
+  color: #ffffff;
+  text-align: center;
+  font-size: 10px;
+}
+
+.icon {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3 / 4;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
+  text-align: center;
+  color: white;
+}
+
+.github {
+  font-size: 13px;
+  color: #000000;
+  margin: auto;
+  margin-top: 0px;
+  margin-right: 20px;
+}
+
+.copy-icon {
+  font-size: 10px;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+@media (min-width: 375px) {
+  .container {
+    width: 100vw;
+    -ms-grid-columns: 120px 1fr 30px;
+        grid-template-columns: 120px 1fr 30px;
+  }
+}
+
+@media (max-width: 712px) {
+  .container {
+    -ms-grid-rows: 120px 25px;
+        grid-template-rows: 120px 25px;
+  }
+}
+
+@media (max-width: 540px) {
+  .container {
+    -ms-grid-rows: 130px 25px;
+        grid-template-rows: 130px 25px;
+  }
+}
+
+@media (max-width: 446px) {
+  .container {
+    -ms-grid-rows: 145px 25px;
+        grid-template-rows: 145px 25px;
+  }
+}
+
+@media (max-width: 446px) {
+  .container {
+    -ms-grid-rows: 165px 25px;
+        grid-template-rows: 165px 25px;
+  }
+}
+
+@media (min-width: 1022px) {
+  .container {
+    -ms-grid-rows: 90px 25px;
+        grid-template-rows: 90px 25px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container {
+    -ms-grid-columns: 150px 1fr 30px;
+        grid-template-columns: 150px 1fr 30px;
+  }
+  .title {
+    font-size: 13px;
+  }
+  .description {
+    font-size: 12px;
+    margin-top: -10px;
+  }
+  .copy {
+    font-size: 12px;
+  }
+  .icon {
+    font-size: 25px;
+    margin-top: -15px;
+    color: white;
+  }
+}
+/*# sourceMappingURL=Footer.css.map */
