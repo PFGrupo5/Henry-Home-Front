@@ -21,4 +21,43 @@
 .name {
   font-size: 30px;
 }
+
+.precio {
+  color: black;
+}
+
+@media (min-width: 375px) and (max-width: 446px) {
+  .ContainerCards {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (min-width: 446px) and (max-width: 540px) {
+  .ContainerCards {
+    width: 450px;
+    height: 300px;
+  }
+}
+
+@media (min-width: 540px) and (max-width: 712px) {
+  .ContainerCards {
+    width: 610px;
+    height: 400px;
+  }
+}
+
+@media (min-width: 712px) and (max-width: 1022px) {
+  .ContainerCards {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media (min-width: 1022px) and (max-width: 1920px) {
+  .ContainerCards {
+    width: 800px;
+    height: 400px;
+  }
+}
 /*# sourceMappingURL=Cards.css.map */
