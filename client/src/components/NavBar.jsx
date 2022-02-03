@@ -16,8 +16,15 @@ const Style = {
 export default function NavBar() {
 
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [typeLogIn, setTypeLogIn] = useState("");
 
-    const showModal = () => {
+    const showModalR = () => {
+        setTypeLogIn("Register");
+        setIsModalVisible(true);
+    };
+
+    const showModalS = () => {
+        setTypeLogIn("SignIn");
         setIsModalVisible(true);
     };
 
@@ -36,16 +43,16 @@ export default function NavBar() {
 
                 {/* ---------------- Desktop Version ---------------- */}
 
-                <Col className="navInput" span={0} sm={0} md={15} lg={15}>
+                <Col className="navInput" span={0} sm={0} md={8} lg={8}>
                     <Input />
                 </Col>
 
                 <Col className="navBtn" xs={0} sm={0} md={3} lg={3}>
-                    <Button styles={Style} click={showModal} types="ghost" text="Sign In" />
+                    <Button styles={Style} click={showModalS} types="ghost" text="Sign In" />
                 </Col>
 
                 <Col className="navBtn" xs={0} sm={0} md={3} lg={3}>
-                    <Button styles={Style} click={showModal} types="ghost" text="Register" />
+                    <Button styles={Style} click={showModalR} types="ghost" text="Register" />
                 </Col>
 
                 {/* ---------------- Mobile version ---------------- */}
@@ -61,9 +68,7 @@ export default function NavBar() {
             </Row >
 
             <Modal title="Basic Modal" visible={isModalVisible} onOk={closeModal} onCancel={closeModal}>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
+                <p>{typeLogIn}</p>
             </Modal>
 
         </div >
