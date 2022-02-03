@@ -4,8 +4,10 @@
   margin: 35px;
   margin-right: 71px;
   border-radius: 36px;
+
   box-shadow: 20px 20px 20px 0 rgba(0, 0, 0, 0.364),
     inset 20px 20px 17px -14px rgba(0, 0, 0, 0.364);
+
   text-transform: capitalize;
   width: 500px;
   height: 450px;
@@ -15,6 +17,7 @@
 .imagen {
   width: 300px;
   height: 200px;
+
 }
 
 .name {
@@ -71,4 +74,5 @@ $maxWidth2: 1920px;
     height: 400px;
   }
 }
+
 
