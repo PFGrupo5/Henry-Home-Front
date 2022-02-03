@@ -37,10 +37,11 @@ $font-color: #ffffff;
   font-size: 10px;
 }
 
-.icons {
+.icon {
   grid-column: 3 / 4;
   grid-row: 2 / 3;
   text-align: center;
+  color: white;
 }
 
 .github {
@@ -51,14 +52,80 @@ $font-color: #ffffff;
   margin-right: 20px;
 }
 
-hr {
-  width: 333px;
-  margin-top: -7px;
-  margin-left: -100px;
-}
+// hr {
+//   // width: 90vw;
+//   margin-top: -7px;
+//   margin-left: -5.625rem;
+// }
 
 .copy-icon {
   font-size: 10px;
   margin-top: 5px;
   margin-left: 10px;
+}
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+// Media Querys.
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+@media (min-width: 375px) {
+  .container {
+    width: 100vw;
+    grid-template-columns: 120px 1fr 30px;
+  }
+}
+
+@media (max-width: 712px) {
+  .container {
+    grid-template-rows: 120px 25px;
+  }
+}
+
+@media (max-width: 540px) {
+  .container {
+    grid-template-rows: 130px 25px;
+  }
+}
+
+@media (max-width: 446px) {
+  .container {
+    grid-template-rows: 145px 25px;
+  }
+}
+
+@media (max-width: 446px) {
+  .container {
+    grid-template-rows: 165px 25px;
+  }
+}
+
+@media (min-width: 1022px) {
+  .container {
+    grid-template-rows: 90px 25px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container {
+    grid-template-columns: 150px 1fr 30px;
+  }
+
+  .title {
+    font-size: 13px;
+  }
+
+  .description {
+    font-size: 12px;
+    margin-top: -10px;
+  }
+
+  .copy {
+    font-size: 12px;
+  }
+
+  .icon {
+    font-size: 25px;
+    margin-top: -15px;
+    color: white;
+  }
 }
