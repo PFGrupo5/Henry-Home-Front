@@ -1,26 +1,21 @@
 import React from "react";
-// import Cards from "./Cards";
-// import hoteles from "../harcodeado.json";
-// import Footer from "./Footer";
-import Aside from "./Aside/Aside";
+import Cards from "./Cards";
+import hoteles from "../harcodeado.json";
 
 export default function Home() {
   return (
     <div>
-      <Aside>/</Aside>
-      {/* {hoteles.map((e) => {
+      {hoteles.map((e) => {
         return (
           <Cards
             name={e.name}
             id={e.id}
             location={e.location}
             img={e.img}
-
             price={e.priceXnight}
-
           />
         );
-      })} */}
+      })}
     </div>
   );
 }
