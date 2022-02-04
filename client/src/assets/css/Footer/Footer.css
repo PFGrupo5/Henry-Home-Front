@@ -1,8 +1,8 @@
 .container {
   background-color: #092c4c;
   width: 375px;
-  display: -ms-grid;
-  display: grid;
+  display: -ms-inline-grid;
+  display: inline-grid;
   -ms-grid-rows: 100px 25px;
       grid-template-rows: 100px 25px;
   -ms-grid-columns: 120px 225px 30px;
@@ -68,6 +68,12 @@
   margin-left: 10px;
 }
 
+@media (max-width: 375px) {
+  .container {
+    width: 375px;
+  }
+}
+
 @media (min-width: 375px) {
   .container {
     width: 100vw;
@@ -78,6 +84,7 @@
 
 @media (max-width: 712px) {
   .container {
+    width: 100vw;
     -ms-grid-rows: 120px 25px;
         grid-template-rows: 120px 25px;
   }
@@ -85,15 +92,9 @@
 
 @media (max-width: 540px) {
   .container {
+    width: 100vw;
     -ms-grid-rows: 130px 25px;
         grid-template-rows: 130px 25px;
-  }
-}
-
-@media (max-width: 446px) {
-  .container {
-    -ms-grid-rows: 145px 25px;
-        grid-template-rows: 145px 25px;
   }
 }
 

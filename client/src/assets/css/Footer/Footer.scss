@@ -4,7 +4,7 @@ $font-color: #ffffff;
 .container {
   background-color: $background;
   width: 375px;
-  display: grid;
+  display: inline-grid;
   grid-template-rows: 100px 25px;
   grid-template-columns: 120px 225px 30px;
 }
@@ -68,6 +68,12 @@ $font-color: #ffffff;
 // Media Querys.
 // ------------------------------------------------------------------------------------------------------------------------------------
 
+@media (max-width: 375px) {
+  .container {
+    width: 375px;
+  }
+}
+
 @media (min-width: 375px) {
   .container {
     width: 100vw;
@@ -77,19 +83,15 @@ $font-color: #ffffff;
 
 @media (max-width: 712px) {
   .container {
+    width: 100vw;
     grid-template-rows: 120px 25px;
   }
 }
 
 @media (max-width: 540px) {
   .container {
+    width: 100vw;
     grid-template-rows: 130px 25px;
-  }
-}
-
-@media (max-width: 446px) {
-  .container {
-    grid-template-rows: 145px 25px;
   }
 }
 
