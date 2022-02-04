@@ -5,99 +5,97 @@ import { SearchOutlined, SolutionOutlined } from "@ant-design/icons";
 import "../assets/css/NavBar/NavBar.css";
 import "antd/dist/antd.css";
 
-import Logo from "../assets/img/HenryHome.png";
-import Button from "../pseudoComponents/Button.jsx";
-import Input from "../pseudoComponents/Input.jsx";
-import Login from "../pseudoComponents/Formulario/Formulario";
+import Logo from "../assets/img/HenryHome.png"
+import Button from "../pseudoComponents/Button.jsx"
+import { Inputs, Searchs, Selects } from "../pseudoComponents/Input.jsx"
 
 const Style = {
   fontSize: 15,
 };
 
 export default function NavBar() {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [typeLogIn, setTypeLogIn] = useState("");
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [typeLogIn, setTypeLogIn] = useState("");
 
-  const showModalR = () => {
-    setTypeLogIn("Register");
-    setIsModalVisible(true);
-  };
+    const showModalR = () => {
+        setTypeLogIn("Register");
+        setIsModalVisible(true);
+    };
 
-  const showModalS = () => {
-    setTypeLogIn("SignIn");
-    setIsModalVisible(true);
-  };
+    const showModalS = () => {
+        setTypeLogIn("SignIn");
+        setIsModalVisible(true);
+    };
 
-  const closeModal = () => {
-    setIsModalVisible(false);
-  };
+    const closeModal = () => {
+        setIsModalVisible(false);
+    };
 
-  return (
-    <div className="allNav">
-      <Row gutter={20}>
-        {/* ---------------- Logo ---------------- */}
+    const provincias = [
+        "buenos aires",
+        "catamarca",
+        "chaco",
+        "chubut",
+        "cordoba",
+        "corrientes",
+        "entre rios",
+        "formosa",
+        "jujuy",
+        "la pampa",
+        "la rioja",
+        "mendoza",
+        "misiones",
+        "neuquen",
+        "río negro",
+        "salta",
+        "san juan",
+        "san luis",
+        "santa cruz",
+        "santa fe",
+        "santiago del estero",
+        "tierra del fuego",
+        "tucuman",
+    ]
 
-        <Col span={3}>
-          <Image className="navLogo" preview={false} src={Logo} />
-        </Col>
+    return (
+        <div className='allNav'>
+            <Row gutter={20}>
+                {/* ---------------- Logo ---------------- */}
 
-        {/* ---------------- Desktop Version ---------------- */}
+                <Col span={3}>
+                    <Image className="navLogo" preview={false} src={Logo} />
+                </Col>
 
-        <Col className="navInput" span={0} sm={0} md={8} lg={8}>
-          <Input />
-        </Col>
+                {/* ---------------- Desktop Version ---------------- */}
 
-        <Col className="navBtn" xs={0} sm={0} md={3} lg={3}>
-          <Button
-            styles={Style}
-            click={showModalS}
-            types="ghost"
-            text="Sign In"
-          />
-        </Col>
+                <Col className="navInput" offset={6} span={0} sm={0} md={8} lg={8}>
+                    <Selects options={provincias} />
+                </Col>
 
-        <Col className="navBtn" xs={0} sm={0} md={3} lg={3}>
-          <Button
-            styles={Style}
-            click={showModalR}
-            types="ghost"
-            text="Register"
-          />
-        </Col>
+                <Col className="navBtn" xs={0} sm={0} md={3} lg={3}>
+                    <Button styles={Style} click={showModalS} types="ghost" text="Sign In" />
+                </Col>
 
-        {/* ---------------- Mobile version ---------------- */}
+                <Col className="navBtn" xs={0} sm={0} md={3} lg={3}>
+                    <Button styles={Style} click={showModalR} types="ghost" text="Register" />
+                </Col>
 
-        <Col
-          xs={{ span: 6, offset: 9 }}
-          sm={{ span: 3, offset: 15 }}
-          md={0}
-          lg={0}
-        >
-          <SearchOutlined className="navIcon" />
-        </Col>
+                {/* ---------------- Mobile version ---------------- */}
 
-        <Col
-          xs={{ span: 6, offset: 0 }}
-          sm={{ span: 3, offset: 0 }}
-          md={0}
-          lg={0}
-        >
-          <SolutionOutlined className="navIcon" />
-        </Col>
-      </Row>
+                <Col xs={{ span: 6, offset: 9 }} sm={{ span: 3, offset: 15 }} md={0} lg={0}>
+                    <SearchOutlined className='navIcon' />
+                </Col>
 
-      <Modal
-        title="Basic Modal"
-        visible={isModalVisible}
-        onOk={closeModal}
-        onCancel={closeModal}
-      >
-        {typeLogIn === "SignIn" ? (
-          <Login nombre={typeLogIn} />
-        ) : (
-          <Login nombre={typeLogIn} />
-        )}
-      </Modal>
-    </div>
-  );
+                <Col xs={{ span: 6, offset: 0 }} sm={{ span: 3, offset: 0 }} md={0} lg={0}>
+                    <SolutionOutlined className='navIcon' />
+                </Col>
+
+            </Row >
+
+            <Modal title="Basic Modal" visible={isModalVisible} onOk={closeModal} onCancel={closeModal}>
+                <p>{typeLogIn}</p>
+            </Modal>
+
+        </div >
+    );
 }
