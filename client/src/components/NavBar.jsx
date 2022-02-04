@@ -7,7 +7,7 @@ import "antd/dist/antd.css";
 
 import Logo from "../assets/img/HenryHome.png"
 import Button from "../pseudoComponents/Button.jsx"
-import Input from "../pseudoComponents/Input.jsx"
+import { Inputs, Searchs, Selects } from "../pseudoComponents/Input.jsx"
 
 const Style = {
     fontSize: 15
@@ -32,6 +32,32 @@ export default function NavBar() {
         setIsModalVisible(false);
     };
 
+    const provincias = [
+        "buenos aires",
+        "catamarca",
+        "chaco",
+        "chubut",
+        "cordoba",
+        "corrientes",
+        "entre rios",
+        "formosa",
+        "jujuy",
+        "la pampa",
+        "la rioja",
+        "mendoza",
+        "misiones",
+        "neuquen",
+        "río negro",
+        "salta",
+        "san juan",
+        "san luis",
+        "santa cruz",
+        "santa fe",
+        "santiago del estero",
+        "tierra del fuego",
+        "tucuman",
+    ]
+
     return (
         <div className='allNav'>
             <Row gutter={20}>
@@ -43,8 +69,8 @@ export default function NavBar() {
 
                 {/* ---------------- Desktop Version ---------------- */}
 
-                <Col className="navInput" span={0} sm={0} md={8} lg={8}>
-                    <Input />
+                <Col className="navInput" offset={6} span={0} sm={0} md={8} lg={8}>
+                    <Selects options={provincias} />
                 </Col>
 
                 <Col className="navBtn" xs={0} sm={0} md={3} lg={3}>
