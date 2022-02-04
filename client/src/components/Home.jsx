@@ -15,7 +15,9 @@ export default function Home() {
             id={e.id}
             location={e.location}
             img={e.img}
-            price={e.pricePerNight}
+
+            price={e.priceXnight}
+
           />
         );
       })} */}

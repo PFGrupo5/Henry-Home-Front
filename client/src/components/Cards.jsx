@@ -14,7 +14,7 @@ export default function Cards({
     <div key={id} className="ContainerCards">
       <h1 className="name">{name}</h1>
       <img src={img} alt="casa" className="imagen"/>
-      <h3 className="location">{location}</h3>
+      <p className="location">{location}</p>
       <p className="precio">{price}</p>
     </div>
   );
