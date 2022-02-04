@@ -8,7 +8,7 @@ import hoteles from "../harcodeado.json"
 export default function Home() {
 
   const dispatch = useDispatch()
-  const allHotels = useSelector((state) => state)
+  const allHotels = useSelector((state) => state.hotels)
   console.log(allHotels)
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <div>
       {
-        hoteles.map((e) => {
+        allHotels.map((e) => {
           return (
             <Cards
               name={e.name}
