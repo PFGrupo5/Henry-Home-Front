@@ -8,7 +8,7 @@ import "antd/dist/antd.css";
 import Logo from "../assets/img/HenryHome.png";
 import Button from "../pseudoComponents/Button.jsx";
 import Input from "../pseudoComponents/Input.jsx";
-import Formulario from "../pseudoComponents/Formulario.jsx";
+import Login from "../pseudoComponents/Formulario/Formulario";
 
 const Style = {
   fontSize: 15,
@@ -93,9 +93,9 @@ export default function NavBar() {
         onCancel={closeModal}
       >
         {typeLogIn === "SignIn" ? (
-          <Formulario nombre={typeLogIn} />
+          <Login nombre={typeLogIn} />
         ) : (
-          <Formulario nombre={typeLogIn} />
+          <Login nombre={typeLogIn} />
         )}
       </Modal>
     </div>

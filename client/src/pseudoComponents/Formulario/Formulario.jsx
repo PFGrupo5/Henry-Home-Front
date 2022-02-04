@@ -1,6 +1,7 @@
 import React from "react";
-import { Form, Input, Button, Checkbox } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Checkbox } from "antd";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import RegisterForm from "./registerForm";
 
 export default function Login({ nombre }) {
   if (nombre === "SignIn") {
@@ -56,7 +57,7 @@ export default function Login({ nombre }) {
   } else {
     return (
       <div>
-        <h1>hola, soy el Register</h1>
+        <RegisterForm />
       </div>
     );
   }
