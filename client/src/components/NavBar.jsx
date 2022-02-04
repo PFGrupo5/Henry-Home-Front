@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Row, Col, Image, Modal } from "antd"
-import { SearchOutlined, SolutionOutlined } from '@ant-design/icons';
+import React, { useState } from "react";
+import { Row, Col, Image, Modal } from "antd";
+import { SearchOutlined, SolutionOutlined } from "@ant-design/icons";
 
-import "../assets/css/NavBar/NavBar.css"
+import "../assets/css/NavBar/NavBar.css";
 import "antd/dist/antd.css";
 
 import Logo from "../assets/img/HenryHome.png"
@@ -10,11 +10,10 @@ import Button from "../pseudoComponents/Button.jsx"
 import { Inputs, Searchs, Selects } from "../pseudoComponents/Input.jsx"
 
 const Style = {
-    fontSize: 15
-}
+  fontSize: 15,
+};
 
 export default function NavBar() {
-
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [typeLogIn, setTypeLogIn] = useState("");
 
