@@ -1,6 +1,7 @@
 import React from "react";
 import Cards from "./Cards";
 import hoteles from "../harcodeado.json";
+import Footer from "./Footer";
 
 export default function Home() {
   return (
@@ -16,6 +17,8 @@ export default function Home() {
           />
         );
       })}
+
+      <Footer />
     </div>
   );
 }

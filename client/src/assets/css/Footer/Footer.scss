@@ -109,7 +109,8 @@ $font-color: #ffffff;
 
 @media (min-width: 1920px) {
   .container {
-    grid-template-columns: 150px 1fr 30px;
+    grid-template-columns: 140px 1fr 30px;
+    width: 99.1vw;
   }
 
   .title {

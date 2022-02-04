@@ -114,8 +114,9 @@
 
 @media (min-width: 1920px) {
   .container {
-    -ms-grid-columns: 150px 1fr 30px;
-        grid-template-columns: 150px 1fr 30px;
+    -ms-grid-columns: 140px 1fr 30px;
+        grid-template-columns: 140px 1fr 30px;
+    width: 99.1vw;
   }
   .title {
     font-size: 13px;
