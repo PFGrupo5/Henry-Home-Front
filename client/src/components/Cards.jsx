@@ -12,11 +12,10 @@ export default function Cards({
   price,
 
 }) {
-  console.log(img)
   return (
     <div key={id} className="ContainerCards">
       <h1 className="name">{name}</h1>
-      <img src={img} alt="casa" className="imagen" />
+      <Carrousel imgs={img} />
       <h3 className="location">{location}</h3>
       <p className="precio">{price}</p>
     </div>

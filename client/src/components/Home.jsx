@@ -1,25 +1,26 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux"
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Cards from "./Cards";
-import { getHotels } from '../FilesStore/Actions/index.js';
-import Footer from "./Footer";
-import hoteles from "../harcodeado.json"
+import { getHotels } from "../FilesStore/Actions/index.js";
+
 
 export default function Home() {
 
-  const dispatch = useDispatch()
-  const allHotels = useSelector((state) => state)
-  console.log(allHotels)
+  const dispatch = useDispatch();
+  const allHotels = useSelector((state) => state.allHotels);
 
   useEffect(() => {
-    dispatch(getHotels())
-    console.log(allHotels)
-  }, [])
+    dispatch(getHotels());
+  }, dispatch );
 
   return (
     <div>
-      {
-        hoteles.map((e) => {
+      {allHotels === undefined ? (
+        <div>
+          <h1>cargando </h1>
+        </div>
+      ) : (
+        allHotels.map((e) => {
           return (
             <Cards
               name={e.name}
@@ -28,9 +29,9 @@ export default function Home() {
               img={e.images}
               price={e.pricePerNight}
             />
-          )
+          );
         })
-      }
+      )}
     </div>
   );
 }
