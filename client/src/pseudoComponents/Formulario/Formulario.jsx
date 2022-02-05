@@ -36,9 +36,9 @@ export default function Login({ nombre }) {
               <Checkbox>Remember me</Checkbox>
             </Form.Item>
 
-            <a className="login-form-forgot" href="#">
+            <p className="login-form-forgot" >
               Forgot password
-            </a>
+            </p>
           </Form.Item>
 
           <Form.Item>
@@ -49,7 +49,7 @@ export default function Login({ nombre }) {
             >
               Log in
             </Button>
-            Or <a href="#">register now!</a>
+            Or <p>register now!</p>
           </Form.Item>
         </Form>
       </div>
