@@ -5,7 +5,7 @@ import "../assets/css/Landing/Landing.css"
 import img1 from "../assets/img/h1.jfif"
 import img2 from "../assets/img/h2.jfif"
 import NavBar from './NavBar';
-import Carrousel from '../pseudoComponents/Carrousel'
+import Carrousel from '../pseudoComponents/CarrouselLanding'
 import Button from '../pseudoComponents/Button'
 
 const stylesButton = {

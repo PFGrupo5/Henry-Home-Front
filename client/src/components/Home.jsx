@@ -7,7 +7,7 @@ import { getHotels } from "../FilesStore/Actions/index.js";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const allHotels = useSelector((state) => state.allHotels);
+  const allHotels = useSelector((state) => state.hotels);
 
   useEffect(() => {
     dispatch(getHotels());
@@ -27,7 +27,7 @@ export default function Home() {
               <Cards
                 name={e.name}
                 id={e.id}
-                location={e.location}
+                location={e.Location.name}
                 img={e.images}
                 price={e.pricePerNight}
               />

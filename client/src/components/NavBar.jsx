@@ -5,13 +5,13 @@ import { SearchOutlined, SolutionOutlined } from "@ant-design/icons";
 import "../assets/css/NavBar/NavBar.css";
 import "antd/dist/antd.css";
 
-import Logo from "../assets/img/HenryHome.png";
-import Button from "../pseudoComponents/Button.jsx";
-import { Selects } from "../pseudoComponents/Input.jsx";
+import Logo from "../assets/img/HenryHome.png"
+import Button from "../pseudoComponents/Button.jsx"
 import Login from "../pseudoComponents/Formulario/Formulario"
+import { Selects } from "../pseudoComponents/Input.jsx"
 
 const Style = {
-  fontSize: 15,
+    fontSize: 15,
 };
 
 export default function NavBar() {
