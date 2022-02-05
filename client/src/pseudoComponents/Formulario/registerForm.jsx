@@ -162,7 +162,7 @@ export default function RegisterForm() {
         {...tailFormItemLayout}
       >
         <Checkbox>
-          I have read the <a href="">agreement</a>
+          I have read the <p>agreement</p>
         </Checkbox>
       </Form.Item>
       <Form.Item {...tailFormItemLayout}>
