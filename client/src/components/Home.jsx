@@ -1,34 +1,32 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux"
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Cards from "./Cards";
-import { getHotels } from '../FilesStore/Actions/index.js';
-import Footer from "./Footer";
-import hoteles from "../harcodeado.json"
+import { getHotels } from "../FilesStore/Actions/index.js";
+
+import "../assets/css/Home/Home.css"
 
 export default function Home() {
 
-  const dispatch = useDispatch()
-  const allHotels = useSelector((state) => state.hotels)
-  console.log(allHotels)
+  const dispatch = useDispatch();
+  const allHotels = useSelector((state) => state.hotels);
 
   useEffect(() => {
-    dispatch(getHotels())
-    console.log(allHotels)
-  }, [])
-
+    dispatch(getHotels());
+  }, []);
   return (
     <div>
       {
         allHotels.map((e) => {
+          console.log(e)
           return (
             <Cards
               name={e.name}
               id={e.id}
-              location={e.location}
+              location={e.Location.name}
               img={e.images}
               price={e.pricePerNight}
             />
-          )
+          );
         })
       }
     </div>

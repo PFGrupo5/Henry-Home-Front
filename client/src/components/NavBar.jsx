@@ -7,10 +7,11 @@ import "antd/dist/antd.css";
 
 import Logo from "../assets/img/HenryHome.png"
 import Button from "../pseudoComponents/Button.jsx"
-import { Inputs, Searchs, Selects } from "../pseudoComponents/Input.jsx"
+import Login from "../pseudoComponents/Formulario/Formulario"
+import { Selects } from "../pseudoComponents/Input.jsx"
 
 const Style = {
-  fontSize: 15,
+    fontSize: 15,
 };
 
 export default function NavBar() {
@@ -93,7 +94,11 @@ export default function NavBar() {
             </Row >
 
             <Modal title="Basic Modal" visible={isModalVisible} onOk={closeModal} onCancel={closeModal}>
-                <p>{typeLogIn}</p>
+                {typeLogIn === "SignIn" ? (
+                    <Login nombre={typeLogIn} />
+                ) : (
+                    <Login nombre={typeLogIn} />
+                )}
             </Modal>
 
         </div >

@@ -1,37 +1,8 @@
-.ContainerCards {
-  display: inline-grid;
-  padding: 0px;
-  margin: 35px;
-  margin-right: 71px;
-  border-radius: 36px;
+/* ---------------- Variables ---------------- */
 
-  box-shadow: 20px 20px 20px 0 rgba(0, 0, 0, 0.364),
-    inset 20px 20px 17px -14px rgba(0, 0, 0, 0.364);
-
-  text-transform: capitalize;
-  width: 500px;
-  height: 450px;
-  justify-items: center;
-}
-
-.imagen {
-  width: 300px;
-  height: 200px;
-
-}
-
-.name {
-  font-size: 30px;
-}
-
-.precio{
-  color: black;
-}
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-// Media Querys.
-// ------------------------------------------------------------------------------------------------------------------------------------
-
+$color-neutral-900: hsl(207,19%,9%);
+$color-neutral-100: hsl(0,0%,100%);
+$color-accent-900: hsl(142,90%,61%);
 $minWidth: 375px;
 $mediWidth1: 446px;
 $mediWidth2: 540px;
@@ -40,39 +11,172 @@ $maxWidth1: 1022px;
 $maxWidth2: 1920px;
 
 
-@media (min-width: $minWidth) and (max-width: $mediWidth1) {
-  .ContainerCards{
+/* ---------------- All Cards styles ---------------- */
+.containerCards{
+  margin: 50px;
+  position: relative;
+  display: grid;
+  align-items: flex-end;
+  line-height: 1.6;
+  height: 300px;
+  width: 300px;
+  border-radius: 0px 0px 10px 10px; 
+  transition: transform 500ms ease;
+  overflow: hidden;
+}
+
+/* ---------------- Sections Styles ---------------- */
+
+.divText{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.3) 10%,
+    rgba(0, 0, 0, 0.8)
+  ); 
+  border-radius: 0px 0px 10px 10px; 
+  z-index: 20;
+}
+
+.divImg{
+  position: absolute;
+  height: inherit;
+  width: inherit; 
+  z-index: 1;
+}
+
+
+/* ---------------- Card content Style ---------------- */
+
+.textCards{
+  color: $color-neutral-100;
+  font-size: 20px;
+}
+
+.titleCards{
+  color: $color-neutral-100;
+  font-size: 25px;
+  position: relative;
+  width: max-content;
+  max-width: 290px;
+}
+
+.titleCards::after{
+  content: "";
+  position: absolute;
+  left: calc(1.5rem * -1);
+  bottom: -5px;
+  height: 4px;
+  background-color: $color-accent-900;
+  width: calc(100% + 1.5rem);
+  transform-origin: left;
+  transition: transform 500ms ease;
+}
+
+
+/* ---------------- Carrousel Imgs Style ---------------- */
+
+.imgCard{
+  height: 300px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+/* ---------------- Hover Animations ---------------- */
+
+.containerCards:hover{
+  transform: scale(1.05);
+
+  .titleCards::after{
+    transform: scaleX(1);
+  }
+
+  .divText{
+    transform: translateY(0);
+    transition-delay: 500ms;
+  }
+}
+
+/* ---------------- Media Querys ---------------- */
+
+@media (hover) {
+  .divText{
+    transform: translateY(50%);
+    transition: transform 500ms ease;
+  }
+  .titleCards::after{
+  transform: scaleX(0);
+  }
+}
+
+@media screen and (min-width:350px) {
+  .containerCards{
     width: 300px;
     height: 300px;
   }
+  .imgCard{
+    width: 300px;
+    height: 300px;
+  }
+  .titleCards{
+    font-size: 35px;
+  }
+  .textCards{
+    font-size: 30px;
+  }
 }
 
-@media (min-width: $mediWidth1) and (max-width: $mediWidth2) {
-  .ContainerCards{
+@media screen and (min-width: 568px){
+  .containerCards{
     width: 450px;
     height: 300px;
   }
-}
-
-@media (min-width: $mediWidth2) and (max-width: $mediWidth3) {
-  .ContainerCards{
-    width: 610px;
-    height: 400px;
+  .imgCard{
+    width: 450px;
+    height: 300px;
+  }
+  .titleCards{
+    font-size: 40px;
+  }
+  .textCards{
+    font-size: 30px;
   }
 }
 
-@media (min-width: $mediWidth3) and (max-width: $maxWidth1) {
-  .ContainerCards{
-    width: 400px;
+@media screen and (min-width: 768px) {
+  .containerCards{
+    width: 510px;
     height: 400px;
+  }
+  .imgCard{
+    width: 510px;
+    height: 400px;
+  }
+  .titleCards{
+    font-size: 40px;
+  }
+  .textCards{
+    font-size: 30px;
   }
 }
 
-@media (min-width: $maxWidth1) and (max-width: $maxWidth2) {
-  .ContainerCards{
-    width: 800px;
-    height: 400px;
+@media screen and (min-width: 1024px) {
+  .containerCards{
+    width: 300px;
+    height: 300px;
+  }
+  .imgCard{
+    width: 300px;
+    height: 300px;
+  }
+  .titleCards{
+    font-size: 30px;
+  }
+  .textCards{
+    font-size: 20px;
   }
 }
-
-

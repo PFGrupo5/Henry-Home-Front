@@ -12,6 +12,11 @@ function rootReducer(state = initialState, action) {
                 hotels: action.payload,
                 allHotels: action.payload,
             }
+
+        default:
+            return {
+                ...state
+            }
     }
 }
 
