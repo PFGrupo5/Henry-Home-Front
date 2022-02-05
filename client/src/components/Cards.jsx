@@ -1,8 +1,7 @@
 import React from "react";
 import Carrousel from "../pseudoComponents/CarrouselCard.jsx"
 import "../assets/css/Cards/Cards.css"
-import { Image } from 'antd';
-import { Typography, } from 'antd';
+import { Typography } from 'antd';
 import { PushpinOutlined, DollarOutlined } from "@ant-design/icons"
 
 const { Title, Text } = Typography;

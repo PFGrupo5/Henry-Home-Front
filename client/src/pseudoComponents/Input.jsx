@@ -1,8 +1,8 @@
 import React from 'react';
 import { Input, Select } from "antd"
 import "../assets/pseudoCss/Input/Input.css"
-
 const { Option } = Select;
+
 
 export function Inputs() {
     return <Input className='input' placeholder="Search..." />;
