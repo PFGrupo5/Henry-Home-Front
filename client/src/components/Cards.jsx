@@ -1,7 +1,6 @@
 import React from "react";
 import Carrousel from "../pseudoComponents/Carrousel.jsx"
 import "../assets/css/Cards/Cards.css"
-import { Image } from 'antd';
 
 
 export default function Cards({
