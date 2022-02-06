@@ -4,7 +4,7 @@ import "../assets/css/Cards/Cards.css"
 import { Typography } from 'antd';
 import { PushpinOutlined, DollarOutlined } from "@ant-design/icons"
 
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
 export default function Cards({
   name,
