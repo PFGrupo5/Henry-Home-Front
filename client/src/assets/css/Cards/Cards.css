@@ -1,7 +1,7 @@
 /* ---------------- Variables ---------------- */
 /* ---------------- All Cards styles ---------------- */
 .containerCards {
-  margin: 50px;
+  margin: 20px;
   position: relative;
   display: -ms-grid;
   display: grid;
