@@ -5,23 +5,20 @@ import Footer from "./Footer";
 import NavBar from "./NavBar";
 import { getHotels } from "../FilesStore/Actions/index.js";
 
+import "../assets/css/Home/Home.css"
+
 export default function Home() {
   const dispatch = useDispatch();
   const allHotels = useSelector((state) => state.hotels);
-
   useEffect(() => {
     dispatch(getHotels());
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="allHome">
       <NavBar />
-      <div>
-        {allHotels === undefined ? (
-          <div>
-            <h1>cargando </h1>
-          </div>
-        ) : (
+      <div className="home">
+        {
           allHotels.map((e) => {
             return (
               <Cards
@@ -33,9 +30,9 @@ export default function Home() {
               />
             );
           })
-        )}
+        }
       </div>
-      <Footer />
+      <Footer className="home_footer" />
     </div>
   );
 }

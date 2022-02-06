@@ -1,7 +1,5 @@
 import axios from "axios";
 
-export const ALL_HOTELS = "ALL_HOTELS";
-
 export function getHotels() {
   return async function (dispatch) {
     var json = await axios.get(
