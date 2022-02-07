@@ -1,0 +1,20 @@
+.allDetail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.imgDetail {
+  width: 300px;
+  height: 300px;
+}
+
+.carrouselConteiner {
+  width: 300px;
+  height: 300px;
+}
+/*# sourceMappingURL=Detail.css.map */
