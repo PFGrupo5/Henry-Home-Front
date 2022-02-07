@@ -9,7 +9,6 @@ export function Inputs() {
 }
 
 export function Selects({ options }) {
-    console.log(options)
     return (
         <Select className='select'
             placeholder="Search by provinces..."

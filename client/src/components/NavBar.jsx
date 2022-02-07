@@ -10,12 +10,18 @@ import Button from "../pseudoComponents/Button.jsx"
 import Login from "../pseudoComponents/Formulario/Formulario"
 import { Selects } from "../pseudoComponents/Input.jsx"
 
-const Style = {
-    fontSize: 15,
+const navBtn = {
+  fontSize: 15,
+};
+
+const modalBtn = {
+  fontSize: 15,
+  width: 100
 };
 
 export default function NavBar() {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [typeLogIn, setTypeLogIn] = useState("");
 
   const showModalR = () => {
@@ -28,8 +34,16 @@ export default function NavBar() {
     setIsModalVisible(true);
   };
 
+  const showSearch = () => {
+    setIsSearchVisible(true);
+  };
+
   const closeModal = () => {
     setIsModalVisible(false);
+  };
+
+  const closeSearch = () => {
+    setIsSearchVisible(false);
   };
 
   const provincias = [
@@ -75,7 +89,7 @@ export default function NavBar() {
 
         <Col className="navBtn" xs={0} sm={0} md={3} lg={3}>
           <Button
-            styles={Style}
+            styles={navBtn}
             click={showModalS}
             types="ghost"
             text="Sign In"
@@ -84,7 +98,7 @@ export default function NavBar() {
 
         <Col className="navBtn" xs={0} sm={0} md={3} lg={3}>
           <Button
-            styles={Style}
+            styles={navBtn}
             click={showModalR}
             types="ghost"
             text="Register"
@@ -99,7 +113,7 @@ export default function NavBar() {
           md={0}
           lg={0}
         >
-          <SearchOutlined className="navIcon" />
+          <SearchOutlined className="navIcon" onClick={showSearch} />
         </Col>
 
         <Col
@@ -108,7 +122,7 @@ export default function NavBar() {
           md={0}
           lg={0}
         >
-          <SolutionOutlined className="navIcon" />
+          <SolutionOutlined className="navIcon" onClick={showModalS} />
         </Col>
       </Row>
 
@@ -118,11 +132,32 @@ export default function NavBar() {
         onOk={closeModal}
         onCancel={closeModal}
       >
-        {typeLogIn === "SignIn" ? (
-          <Login nombre={typeLogIn} />
-        ) : (
-          <Login nombre={typeLogIn} />
-        )}
+        <Login nombre={typeLogIn} />
+
+      </Modal>
+
+      <Modal
+        title="Basic Modal"
+        visible={isSearchVisible}
+        onOk={closeSearch}
+        onCancel={closeSearch}
+        footer={[
+          <Button
+            styles={modalBtn}
+            click={closeSearch}
+            types="ghost"
+            text="Return"
+          />,
+          <Button
+            styles={modalBtn}
+            click={closeSearch}
+            types="ghost"
+            text="Search"
+          />
+        ]}
+      >
+        <Selects options={provincias} />
+
       </Modal>
     </div>
   );
