@@ -11,10 +11,10 @@ const { Title, Text } = Typography;
 
 export default function Detail(props) {
     const dispatch = useDispatch()
-    console.log(typeof props.match.params.id)
+
     useEffect(() => {
         dispatch(getDetail(props.match.params.id))
-    }, [dispatch])
+    }, [dispatch, props])
 
     let hotel = useSelector(state => state.detail)
     return (
