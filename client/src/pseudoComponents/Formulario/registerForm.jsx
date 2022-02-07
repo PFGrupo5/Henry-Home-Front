@@ -1,6 +1,7 @@
 import React from "react";
 import "antd/dist/antd.css";
 import { Form, Input, Row, Col, Checkbox, Button } from "antd";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const formItemLayout = {
   labelCol: {
@@ -129,21 +130,11 @@ export default function RegisterForm() {
       >
         <Row gutter={8}>
           <Col span={12}>
-            <Form.Item
-              name="captcha"
-              noStyle
-              rules={[
-                {
-                  required: true,
-                  message: "Please input the captcha you got!",
-                },
-              ]}
-            >
-              <Input />
+            <Form.Item name="captcha" noStyle>
+              <div className="recaptcha">
+                <ReCAPTCHA sitekey="6LceUGQeAAAAACkNOhVZv0OjckU1BTVA8-WE7Xf0" />
+              </div>
             </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Button>Get captcha</Button>
           </Col>
         </Row>
       </Form.Item>
