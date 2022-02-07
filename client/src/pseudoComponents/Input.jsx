@@ -14,7 +14,6 @@ export function Selects({ options }) {
             placeholder="Search by provinces..."
             showSearch
             optionFilterProp='children'
-            mode="multiple"
         >
             {options.map((i) => {
                 let mayus = i.charAt(0).toUpperCase() + i.slice(1);

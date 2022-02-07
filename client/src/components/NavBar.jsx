@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"
 import { Row, Col, Image, Modal } from "antd";
 import { SearchOutlined, SolutionOutlined } from "@ant-design/icons";
 
@@ -78,7 +79,9 @@ export default function NavBar() {
         {/* ---------------- Logo ---------------- */}
 
         <Col span={3}>
-          <Image className="navLogo" preview={false} src={Logo} />
+          <Link to="/">
+            <Image className="navLogo" preview={false} src={Logo} />
+          </Link>
         </Col>
 
         {/* ---------------- Desktop Version ---------------- */}
@@ -127,7 +130,7 @@ export default function NavBar() {
       </Row>
 
       <Modal
-        title="Basic Modal"
+        title={typeLogIn}
         visible={isModalVisible}
         onOk={closeModal}
         onCancel={closeModal}
@@ -137,7 +140,7 @@ export default function NavBar() {
       </Modal>
 
       <Modal
-        title="Basic Modal"
+        title="Search..."
         visible={isSearchVisible}
         onOk={closeSearch}
         onCancel={closeSearch}
