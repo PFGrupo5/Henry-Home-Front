@@ -2,13 +2,13 @@ import React from 'react';
 import { Carousel, Image } from 'antd';
 import "antd/dist/antd.css";
 
-function Carrousels({ imgs }) {
+function Carrousels({ imgs, dotsBool, styles }) {
     return (
-        <Carousel dots={false} autoplay autoplaySpeed={5000}>
+        <Carousel dots={dotsBool} autoplay autoplaySpeed={5000}>
             {imgs.map((i) => {
                 return (
                     <div>
-                        <Image preview={false} src={i} className='imgCard' />
+                        <Image preview={false} src={i} className={styles} />
                     </div>
                 )
             })}
