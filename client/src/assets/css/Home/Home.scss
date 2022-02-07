@@ -1,3 +1,11 @@
+// <<<<<<< HEAD
 .home {
   padding-top: 100px;
 }
+// =======
+.home {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+}
+// >>>>>>> 971971037ce7125e03c1ceb799ffc6926199dd7a

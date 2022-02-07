@@ -1,9 +1,4 @@
-.home {
-  padding-top: 100px;
-}
-
-.home {
-  padding-top: 100px;
+.allDetail {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12,4 +7,14 @@
       -ms-flex-direction: column;
           flex-direction: column;
 }
-/*# sourceMappingURL=Home.css.map */
+
+.imgDetail {
+  width: 300px;
+  height: 300px;
+}
+
+.carrouselConteiner {
+  width: 300px;
+  height: 300px;
+}
+/*# sourceMappingURL=Detail.css.map */
