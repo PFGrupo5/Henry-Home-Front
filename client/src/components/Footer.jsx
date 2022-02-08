@@ -26,8 +26,9 @@ export default function Footer() {
 
       <a
         href="https://github.com/PFGrupo5"
-        target="_blank"
         className="icons github"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <GithubOutlined className="icon" />
       </a>

@@ -1,4 +1,4 @@
-# HenryHome-Back
+# HenryHotel - Front
 This is the repository of the FrontEnd of "Henry Hotel", this is a web application that connect the owner of an accommodation to the users who wish to rent them.
 
 ## Installation 🔧

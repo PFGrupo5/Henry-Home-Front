@@ -4,6 +4,9 @@ import Cards from "./Cards";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import { getHotels } from "../FilesStore/Actions/index.js";
+import Aside from "./Aside/Aside";
+
+import "../assets/css/Home/Home.css";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -15,25 +18,20 @@ export default function Home() {
 
   return (
     <div>
+      <Aside />
       <NavBar />
-      <div>
-        {allHotels === undefined ? (
-          <div>
-            <h1>cargando </h1>
-          </div>
-        ) : (
-          allHotels.map((e) => {
-            return (
-              <Cards
-                name={e.name}
-                id={e.id}
-                location={e.Location.name}
-                img={e.images}
-                price={e.pricePerNight}
-              />
-            );
-          })
-        )}
+      <div className="home">
+        {allHotels.map((e) => {
+          return (
+            <Cards
+              name={e.name}
+              id={e.id}
+              location={e.Location.name}
+              img={e.images}
+              price={e.pricePerNight}
+            />
+          );
+        })}
       </div>
       <Footer />
     </div>
