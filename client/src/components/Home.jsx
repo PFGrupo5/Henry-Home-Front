@@ -4,8 +4,9 @@ import Cards from "./Cards";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import { getHotels } from "../FilesStore/Actions/index.js";
+import Aside from "./Aside/Aside";
 
-import "../assets/css/Home/Home.css"
+import "../assets/css/Home/Home.css";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -17,21 +18,20 @@ export default function Home() {
 
   return (
     <div>
+      <Aside />
       <NavBar />
       <div className="home">
-        {
-          allHotels.map((e) => {
-            return (
-              <Cards
-                name={e.name}
-                id={e.id}
-                location={e.Location.name}
-                img={e.images}
-                price={e.pricePerNight}
-              />
-            );
-          })
-        }
+        {allHotels.map((e) => {
+          return (
+            <Cards
+              name={e.name}
+              id={e.id}
+              location={e.Location.name}
+              img={e.images}
+              price={e.pricePerNight}
+            />
+          );
+        })}
       </div>
       <Footer />
     </div>

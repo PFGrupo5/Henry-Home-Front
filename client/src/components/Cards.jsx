@@ -14,17 +14,19 @@ export default function Cards({
   img,
   price,
 }) {
+  const renderName = name.length <= 12 ? name : `${name.slice(0, 12)}...`;
   return (
     <div key={id} className="containerCards">
       <div className="divText">
 
         <Link to={`/home/${id}`} >
-          <h1 className="titleCards" level={2} >{name}</h1>
+          <h1 className="titleCards" level={2} >
+            {renderName}
+          </h1>
         </Link>
 
         <Text className="textCards"> <PushpinOutlined /> {location}</Text>
         <Text className="textCards"><DollarOutlined /> {price}</Text>
-        {/* <Text className="textCards">5 estrellas</Text> */}
 
       </div>
       <div className="divImg">
