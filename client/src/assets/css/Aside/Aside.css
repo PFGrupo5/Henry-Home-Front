@@ -8,8 +8,9 @@
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  position: relative;
-  top: -1000px;
+  position: absolute;
+  top: 100px;
+  right: 0px;
 }
 
 .filtersContainer {
@@ -26,7 +27,7 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  background-color: #8d7a70;
+  background-color: #092c4c;
   height: 100vh;
   width: 200px;
   border-radius: 5px;
@@ -36,7 +37,7 @@
   display: none;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 767px) {
   .filtersContainer {
     display: none;
     -webkit-transition: 300ms;
@@ -53,8 +54,8 @@
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
-    position: relative;
-    top: 210px;
+    position: absolute;
+    top: 80px;
     left: 97vw;
     font-size: 20px;
     -webkit-transition: 300ms;
