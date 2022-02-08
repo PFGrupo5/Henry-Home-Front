@@ -8,6 +8,7 @@ import "antd/dist/antd.css";
 
 import Logo from "../assets/img/HenryHome.png"
 import Button from "../pseudoComponents/Button.jsx"
+import Login from "../pseudoComponents/Formulario/Formulario"
 import { Selects } from "../pseudoComponents/Input.jsx"
 
 const navBtn = {
@@ -20,21 +21,31 @@ const modalBtn = {
 };
 
 export default function NavBar() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const [typeLogIn, setTypeLogIn] = useState("");
 
+  const showModalR = () => {
+    setTypeLogIn("Register");
+    setIsModalVisible(true);
+  };
+
+  const showModalS = () => {
+    setTypeLogIn("SignIn");
+    setIsModalVisible(true);
+  };
 
   const showSearch = () => {
     setIsSearchVisible(true);
   };
 
+  const closeModal = () => {
+    setIsModalVisible(false);
+  };
+
   const closeSearch = () => {
     setIsSearchVisible(false);
   };
-
-  const goToLogIn = () => {
-    alert("a")
-  };
-
 
   const provincias = [
     "buenos aires",
@@ -79,12 +90,21 @@ export default function NavBar() {
           <Selects options={provincias} />
         </Col>
 
-        <Col className="navBtn" xs={0} sm={0} md={6} lg={6}>
+        <Col className="navBtn" xs={0} sm={0} md={3} lg={3}>
           <Button
             styles={navBtn}
-            click={goToLogIn}
+            click={showModalS}
             types="ghost"
             text="Sign In"
+          />
+        </Col>
+
+        <Col className="navBtn" xs={0} sm={0} md={3} lg={3}>
+          <Button
+            styles={navBtn}
+            click={showModalR}
+            types="ghost"
+            text="Register"
           />
         </Col>
 
@@ -105,9 +125,19 @@ export default function NavBar() {
           md={0}
           lg={0}
         >
-          <SolutionOutlined className="navIcon" onClick={goToLogIn} />
+          <SolutionOutlined className="navIcon" onClick={showModalS} />
         </Col>
       </Row>
+
+      <Modal
+        title={typeLogIn}
+        visible={isModalVisible}
+        onOk={closeModal}
+        onCancel={closeModal}
+      >
+        <Login nombre={typeLogIn} landing={false} />
+
+      </Modal>
 
       <Modal
         title="Search..."
