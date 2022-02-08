@@ -25,3 +25,16 @@
 .slick-dots li{
     margin: 0px 8px 2px 8px !important;
 }
+
+.formDiv{
+	align-items: center;
+	background-color: var(--white);
+	background: url("https://cdn.pixabay.com/photo/2017/03/29/15/18/tianjin-2185510_960_720.jpg");
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: grid;
+	height: 100vh;
+	place-items: center;
+}

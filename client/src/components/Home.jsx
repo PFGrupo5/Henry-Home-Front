@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Cards from "./Cards";
 import Footer from "./Footer";
-import NavBar from "./NavBar";
+import NavBar from "./NavBarHome";
 import { getHotels } from "../FilesStore/Actions/index.js";
 
 import "../assets/css/Home/Home.css"
@@ -18,6 +18,7 @@ export default function Home() {
   return (
     <div>
       <NavBar />
+
       <div className="home">
         {
           allHotels.map((e) => {
