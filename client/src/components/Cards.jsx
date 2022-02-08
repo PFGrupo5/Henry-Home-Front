@@ -29,6 +29,7 @@ export default function Cards({
       </div>
       <div className="divImg">
         <Carrousel imgs={img} dotsBool={false} styles="imgCard"></Carrousel>
+        hola?
       </div>
     </div>
   );
