@@ -133,6 +133,7 @@ export default function RegisterForm({ landing }) {
           <Input.Password />
         </Form.Item>
 
+<<<<<<< HEAD
         <Form.Item
           name="nickname"
           label="Nickname"
@@ -147,6 +148,22 @@ export default function RegisterForm({ landing }) {
         >
           <Input />
         </Form.Item>
+=======
+      <Form.Item
+        label="Captcha"
+        extra="We must make sure that your are a human."
+      >
+        <Row gutter={8}>
+          <Col span={12}>
+            <Form.Item name="captcha" noStyle>
+              <div className="recaptcha">
+                <ReCAPTCHA sitekey="6LceUGQeAAAAACkNOhVZv0OjckU1BTVA8-WE7Xf0" />
+              </div>
+            </Form.Item>
+          </Col>
+        </Row>
+      </Form.Item>
+>>>>>>> 3e3e788d71519f84df89430683dbdfd66ffe14d1
 
         <Form.Item
           label="Captcha"
