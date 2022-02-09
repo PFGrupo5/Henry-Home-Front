@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAAA,AAAA,OAAO,CAAA;EACH,OAAO,EAAE,kBAAkB;CAC9B",
     "sources": [
         "Aside-components.scss"
     ],

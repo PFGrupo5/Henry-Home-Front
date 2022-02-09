@@ -133,22 +133,6 @@ export default function RegisterForm({ landing }) {
           <Input.Password />
         </Form.Item>
 
-<<<<<<< HEAD
-        <Form.Item
-          name="nickname"
-          label="Nickname"
-          tooltip="What do you want others to call you?"
-          rules={[
-            {
-              required: true,
-              message: "Please input your nickname!",
-              whitespace: true,
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-=======
       <Form.Item
         label="Captcha"
         extra="We must make sure that your are a human."
@@ -163,7 +147,6 @@ export default function RegisterForm({ landing }) {
           </Col>
         </Row>
       </Form.Item>
->>>>>>> 3e3e788d71519f84df89430683dbdfd66ffe14d1
 
         <Form.Item
           label="Captcha"
