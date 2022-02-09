@@ -26,15 +26,9 @@ $gris-claro: #757d87;
   top: 25px;
 }
 
-<<<<<<< HEAD
-.navBtn {
-  position: relative;
-  top: 25px;
-=======
 .navBtn{
     position: relative;
     top: 25px;
->>>>>>> 8a542bc54dc76aeaa6f0f7beaecc6741d78c05d9
 }
 
 .navIcon {
@@ -45,58 +39,6 @@ $gris-claro: #757d87;
   color: white;
 }
 
-<<<<<<< HEAD
-.select {
-  width: 100% !important;
-}
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-// Media Querys.
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-@media screen and (max-width: 446px) and (min-width: 375px) {
-  .allNav {
-    width: 540px;
-  }
-  .navIcon {
-    left: 5rem;
-  }
-}
-
-@media screen and (max-width: 650px) and (min-width: 446px) {
-  .allNav {
-    width: 648px;
-  }
-  .navIcon {
-    left: 20px;
-  }
-}
-
-@media screen and (max-width: 768px) and (min-width: 650px) {
-}
-
-@media screen and (max-width: 820px) and (min-width: 768px) {
-}
-
-@media screen and (max-width: 900px) and (min-width: 820px) {
-}
-
-@media screen and (max-width: 1022px) and (min-width: 900px) {
-}
-
-@media screen and (max-width: 1022px) and (min-width: 965px) {
-}
-
-@media screen and (max-width: 1022px) and (min-width: 995px) {
-}
-
-@media screen and (max-width: 1022px) and (min-width: 1015px) {
-}
-
-@media screen and (max-width: 1500px) and (min-width: 1022px) {
-}
-=======
 .select{
     width: 100% !important;
 }
->>>>>>> 8a542bc54dc76aeaa6f0f7beaecc6741d78c05d9
