@@ -1,6 +1,7 @@
 import React from "react";
 import "antd/dist/antd.css";
 import { Cascader } from "antd";
+import "../../assets/css/Aside/Components/Aside-components.css";
 
 export default function Place() {
   const provinces = [
@@ -39,9 +40,8 @@ export default function Place() {
   }
 
   return (
-    <div>
+    <div className="filter">
       <Cascader
-        className="filter"
         options={options}
         onChange={onChange}
         placeholder="Location..."

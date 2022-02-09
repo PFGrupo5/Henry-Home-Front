@@ -111,7 +111,7 @@ export default function NavBar() {
         {/* ---------------- Mobile version ---------------- */}
 
         <Col
-          xs={{ span: 6, offset: 9 }}
+          xs={{ span: 3, offset: 9 }}
           sm={{ span: 3, offset: 15 }}
           md={0}
           lg={0}
@@ -120,7 +120,7 @@ export default function NavBar() {
         </Col>
 
         <Col
-          xs={{ span: 6, offset: 0 }}
+          xs={{ span: 3, offset: 0 }}
           sm={{ span: 3, offset: 0 }}
           md={0}
           lg={0}
