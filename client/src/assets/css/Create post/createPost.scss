@@ -1,0 +1,114 @@
+.generalCont {
+  display: grid;
+  grid-template-rows: 75px 100px 1fr;
+  grid-template-columns: 50px 1fr 75px;
+  background: rgb(0, 144, 171);
+  background: radial-gradient(
+    circle,
+    rgba(0, 144, 171, 1) 0%,
+    rgba(0, 58, 69, 1) 100%
+  );
+  height: 100vh;
+}
+
+.nav {
+  grid-row: 1 / 2;
+  grid-column: 3 / 4;
+}
+
+.logo {
+  width: 50px;
+}
+
+.back {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  font-size: 25px;
+  text-align: center;
+  margin-top: 15px;
+  margin-left: 15px;
+  color: #fff;
+  transition: all 0.2s;
+}
+
+.back:hover {
+  transform: scale(1.2);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: center;
+  grid-row: 2 / 3;
+  grid-column: 1 / 4;
+  color: #fff;
+  font-size: 25px;
+}
+
+hr {
+  grid-row: 2 / 3;
+  grid-column: 1 / 4;
+  width: 99vw;
+  position: relative;
+  top: 80px;
+}
+
+Form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  grid-row: 3 / 4;
+  grid-column: 1 / 4;
+  padding: 20px;
+  margin: auto;
+}
+
+.input {
+  background-color: #fff;
+  width: 90vw;
+  max-width: 800px;
+  color: #000;
+}
+
+.beds {
+  width: 90vw;
+  color: #000;
+}
+
+.cascader {
+  width: 400px;
+}
+
+.uploadImg {
+  text-align: center;
+}
+
+.btnSubmit {
+  text-align: center;
+}
+
+@media (min-width: 700px) {
+  .form {
+    padding: 30px;
+    margin-left: 10px;
+  }
+
+  .title {
+    font-size: 35px;
+  }
+
+  .logo {
+    width: 75px;
+  }
+}
+
+@media (min-width: 878px) {
+  .form {
+    padding: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
