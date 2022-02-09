@@ -34,22 +34,4 @@
 .select {
   width: 100% !important;
 }
-
-@media screen and (max-width: 446px) and (min-width: 375px) {
-  .allNav {
-    width: 540px;
-  }
-  .navIcon {
-    left: 5rem;
-  }
-}
-
-@media screen and (max-width: 650px) and (min-width: 446px) {
-  .allNav {
-    width: 648px;
-  }
-  .navIcon {
-    left: 20px;
-  }
-}
 /*# sourceMappingURL=NavBar.css.map */
