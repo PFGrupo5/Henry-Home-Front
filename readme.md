@@ -6,7 +6,7 @@ This is the repository of the FrontEnd of "Henry Hotel", this is a web applicati
 Use the package manager npm to install
 
 ```
-npm i antd @ant-design/icons react react-redux redux-thunk react-router-dom@5.3.0 sass axios
+npm i antd @ant-design/icons react react-redux redux-thunk react-router-dom@5.3.0 sass axios react-google-recaptcha
 ```
 
 ## Deploy 🚀
