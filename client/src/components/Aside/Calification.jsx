@@ -31,9 +31,8 @@ export default function Calification() {
   }
 
   return (
-    <div>
+    <div className="filter">
       <Cascader
-        className="filter"
         options={options}
         onChange={onChange}
         placeholder="Calification..."

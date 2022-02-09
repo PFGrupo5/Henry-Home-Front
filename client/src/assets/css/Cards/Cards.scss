@@ -1,8 +1,8 @@
 /* ---------------- Variables ---------------- */
 
-$color-neutral-900: hsl(207,19%,9%);
-$color-neutral-100: hsl(0,0%,100%);
-$color-accent-900: hsl(142,90%,61%);
+$color-neutral-900: hsl(207, 19%, 9%);
+$color-neutral-100: hsl(0, 0%, 100%);
+$color-accent-900: hsl(142, 90%, 61%);
 $minWidth: 375px;
 $mediWidth1: 446px;
 $mediWidth2: 540px;
@@ -10,9 +10,8 @@ $mediWidth3: 712px;
 $maxWidth1: 1022px;
 $maxWidth2: 1920px;
 
-
 /* ---------------- All Cards styles ---------------- */
-.containerCards{
+.containerCards {
   margin: 20px;
   position: relative;
   display: grid;
@@ -20,14 +19,14 @@ $maxWidth2: 1920px;
   line-height: 1.6;
   height: 300px;
   width: 300px;
-  border-radius: 0px 0px 10px 10px; 
+  border-radius: 0px 0px 10px 10px;
   transition: transform 500ms ease;
   overflow: hidden;
 }
 
 /* ---------------- Sections Styles ---------------- */
 
-.divText{
+.divText {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -37,27 +36,26 @@ $maxWidth2: 1920px;
     rgba(0, 0, 0, 0),
     rgba(0, 0, 0, 0.3) 10%,
     rgba(0, 0, 0, 0.8)
-  ); 
-  border-radius: 0px 0px 10px 10px; 
+  );
+  border-radius: 0px 0px 10px 10px;
   z-index: 20;
 }
 
-.divImg{
+.divImg {
   position: absolute;
   height: inherit;
-  width: inherit; 
+  width: inherit;
   z-index: 1;
 }
 
-
 /* ---------------- Card content Style ---------------- */
 
-.textCards{
+.textCards {
   color: $color-neutral-100;
   font-size: 20px;
 }
 
-.titleCards{
+.titleCards {
   color: $color-neutral-100;
   font-size: 25px;
   position: relative;
@@ -65,7 +63,7 @@ $maxWidth2: 1920px;
   max-width: 290px;
 }
 
-.titleCards::after{
+.titleCards::after {
   content: "";
   position: absolute;
   left: calc(1.5rem * -1);
@@ -77,10 +75,9 @@ $maxWidth2: 1920px;
   transition: transform 500ms ease;
 }
 
-
 /* ---------------- Carrousel Imgs Style ---------------- */
 
-.imgCard{
+.imgCard {
   height: 300px;
   width: 300px;
   border-radius: 10px;
@@ -88,14 +85,14 @@ $maxWidth2: 1920px;
 
 /* ---------------- Hover Animations ---------------- */
 
-.containerCards:hover{
+.containerCards:hover {
   transform: scale(1.05);
 
-  .titleCards::after{
+  .titleCards::after {
     transform: scaleX(1);
   }
 
-  .divText{
+  .divText {
     transform: translateY(0);
     transition-delay: 500ms;
   }
@@ -104,79 +101,113 @@ $maxWidth2: 1920px;
 /* ---------------- Media Querys ---------------- */
 
 @media (hover) {
-  .divText{
+  .divText {
     transform: translateY(50%);
     transition: transform 500ms ease;
   }
-  .titleCards::after{
-  transform: scaleX(0);
+  .titleCards::after {
+    transform: scaleX(0);
   }
 }
 
-@media screen and (min-width:350px) {
-  .containerCards{
+@media screen and (max-width: 446px) and (min-width: 375px) {
+  .containerCards {
     width: 300px;
     height: 300px;
   }
-  .imgCard{
+  .imgCard {
     width: 300px;
     height: 300px;
   }
-  .titleCards{
+  .titleCards {
     font-size: 35px;
   }
-  .textCards{
+  .textCards {
     font-size: 30px;
   }
 }
 
-@media screen and (min-width: 568px){
-  .containerCards{
+@media screen and (max-width: 768px) and (min-width: 446px) {
+  .containerCards {
     width: 450px;
     height: 300px;
   }
-  .imgCard{
+  .imgCard {
     width: 450px;
     height: 300px;
   }
-  .titleCards{
+  .titleCards {
     font-size: 40px;
   }
-  .textCards{
+  .textCards {
     font-size: 30px;
   }
 }
 
-@media screen and (min-width: 768px) {
-  .containerCards{
+@media screen and (max-width: 768px) and (min-width: 700px) {
+  .containerCards {
     width: 510px;
     height: 400px;
   }
-  .imgCard{
+  .imgCard {
     width: 510px;
     height: 400px;
   }
-  .titleCards{
+  .titleCards {
     font-size: 40px;
   }
-  .textCards{
+  .textCards {
     font-size: 30px;
   }
 }
 
-@media screen and (min-width: 1024px) {
-  .containerCards{
+@media screen and (max-width: 900px) and (min-width: 768px) {
+  .containerCards {
     width: 300px;
     height: 300px;
   }
-  .imgCard{
+  .imgCard {
     width: 300px;
     height: 300px;
   }
-  .titleCards{
+  .titleCards {
     font-size: 30px;
   }
-  .textCards{
+  .textCards {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 1022px) and (min-width: 900px) {
+  .containerCards {
+    width: 300px;
+    height: 300px;
+  }
+  .imgCard {
+    width: 300px;
+    height: 300px;
+  }
+  .titleCards {
+    font-size: 30px;
+  }
+  .textCards {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 1500px) and (min-width: 1022px) {
+  .containerCards {
+    width: 170px;
+    height: 300px;
+  }
+  .imgCard {
+    width: 300px;
+    height: 300px;
+  }
+  .titleCards {
+    font-size: 30px;
+  }
+  .textCards {
     font-size: 20px;
   }
 }
