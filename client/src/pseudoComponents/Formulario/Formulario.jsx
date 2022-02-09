@@ -1,64 +1,50 @@
 import React from "react";
-import { Form, Input, Button, Checkbox } from "antd";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { useState } from "react";
+import LogInForm from "./logInForm";
 import RegisterForm from "./registerForm";
+import "../../assets/pseudoCss/Form/Form.css"
 
-export default function Login({ nombre }) {
-  if (nombre === "SignIn") {
+export default function Formulario({ nombre, landing }) {
+
+  const [active, setActive] = useState("right-panel-active")
+
+  function openSignIn() {
+    setActive((state) => state = "right-panel-disabled");
+  }
+
+  function openSignUp() {
+    setActive((state) => state = "right-panel-active");
+  }
+
+
+  if (landing) {
     return (
-      <div>
-        <Form
-          name="normal_login"
-          className="login-form"
-          initialValues={{ remember: true }}
-        >
-          <Form.Item
-            name="username"
-            rules={[{ required: true, message: "Please input your Username!" }]}
-          >
-            <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder="Username"
-            />
-          </Form.Item>
-          <Form.Item
-            name="password"
-            rules={[{ required: true, message: "Please input your Password!" }]}
-          >
-            <Input
-              prefix={<LockOutlined className="site-form-item-icon" />}
-              type="password"
-              placeholder="Password"
-            />
-          </Form.Item>
-          <Form.Item>
-            <Form.Item name="remember" noStyle>
-              <Checkbox>Remember me</Checkbox>
-            </Form.Item>
+      <div className={`form-container ${active} ${nombre}`}>
 
-            <p className="login-form-forgot" >
-              Forgot password
-            </p>
-          </Form.Item>
+        {/* <!-- Sign Up --> */}
+        <LogInForm landing={landing} />
 
-          <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-            >
-              Log in
-            </Button>
-            Or <p>register now!</p>
-          </Form.Item>
-        </Form>
+        {/* <!-- Sign In --> */}
+        <RegisterForm landing={landing} />
+
+        {/* <!-- Overlay --> */}
+        <div class="container__overlay">
+          <div class="overlay">
+            <div class="overlay__panel overlay--left">
+              <button class="formBtn" id="signIn" onClick={openSignIn}>Sign In</button>
+            </div>
+            <div class="overlay__panel overlay--right">
+              <button class="formBtn" id="signUp" onClick={openSignUp}>Sign Up</button>
+            </div>
+          </div>
+        </div>
       </div>
-    );
+    )
   } else {
-    return (
-      <div>
-        <RegisterForm />
-      </div>
-    );
+    if (nombre === "SignIn") {
+      return <LogInForm />
+    } else {
+      return <RegisterForm />
+    }
   }
 }

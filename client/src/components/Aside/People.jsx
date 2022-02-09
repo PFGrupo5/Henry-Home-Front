@@ -1,6 +1,7 @@
 import React from "react";
 import "antd/dist/antd.css";
 import { Cascader } from "antd";
+import "../../assets/css/Aside/Components/Aside-components.css";
 
 export default function People() {
   const options = [
@@ -31,13 +32,8 @@ export default function People() {
   }
 
   return (
-    <div>
-      <Cascader
-        options={options}
-        onChange={onChange}
-        className="filter"
-        placeholder="People..."
-      />
+    <div className="filter">
+      <Cascader options={options} onChange={onChange} placeholder="People..." />
     </div>
   );
 }
