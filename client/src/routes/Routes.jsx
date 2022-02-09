@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom"
 import LandingPage from "../components/LandingPage";
 import Home from "../components/Home";
 import Detail from "../components/Detail"
+import Loading from "../components/Loading";
 
 
 function Routes() {
