@@ -1,0 +1,28 @@
+.formLOGIN {
+  width: 300px;
+}
+
+.login-form {
+  display: -ms-grid;
+  display: grid;
+  position: absolute;
+  justify-items: center;
+  top: 100px;
+  left: 90px;
+}
+
+.login-form-forgot {
+  padding: 20px;
+}
+
+.Btn-register {
+  position: absolute;
+  top: 60px;
+  left: -20px;
+}
+
+.or {
+  position: absolute;
+  left: 26px;
+}
+/*# sourceMappingURL=FormLogin.css.map */

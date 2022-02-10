@@ -2,6 +2,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LandingPage from "../components/LandingPage";
 import Home from "../components/Home";
 import Detail from "../components/Detail";
+import ErrorPage from "../components/ErrorPage";
+
 
 function Routes() {
   return (
@@ -11,6 +13,7 @@ function Routes() {
           <Route exact path="/" component={LandingPage}></Route>
           <Route exact path="/home" component={Home}></Route>
           <Route exact path="/home/:id" component={Detail}></Route>
+          <Route exact path="*" component={ErrorPage}></Route>
         </Switch>
       </div>
     </BrowserRouter>
