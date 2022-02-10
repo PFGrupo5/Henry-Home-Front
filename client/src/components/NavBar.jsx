@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import { Row, Col, Image, Modal } from "antd";
 import { SearchOutlined, SolutionOutlined } from "@ant-design/icons";
 
 import "../assets/css/NavBar/NavBar.css";
 import "antd/dist/antd.css";
 
-import Logo from "../assets/img/HenryHome.png"
-import Button from "../pseudoComponents/Button.jsx"
-import { Selects } from "../pseudoComponents/Input.jsx"
+import Logo from "../assets/img/HenryHome.png";
+import Button from "../pseudoComponents/Button.jsx";
+import { Selects } from "../pseudoComponents/Input.jsx";
 
 const navBtn = {
   fontSize: 15,
@@ -16,12 +16,11 @@ const navBtn = {
 
 const modalBtn = {
   fontSize: 15,
-  width: 100
+  width: 100,
 };
 
 export default function NavBar() {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
-
 
   const showSearch = () => {
     setIsSearchVisible(true);
@@ -32,9 +31,11 @@ export default function NavBar() {
   };
 
   const goToLogIn = () => {
-    alert("a")
+    window.scrollTo({
+      top: 1000,
+      behavior: "smooth", 
+    });
   };
-
 
   const provincias = [
     "buenos aires",
@@ -126,11 +127,10 @@ export default function NavBar() {
             click={closeSearch}
             types="ghost"
             text="Search"
-          />
+          />,
         ]}
       >
         <Selects options={provincias} />
-
       </Modal>
     </div>
   );
