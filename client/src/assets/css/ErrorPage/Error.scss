@@ -1,0 +1,9 @@
+.Container-Error {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Title, .Error, .Redireccion{
+    color: red;
+}
