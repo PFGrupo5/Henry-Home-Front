@@ -63,7 +63,7 @@ export default function RegisterForm() {
             },
           ]}
         >
-          <Input  placeholder="E-Mail"/>
+          <Input placeholder="E-Mail" />
         </Form.Item>
 
         <Form.Item
@@ -77,7 +77,7 @@ export default function RegisterForm() {
           ]}
           hasFeedback
         >
-          <Input.Password  placeholder="Password"/>
+          <Input.Password placeholder="Password" />
         </Form.Item>
 
         <Form.Item
@@ -103,7 +103,7 @@ export default function RegisterForm() {
             }),
           ]}
         >
-          <Input.Password  placeholder="Confirm Pasword"/>
+          <Input.Password placeholder="Confirm Pasword" />
         </Form.Item>
 
         <Form.Item
@@ -118,10 +118,10 @@ export default function RegisterForm() {
             },
           ]}
         >
-          <Input  placeholder="NikName"/>
+          <Input placeholder="NikName" />
         </Form.Item>
 
-        <Form.Item
+        {/* <Form.Item
           label="Captcha"
           extra="We must make sure that your are a human."
         >
@@ -148,11 +148,12 @@ export default function RegisterForm() {
             },
           ]}
           {...tailFormItemLayout}
-        >
           <Checkbox>
+          > 
             I have read the <p>Tearms and Conditions</p>
           </Checkbox>
         </Form.Item>
+          */}
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">
             Register
