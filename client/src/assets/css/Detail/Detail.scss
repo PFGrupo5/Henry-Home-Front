@@ -1,14 +1,77 @@
-.allDetail{
-    display: flex;
-    flex-direction: column;
+.allDetail {
+  background: rgb(0, 98, 199);
+  background: radial-gradient(
+    circle,
+    rgba(0, 98, 199, 1) 0%,
+    rgba(0, 41, 83, 1) 100%
+  );
+  display: grid;
+  grid-template-rows: 80px 100px 400px 150px 50px 50px 100px;
+  grid-template-columns: 1fr 300px 1fr;
 }
 
-.imgDetail{
-    width: 300px;
-    height: 300px;
+.navbar {
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
 }
 
-.carrouselConteiner{
-    width: 300px;
-    height: 300px;
+.title {
+  grid-column: 2/ 3;
+  grid-row: 2 / 3;
+  text-align: center;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+
+.carrouselConteiner {
+  grid-row: 3 / 4;
+  grid-column: 2 / 3;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+
+.imgDetail {
+  width: 300px;
+  height: 300px;
+}
+
+.description {
+  grid-column: 1 / 4;
+  grid-row: 4 / 5;
+  margin: 10px;
+  font-size: 15px;
+  text-align: center;
+  box-shadow: 0px 0px 15px #000;
+  border-radius: 5px;
+}
+
+.facilities {
+  grid-row: 5 / 6;
+  grid-column: 2 / 3;
+  text-align: center;
+}
+
+.services {
+  grid-row: 6 / 7;
+  grid-column: 2 / 3;
+  text-align: center;
+}
+
+.reservar {
+  grid-row: 7 / 8;
+  grid-column: 2 / 3;
+  display: flex;
+  height: 30px;
+  justify-content: flex-end;
+  align-self: center;
+}
+
+.back {
+  grid-row: 7 / 8;
+  grid-column: 2 / 3;
+  display: flex;
+  height: 30px;
+  align-self: center;
 }
