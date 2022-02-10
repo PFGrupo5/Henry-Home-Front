@@ -121,7 +121,7 @@ export default function RegisterForm() {
           <Input placeholder="NikName" />
         </Form.Item>
 
-        {/* <Form.Item
+        <Form.Item
           label="Captcha"
           extra="We must make sure that your are a human."
         >
@@ -144,16 +144,18 @@ export default function RegisterForm() {
               validator: (_, value) =>
                 value
                   ? Promise.resolve()
-                  : Promise.reject(new Error("Should accept the Tearms and Conditions")),
+                  : Promise.reject(
+                      new Error("Should accept the Tearms and Conditions")
+                    ),
             },
           ]}
           {...tailFormItemLayout}
+        >
           <Checkbox>
-          > 
             I have read the <p>Tearms and Conditions</p>
           </Checkbox>
         </Form.Item>
-          */}
+
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">
             Register
