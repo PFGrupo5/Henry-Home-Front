@@ -17,7 +17,7 @@ export default function Home() {
     dispatch(getHotels());
   }, [dispatch]);
 
-  if (allHotels.length === 0) {
+  if (allHotels?.length === 0) {
     return (
       <div>
         <Loading />
