@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../assets/pseudoCss/Form/Form Register/formRegister.css";
+import { EyeOutlined } from "@ant-design/icons";
 
 function FormRegister() {
   const InitialValues = {
@@ -16,7 +17,6 @@ function FormRegister() {
   const [isSubmit, setIsSubmit] = useState(false);
   const [showPass, setShowPass] = useState(false);
   const [showPass2, setShowPass2] = useState(false);
-  const [check, setCheck] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,7 +27,6 @@ function FormRegister() {
     e.preventDefault();
     setFormsErrors(validate(FormsValue));
     setIsSubmit(true);
-    console.log(FormsValue);
   };
 
   const handleClick = (e) => {
@@ -81,7 +80,7 @@ function FormRegister() {
     if (Object.keys(FormsErrors).length === 0 && isSubmit) {
       console.log(FormsValue);
     }
-  }, [FormsErrors]);
+  }, [FormsValue, FormsErrors, isSubmit]);
 
   return (
     <div className="ContainerContainer">
@@ -131,12 +130,8 @@ function FormRegister() {
               onChange={handleChange}
               className="inputForm"
             />
-            <button
-              className="ShowPanel"
-              onClick={handleClick}
-              className="ShowBtn"
-            >
-              Show
+            <button onClick={handleClick} className="SeePass">
+              <EyeOutlined />
             </button>
             <p>{FormsErrors.pasword}</p>
           </div>
@@ -149,12 +144,8 @@ function FormRegister() {
               onChange={handleChange}
               className="inputForm"
             />
-            <button
-              className="ShowPanel2"
-              onClick={handleClick2}
-              className="ShowBtn"
-            >
-              Show
+            <button onClick={handleClick2} className="SeePass">
+              <EyeOutlined />
             </button>
             <p>{FormsErrors.confirmpassword}</p>
           </div>
@@ -165,7 +156,6 @@ function FormRegister() {
               type="checkbox"
               name="role"
               value="Client"
-              checked={check.Client}
               className="checkboxCli"
             />
             <p className="mod">Propietario</p>
@@ -174,10 +164,8 @@ function FormRegister() {
               type="checkbox"
               name="role"
               value="Moderator"
-              checked={check.Moderator}
               className="checkboxMod"
             />
-            
           </div>
         </div>
         <button type="submit">Register</button>
