@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail } from "../FilesStore/Actions";
 import Carrousel from "../pseudoComponents/Carrousel";
@@ -33,32 +34,48 @@ export default function Detail(props) {
       </div>
       <div className="description">
         <Text>{hotel.description}</Text>
-        <Text>
-          {" "}
+        <br />
+        <br />
+        <Text className="location">
           <PushpinOutlined /> {hotel.Location ? hotel.Location.name : null}
         </Text>
-        <Text>
-          {" "}
+        <br />
+        <br />
+        <Text className="price">
           <DollarOutlined /> {hotel.pricePerNight}
         </Text>
       </div>
-      <div className="facilities">
+      {/* <div className="facilities">
+        Facilities:
         {hotel.Facilities?.map((e) => {
           return <Text>{e.name} </Text>;
         })}
       </div>
       <div className="services">
+        Services:
         {hotel.Services?.map((e) => {
           return <Text>{e.name} </Text>;
         })}
+      </div> */}
+
+      <div className="facilities">
+        <p className="offer">¿Que ofrece este lugar?</p>
+        {hotel.Facilities?.map((e) => {
+          return <Text className="text-detail">•{e.name} </Text>;
+        })}
+        {hotel.Services?.map((e) => {
+          return <Text className="text-detail">•{e.name} </Text>;
+        })}
       </div>
 
-      <div className="reservar">
-        <button>Reservar</button>
-      </div>
+      <div className="btnDetail">
+        <Link>
+          <button className="reservar">Reservar</button>
+        </Link>
 
-      <div className="back">
-        <button>Go back</button>
+        <Link to="/home">
+          <button className="back">Go back</button>
+        </Link>
       </div>
     </div>
   );

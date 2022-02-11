@@ -4,7 +4,6 @@ import Home from "../components/Home";
 import Detail from "../components/Detail";
 import ErrorPage from "../components/ErrorPage";
 
-
 function Routes() {
   return (
     <BrowserRouter>
