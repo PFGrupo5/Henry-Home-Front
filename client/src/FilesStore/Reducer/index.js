@@ -15,8 +15,8 @@ function rootReducer(state = initialState, action) {
     case "DETAIL":
       return {
         ...state,
-        detail: action.payload
-      }
+        detail: action.payload,
+      };
 
     default:
       return {
