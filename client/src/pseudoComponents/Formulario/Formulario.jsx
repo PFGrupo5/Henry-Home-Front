@@ -18,12 +18,21 @@ export default function Formulario({ nombre, landing }) {
   if (landing) {
     return (
       <div className={`form-container ${active} ${nombre}`}>
+<<<<<<< HEAD
+
+        {/* <!-- Sign Up --> */}
+        <LogInForm />
+
+        {/* <!-- Sign In --> */}
+        <RegisterForm />
+=======
         <div className="container-forms">
           {/* <!-- Sign Up --> */}
           <LogInForm landing={landing} />
           {/* <!-- Sign In --> */}
           <RegisterForm landing={landing} />
         </div>
+>>>>>>> 8fbc0422de69eee9cd307b64c6676d58824e2c26
 
         {/* <!-- Overlay --> */}
         <div class="container__overlay">
