@@ -150,25 +150,23 @@ function FormRegister() {
             <p>{FormsErrors.confirmpassword}</p>
           </div>
           <div className="CheckBox">
-            <p className="client"> Cliente </p>
+            Cliente
             <input
               onChange={(e) => handleCheckbox(e)}
               type="checkbox"
               name="role"
               value="Client"
-              className="checkboxCli"
             />
-            <p className="mod">Propietario</p>
+            Propietario
             <input
               onChange={(e) => handleCheckbox(e)}
               type="checkbox"
               name="role"
               value="Moderator"
-              className="checkboxMod"
             />
           </div>
-        </div>
         <button type="submit">Register</button>
+        </div>
       </form>
     </div>
   );
