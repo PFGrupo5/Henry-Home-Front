@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "../../assets/pseudoCss/Form/Form Register/formRegister.css";
 
 function FormRegister() {
   const InitialValues = {
@@ -7,10 +8,7 @@ function FormRegister() {
     email: "",
     inputPasword: "",
     confirmPassword: "",
-    role: {
-      Client: true,
-      Moderator: "",
-    },
+    role: "",
   };
 
   const [FormsValue, setFormsValue] = useState(InitialValues);
@@ -44,8 +42,7 @@ function FormRegister() {
 
   const handleCheckbox = (e) => {
     const { name, value } = e.target;
-    setCheck(([e.target.value] = e.target.checked));
-    console.log(check)
+    setFormsValue({ ...FormsValue, [name]: value });
   };
 
   const validate = (values) => {
@@ -87,86 +84,101 @@ function FormRegister() {
   }, [FormsErrors]);
 
   return (
-    <div className="ContainerForm">
+    <div className="ContainerContainer">
       <form onSubmit={handleSubmit}>
-        <h1>Log-In</h1>
+        <h1 className="Login">register</h1>
         <div className="divider"></div>
-        <div className="firstname">
-          <label>First Name : </label>
-          <input
-            type="text"
-            name="firstName"
-            placeholder="First Name"
-            value={FormsValue.name}
-            onChange={handleChange}
-          />
-          <p>{FormsErrors.name}</p>
-        </div>
-        <div className="lastname">
-          <label>Last Name : </label>
-          <input
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-            value={FormsValue.lastName}
-            onChange={handleChange}
-          />
-          <p>{FormsErrors.lastname}</p>
-        </div>
-        <div className="email">
-          <label>E-Mail : </label>
-          <input
-            type="text"
-            name="email"
-            placeholder="E-Mail"
-            value={FormsValue.email}
-            onChange={handleChange}
-          />
-          <p>{FormsErrors.email}</p>
-        </div>
-        <div className="password">
-          <label>Password : </label>
-          <input
-            type={showPass ? "text" : "password"}
-            name="inputPasword"
-            placeholder="Password"
-            value={FormsValue.pasword}
-            onChange={handleChange}
-          />
-          <button className="ShowPanel" onClick={handleClick}>
-            Show
-          </button>
-          <p>{FormsErrors.pasword}</p>
-        </div>
-        <div className="confirmPassword">
-          <label>Confirm Password : </label>
-          <input
-            type={showPass2 ? "text" : "password"}
-            name="confirmPassword"
-            placeholder="Confirm Password"
-            value={FormsValue.confirmPassword}
-            onChange={handleChange}
-          />
-          <button className="ShowPanel2" onClick={handleClick2}>
-            Show
-          </button>
-          <p>{FormsErrors.confirmpassword}</p>
-        </div>
-        <div className="rolecontainer">
-          Client
-          <input
-            onChange={(e) => handleCheckbox(e)}
-            type="checkbox"
-            value="Client"
-            checked={check.Client}
-          />
-          Moderator
-          <input
-            onChange={(e) => handleCheckbox(e)}
-            type="checkbox"
-            value="Moderator"
-            checked={check.Moderator}
-          />
+        <div className="containerForm">
+          <div>
+            <input
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              value={FormsValue.name}
+              onChange={handleChange}
+              className="inputForm"
+            />
+            <p>{FormsErrors.name}</p>
+          </div>
+          <div>
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              value={FormsValue.lastName}
+              onChange={handleChange}
+              className="inputForm"
+            />
+            <p>{FormsErrors.lastname}</p>
+          </div>
+          <div>
+            <input
+              type="text"
+              name="email"
+              placeholder="E-Mail"
+              value={FormsValue.email}
+              onChange={handleChange}
+              className="inputForm"
+            />
+            <p>{FormsErrors.email}</p>
+          </div>
+          <div>
+            <input
+              type={showPass ? "text" : "password"}
+              name="inputPasword"
+              placeholder="Password"
+              value={FormsValue.pasword}
+              onChange={handleChange}
+              className="inputForm"
+            />
+            <button
+              className="ShowPanel"
+              onClick={handleClick}
+              className="ShowBtn"
+            >
+              Show
+            </button>
+            <p>{FormsErrors.pasword}</p>
+          </div>
+          <div>
+            <input
+              type={showPass2 ? "text" : "password"}
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              value={FormsValue.confirmPassword}
+              onChange={handleChange}
+              className="inputForm"
+            />
+            <button
+              className="ShowPanel2"
+              onClick={handleClick2}
+              className="ShowBtn"
+            >
+              Show
+            </button>
+            <p>{FormsErrors.confirmpassword}</p>
+          </div>
+          <div className="CheckBox">
+            <p className="client"> Cliente </p>
+            <input
+              onChange={(e) => handleCheckbox(e)}
+              type="checkbox"
+              name="role"
+              value="Client"
+              checked={check.Client}
+              className="checkboxCli"
+            />
+            <p className="mod">Propietario</p>
+            <input
+              onChange={(e) => handleCheckbox(e)}
+              type="checkbox"
+              name="role"
+              value="Moderator"
+              checked={check.Moderator}
+              className="checkboxMod"
+            />
+            
+          </div>
         </div>
         <button type="submit">Register</button>
       </form>
