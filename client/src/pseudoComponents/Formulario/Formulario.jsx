@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import LogInForm from "./logInForm";
-import RegisterForm from "./registerForm";
+import LogInForm from "./Ant forms/logInForm";
+// import RegisterForm from "./registerForm";
 import "../../assets/pseudoCss/Form/Form.css";
+import FormRegister from "./FormRegister";
 
 export default function Formulario({ nombre, landing }) {
   const [active, setActive] = useState("right-panel-active");
@@ -21,7 +22,7 @@ export default function Formulario({ nombre, landing }) {
         {active === "right-panel-disabled" ? (
           <LogInForm landing={landing} />
         ) : (
-          <RegisterForm landing={landing} />
+          <FormRegister />
         )}
       </div>
       {/* <!-- Overlay --> */}
