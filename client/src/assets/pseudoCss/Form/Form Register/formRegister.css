@@ -1,5 +1,4 @@
 .ContainerContainer {
-  position: absolute;
   width: 300px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -8,8 +7,6 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  left: 410px;
-  top: 40px;
 }
 
 .Login {
@@ -71,36 +68,5 @@
   -webkit-box-shadow: 1px 1px 10px 1px #000 inset;
           box-shadow: 1px 1px 10px 1px #000 inset;
   border-radius: 5px;
-}
-
-.CheckBox {
-  position: absolute;
-  bottom: 70px;
-  left: 40px;
-}
-
-.checkboxCli {
-  margin-right: 10px;
-  position: absolute;
-  top: -19px;
-  left: 12px;
-}
-
-.checkboxMod {
-  margin-right: 10px;
-  position: absolute;
-  left: 35px;
-}
-
-.client {
-  position: absolute;
-  bottom: -12px;
-  left: -40px;
-}
-
-.mod {
-  position: absolute;
-  bottom: -32px;
-  left: -40px;
 }
 /*# sourceMappingURL=formRegister.css.map */

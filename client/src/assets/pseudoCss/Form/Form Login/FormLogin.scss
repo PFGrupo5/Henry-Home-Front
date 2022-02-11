@@ -1,25 +1,24 @@
 .formLOGIN {
   width: 300px;
+  display: flex;
+  flex-direction: column;
 }
 
 .login-form {
   display: grid;
-  position: absolute;
   justify-items: center;
-  top: 100px;
-  left: 90px;
 }
 
-.login-form-forgot{
-    padding: 20px;
+.login-form-forgot {
+  padding: 20px;
 }
 
-.Btn-register{
-    position: absolute;
-    top: 60px;
-    left: -20px;
+.Btn-register {
+  position: absolute;
+  top: 60px;
+  left: -20px;
 }
-.or{
-    position: absolute;
-    left: 26px;
+.or {
+  position: absolute;
+  left: 26px;
 }
