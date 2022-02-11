@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../assets/pseudoCss/Form/Form Register/formRegister.css";
 import { Form, Input, Row, Col, Checkbox, Button } from "antd";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -36,10 +36,18 @@ const tailFormItemLayout = {
 
 export default function RegisterForm() {
   const [form] = Form.useForm();
+  const [FormData, setFormData] = useState("");
 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
+    setFormData(values);
   };
+
+  const hadleSubmit = (e) => {
+    e.preventDefault();
+    console.log(FormData);
+  };
+
   return (
     <div className="formREGISTER">
       <Form
@@ -67,7 +75,7 @@ export default function RegisterForm() {
         </Form.Item>
 
         <Form.Item
-          name="password"
+          name="inputPassword"
           label="Password"
           rules={[
             {
@@ -81,9 +89,9 @@ export default function RegisterForm() {
         </Form.Item>
 
         <Form.Item
-          name="confirm"
+          name="confirmPassword"
           label="Password"
-          dependencies={["password"]}
+          dependencies={["inputPassword"]}
           hasFeedback
           rules={[
             {
@@ -92,7 +100,7 @@ export default function RegisterForm() {
             },
             ({ getFieldValue }) => ({
               validator(_, value) {
-                if (!value || getFieldValue("password") === value) {
+                if (!value || getFieldValue("inputPassword") === value) {
                   return Promise.resolve();
                 }
 
@@ -107,18 +115,36 @@ export default function RegisterForm() {
         </Form.Item>
 
         <Form.Item
-          name="nickname"
-          label="Nickname"
-          tooltip="What do you want others to call you?"
+          name="firstName"
+          label="First Name"
           rules={[
             {
               required: true,
-              message: "Please input your nickname!",
+              message: "Please input your First Name!",
               whitespace: true,
             },
           ]}
         >
-          <Input placeholder="NikName" />
+          <Input placeholder="First Name" />
+        </Form.Item>
+
+        <Form.Item
+          name="lastName"
+          label="Last Name"
+          rules={[
+            {
+              required: true,
+              message: "Please input your Last Name!",
+              whitespace: true,
+            },
+          ]}
+        >
+          <Input placeholder="Last Name" />
+        </Form.Item>
+
+        <Form.Item name="Rol" defaultValue={1} >
+          <Checkbox value={1}>Client</Checkbox>
+          <Checkbox value={2}>Moderator</Checkbox>
         </Form.Item>
 
         <Form.Item
@@ -157,7 +183,7 @@ export default function RegisterForm() {
         </Form.Item>
 
         <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" onSubmit={hadleSubmit}>
             Register
           </Button>
         </Form.Item>
