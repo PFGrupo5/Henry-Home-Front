@@ -16,16 +16,15 @@ export default function Formulario({ nombre, landing }) {
     setActive((state) => state = "right-panel-active");
   }
 
-
   if (landing) {
     return (
       <div className={`form-container ${active} ${nombre}`}>
 
         {/* <!-- Sign Up --> */}
-        <LogInForm landing={landing} />
+        <LogInForm />
 
         {/* <!-- Sign In --> */}
-        <RegisterForm landing={landing} />
+        <RegisterForm />
 
         {/* <!-- Overlay --> */}
         <div class="container__overlay">

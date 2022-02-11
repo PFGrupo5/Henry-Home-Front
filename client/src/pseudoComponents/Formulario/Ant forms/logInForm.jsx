@@ -1,9 +1,34 @@
 import React from "react";
 import { Form, Input, Button, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { GoogleLogin } from "react-google-login"
+import { useDispatch } from "react-redux";
+import { googleLogIn } from "../../../FilesStore/Actions/index"
+import { useHistory } from "react-router-dom"
 import "../../../assets/pseudoCss/Form/Form Login/FormLogin.css";
 
 function LogInForm() {
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const googleSuccess = async (res) => {
+    console.log("hi", res)
+
+    const result = res?.profileObj;
+    const token = res?.tokenId;
+    try {
+      dispatch(googleLogIn(result, token));
+      history.push("/home")
+      window.location.replace("")
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const googleFailure = (error) => {
+    console.log("googleError", error)
+  }
+
   return (
     <div className="formLOGIN">
       <Form
@@ -38,6 +63,7 @@ function LogInForm() {
         </Form.Item>
 
         <Form.Item className="btns-Log-Reg">
+          <p className="or">Or</p>
           <Button
             type="primary"
             htmlType="submit"
@@ -46,13 +72,25 @@ function LogInForm() {
             Log in
           </Button>
           <p className="or">Or</p>
-          <Button
-            type="primary"
-            htmlType="submit"
-            className="Btn-register"
-          >
-            Register Now
-          </Button>
+
+        </Form.Item>
+        <Form.Item>
+          <GoogleLogin
+            clientId="109526159096-6f0i6517a428ea0nm6qj5iodagf810pm.apps.googleusercontent.com"
+            render={(renderProps) => (
+              <button
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+                className="formBtn"
+              >
+                Google Sign In
+              </button>
+            )}
+            onSuccess={googleSuccess}
+            onFailure={googleFailure}
+            cookiePolicy="single_host_origin"
+          />
+
 
         </Form.Item>
       </Form>
