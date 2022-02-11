@@ -12,6 +12,8 @@ function Routes() {
           <Route exact path="/" component={LandingPage}></Route>
           <Route exact path="/home" component={Home}></Route>
           <Route exact path="/home/:id" component={Detail}></Route>
+          {/* RUTAS DE PRUEBAS */}
+          {/*  */}
           <Route exact path="*" component={ErrorPage}></Route>
         </Switch>
       </div>
