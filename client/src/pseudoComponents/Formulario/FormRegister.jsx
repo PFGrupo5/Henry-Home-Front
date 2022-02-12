@@ -2,8 +2,16 @@ import React, { useEffect, useState } from "react";
 import "../../assets/pseudoCss/Form/Form Register/formRegister.css";
 import { message } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
+import { SignUp } from "../../FilesStore/Actions/index"
+import { useHistory } from "react-router-dom"
+import { useDispatch } from "react-redux"
 
 function FormRegister() {
+
+  // ------------------------------------------------------------------------------------------------------------------------------------
+  // Const
+  // ------------------------------------------------------------------------------------------------------------------------------------
+
   const InitialValues = {
     firstName: "",
     lastName: "",
@@ -18,30 +26,29 @@ function FormRegister() {
   const [isSubmit, setIsSubmit] = useState(false);
   const [showPass, setShowPass] = useState(false);
   const [showPass2, setShowPass2] = useState(false);
+  const history = useHistory()
+  const dispatch = useDispatch()
+  // ------------------------------------------------------------------------------------------------------------------------------------
+  // Functions
+  // ------------------------------------------------------------------------------------------------------------------------------------
 
   useEffect(() => {
     if (Object.keys(FormsErrors).length === 0 && isSubmit) {
-      console.log("edd", FormsValue);
+      message.success('Submit success!');
+      dispatch(SignUp(FormsValue, history))
     }
-  }, [FormsValue, FormsErrors, isSubmit]);
+  }, [FormsValue, FormsErrors, isSubmit, dispatch, history]);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormsValue({ ...FormsValue, [name]: value });
-    console.log(FormsValue)
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormsErrors(validate(FormsValue));
     setIsSubmit(true);
-
-    if (Object.keys(FormsErrors).length === 0) {
-      message.success('Submit success!');
-    } else {
-      message.error('Submit error!');
-    }
-
   };
 
   const handleClick = (e) => {
@@ -58,6 +65,11 @@ function FormRegister() {
     const { name, value } = e.target;
     setFormsValue({ ...FormsValue, [name]: value });
   };
+
+
+  // ------------------------------------------------------------------------------------------------------------------------------------
+  // Validate Function
+  // ------------------------------------------------------------------------------------------------------------------------------------
 
   const validate = (values) => {
     const errors = {};
@@ -95,6 +107,9 @@ function FormRegister() {
     return errors;
   };
 
+  // ------------------------------------------------------------------------------------------------------------------------------------
+  // Render
+  // ------------------------------------------------------------------------------------------------------------------------------------
 
 
   return (

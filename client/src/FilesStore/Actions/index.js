@@ -1,10 +1,10 @@
 import axios from "axios";
-import { ALL_HOTELS, DETAIL, GOOGLE_LOGIN, GOOGLE_LOGOUT, CREATE_HOUSE, ADMIN_STATUS } from "../Const Types/constActions"
+import { ALL_HOTELS, DETAIL, GOOGLE_LOGIN, GOOGLE_LOGOUT, CREATE_HOUSE, ADMIN_STATUS, SIGNIN, SIGNUP } from "../Const Types/constActions"
 
-export function getHotels(page=1 , size=10) {
+export function getHotels(page = 1, size = 10) {
   return async function (dispatch) {
     try {
-      
+
       var json = await axios.get(
         `https://henry-home-back.herokuapp.com/api/houses?page=${page}&size=${size}`
       );
@@ -57,15 +57,54 @@ export function googleLogOut() {
   }
 }
 
-export function createHouse(payload,token) {
+export function SignIn(values, history) {
   return async function (dispatch) {
     try {
-      console.log("semando")
-      var json = await axios.post(`https://henry-home-back.herokuapp.com/api/houses`,payload,{headers: {
-        'Authorization': token
-      }}
-        )
-        console.log(json)
+      const json = await axios.post("https://henry-home-back.herokuapp.com/api/user/login", values)
+      console.log(json.data)
+      dispatch({
+        type: SIGNIN,
+        payload: json.data
+      })
+      history.push("/home")
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export function SignUp(values, history) {
+  return async function (dispatch) {
+    try {
+      const json = await axios.post("https://henry-home-back.herokuapp.com/api/user/register", values)
+      console.log(json.data)
+      dispatch({
+        type: SIGNUP,
+        payload: json.data
+      })
+      history.push("/home")
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export function logOut() {
+
+}
+
+export function createHouse(payload, token) {
+  return async function (dispatch) {
+    try {
+      var json = await axios.post(`https://henry-home-back.herokuapp.com/api/houses`,
+        payload,
+        {
+          headers: {
+            'Authorization': token
+          }
+        }
+      )
+      console.log(json)
       return dispatch({
         type: CREATE_HOUSE,
         payload: json.data,
@@ -80,8 +119,7 @@ export function createHouse(payload,token) {
 export function adminStatus(payload) {
   return async function (dispatch) {
     try {
-      console.log("status mandado")
-      var json = await axios.patch(`https://henry-home-back.herokuapp.com/api/houses/status`,payload)
+      var json = await axios.patch(`https://henry-home-back.herokuapp.com/api/houses/status`, payload)
       console.log(json.data)
       return dispatch({
         type: ADMIN_STATUS,
