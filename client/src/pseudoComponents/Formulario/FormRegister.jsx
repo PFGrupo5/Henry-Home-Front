@@ -3,9 +3,6 @@ import "../../assets/pseudoCss/Form/Form Register/formRegister.css";
 import { message } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
 
-const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
-
-
 function FormRegister() {
   const InitialValues = {
     firstName: "",

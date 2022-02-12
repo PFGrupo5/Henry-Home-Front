@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input, Button, message, Checkbox } from "antd";
+import { Form, Input, Button, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { GoogleLogin } from "react-google-login"
 import { useDispatch } from "react-redux";
@@ -9,7 +9,6 @@ import "../../../assets/pseudoCss/Form/Form Login/FormLogin.css";
 
 
 function LogInForm() {
-  const [formData, setFormData] = useState()
 
   const dispatch = useDispatch();
   const history = useHistory();
