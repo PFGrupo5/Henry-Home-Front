@@ -8,21 +8,22 @@ export default function Formulario({ nombre, landing }) {
   const [active, setActive] = useState("right-panel-active");
 
   function openSignIn() {
-    setActive((state) => (state = "right-panel-disabled"));
+    setActive(state => (state = "right-panel-disabled"));
   }
 
   function openSignUp() {
-    setActive((state) => (state = "right-panel-active"));
+    setActive(state => (state = "right-panel-active"));
   }
 
   if (landing) {
     return (
-      <div className={`form-container ${active} ${nombre}`}>
+      <div className={`form-container ${active}`}>
+
         <div className="container-forms">
           {/* <!-- Sign Up --> */}
-          <LogInForm landing={landing} />
+          <LogInForm />
           {/* <!-- Sign In --> */}
-          <RegisterForm landing={landing} />
+          <RegisterForm />
         </div>
 
         {/* <!-- Overlay --> */}

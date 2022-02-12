@@ -34,7 +34,7 @@
   display: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .buttons {
     left: 96vw;
   }
@@ -92,7 +92,7 @@
   }
 }
 
-@media screen and (max-width: 446px) and (min-width: 375px) {
+@media screen and (max-width: 768px) and (min-width: 375px) {
   .buttons {
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
