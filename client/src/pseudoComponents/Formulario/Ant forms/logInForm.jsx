@@ -1,5 +1,5 @@
-import React from "react";
-import { Form, Input, Button, Checkbox } from "antd";
+import React, { useState } from "react";
+import { Form, Input, Button, message, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { GoogleLogin } from "react-google-login"
 import { useDispatch } from "react-redux";
@@ -7,7 +7,9 @@ import { googleLogIn } from "../../../FilesStore/Actions/index"
 import { useHistory } from "react-router-dom"
 import "../../../assets/pseudoCss/Form/Form Login/FormLogin.css";
 
+
 function LogInForm() {
+  const [formData, setFormData] = useState()
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -28,6 +30,8 @@ function LogInForm() {
   const googleFailure = (error) => {
     console.log("googleError", error)
   }
+
+
 
   return (
     <div className="formLOGIN">
@@ -76,7 +80,7 @@ function LogInForm() {
         </Form.Item>
         <Form.Item>
           <GoogleLogin
-            clientId="109526159096-6f0i6517a428ea0nm6qj5iodagf810pm.apps.googleusercontent.com"
+            clientId="109526159096-dk6c06q28lkm7uq041ievngdekh1p8k2.apps.googleusercontent.com"
             render={(renderProps) => (
               <button
                 onClick={renderProps.onClick}
