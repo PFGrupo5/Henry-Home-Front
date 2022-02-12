@@ -2,30 +2,21 @@ const initialState = {
   hotels: [],
   allHotels: [],
   detail: [],
-  created: "",
 };
 
-function rootReducer(state = initialState, {type, payload}) {
-  switch (type) {
+function rootReducer(state = initialState, action) {
+  switch (action.type) {
     case "ALL_HOTELS":
       return {
         ...state,
-        hotels: payload,
-        allHotels: payload,
+        hotels: action.payload,
+        allHotels: action.payload,
       };
     case "DETAIL":
       return {
         ...state,
-        detail: payload,
+        detail: action.payload,
       };
-    case "CREATE_HOUSE":
-      return {
-        ...state,
-      }
-    case "ADMIN_STATUS":
-      return{
-        ...state
-      }
 
     default:
       return {
