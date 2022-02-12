@@ -18,6 +18,11 @@ export default function Admin() {
       <div>
         <hr />
         <h2 className="titleAdmin">Mis Alojamientos</h2>
+        <div className="btonCreate">
+          <Link to={"/create"}>
+            <button>Public your House</button>
+          </Link>
+        </div>
         <hr />
       </div>
 
