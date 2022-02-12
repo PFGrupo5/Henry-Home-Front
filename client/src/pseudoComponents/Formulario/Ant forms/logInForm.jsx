@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, Button, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { GoogleLogin } from "react-google-login"
@@ -6,12 +6,21 @@ import { useDispatch } from "react-redux";
 import { googleLogIn } from "../../../FilesStore/Actions/index"
 import { useHistory } from "react-router-dom"
 import "../../../assets/pseudoCss/Form/Form Login/FormLogin.css";
+import { SignIn } from "../../../FilesStore/Actions/index"
 
 
 function LogInForm() {
-
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const [clientCheck, setClientCheck] = useState(true)
+  const [ownerCheck, setOwnerCheck] = useState(false)
+  const [formData, setFormData] = useState({
+    role: "Client",
+    email: "",
+    inputPassword: "",
+  })
+
 
   const googleSuccess = async (res) => {
     console.log("hi", res)
@@ -30,7 +39,28 @@ function LogInForm() {
     console.log("googleError", error)
   }
 
+  const onFinish = () => {
+    console.log(formData)
+    dispatch(SignIn(formData, history))
+  }
 
+  const onFinishFailed = (error) => {
+    console.log(error)
+  }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log("nombre", name, "value", value)
+    setFormData({ ...formData, [name]: value });
+  }
+
+  const switchChange = () => {
+    setClientCheck(prev => !prev)
+    setOwnerCheck(prev => !prev)
+
+    ownerCheck ? formData.role = "Client" : formData.role = "Moderator"
+
+    console.log(formData)
+  }
 
   return (
     <div className="formLOGIN">
@@ -38,30 +68,41 @@ function LogInForm() {
         name="normal_login"
         className="login-form"
         initialValues={{ remember: true }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
       >
+
         <Form.Item
-          name="username"
-          rules={[{ required: true, message: "Please input your Username!" }]}
+          rules={[{ required: true, message: "Please input your Email!" }]}
         >
           <Input
             prefix={<UserOutlined className="site-form-item-icon" />}
-            placeholder="Username"
+            placeholder="Email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
           />
         </Form.Item>
+
         <Form.Item
-          name="password"
           rules={[{ required: true, message: "Please input your Password!" }]}
         >
           <Input
             prefix={<LockOutlined className="site-form-item-icon" />}
+            name="inputPassword"
             type="password"
             placeholder="Password"
+            value={formData.inputPassword}
+            onChange={handleChange}
           />
         </Form.Item>
+
         <Form.Item>
-          <Form.Item name="remember" noStyle>
-            <Checkbox>Remember me</Checkbox>
-          </Form.Item>
+          <Checkbox checked={clientCheck} onChange={switchChange}>Client</Checkbox>
+          <Checkbox checked={ownerCheck} onChange={switchChange}>Owner</Checkbox>
+        </Form.Item>
+
+        <Form.Item>
           <p className="login-form-forgot">Forgot password</p>
         </Form.Item>
 
