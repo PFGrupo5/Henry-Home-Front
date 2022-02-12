@@ -1,12 +1,12 @@
 .container {
   background-color: #092c4c;
-  width: 375px;
+  width: 1901px;
   display: -ms-inline-grid;
   display: inline-grid;
-  -ms-grid-rows: 100px 25px;
-      grid-template-rows: 100px 25px;
-  -ms-grid-columns: 120px 225px 30px;
-      grid-template-columns: 120px 225px 30px;
+  -ms-grid-rows: 163px 25px;
+      grid-template-rows: 163px 25px;
+  -ms-grid-columns: 1460px 225px 30px;
+      grid-template-columns: 1460px 225px 30px;
 }
 
 .div-about {
@@ -68,60 +68,47 @@
   margin-left: 10px;
 }
 
-@media screen and (max-width: 446px) and (min-width: 375px) {
+@media screen and (max-width: 445px) and (min-width: 375px) {
   .container {
-    width: 375px;
-  }
-  .container {
-    -ms-grid-columns: 120px 1fr 30px;
-        grid-template-columns: 120px 1fr 30px;
+    -ms-grid-rows: 260px 5px;
+        grid-template-rows: 260px 5px;
+    -ms-grid-columns: 290px 125px 131px;
+        grid-template-columns: 290px 125px 131px;
+    width: 531px;
+    height: 300px;
   }
 }
 
-@media screen and (max-width: 650px) and (min-width: 446px) {
+@media screen and (max-width: 768px) and (min-width: 445px) {
   .container {
-    width: 600px;
-    -ms-grid-columns: 120px 1fr 30px;
-        grid-template-columns: 120px 1fr 30px;
-    -ms-grid-rows: 100px 25px;
-        grid-template-rows: 100px 25px;
+    -ms-grid-rows: 260px 5px;
+        grid-template-rows: 260px 5px;
+    -ms-grid-columns: 290px 125px 131px;
+        grid-template-columns: 290px 125px 131px;
+    width: 542px;
+    height: 300px;
   }
 }
 
-@media (max-width: 446px) {
+@media screen and (max-width: 1024px) and (min-width: 768px) {
   .container {
-    -ms-grid-rows: 165px 25px;
-        grid-template-rows: 165px 25px;
+    -ms-grid-rows: 207px 5px;
+        grid-template-rows: 207px 5px;
+    -ms-grid-columns: 704px 125px 131px;
+        grid-template-columns: 704px 125px 131px;
+    width: 960px;
+    height: 240px;
   }
 }
 
-@media (min-width: 1022px) {
+@media screen and (max-width: 1440px) and (min-width: 1024px) {
   .container {
-    -ms-grid-rows: 90px 25px;
-        grid-template-rows: 90px 25px;
-  }
-}
-
-@media (min-width: 1920px) {
-  .container {
-    -ms-grid-columns: 140px 1fr 30px;
-        grid-template-columns: 140px 1fr 30px;
-    width: 1920px;
-  }
-  .title {
-    font-size: 13px;
-  }
-  .description {
-    font-size: 12px;
-    margin-top: -10px;
-  }
-  .copy {
-    font-size: 12px;
-  }
-  .icon {
-    font-size: 25px;
-    margin-top: -15px;
-    color: white;
+    -ms-grid-rows: 207px 5px;
+        grid-template-rows: 207px 5px;
+    -ms-grid-columns: 895px 125px 131px;
+        grid-template-columns: 895px 125px 131px;
+    width: 1147px;
+    height: 234px;
   }
 }
 /*# sourceMappingURL=Footer.css.map */
