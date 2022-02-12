@@ -1,4 +1,4 @@
-import { ALL_HOTELS, DETAIL, GOOGLE_LOGIN, GOOGLE_LOGOUT, } from "../Const Types/constActions"
+import { ALL_HOTELS, DETAIL, GOOGLE_LOGIN, GOOGLE_LOGOUT, CREATE_HOUSE, ADMIN_STATUS } from "../Const Types/constActions"
 
 const initialState = {
   hotels: [],
@@ -35,6 +35,14 @@ function rootReducer(state = initialState, action) {
         ...state,
         authData: null
       };
+    case CREATE_HOUSE:
+      return {
+        ...state,
+      }
+    case ADMIN_STATUS:
+      return{
+        ...state
+      }
 
     default:
       return {
