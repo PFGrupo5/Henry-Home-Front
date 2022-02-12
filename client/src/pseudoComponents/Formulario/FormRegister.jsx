@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "../../assets/pseudoCss/Form/Form Register/formRegister.css";
+import { message } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
+
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
+
 
 function FormRegister() {
   const InitialValues = {
     firstName: "",
     lastName: "",
     email: "",
-    inputPasword: "",
+    inputPassword: "",
     confirmPassword: "",
     role: "",
   };
@@ -18,15 +22,29 @@ function FormRegister() {
   const [showPass, setShowPass] = useState(false);
   const [showPass2, setShowPass2] = useState(false);
 
+  useEffect(() => {
+    if (Object.keys(FormsErrors).length === 0 && isSubmit) {
+      console.log("edd", FormsValue);
+    }
+  }, [FormsValue, FormsErrors, isSubmit]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormsValue({ ...FormsValue, [name]: value });
+    console.log(FormsValue)
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormsErrors(validate(FormsValue));
     setIsSubmit(true);
+
+    if (Object.keys(FormsErrors).length === 0) {
+      message.success('Submit success!');
+    } else {
+      message.error('Submit error!');
+    }
+
   };
 
   const handleClick = (e) => {
@@ -47,40 +65,40 @@ function FormRegister() {
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    if (!values.name) {
-      errors.name = "Name is required!";
+    if (!values.firstName) {
+      errors.firstName = "Name is required!";
     }
-    if (!values.lastname) {
-      errors.lastname = "Last Name is required!";
+    if (!values.lastName) {
+      errors.lastName = "Last Name is required!";
     }
     if (!values.email) {
       errors.email = "Email is required!";
     } else if (!regex.test(values.email)) {
       errors.email = "this is not a valid email format";
     }
-    if (!values.Password) {
-      errors.password = "Password is required!";
-    } else if (values.password.length < 4) {
-      errors.password = "Password must be more than 4 characters";
-    } else if (values.password.length > 10) {
-      errors.password = "Password cannot exceed more thanthan 4 characters";
+    if (!values.inputPassword) {
+      errors.inputPassword = "Password is required!";
+    } else if (values.inputPassword.length < 4) {
+      errors.inputPassword = "Password must be more than 4 characters";
+    } else if (values.inputPassword.length > 10) {
+      errors.inputPassword = "Password cannot exceed more than 4 characters";
     }
-    if (!values.confirmpassword) {
-      errors.confirmpassword = "Password is required!";
-    } else if (values.confirmpassword.length < 4) {
-      errors.confirmpassword = "Password must be more than 4 characters";
-    } else if (values.confirmpassword.length > 10) {
-      errors.confirmpassword =
-        "Password cannot exceed more thanthan 4 characters";
+    if (!values.confirmPassword) {
+      errors.confirmPassword = "Password is required!";
+    } else if (values.confirmPassword.length < 4) {
+      errors.confirmPassword = "Password must be more than 4 characters";
+    } else if (values.confirmPassword.length > 10) {
+      errors.confirmPassword =
+        "Password cannot exceed more than 4 characters";
+    } else if (values.confirmPassword !== values.inputPassword) {
+      console.log("v1", values.confirmPassword, "v2", values.inputPassword)
+      errors.confirmPassword =
+        "Both passwords must be equal";
     }
     return errors;
   };
 
-  useEffect(() => {
-    if (Object.keys(FormsErrors).length === 0 && isSubmit) {
-      console.log(FormsValue);
-    }
-  }, [FormsValue, FormsErrors, isSubmit]);
+
 
   return (
     <div className="ContainerContainer">
@@ -97,7 +115,7 @@ function FormRegister() {
               onChange={handleChange}
               className="inputForm"
             />
-            <p>{FormsErrors.name}</p>
+            <p>{FormsErrors.firstName}</p>
           </div>
           <div>
             <input
@@ -108,7 +126,7 @@ function FormRegister() {
               onChange={handleChange}
               className="inputForm"
             />
-            <p>{FormsErrors.lastname}</p>
+            <p>{FormsErrors.lastName}</p>
           </div>
           <div>
             <input
@@ -124,16 +142,16 @@ function FormRegister() {
           <div>
             <input
               type={showPass ? "text" : "password"}
-              name="inputPasword"
+              name="inputPassword"
               placeholder="Password"
-              value={FormsValue.pasword}
+              value={FormsValue.inputPassword}
               onChange={handleChange}
               className="inputForm"
             />
             <button onClick={handleClick} className="SeePass">
               <EyeOutlined />
             </button>
-            <p>{FormsErrors.pasword}</p>
+            <p>{FormsErrors.inputPasword}</p>
           </div>
           <div>
             <input
@@ -147,7 +165,7 @@ function FormRegister() {
             <button onClick={handleClick2} className="SeePass">
               <EyeOutlined />
             </button>
-            <p>{FormsErrors.confirmpassword}</p>
+            <p>{FormsErrors.confirmPassword}</p>
           </div>
           <div className="CheckBox">
             Cliente
@@ -165,7 +183,7 @@ function FormRegister() {
               value="Moderator"
             />
           </div>
-        <button type="submit">Register</button>
+          <button type="submit">Register</button>
         </div>
       </form>
     </div>
