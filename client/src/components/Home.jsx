@@ -12,7 +12,7 @@ import Pages from "./Pages";
 export default function Home() {
 
   const [page , setPage] = useState(1)
-  const [size , setSize] = useState(2)
+  const [ size ] = useState(2)
 
   const dispatch = useDispatch();
   const allHotels = useSelector((state) => state.hotels);
