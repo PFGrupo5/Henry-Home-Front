@@ -1,12 +1,14 @@
-import { ALL_HOTELS, DETAIL, GOOGLE_LOGIN, GOOGLE_LOGOUT, CREATE_HOUSE, ADMIN_STATUS, SIGNIN, SIGNUP, USER_DETAIL } from "../Const Types/constActions"
-
+import { ALL_HOTELS, DETAIL, GOOGLE_LOGIN, GOOGLE_LOGOUT, CREATE_HOUSE, ADMIN_STATUS, SIGNIN, SIGNUP, USER_DETAIL, GET_SERVICES, GET_FACILITIES, LOCATIONS } from "../Const Types/constActions"
 const initialState = {
   hotels: [],
   allHotels: [],
   detail: [],
   userDetail: [],
+  services: [],
+  locations: [],
+  facilities: [],
   authData: null,
-  count:null,
+  count: null,
 };
 
 function rootReducer(state = initialState, action) {
@@ -16,7 +18,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         hotels: action.payload.rows,
         allHotels: action.payload.rows,
-        count:action.payload.count
+        count: action.payload.count
       };
 
     case DETAIL:
@@ -62,6 +64,25 @@ function rootReducer(state = initialState, action) {
       return {
         ...state
       }
+
+    case GET_SERVICES:
+      return {
+        ...state,
+        services: action?.payload
+      }
+
+    case GET_FACILITIES:
+      return {
+        ...state,
+        facilities: action?.payload
+      }
+
+    case LOCATIONS:
+      return {
+        ...state,
+        locations: action?.payload
+      }
+
     default:
       return {
         ...state,
