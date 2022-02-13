@@ -7,3 +7,7 @@ export const CREATE_HOUSE = "CREATE_HOUSE";
 export const SIGNIN = "SIGNIN";
 export const SIGNUP = "SIGNUP";
 export const USER_DETAIL = "USER_DETAIL";
+export const GET_SERVICES = "GET_SERVICES";
+export const GET_FACILITIES = "GET_FACILITIES";
+export const LOCATIONS = "LOCATIONS";
+export const POST_HOTEL = "POST_HOTEL"
