@@ -1,6 +1,5 @@
-import React, {useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getHotels } from "../FilesStore/Actions/index.js";
+import React from "react";
+
 
 export default function Pages({pages,actualPage,changePage}){
     var pageNumbers=[]
