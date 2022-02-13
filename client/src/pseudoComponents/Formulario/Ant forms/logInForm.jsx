@@ -23,10 +23,9 @@ function LogInForm() {
 
 
   const googleSuccess = async (res) => {
-    console.log("hi", res)
-
     const result = res?.profileObj;
     const token = res?.tokenId;
+
     try {
       dispatch(googleLogIn(result, token));
       history.push("/home")
@@ -40,16 +39,15 @@ function LogInForm() {
   }
 
   const onFinish = () => {
-    console.log(formData)
     dispatch(SignIn(formData, history))
   }
 
   const onFinishFailed = (error) => {
     console.log(error)
   }
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log("nombre", name, "value", value)
     setFormData({ ...formData, [name]: value });
   }
 

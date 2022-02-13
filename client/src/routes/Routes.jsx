@@ -14,8 +14,8 @@ function Routes() {
           <Route exact path="/" component={LandingPage}></Route>
           <Route exact path="/home" component={Home}></Route>
           <Route exact path="/home/:id" component={Detail}></Route>
+          <Route exact path="/user/:id" component={Admin}></Route>
           <Route exact path="/create" component={CreateHouse}></Route>
-          <Route exact path="/usuario" component={Admin}></Route>
           {/* RUTAS DE PRUEBAS */}
           {/*  */}
           <Route exact path="*" component={ErrorPage}></Route>

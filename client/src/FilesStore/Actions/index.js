@@ -1,10 +1,9 @@
 import axios from "axios";
-import { ALL_HOTELS, DETAIL, GOOGLE_LOGIN, GOOGLE_LOGOUT, CREATE_HOUSE, ADMIN_STATUS, SIGNIN, SIGNUP } from "../Const Types/constActions"
+import { ALL_HOTELS, DETAIL, GOOGLE_LOGIN, GOOGLE_LOGOUT, CREATE_HOUSE, ADMIN_STATUS, SIGNIN, SIGNUP, USER_DETAIL } from "../Const Types/constActions"
 
 export function getHotels(page = 1, size = 10) {
   return async function (dispatch) {
     try {
-
       var json = await axios.get(
         `https://henry-home-back.herokuapp.com/api/houses?page=${page}&size=${size}`
       );
@@ -66,7 +65,7 @@ export function SignIn(values, history) {
         type: SIGNIN,
         payload: json.data
       })
-      history.push("/home")
+
     } catch (error) {
       console.log(error)
     }
@@ -89,8 +88,18 @@ export function SignUp(values, history) {
   }
 }
 
-export function logOut() {
-
+export function getUserDetail(id, role) {
+  return async function (dispatch) {
+    try {
+      const json = await axios.get(`https://henry-home-back.herokuapp.com/api/user/${id}/${role}`);
+      dispatch({
+        type: USER_DETAIL,
+        payload: json.data
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }
 
 export function createHouse(payload, token) {
