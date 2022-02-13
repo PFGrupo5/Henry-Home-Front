@@ -9,7 +9,7 @@
       -ms-flex-pack: end;
           justify-content: flex-end;
   position: absolute;
-  top: 79.4px;
+  top: 80.4px;
   right: 0px;
 }
 
@@ -20,9 +20,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #092c4ecc;
-  height: 1120px;
-  width: 200px;
+  background-color: rgba(9, 44, 78, 0.8);
   border-radius: 0px 0px 0px 0px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -31,16 +29,11 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  height: 718px;
 }
 
 .buttons {
   display: none;
-}
-
-@media (max-width: 768px) {
-  .buttons {
-    left: 96vw;
-  }
 }
 
 @-webkit-keyframes FilterIn {
@@ -92,6 +85,12 @@
     opacity: 0;
     -webkit-transform: translateY(-250px);
             transform: translateY(-250px);
+  }
+}
+
+@media (max-width: 768px) {
+  .buttons {
+    left: 96vw;
   }
 }
 

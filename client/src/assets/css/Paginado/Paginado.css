@@ -1,0 +1,13 @@
+.ContainerPaginado {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.BotonPaginado {
+  margin-right: 10px;
+}
+/*# sourceMappingURL=Paginado.css.map */
