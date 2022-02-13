@@ -10,7 +10,7 @@ export function getHotels(page = 1, size = 10) {
       );
       return dispatch({
         type: ALL_HOTELS,
-        payload: json.data.rows,
+        payload: json.data,
       });
     }
     catch (error) {
