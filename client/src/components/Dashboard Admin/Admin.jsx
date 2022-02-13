@@ -15,6 +15,7 @@ export default function Admin() {
   }, [dispatch, infoUser.id, infoUser.role]);
 
   const userDetail = useSelector((state) => state.userDetail);
+  console.log(userDetail)
   return (
     <div className="containerAdmin">
       <div>

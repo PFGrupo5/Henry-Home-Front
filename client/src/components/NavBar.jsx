@@ -112,15 +112,13 @@ export default function NavBar() {
         </Col>
         <Col className="navBtn" xs={0} sm={0} md={3} lg={3}>
           {
-            user ? (
+            user && (
               user.result?.id ? (
                 <Link to={`/user/${user.result?.id}`}>
                   <h3>{user.result.name ? user.result.name : `${user.result.firstName} ${user.result.lastName}`}</h3>
                 </Link>
               ) :
                 <h3>{user.result.name ? user.result.name : `${user.result.firstName} ${user.result.lastName}`}</h3>)
-              :
-              <h3>{user.result.name ? user.result.name : `${user.result.firstName} ${user.result.lastName}`}</h3>
           }
         </Col>
         <Col className="navBtn" xs={0} sm={0} md={3} lg={3}>
