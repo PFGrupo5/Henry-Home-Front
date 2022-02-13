@@ -1,9 +1,11 @@
 .home {
   display: grid;
-  grid-template-columns: 420px 420px 420px 420px;
-  grid-auto-rows: 320px 320px 320px;
+  grid-template-columns: 420px 420px 420px;
+  grid-auto-rows: 320px 320px;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
 }
-
 
 // ------------------------------------------------------------------------------------------------------------------------------------
 // Media Querys.
@@ -12,8 +14,6 @@
 @media screen and (max-width: 446px) and (min-width: 375px) {
   .home {
     display: inline-flex;
-    flex-direction: column;
-    margin-left: 100px;
   }
 }
 
@@ -32,7 +32,6 @@
     margin-left: 110px;
   }
 }
-
 
 @media screen and (max-width: 820px) and (min-width: 768px) {
   .home {
@@ -73,5 +72,3 @@
     grid-auto-rows: 370px;
   }
 }
-
-

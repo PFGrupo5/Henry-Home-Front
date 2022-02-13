@@ -1,8 +1,8 @@
 .allNav {
-  background-color: #092c4ecc;
+  background-color: rgba(9, 44, 78, 0.8);
   padding-right: 10px;
   z-index: 20;
-  width: 100%;
+  width: 100vw;
   position: inherit;
 }
 
@@ -15,13 +15,12 @@
 .navInput {
   position: relative;
   top: 25px;
-  left: 240px;
 }
 
 .navBtn {
   position: relative;
   top: 25px;
-  left: 310px;
+  left: 70px;
 }
 
 .navIcon {
@@ -39,7 +38,7 @@
 
 @media screen and (max-width: 446px) and (min-width: 372px) {
   .allNav {
-    background-color: #092c4ecc;
+    background-color: rgba(9, 44, 78, 0.8);
     padding-right: 10px;
     z-index: 20;
     width: 530px;
@@ -49,7 +48,7 @@
 
 @media screen and (max-width: 446px) and (min-width: 420px) {
   .allNav {
-    background-color: #092c4ecc;
+    background-color: rgba(9, 44, 78, 0.8);
     padding-right: 10px;
     z-index: 20;
     width: 540px;
@@ -59,7 +58,7 @@
 
 @media screen and (max-width: 768px) and (min-width: 446px) {
   .allNav {
-    background-color: #092c4ecc;
+    background-color: rgba(9, 44, 78, 0.8);
     padding-right: 10px;
     z-index: 20;
     width: 950px;
@@ -79,11 +78,20 @@
 
 @media screen and (max-width: 1500px) and (min-width: 1022px) {
   .allNav {
-    background-color: #092c4ecc;
+    background-color: rgba(9, 44, 78, 0.8);
     padding-right: 10px;
     z-index: 20;
     width: 1147px;
     position: inherit;
+  }
+  .navIcon {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1920px) and (min-width: 1500px) {
+  .navIcon {
+    display: none;
   }
 }
 /*# sourceMappingURL=NavBar.css.map */
