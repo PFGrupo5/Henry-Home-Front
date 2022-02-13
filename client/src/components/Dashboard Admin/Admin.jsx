@@ -3,16 +3,18 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { HomeOutlined, UserOutlined, SearchOutlined } from "@ant-design/icons";
 import "../../assets/css/Dashboard Admin/admin.css";
-import { getHotels } from "../../FilesStore/Actions";
+import { getUserDetail } from "../../FilesStore/Actions";
 import Cards from "../Cards";
 
 export default function Admin() {
   const dispatch = useDispatch();
-  const allHotels = useSelector((state) => state.hotels);
+  const infoUser = JSON.parse(localStorage.getItem("profile")).result;
 
   useEffect(() => {
-    dispatch(getHotels());
-  }, [dispatch]);
+    dispatch(getUserDetail(infoUser.id, infoUser.role));
+  }, [dispatch, infoUser.id, infoUser.role]);
+
+  const userDetail = useSelector((state) => state.userDetail);
   return (
     <div className="containerAdmin">
       <div>
@@ -34,19 +36,17 @@ export default function Admin() {
       </div>
 
       <div className="housesAdmin">
-        {!allHotels
-          ? "Error"
-          : allHotels.map((e) => {
-              return (
-                <Cards
-                  name={e.name}
-                  id={e.id}
-                  location={e.Location.name}
-                  img={e.images}
-                  price={e.pricePerNight}
-                />
-              );
-            })}
+        {userDetail.Housings?.map((e) => {
+          return (
+            <Cards
+              name={e?.name}
+              id={e?.id}
+              location={e?.LocationId}
+              img={e?.images}
+              price={e?.pricePerNight}
+            />
+          );
+        })}
       </div>
 
       <div className="navbarAdmin">

@@ -1,9 +1,10 @@
-import { ALL_HOTELS, DETAIL, GOOGLE_LOGIN, GOOGLE_LOGOUT, CREATE_HOUSE, ADMIN_STATUS, SIGNIN, SIGNUP } from "../Const Types/constActions"
+import { ALL_HOTELS, DETAIL, GOOGLE_LOGIN, GOOGLE_LOGOUT, CREATE_HOUSE, ADMIN_STATUS, SIGNIN, SIGNUP, USER_DETAIL } from "../Const Types/constActions"
 
 const initialState = {
   hotels: [],
   allHotels: [],
   detail: [],
+  userDetail: [],
   authData: null,
 };
 
@@ -20,6 +21,12 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         detail: action.payload
+      };
+
+    case USER_DETAIL:
+      return {
+        ...state,
+        userDetail: action.payload
       };
 
     case GOOGLE_LOGIN:
@@ -44,6 +51,8 @@ function rootReducer(state = initialState, action) {
         ...state
       }
     case SIGNIN:
+      localStorage.setItem('profile', JSON.stringify({ ...action.payload }))
+      window.location.replace("/home")
       return {
         ...state
       }
