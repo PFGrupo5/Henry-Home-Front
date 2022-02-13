@@ -3,29 +3,22 @@
   align-items: center;
   justify-content: flex-end;
   position: absolute;
-  top: 79.4px;
+  top: 80.4px;
   right: 0px;
 }
 
 .filtersContainer {
   display: flex;
   align-items: center;
-  background-color: #092c4ecc;
-  height: 1120px;
-  width: 200px;
+  background-color: rgba(9, 44, 78, 0.8);
   border-radius: 0px 0px 0px 0px;
   flex-direction: column;
   justify-content: center;
+  height: 718px;
 }
 
 .buttons {
   display: none;
-}
-
-@media (max-width: 768px) {
-  .buttons {
-    left: 96vw;
-  }
 }
 
 // ------------------------------------------------------------------------------------------------------------------------------------
@@ -59,6 +52,12 @@
 // ------------------------------------------------------------------------------------------------------------------------------------
 // Media Querys.
 // ------------------------------------------------------------------------------------------------------------------------------------
+
+@media (max-width: 768px) {
+  .buttons {
+    left: 96vw;
+  }
+}
 
 @media screen and (max-width: 768px) and (min-width: 375px) {
   .buttons {

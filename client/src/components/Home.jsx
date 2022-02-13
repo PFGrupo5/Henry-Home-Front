@@ -12,7 +12,7 @@ import Pages from "./Pages";
 export default function Home() {
 
   const [page , setPage] = useState(1)
-  const [ size ] = useState(2)
+  const [ size ] = useState(6)
 
   const dispatch = useDispatch();
   const allHotels = useSelector((state) => state.hotels);
@@ -35,9 +35,9 @@ export default function Home() {
   } else {
     return (
       <div>
-        <Aside />
         <NavBar />
         <Pages pages={Math.floor(count/size)} actualPage={page} changePage={changePage} />
+        <Aside />
         <div className="home">
           {allHotels.map((e) => {
             return (
