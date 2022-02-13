@@ -6,6 +6,7 @@ const initialState = {
   detail: [],
   userDetail: [],
   authData: null,
+  count:null,
 };
 
 function rootReducer(state = initialState, action) {
@@ -13,8 +14,9 @@ function rootReducer(state = initialState, action) {
     case ALL_HOTELS:
       return {
         ...state,
-        hotels: action.payload,
-        allHotels: action.payload,
+        hotels: action.payload.rows,
+        allHotels: action.payload.rows,
+        count:action.payload.count
       };
 
     case DETAIL:
