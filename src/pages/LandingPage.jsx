@@ -4,10 +4,10 @@ import "antd/dist/antd.css";
 import "../assets/css/Landing/Landing.css"
 import img1 from "../assets/img/h1.jfif"
 import img2 from "../assets/img/h2.jfif"
-import NavBar from './NavBar';
-import Carrousel from '../pseudoComponents/Carrousel'
-import Button from '../pseudoComponents/Button'
-import Formulario from "../pseudoComponents/Formulario/Formulario"
+import NavBar from '../components/NavBar';
+import Carrousel from '../UI/Carrousel'
+import Button from '../UI/Button'
+import Formulario from "../components/Formulario"
 
 const stylesButton = {
     backgroundColor: "#092c4cef",

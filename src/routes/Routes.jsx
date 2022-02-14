@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import LandingPage from "../components/LandingPage";
-import Home from "../components/Home";
-import Detail from "../components/Detail";
-import ErrorPage from "../components/ErrorPage";
-import CreateHouse from "../pseudoComponents/Formulario/CreatePost/CreatePost";
-import Moderator from "../components/Moderator";
+import LandingPage from "../pages/LandingPage";
+import Home from "../pages/Home";
+import Detail from "../pages/Detail";
+import ErrorPage from "../pages/ErrorPage";
+import CreateHouse from "../pages/CreatePost";
+import Moderator from "../pages/Moderator";
 
 function Routes() {
   return (
@@ -16,8 +16,6 @@ function Routes() {
           <Route exact path="/home/:id" component={Detail}></Route>
           <Route exact path="/user/:id" component={Moderator}></Route>
           <Route exact path="/create" component={CreateHouse}></Route>
-          {/* RUTAS DE PRUEBAS */}
-          {/*  */}
           <Route exact path="*" component={ErrorPage}></Route>
         </Switch>
       </div>

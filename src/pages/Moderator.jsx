@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { HomeOutlined, UserOutlined, SearchOutlined } from "@ant-design/icons";
 import "../assets/css/Dashboard Admin/admin.css";
 import { getUserDetail } from "../FilesStore/Actions";
-import Cards from "./Cards";
+import Cards from "../components/Cards";
 
 export default function Admin() {
   const dispatch = useDispatch();

@@ -1,5 +1,5 @@
 import React from "react";
-import Carrousel from "../pseudoComponents/Carrousel.jsx"
+import Carrousel from "../UI/Carrousel"
 import { Link } from "react-router-dom";
 import "../assets/css/Cards/Cards.css"
 import { Typography } from 'antd';
