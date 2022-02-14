@@ -1,0 +1,118 @@
+.container-form {
+  margin: 3rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container-form h2 {
+  color: #fff;
+  font-weight: 600;
+  font-size: 2em;
+  margin-top: 1rem;
+}
+
+.container-form .content-form {
+  background-color: #092c4c;
+  border-radius: 2rem;
+  height: 580px;
+  overflow: hidden;
+  width: 500px;
+}
+
+.container-form .register-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container-form .ingreso-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #fff;
+  color: #000;
+  border-radius: 1rem 1rem 0 0;
+  -webkit-transition: .8s ease-in-out;
+  transition: .8s ease-in-out;
+  min-height: 100%;
+}
+
+.container-form .ingreso-container h2 {
+  color: #000;
+}
+
+.container-form input {
+  width: 70%;
+  background: #e0dede;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 20px auto;
+  padding: 0.3rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
+.container-form button {
+  width: 60%;
+  height: 40px;
+  margin: 10px auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: block;
+  color: #fff;
+  background: #573b8a;
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+  cursor: pointer;
+}
+
+.container-form .translate {
+  -webkit-transform: translateY(-420px);
+          transform: translateY(-420px);
+}
+
+@media screen and (min-width: 446px) {
+  .content-form {
+    min-width: 30%;
+  }
+}
+/*# sourceMappingURL=Form.css.map */
