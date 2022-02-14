@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail } from "../FilesStore/Actions";
-import Carrousel from "../pseudoComponents/Carrousel";
+import Carrousel from "../UI/Carrousel";
 import imgDefault from "../assets/img/HenryHome.png";
 import { Typography } from "antd";
 import { PushpinOutlined, DollarOutlined } from "@ant-design/icons";
 import "../assets/css/Detail/Detail.css";
-import NavBar from "./NavBar";
+import NavBar from "../components/NavBar";
 
 const { Title, Text } = Typography;
 

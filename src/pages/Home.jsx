@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Cards from "./Cards";
-import Footer from "./Footer";
-import NavBar from "./NavBarHome";
-import Loading from "./Loading";
+import Cards from "../components/Cards";
+import Footer from "../components/Footer";
+import NavBar from "../components/NavBarHome";
+import Loading from "../components/Loading";
 import { getHotels } from "../FilesStore/Actions/index.js";
-import Aside from "./Aside/Aside";
+import Aside from "../components/Aside";
 import "../assets/css/Home/Home.css";
-import Pages from "./Pages";
+import Pages from "../components/Pages";
 
 export default function Home() {
 

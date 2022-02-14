@@ -3,10 +3,10 @@ import { Form, Input, Button, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { GoogleLogin } from "react-google-login"
 import { useDispatch } from "react-redux";
-import { googleLogIn } from "../../../FilesStore/Actions/index"
+import { googleLogIn } from "../../FilesStore/Actions/index"
 import { useHistory } from "react-router-dom"
-import "../../../assets/pseudoCss/Form/Form Login/FormLogin.css";
-import { SignIn } from "../../../FilesStore/Actions/index"
+import "../../assets/pseudoCss/Form/Form Login/FormLogin.css";
+import { SignIn } from "../../FilesStore/Actions/index"
 
 
 function LogInForm() {

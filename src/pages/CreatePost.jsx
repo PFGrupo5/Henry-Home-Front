@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Form, Input, Button, Cascader } from "antd";
-import "../../../assets/css/Create post/createPost.css";
-import Logo from "../../../assets/img/HenryHome.png";
+import "../assets/css/Create post/createPost.css";
+import Logo from "../assets/img/HenryHome.png";
 import { LeftOutlined } from "@ant-design/icons";
-import { getFacilities, getServices, getLocations, createHouse } from "../../../FilesStore/Actions/index"
+import { getFacilities, getServices, getLocations, createHouse } from "../FilesStore/Actions/index"
 
 export default function CreatePost() {
 
