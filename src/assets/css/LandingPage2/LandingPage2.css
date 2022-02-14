@@ -1,0 +1,27 @@
+.allHome {
+  padding: 100px 0px 0px 40px;
+  position: absolute;
+  z-index: 10;
+}
+
+.textHome {
+  background-color: #757d876b;
+  padding: 2px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.img {
+  height: 95vh;
+  width: 100vw;
+}
+
+.slick-dots li {
+  margin: 0px 8px 2px 8px !important;
+}
+
+.slick-dots button {
+  padding: 5px 10px 0px 10px !important;
+  border-radius: 15px !important;
+}
+/*# sourceMappingURL=LandingPage2.css.map */

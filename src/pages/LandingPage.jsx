@@ -1,5 +1,4 @@
 import React from "react";
-
 import "antd/dist/antd.css";
 import "../assets/css/Landing/Landing.css"
 import img1 from "../assets/img/h1.jfif"
