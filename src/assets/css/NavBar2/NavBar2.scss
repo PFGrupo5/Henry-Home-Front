@@ -1,0 +1,44 @@
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 3rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 99;
+  width: 100%;
+  background-color: #fff;
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: bold;
+
+    span {
+      color: #f2994a;
+    }
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    button {
+        padding: .3rem 1rem;
+        border-radius: .3rem;
+    }
+    .btn-registro {
+        border: none;
+        background-color: transparent;
+        font-weight: 600;
+    }
+    .btn-ingreso{
+        border: none;
+        background-color: #092c4c;
+        color: #fff;
+    }
+  }
+}

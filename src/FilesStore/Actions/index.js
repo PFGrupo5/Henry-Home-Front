@@ -65,7 +65,7 @@ export function SignIn(values, history) {
         type: SIGNIN,
         payload: json.data
       })
-
+       history.push("/home")
     } catch (error) {
       console.log(error)
     }
@@ -73,6 +73,7 @@ export function SignIn(values, history) {
 }
 
 export function SignUp(values, history) {
+  console.log({values});
   return async function (dispatch) {
     try {
       const json = await axios.post("https://henry-home-back.herokuapp.com/api/user/register", values)
@@ -81,7 +82,6 @@ export function SignUp(values, history) {
         type: SIGNUP,
         payload: json.data
       })
-      history.push("/home")
     } catch (error) {
       console.log(error)
     }
