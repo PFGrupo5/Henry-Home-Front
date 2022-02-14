@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,kBAAkB,CAAA;EACd,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,MAAM;CAC1B;;AAED,AAAA,cAAc,CAAA;EACV,YAAY,EAAE,IAAI;CACrB",
+    "mappings": "AAAA,AAAA,kBAAkB,CAAA;EACd,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,MAAM;CAC1B;;AAED,AAAA,cAAc,CAAA;EACV,MAAM,EAAE,IAAI;CACf",
     "sources": [
         "Paginado.scss"
     ],

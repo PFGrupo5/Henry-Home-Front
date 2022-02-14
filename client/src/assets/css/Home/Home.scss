@@ -1,74 +1,54 @@
-.home {
-  display: grid;
-  grid-template-columns: 420px 420px 420px;
-  grid-auto-rows: 320px 320px;
-  align-items: center;
-  justify-content: center;
-  justify-items: center;
+
+.fullHome{
+    background: url("https://res.cloudinary.com/dci1eujqw/image/upload/v1616769558/Codepen/waldemar-brandt-aThdSdgx0YM-unsplash_cnq4sb.jpg");
+    background-attachment: fixed;
+    background-position: center;
 }
 
-// ------------------------------------------------------------------------------------------------------------------------------------
-// Media Querys.
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-@media screen and (max-width: 446px) and (min-width: 375px) {
-  .home {
-    display: inline-flex;
-  }
+.home{
+    display: flex;
+    justify-content: center;
 }
 
-@media screen and (max-width: 650px) and (min-width: 446px) {
-  .home {
-    display: inline-flex;
-    flex-direction: column;
-    margin-left: 100px;
-  }
-}
-
-@media screen and (max-width: 768px) and (min-width: 650px) {
-  .home {
-    display: inline-flex;
-    flex-direction: column;
-    margin-left: 110px;
-  }
-}
-
-@media screen and (max-width: 820px) and (min-width: 768px) {
-  .home {
-    display: inline-flex;
-    flex-direction: column;
-    margin-left: 280px;
-  }
-}
-
-@media screen and (max-width: 900px) and (min-width: 820px) {
-  .home {
-    display: inline-flex;
-    flex-direction: column;
-    margin-left: 190px;
-  }
-}
-
-@media screen and (max-width: 1022px) and (min-width: 900px) {
-  .home {
-    display: inline-flex;
-    flex-direction: column;
-    margin-left: 250px;
-  }
-}
-
-@media screen and (max-width: 1400px) and (min-width: 1022px) {
-  .home {
+.cardsHome{
     display: grid;
-    grid-template-columns: 240px 240px 240px 230px;
-    grid-auto-rows: 370px;
-  }
+    width: fit-content;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 30px;
 }
 
-@media screen and (max-width: 1500px) and (min-width: 1400px) {
-  .home {
-    display: grid;
-    grid-template-columns: 310px 310px 310px 310px;
-    grid-auto-rows: 370px;
-  }
+@media screen and( min-width: 850px) {
+    .cardsHome{   
+    grid-template-columns: repeat(2, 1fr);
+    }
+    .home{
+        justify-content: flex-start;
+    }
+}
+
+@media screen and(min-width: 900px) {
+    .home{
+        margin-left: 50px;
+    }
+}
+
+@media screen and( min-width: 1200px) {
+    .cardsHome{   
+    grid-template-columns: repeat(3, 1fr);
+    }
+    
+}
+@media screen and( min-width: 1600px) {
+    .cardsHome{   
+    grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and( min-width: 1920px) {
+    .cardsHome{   
+    grid-template-columns: repeat(5, 1fr);
+    }
+    .home{
+        margin-left: 0px;
+    }
 }

@@ -3,14 +3,14 @@
   align-items: center;
   justify-content: flex-end;
   position: absolute;
-  top: 80.4px;
+  top: 80px;
   right: 0px;
 }
 
 .filtersContainer {
   display: flex;
   align-items: center;
-  background-color: rgba(9, 44, 78, 0.8);
+  background-color: rgba(50, 50, 51, 0.8);
   border-radius: 0px 0px 0px 0px;
   flex-direction: column;
   justify-content: center;
@@ -28,24 +28,24 @@
 @keyframes FilterIn {
   0% {
     opacity: 0;
-    transform: translateY(-250px);
+    transform: translateX(250px);
   }
 
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 
 @keyframes FilterOut {
   0% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 
   100% {
     opacity: 0;
-    transform: translateY(-250px);
+    transform: translateX(250px);
   }
 }
 
@@ -53,18 +53,12 @@
 // Media Querys.
 // ------------------------------------------------------------------------------------------------------------------------------------
 
-@media (max-width: 768px) {
-  .buttons {
-    left: 96vw;
-  }
-}
-
-@media screen and (max-width: 768px) and (min-width: 375px) {
+@media screen and (max-width: 768px) {
   .buttons {
     display: inline-flex;
     position: absolute;
     transition: 300ms;
-    left: 30.7rem;
+    right: 5em;
     top: 21px;
     font-size: 40px;
   }
@@ -75,28 +69,17 @@
     justify-content: flex-end;
     position: absolute;
     top: 80px;
-    right: -117px;
+    z-index: 40;
   }
 
   .filtersContainer {
-    display: flex;
+    display: none;
     animation: FilterOut 1s ease-in-out 0s 1 normal forwards;
   }
 
   .filtersContainer.active {
     display: flex;
     animation: FilterIn 1s ease-in-out 0s 1 normal forwards;
-  }
-}
-
-@media screen and (max-width: 820px) and (min-width: 768px) {
-  .buttons {
-    display: inline-flex;
-    position: absolute;
-    transition: 300ms;
-    left: 53.2rem;
-    top: 21px;
-    font-size: 40px;
   }
 }
 
@@ -107,12 +90,6 @@
     justify-content: flex-end;
     position: absolute;
     top: 80px;
-    right: -117px;
-  }
-
-  .filtersContainer {
-    height: 1120px;
-    width: 200px;
   }
 }
 
@@ -123,6 +100,5 @@
     justify-content: flex-end;
     position: absolute;
     top: 80px;
-    right: -117px;
   }
 }
