@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Cards from "./Cards";
 import Footer from "./Footer";
@@ -11,14 +11,14 @@ import Pages from "./Pages";
 
 export default function Home() {
 
-  const [page , setPage] = useState(1)
-  const [ size ] = useState(6)
+  const [page, setPage] = useState(1)
+  const [size] = useState(6)
 
   const dispatch = useDispatch();
   const allHotels = useSelector((state) => state.hotels);
   const count = useSelector((state) => state.count);
 
-  const changePage = (e)=>{
+  const changePage = (e) => {
     setPage(e)
   }
 
@@ -34,22 +34,24 @@ export default function Home() {
     );
   } else {
     return (
-      <div>
+      <div className="fullHome">
         <NavBar />
-        <Pages pages={Math.floor(count/size)} actualPage={page} changePage={changePage} />
+        <Pages pages={Math.floor(count / size)} actualPage={page} changePage={changePage} />
         <Aside />
         <div className="home">
-          {allHotels.map((e) => {
-            return (
-              <Cards
-                name={e.name}
-                id={e.id}
-                location={e.Location.name}
-                img={e.images}
-                price={e.pricePerNight}
-              />
-            );
-          })}
+          <div className="cardsHome">
+            {allHotels.map((e) => {
+              return (
+                <Cards
+                  name={e.name}
+                  id={e.id}
+                  location={e.Location.name}
+                  img={e.images}
+                  price={e.pricePerNight}
+                />
+              );
+            })}
+          </div>
         </div>
         <Footer />
       </div>

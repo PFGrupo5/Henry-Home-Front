@@ -4,10 +4,10 @@ import { CopyrightOutlined, GithubOutlined } from "@ant-design/icons";
 
 export default function Footer() {
   return (
-    <div className="container">
+    <div className="footContainer">
       <div className="div-about">
-        <h4 className="title">About Us</h4>
-        <p className="description">
+        <h4 className="footTitle">About Us</h4>
+        <p className="footDescription">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
           exercitationem qui laudantium reiciendis sunt porro voluptatum
           consequuntur atque soluta aut totam corrupti sint in tenetur alias
@@ -17,21 +17,19 @@ export default function Footer() {
           distinctio voluptas, rerum quidem eligendi nulla ab?
         </p>
       </div>
+      <div className="underFoot">
+        <div className="copy">
+          <CopyrightOutlined /> 2022 HenryHotel, Inc
+        </div>
 
-      {/* <hr /> */}
-
-      <h3 className="copy">
-        <CopyrightOutlined className="copy-icon" /> 2022 HenryHotel, Inc
-      </h3>
-
-      <a
-        href="https://github.com/PFGrupo5"
-        className="icons github"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <GithubOutlined className="icon" />
-      </a>
+        <a
+          href="https://github.com/PFGrupo5"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <GithubOutlined className="git-icon" />
+        </a>
+      </div>
     </div>
   );
 }

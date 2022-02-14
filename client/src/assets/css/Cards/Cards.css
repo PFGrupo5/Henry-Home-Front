@@ -1,7 +1,7 @@
 /* ---------------- Variables ---------------- */
 /* ---------------- All Cards styles ---------------- */
 .containerCards {
-  margin: 20px;
+  margin: 10px;
   position: relative;
   display: -ms-grid;
   display: grid;
@@ -103,7 +103,6 @@
           transition-delay: 500ms;
 }
 
-/* ---------------- Media Querys ---------------- */
 @media (hover) {
   .divText {
     -webkit-transform: translateY(50%);
@@ -119,6 +118,7 @@
   }
 }
 
+/* ---------------- Media Querys ---------------- */
 @media screen and (max-width: 446px) and (min-width: 375px) {
   .containerCards {
     width: 300px;
@@ -138,11 +138,11 @@
 
 @media screen and (max-width: 768px) and (min-width: 446px) {
   .containerCards {
-    width: 450px;
+    width: 400px;
     height: 300px;
   }
   .imgCard {
-    width: 450px;
+    width: 400px;
     height: 300px;
   }
   .titleCards {
@@ -170,60 +170,9 @@
   }
 }
 
-@media screen and (max-width: 900px) and (min-width: 768px) {
+@media screen and (min-width: 900px) {
   .containerCards {
     width: 300px;
-    height: 300px;
-  }
-  .imgCard {
-    width: 300px;
-    height: 300px;
-  }
-  .titleCards {
-    font-size: 30px;
-  }
-  .textCards {
-    font-size: 20px;
-  }
-}
-
-@media screen and (max-width: 1022px) and (min-width: 900px) {
-  .containerCards {
-    width: 300px;
-    height: 300px;
-  }
-  .imgCard {
-    width: 300px;
-    height: 300px;
-  }
-  .titleCards {
-    font-size: 30px;
-  }
-  .textCards {
-    font-size: 20px;
-  }
-}
-
-@media screen and (max-width: 1400px) and (min-width: 1022px) {
-  .containerCards {
-    width: 200px;
-    height: 300px;
-  }
-  .imgCard {
-    width: 300px;
-    height: 300px;
-  }
-  .titleCards {
-    font-size: 30px;
-  }
-  .textCards {
-    font-size: 20px;
-  }
-}
-
-@media screen and (max-width: 1500px) and (min-width: 1400px) {
-  .containerCards {
-    width: 270px;
     height: 300px;
   }
   .imgCard {
