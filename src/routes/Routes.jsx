@@ -5,6 +5,8 @@ import Detail from "../pages/Detail";
 import ErrorPage from "../pages/ErrorPage";
 import CreateHouse from "../pages/CreatePost";
 import Moderator from "../pages/Moderator";
+import DashboardAdmin from "../pages/DashboardAdmin";
+
 
 function Routes() {
   return (
@@ -16,6 +18,7 @@ function Routes() {
           <Route exact path="/home/:id" component={Detail}></Route>
           <Route exact path="/user/:id" component={Moderator}></Route>
           <Route exact path="/create" component={CreateHouse}></Route>
+          <Route exact path="/admin/:id" component={DashboardAdmin}></Route>
           <Route exact path="*" component={ErrorPage}></Route>
         </Switch>
       </div>
