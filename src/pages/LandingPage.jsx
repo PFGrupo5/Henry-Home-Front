@@ -17,7 +17,6 @@ const stylesButton = {
 }
 
 function LandingPage() {
-
     return (
         <div >
             <NavBar />
@@ -29,9 +28,7 @@ function LandingPage() {
             <div className='formDiv' >
                 <Formulario nombre={"show"} landing={true} />
             </div>
-
-        </div >
+        </div>
     );
 }
-
 export default LandingPage;

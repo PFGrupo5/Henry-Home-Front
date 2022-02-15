@@ -14,7 +14,7 @@ function Routes() {
     <BrowserRouter>
       <div className="App">
         <Switch>
-          {/* <Route exact path="/" component={LandingPage}/> */}
+          {/* <Route exact path="/" component={LandingPage} /> */}
 
           <Route exact path="/" component={LandingPage2} />
           <Route exact path="/home" component={Home} />
