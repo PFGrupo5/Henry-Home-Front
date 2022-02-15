@@ -1,7 +1,7 @@
 import React from "react";
 import Carrousel from "../UI/Carrousel"
 import { Link } from "react-router-dom";
-import "../assets/css/Cards/Cards.css"
+import "../assets/css/Cards/Cards.scss"
 import { Typography } from 'antd';
 import { PushpinOutlined, DollarOutlined } from "@ant-design/icons"
 

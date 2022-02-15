@@ -1,6 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
-import "../assets/css/Landing/Landing.css"
+import "../assets/css/Landing/Landing.scss"
 import img1 from "../assets/img/h1.jfif"
 import img2 from "../assets/img/h2.jfif"
 import NavBar from '../components/NavBar';

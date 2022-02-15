@@ -6,7 +6,7 @@ import Carrousel from "../UI/Carrousel";
 import imgDefault from "../assets/img/HenryHome.png";
 import { Typography } from "antd";
 import { PushpinOutlined, DollarOutlined } from "@ant-design/icons";
-import "../assets/css/Detail/Detail.css";
+import "../assets/css/Detail/Detail.scss";
 import NavBar from "../components/NavBar";
 
 const { Title, Text } = Typography;

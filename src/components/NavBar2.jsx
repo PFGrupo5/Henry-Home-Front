@@ -1,10 +1,10 @@
 import React from "react";
-import "../assets/css/NavBar2/NavBar2.css";
+import "../assets/css/NavBar2/NavBar2.scss";
 
 const NavBar2 = () => {
   return (
     <div className="navbar-container">
-      <div>
+      <div className="logo-container">
         <h2>
           Henry <span>Home</span>
         </h2>

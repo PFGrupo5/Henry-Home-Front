@@ -11,3 +11,5 @@ export const GET_SERVICES = "GET_SERVICES";
 export const GET_FACILITIES = "GET_FACILITIES";
 export const LOCATIONS = "LOCATIONS";
 export const POST_HOTEL = "POST_HOTEL"
+export const ERROR_LOGIN = "ERROR_LOGIN"
+export const CLEAN_ERROR = "CLEAN_ERROR"

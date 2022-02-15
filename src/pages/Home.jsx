@@ -6,7 +6,7 @@ import NavBar from "../components/NavBarHome";
 import Loading from "../components/Loading";
 import { getHotels } from "../FilesStore/Actions/index.js";
 import Aside from "../components/Aside";
-import "../assets/css/Home/Home.css";
+import "../assets/css/Home/Home.scss";
 import Pages from "../components/Pages";
 
 export default function Home() {

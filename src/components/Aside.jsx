@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
-import "../assets/css/Aside/Aside.css";
+import "../assets/css/Aside/Aside.scss";
 import Calification from "../UI/Aside/Calification";
 import People from "../UI/Aside/People";
 import Place from "../UI/Aside/Place";

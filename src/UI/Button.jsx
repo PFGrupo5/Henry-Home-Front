@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from "antd"
-import "../assets/pseudoCss/Button/Button.css"
+import "../assets/pseudoCss/Button/Button.scss"
 
 function Buttons({ text, styles, types, click, href, htmlType = null }) {
     return (

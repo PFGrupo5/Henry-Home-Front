@@ -1,6 +1,6 @@
 import React from "react";
 import { Cascader } from "antd";
-import "../../assets/css/Aside/Components/Aside-components.css";
+import "../../assets/css/Aside/Components/Aside-components.scss";
 
 export default function Calification() {
   const options = [

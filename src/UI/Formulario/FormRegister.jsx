@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../../assets/pseudoCss/Form/Form Register/formRegister.css";
+import "../../assets/pseudoCss/Form/FormRegister/formRegister.scss";
 import { message } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
 import { SignUp } from "../../FilesStore/Actions/index"

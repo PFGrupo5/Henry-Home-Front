@@ -5,7 +5,7 @@ import { GoogleLogin } from "react-google-login"
 import { useDispatch } from "react-redux";
 import { googleLogIn } from "../../FilesStore/Actions/index"
 import { useHistory } from "react-router-dom"
-import "../../assets/pseudoCss/Form/Form Login/FormLogin.css";
+import "../../assets/pseudoCss/Form/FormLogin/FormLogin.scss";
 import { SignIn } from "../../FilesStore/Actions/index"
 
 function LogInForm() {

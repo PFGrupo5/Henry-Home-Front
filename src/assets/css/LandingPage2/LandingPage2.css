@@ -1,22 +1,3 @@
-.allHome {
-  padding: 100px 30px 0px 30px;
-  position: absolute;
-  z-index: 10;
-}
-
-.textHome {
-  font-size: 2em;
-  font-weight: 700;
-  margin-bottom: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
-  padding: 5px;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-  border-right: 2px solid rgba(255, 255, 255, 0.1);
-}
-
 .landingCarrousel {
   width: 100vw;
   height: 95vh;
@@ -31,5 +12,70 @@
 .slick-dots button {
   padding: 5px 10px 0px 10px !important;
   border-radius: 15px !important;
+}
+
+.allHome {
+  padding: 100px 30px 0px 30px;
+  position: absolute;
+  z-index: 10;
+}
+
+.title-container {
+  padding: 1rem;
+}
+
+.title-container h2 {
+  font-size: 2rem;
+  color: #000;
+}
+
+#google-btn {
+  background-color: #fff;
+  color: #000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .title-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .title-container {
+    display: block;
+    position: absolute;
+    top: 10rem;
+    left: 2rem;
+    z-index: 100;
+    background-color: #29344186;
+    border-radius: 1rem;
+  }
+  .title-container h2 {
+    font-size: 2rem;
+    color: #fff;
+  }
 }
 /*# sourceMappingURL=LandingPage2.css.map */
