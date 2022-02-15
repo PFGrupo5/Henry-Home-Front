@@ -27,21 +27,6 @@
 .title-container{
     padding: 1rem;
 
-    h2{
-        font-size: 2rem;
-        color: #000;
-    }
-}
-
-#google-btn{
-    background-color: #fff;
-    color: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    font-size: 1rem;
-}
 
 @media screen and (max-width: 768px) {
   .title-container{
@@ -62,9 +47,3 @@
     background-color: #29344186 ;
     border-radius: 1rem;
 
-     h2{
-        font-size: 2rem;
-        color: #fff;
-    }
-  }
-}

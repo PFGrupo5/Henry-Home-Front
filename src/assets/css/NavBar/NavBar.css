@@ -1,0 +1,37 @@
+.allNav {
+  background-color: #092c4ecc;
+  padding-right: 10px;
+  z-index: 50;
+  width: 100%;
+  position: inherit;
+}
+
+.navLogo {
+  height: 80px;
+  width: 90px;
+  padding: 5px 0px 5px 10px;
+}
+
+.navInput {
+  position: relative;
+  top: 25px;
+}
+
+.navBtn {
+  position: relative;
+  top: 25px;
+}
+
+.navIcon {
+  position: relative;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  top: 50%;
+  font-size: 50px;
+  color: white;
+}
+
+.select {
+  width: 100% !important;
+}
+/*# sourceMappingURL=NavBar.css.map */

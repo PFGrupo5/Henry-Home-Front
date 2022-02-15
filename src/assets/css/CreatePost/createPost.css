@@ -1,0 +1,146 @@
+.generalCont {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 75px 100px 1fr;
+      grid-template-rows: 75px 100px 1fr;
+  -ms-grid-columns: 50px 1fr 75px;
+      grid-template-columns: 50px 1fr 75px;
+  background: #0090ab;
+  background: radial-gradient(circle, #0090ab 0%, #003a45 100%);
+  height: 100vh;
+}
+
+.nav {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1 / 2;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3 / 4;
+}
+
+.logo {
+  width: 50px;
+}
+
+.back {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1 / 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2;
+  font-size: 25px;
+  text-align: center;
+  margin-top: 15px;
+  margin-left: 15px;
+  color: #fff;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.back:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  text-align: center;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1 / 4;
+  color: #fff;
+  font-size: 25px;
+}
+
+hr {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1 / 4;
+  width: 99vw;
+  position: relative;
+  top: 80px;
+}
+
+Form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.form {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3 / 4;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1 / 4;
+  padding: 20px;
+  margin: auto;
+}
+
+.input {
+  background-color: #fff;
+  width: 90vw;
+  max-width: 800px;
+  color: #000;
+}
+
+.beds {
+  width: 90vw;
+  color: #000;
+}
+
+.cascader {
+  width: 400px;
+}
+
+.uploadImg {
+  text-align: center;
+}
+
+.btnSubmit {
+  text-align: center;
+}
+
+@media (min-width: 700px) {
+  .form {
+    padding: 30px;
+    margin-left: 10px;
+  }
+  .title {
+    font-size: 35px;
+  }
+  .logo {
+    width: 75px;
+  }
+}
+
+@media (min-width: 878px) {
+  .form {
+    padding: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+/*# sourceMappingURL=createPost.css.map */
