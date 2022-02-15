@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../assets/pseudoCss/Form/Form Register/formRegister.css";
 import { message } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
-import { SignUp } from "../../FilesStore/Actions/index"
+// import { SignUp } from "../../FilesStore/Actions/index"
 import { useHistory } from "react-router-dom"
 import { useDispatch } from "react-redux"
 
@@ -35,7 +35,7 @@ function FormRegister() {
   useEffect(() => {
     if (Object.keys(FormsErrors).length === 0 && isSubmit) {
       message.success('Submit success!');
-      dispatch(SignUp(FormsValue, history))
+      // dispatch(SignUp(FormsValue, history))
     }
   }, [FormsValue, FormsErrors, isSubmit, dispatch, history]);
 

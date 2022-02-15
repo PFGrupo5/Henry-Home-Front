@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { SignUp, googleLogIn, SignIn } from "../FilesStore/Actions/index";
+import { /* SignUp, */ googleLogIn, SignIn } from "../FilesStore/Actions/index";
 import { ValidateForm } from "../utils/ValidateForm";
 import { message } from "antd";
 import { GoogleLogin } from "react-google-login";
 import "../assets/css/Form/Form.css";
 import * as Unicons from "@iconscout/react-unicons";
 import axios from "axios";
+import { URL_BACK } from "../config";
 
 const Form = () => {
   const history = useHistory();
@@ -37,10 +38,18 @@ const Form = () => {
 
   const registerHandler = (e) => {
     e.preventDefault();
-
     if (!Object.keys(ValidateForm(inputForm)).length) {
-      message.success("E-mail de confirmación enviado!");
-      dispatch(SignUp(inputForm));
+      axios
+        .post(`${URL_BACK}/user/register`, inputForm)
+        .then(({data}) => {
+          console.log({data});
+          message.success(data.message);
+        })
+        .catch((error) => {
+          console.log({error});
+          message.error(error.response.data.message);
+        });
+      // dispatch(SignUp(inputForm));
       clear();
     } else {
       message.error("Error con los datos");
@@ -67,12 +76,16 @@ const Form = () => {
 
   const forgotPasswordHandler = async () => {
     if (!inputForm.email.trim().length) return message.info("Colocar email");
-    const { data } = axios.post("ruta", inputForm.email);
-    if (data) {
-      message.success("E-mail enviado para restaurar contraseña");
-    } else {
-      message.error("E-mail no registrado");
-    }
+    console.log(inputForm.email);
+   axios
+     .post(`${URL_BACK}/user/confirm-update-password`, {email:inputForm.email})
+     .then(() => {
+       message.success("Correo enviado");
+     })
+     .catch((error) => {
+       console.log(error.response.data, "aca");
+       message.error(error.response.data.message);
+     });
   };
 
   const googleSuccess = async (res) => {
