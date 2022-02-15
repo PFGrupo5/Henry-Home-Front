@@ -1,3 +1,15 @@
+// .textHome {
+//     font-size: 2em;
+//     font-weight: 700;
+//     margin-bottom: 20px;
+//     background: rgba(255, 255, 255, 0.1);
+//     border-radius: 10px;
+//     backdrop-filter: blur(10px);
+//     padding: 5px;  
+//     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+//     border-right: 2px solid rgba(255, 255, 255, 0.1);
+// }
+
 .landingCarrousel {
     width: 100vw;
     height: 95vh;
@@ -20,9 +32,9 @@
     z-index: 10;
 }
 
-.landingPage-container{
-    position: relative;
-}
+// .landingPage-container{
+//     position: relative;
+// }
 
 .title-container{
     padding: 1rem;
@@ -43,7 +55,7 @@
     font-size: 1rem;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .title-container{
       display: flex;
       justify-content: center;
@@ -52,7 +64,7 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1000px) {
   .title-container{
       display: block;
       position: absolute;
