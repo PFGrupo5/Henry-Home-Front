@@ -8,6 +8,7 @@ import CreateHouse from "../pages/CreatePost";
 import Moderator from "../pages/Moderator";
 import DashboardAdmin from "../pages/DashboardAdmin";
 import RegisterVerify from "../pages/RegisterVerify";
+import ChangePassword from "../pages/ChangePassword";
 
 function Routes() {
   return (
@@ -24,6 +25,7 @@ function Routes() {
           <Route exact path="/create" component={CreateHouse} />
           <Route exact path="/admin/:id" component={DashboardAdmin} />
           <Route exact path="/register" component={RegisterVerify} />
+          <Route exact path="/change-password" component={ChangePassword} />
           <Route exact path="*" component={ErrorPage} />
         </Switch>
       </div>
