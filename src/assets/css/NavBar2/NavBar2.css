@@ -1,0 +1,81 @@
+.navbar-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.2rem;
+  -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 101;
+  width: 100%;
+  background-color: #fff;
+}
+
+.navbar-container .logo-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navbar-container .logo-container h2 {
+  margin-top: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.navbar-container .logo-container h2 span {
+  color: #f2994a;
+}
+
+.navbar-container .btn-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navbar-container .btn-container button {
+  padding: 0.3rem 1rem;
+  border-radius: 0.3rem;
+}
+
+.navbar-container .btn-container .btn-registro {
+  border: none;
+  background-color: transparent;
+  font-weight: 600;
+}
+
+.navbar-container .btn-container .btn-ingreso {
+  border: none;
+  background-color: #092c4c;
+  color: #fff;
+}
+
+@media screen and (min-width: 600px) {
+  .navbar-container {
+    padding: 0.5rem 3rem;
+  }
+  .btn-container {
+    gap: 1rem;
+  }
+}
+/*# sourceMappingURL=NavBar2.css.map */

@@ -18,8 +18,9 @@ const RegisterVerify = () => {
           history.push("/");
         }, 5000);
       })
-      .catch((data) => {
-        message.error(`${data.message}`);
+      .catch((error) => {
+        console.log(error.response.data);
+        message.error(error.response.data);
         setTimeout(() => {
           history.push("/");
         }, 5000);

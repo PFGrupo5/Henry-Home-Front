@@ -6,7 +6,7 @@ import {
   CREATE_HOUSE,
   ADMIN_STATUS,
   SIGNIN,
-  SIGNUP,
+  /* SIGNUP, */
   USER_DETAIL,
   GET_SERVICES,
   GET_FACILITIES,
@@ -76,10 +76,10 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
-    case SIGNUP:
+    /* case SIGNUP:
       return {
         ...state,
-      };
+      }; */
 
     case GET_SERVICES:
       return {
