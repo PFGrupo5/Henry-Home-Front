@@ -35,7 +35,7 @@ const LandingPage2 = () => {
   return (
     <div className="landingPage-container">
       <NavBar2 />
-      <Carrousel imgs={[img1, img2, img3]} dotsBool={true} styles="img" />
+      <Carrousel imgs={[img1, img2, img3]} dotsBool={true} styles="landingCarrousel" />
       <div className="title-container">
         <h2 className="textHome">A un click de una travesía!</h2>
         <Button
@@ -46,7 +46,6 @@ const LandingPage2 = () => {
           text={"HOME"}
         />
       </div>
-      <div className="carrousel-container"></div>
       <Form />
       <Footer />
     </div>
