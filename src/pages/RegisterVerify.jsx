@@ -14,16 +14,16 @@ const RegisterVerify = () => {
       .post(`${URL_BACK}/user/verify?token=${token}`)
       .then((data) => {
         message.info(`${data.msg}`);
-        /* setTimeout(() => {
+        setTimeout(() => {
           history.push("/");
-        }, 5000); */
+        }, 5000);
       })
       .catch((error) => {
         console.log(error.response.data);
         message.error(error.response.data);
-        /* setTimeout(() => {
+        setTimeout(() => {
           history.push("/");
-        }, 5000); */
+        }, 5000);
       });
   }, [history, token]);
 

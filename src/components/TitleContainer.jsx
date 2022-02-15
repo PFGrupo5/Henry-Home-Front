@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import "../assets/css/TitleContainer/TitleContainer.css"
+import "../assets/css/TitleContainer/TitleContainer.scss"
 
 const TitleContainer = () => {
   const history = useHistory();
