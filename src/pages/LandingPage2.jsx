@@ -28,7 +28,7 @@ const LandingPage2 = () => {
   return (
     <div className="landingPage-container">
       <NavBar2 />
-      <Carrousel imgs={[img1, img2, img3]} dotsBool={true} styles="img" />
+      <Carrousel imgs={[img1, img2, img3]} dotsBool={true} styles="landingCarrousel" />
       <TitleContainer/>
       <Form />
       <Footer />
