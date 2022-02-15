@@ -7,7 +7,7 @@ import img3 from "../assets/img/Landing Page 3.jpg";
 import Carrousel from "../UI/Carrousel";
 import Button from "../UI/Button";
 import Footer from "../components/Footer";
-import "../assets/css/LandingPage2/LandingPage2.css";
+import "../assets/css/LandingPage2/LandingPage2.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { message } from "antd";
 import { cleanError } from "../FilesStore/Actions";

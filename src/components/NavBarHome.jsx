@@ -4,7 +4,7 @@ import { Row, Col, Image, Modal } from "antd";
 import { SearchOutlined, SolutionOutlined } from "@ant-design/icons";
 import { googleLogOut } from "../FilesStore/Actions";
 import { useDispatch } from "react-redux";
-import "../assets/css/NavBar/NavBar.css";
+import "../assets/css/NavBar/NavBar.scss";
 import "antd/dist/antd.css";
 
 import Logo from "../assets/img/HenryHome.png"
