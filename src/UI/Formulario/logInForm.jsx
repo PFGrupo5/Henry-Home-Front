@@ -8,7 +8,6 @@ import { useHistory } from "react-router-dom"
 import "../../assets/pseudoCss/Form/Form Login/FormLogin.css";
 import { SignIn } from "../../FilesStore/Actions/index"
 
-
 function LogInForm() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -20,7 +19,6 @@ function LogInForm() {
     email: "",
     inputPassword: "",
   })
-
 
   const googleSuccess = async (res) => {
     const result = res?.profileObj;

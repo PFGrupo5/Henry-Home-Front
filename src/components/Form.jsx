@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { SignUp, googleLogIn, SignIn } from "../FilesStore/Actions/index";
@@ -89,7 +89,6 @@ const Form = () => {
             type="text"
             placeholder="E-mail"
             name="email"
-            value=""
             onChange={inputFormHanlder}
             value={inputForm.email}
           />
@@ -97,7 +96,6 @@ const Form = () => {
             type="text"
             placeholder="Nombre"
             name="firstName"
-            value=""
             onChange={inputFormHanlder}
             value={inputForm.firstName}
           />
@@ -105,7 +103,6 @@ const Form = () => {
             type="text"
             placeholder="Apellido"
             name="lastName"
-            value=""
             onChange={inputFormHanlder}
             value={inputForm.lastName}
           />
@@ -113,7 +110,6 @@ const Form = () => {
             type="text"
             placeholder="Contraseña"
             name="inputPassword"
-            value=""
             onChange={inputFormHanlder}
             value={inputForm.inputPassword}
           />
@@ -121,7 +117,6 @@ const Form = () => {
             type="text"
             placeholder="Repetir contraseña"
             name="confirmPassword"
-            value=""
             onChange={inputFormHanlder}
             value={inputForm.confirmPassword}
           />

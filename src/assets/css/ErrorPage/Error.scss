@@ -10,7 +10,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 280px;
 }
 
 .h1-error {
@@ -53,6 +52,7 @@
   font-weight: 700;
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
+  cursor: pointer;
 }
 
 .Btn-Home-error:hover {

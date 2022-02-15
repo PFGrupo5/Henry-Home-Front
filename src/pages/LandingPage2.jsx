@@ -18,7 +18,7 @@ const LandingPage2 = () => {
     fontWeight: 600,
   };
   return (
-    <div>
+    <div className="allLanding">
       <NavBar2 />
       <div className="allHome">
         <h1 className="textHome">A un click de un nuevo viaje!</h1>
@@ -31,7 +31,7 @@ const LandingPage2 = () => {
         />
       </div>
       <div className="carrousel-container">
-      <Carrousel imgs={[img1, img2, img3]} dotsBool={true} styles="img" he />
+        <Carrousel imgs={[img1, img2, img3]} dotsBool={true} styles="img" />
       </div>
       <Form />
       <Footer />

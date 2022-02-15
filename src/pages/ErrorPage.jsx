@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import {Link} from 'react-router-dom'
+import React from "react";
+import { Link } from 'react-router-dom'
 import "../assets/css/ErrorPage/Error.css";
 
 function ErrorPage() {
 
   return (
-    <div className="NotFoundContainer">v                                                                                                                                                                                                                                                                                                                                   
+    <div className="NotFoundContainer">v
       <div className="notfound">
         <div className="notfound-404">
           <h1 className="h1-error">
