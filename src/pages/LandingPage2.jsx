@@ -14,8 +14,7 @@ import { message } from "antd";
 import { cleanError } from "../FilesStore/Actions";
 
 const LandingPage2 = () => {
-  
- 
+
   const { errors } = useSelector((state) => state);
   const dispatch = useDispatch();
 
