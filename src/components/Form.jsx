@@ -5,7 +5,7 @@ import { SignUp, googleLogIn, SignIn } from "../FilesStore/Actions/index";
 import { ValidateForm } from "../utils/ValidateForm";
 import { message } from "antd";
 import { GoogleLogin } from "react-google-login";
-import "../assets/css/Form/Form.css";
+import "../assets/css/Form/Form.scss";
 import * as Unicons from "@iconscout/react-unicons";
 import axios from "axios";
 

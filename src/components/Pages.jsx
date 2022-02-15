@@ -1,5 +1,5 @@
 import React from "react";
-import '../assets/css/Paginado/Paginado.css'
+import '../assets/css/Paginado/Paginado.scss'
 
 export default function Pages({ pages, actualPage, changePage }) {
   var pageNumbers = [];

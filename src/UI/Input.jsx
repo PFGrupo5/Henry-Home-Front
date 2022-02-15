@@ -1,6 +1,6 @@
 import React from 'react';
 import { Input, Select } from "antd"
-import "../assets/pseudoCss/Input/Input.css"
+import "../assets/pseudoCss/Input/Input.scss"
 const { Option } = Select;
 
 

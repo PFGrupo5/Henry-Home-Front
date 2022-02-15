@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import LogInForm from "../UI/Formulario/logInForm";
 import RegisterForm from "../UI/Formulario/FormRegister";
-import "../assets/pseudoCss/Form/Form.css";
+import "../assets/pseudoCss/Form/Form.scss";
 
 export default function Formulario({ nombre, landing }) {
   const [active, setActive] = useState("right-panel-active");

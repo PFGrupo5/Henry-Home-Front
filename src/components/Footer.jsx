@@ -1,5 +1,5 @@
 import React from "react";
-import "../assets/css/Footer/Footer.css";
+import "../assets/css/Footer/Footer.scss";
 import { CopyrightOutlined, GithubOutlined } from "@ant-design/icons";
 
 export default function Footer() {
