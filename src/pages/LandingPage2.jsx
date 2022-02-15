@@ -14,8 +14,7 @@ import { message } from "antd";
 import { cleanError } from "../FilesStore/Actions";
 
 const LandingPage2 = () => {
-  
- 
+
   const { errors } = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -29,22 +28,8 @@ const LandingPage2 = () => {
   return (
     <div className="landingPage-container">
       <NavBar2 />
-<<<<<<< HEAD
-      <Carrousel imgs={[img1, img2, img3]} dotsBool={true} styles="landingCarrousel" />
-      <div className="title-container">
-        <h2 className="textHome">A un click de una travesía!</h2>
-        <Button
-          href="/home"
-          className="btn"
-          styles={stylesButton}
-          types="ghost"
-          text={"HOME"}
-        />
-      </div>
-=======
       <Carrousel imgs={[img1, img2, img3]} dotsBool={true} styles="img" />
-      <TitleContainer/>
->>>>>>> 576e303546dd7015c3888b9faaa4e884649215fa
+      <TitleContainer />
       <Form />
       <Footer />
     </div>
