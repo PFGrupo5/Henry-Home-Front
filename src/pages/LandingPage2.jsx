@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Form from "../components/Form";
 import NavBar2 from "../components/NavBar2";
 import img1 from "../assets/img/Landing Page 1.jpg";
@@ -7,21 +7,37 @@ import img3 from "../assets/img/Landing Page 3.jpg";
 import Carrousel from "../UI/Carrousel";
 import Button from "../UI/Button";
 import Footer from "../components/Footer";
-import "../assets/css/LandingPage2/LandingPage2.css"
+import "../assets/css/LandingPage2/LandingPage2.css";
+import { useDispatch, useSelector } from "react-redux";
+import { message } from "antd";
+import { cleanError } from "../FilesStore/Actions";
 
 const LandingPage2 = () => {
   const stylesButton = {
-    backgroundColor: "#092c4cef",
-    borderRadius: 10,
+    backgroundColor: "#f2994a",
+    borderRadius: ".3rem",
     fontSize: 25,
-    width: "50%",
-    fontWeight: 600,
+    width: "150px",
+    fontWeight: 500,
+    color: "#fff",
+    border: "none",
   };
+  const { errors } = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (Object.keys(errors).length) {
+      message.error(errors.message);
+      dispatch(cleanError());
+    }
+  }, [errors, dispatch]);
+
   return (
-    <div className="allLanding">
+    <div className="landingPage-container">
       <NavBar2 />
-      <div className="allHome">
-        <h1 className="textHome">A un click de un nuevo viaje!</h1>
+      <Carrousel imgs={[img1, img2, img3]} dotsBool={true} styles="img" />
+      <div className="title-container">
+        <h2 className="textHome">A un click de una travesía!</h2>
         <Button
           href="/home"
           className="btn"
@@ -30,9 +46,7 @@ const LandingPage2 = () => {
           text={"HOME"}
         />
       </div>
-      <div className="carrousel-container">
-        <Carrousel imgs={[img1, img2, img3]} dotsBool={true} styles="img" />
-      </div>
+      <div className="carrousel-container"></div>
       <Form />
       <Footer />
     </div>

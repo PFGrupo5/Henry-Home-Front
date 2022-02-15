@@ -1,5 +1,20 @@
 import axios from "axios";
-import { ALL_HOTELS, DETAIL, GOOGLE_LOGIN, GOOGLE_LOGOUT, CREATE_HOUSE, ADMIN_STATUS, SIGNIN, SIGNUP, USER_DETAIL, GET_SERVICES, GET_FACILITIES, LOCATIONS } from "../Const Types/constActions"
+import {
+  ALL_HOTELS,
+  DETAIL,
+  GOOGLE_LOGIN,
+  GOOGLE_LOGOUT,
+  CREATE_HOUSE,
+  ADMIN_STATUS,
+  SIGNIN,
+  SIGNUP,
+  USER_DETAIL,
+  GET_SERVICES,
+  GET_FACILITIES,
+  LOCATIONS,
+  ERROR_LOGIN,
+  CLEAN_ERROR,
+} from "../Const Types/constActions";
 
 export function getHotels(page = 1, size = 10) {
   return async function (dispatch) {
@@ -67,6 +82,10 @@ export function SignIn(values, history) {
       })
        history.push("/home")
     } catch (error) {
+      dispatch({
+        type:ERROR_LOGIN,
+        payload: error
+      })
       console.log(error)
     }
   }
@@ -184,4 +203,8 @@ export function getLocations() {
       console.log(error)
     }
   }
+}
+
+export function cleanError(){
+  return {type: CLEAN_ERROR, payload:{}}
 }
