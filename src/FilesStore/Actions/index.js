@@ -8,6 +8,10 @@ import {
   CREATE_HOUSE,
   ADMIN_STATUS,
   SIGNIN,
+  ADD_FAV,
+  DELETE_FAV,
+  LOG_OUT,
+ /*  SIGNUP, */
   USER_DETAIL,
   GET_SERVICES,
   GET_FACILITIES,
@@ -201,3 +205,60 @@ export function cleanError() {
   return { type: CLEAN_ERROR, payload: {} }
 }
 
+export function cleanError(){
+  return {type: CLEAN_ERROR, payload:{}}
+}
+
+export function AddFav(id,token){
+  return async function (dispatch){
+   try{
+      var json = await axios.post(`https://henry-home-back.herokuapp.com/api/favs`,
+      {HousingId: id},
+      {
+        headers: {
+          'Authorization': token
+        }
+      })
+      console.log("AGREGAR")
+      return dispatch({
+        type: ADD_FAV,
+        payload: json.data,
+      })
+   }catch(error){
+     console.log("AddFav:",error)
+   } 
+  }
+
+}
+
+export function DelFav(id,token){
+  return async function (dispatch){
+    
+   try{
+    var json = await axios.delete(`https://henry-home-back.herokuapp.com/api/favs`,
+    {
+      headers:{
+        "Authorization":token
+      },
+      data: {HousingId: id}
+    },
+    
+    
+    )
+    console.log(json.data)
+
+      console.log("BORRAR")
+      return dispatch({
+        type: DELETE_FAV,
+        payload: json.data,
+      })
+   }catch(error){
+     console.log("DelFav:",error)
+   } 
+  }
+
+}
+
+export function logOut (){
+  return {type: LOG_OUT, payload:{}}
+}

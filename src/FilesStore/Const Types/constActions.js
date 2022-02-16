@@ -13,3 +13,6 @@ export const LOCATIONS = "LOCATIONS";
 export const POST_HOTEL = "POST_HOTEL"
 export const ERROR_LOGIN = "ERROR_LOGIN"
 export const CLEAN_ERROR = "CLEAN_ERROR"
+export const ADD_FAV = "ADD_FAV"
+export const DELETE_FAV = "DELETE_FAV"
+export const LOG_OUT = "LOG_OUT"
