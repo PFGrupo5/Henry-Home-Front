@@ -1,0 +1,56 @@
+.reservation-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .information-container {
+    background-color: var(--main-blue);
+    padding: 2rem;
+    border-radius: 1rem;
+    color: var(--main-white);
+    transition: 1s ease-in;
+
+    h3 {
+      text-transform: capitalize;
+      font-size: 1.4rem;
+    }
+
+    .calendar {
+      color: var(--main-blue);
+      font-family: var(--body-font);
+    }
+
+    .btn-confirm {
+      border: none;
+      background-color: #f2994a;
+      color: #fff;
+      padding: 0.5rem 0.2rem;
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 0.3rem;
+      display: none;
+      margin: auto;
+    }
+    .btn-pay {
+      border: none;
+      background-color: var(--main-gray);
+      color: #fff;
+      padding: 0.5rem 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 0.3rem;
+      display: block;
+      margin: 1rem auto 0;
+      display: none;
+      transition: 0.4s ease-in;
+    }
+    .display {
+      display: block;
+    }
+  }
+}
