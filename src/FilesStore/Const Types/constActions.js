@@ -13,4 +13,3 @@ export const LOCATIONS = "LOCATIONS";
 export const POST_HOTEL = "POST_HOTEL"
 export const ERROR_LOGIN = "ERROR_LOGIN"
 export const CLEAN_ERROR = "CLEAN_ERROR"
-export const FAVS = "FAVS"
