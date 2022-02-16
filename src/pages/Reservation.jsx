@@ -46,9 +46,11 @@ const Reservation = (props) => {
     (r) => r.userClientId === userId
   ).find((s) => s.status === "Pending");
 
+
 if(userReservations === undefined){
   userReservations = {}
 }
+
 
   let disabledRanges = detail.Reservations?.map(({ date_start, date_end }) => [
     new Date(date_start),

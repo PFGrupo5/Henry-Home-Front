@@ -17,13 +17,15 @@ import {
   CLEAN_ERROR,
 } from "../Const Types/constActions";
 
-export function getHotels(page = 1, size = 10) {
+export function getHotels(page = 1, size = 10, filter) {
   return async function (dispatch) {
+    console.log(filter)
     try {
-      var json = await axios.get(
-        `${URL_BACK}/houses?page=${page}&size=${size}`
-      );
-      console.log(json);
+      var json = await axios.get(`${URL_BACK}/houses?page=${page}&size=${size}&status=${filter?.status}`);
+
+      // &minPrice=${filter?.minPrice}&maxPrice=${filter?.maxPrice}&location=${filter?.location}&stars=${filter?.stars}&numberofPeople=${filter?.numberofPeople}&numberOfBeds=${filter?.numberOfBeds}
+      console.log("json", json)
+      console.log("filter", filter)
       return dispatch({
         type: ALL_HOTELS,
         payload: json.data,
