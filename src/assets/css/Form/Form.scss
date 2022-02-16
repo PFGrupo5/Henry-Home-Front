@@ -75,6 +75,16 @@
     cursor: pointer;
   }
 
+  #google-btn{
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+}
+
   .translate{
       transform: translateY(-500px);
   }
