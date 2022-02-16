@@ -62,41 +62,9 @@ function DashboardUser() {
               Hoteles Favoritos
             </h1>
             <div className="Favs-Cards">
-              <p className="p-container">
-                Um título Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Donec purus neque, adipiscing malesuada lectus non,
-                ullamcorper gravida augue. Donec rutrum augue eu dolor cursus,
-                id luctus felis tincidunt. Pellentesque consectetur luctus dui
-                quis adipiscing. Donec volutpat varius nulla, pretium vestibulum
-                quam imperdiet et. Sed semper a erat nec mattis. In elementum
-                nibh mauris, sit amet aliquet quam pharetra in. Nullam magna
-                mauris, tempus a tellus varius, hendrerit mattis neque. Duis
-                lacinia commodo magna eget scelerisque. Integer molestie
-                fermentum nisl a bibendum. Donec congue, diam nec commodo
-                elementum, tortor mauris vestibulum erat, adipiscing aliquet
-                enim quam sit amet nulla. Maecenas dignissim varius mattis.
-                Class aptent taciti sociosqu ad litora torquent per conubia
-                nostra, per inceptos himenaeos. Maecenas ligula lectus, rhoncus
-                eget scelerisque in, consectetur eu nulla. Vestibulum eu sem
-                massa. Pellentesque consectetur luctus Nullam magna mauris,
-                tempus a tellus varius, hendrerit mattis neque. Duis lacinia
-                commodo magna eget scelerisque. Integer molestie fermentum nisl
-                a bibendum. Donec congue, diam nec commodo elementum, tortor
-                mauris vestibulum erat, adipiscing aliquet enim quam sit amet
-                nulla. Maecenas dignissim varius mattis. Class aptent taciti
-                sociosqu ad litora torquent per conubia nostra, per inceptos
-                himenaeos. Maecenas ligula lectus, rhoncus eget scelerisque in,
-                consectetur eu nulla. Vestibulum eu sem massa. Nullam magna
-                mauris Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Donec purus neque, adipiscing malesuada lectus non, ullamcorper
-                gravida augue. Donec rutrum augue eu dolor cursus, id luctus
-                felis tincidunt. Pellentesque consectetur luctus dui quis
-                adipiscing. Donec volutpat varius nulla, pretium vestibulum quam
-                imperdiet et. Sed semper a erat nec mattis. In elementum nibh
-                mauris, sit amet aliquet quam pharetra in. Maecenas ligula
-                lectus, rhoncus eget scelerisque in, consectetur eu nulla.
-                Vestibulum eu sem massa.
-              </p>
+              <h2 className="h2-container">
+                {`No Tienes Hotel Favorito :(`}
+              </h2>
             </div>
           </div>
           <div className="Container-Reservs">
@@ -104,41 +72,9 @@ function DashboardUser() {
               Ultimas reservaciones
             </h1>
             <div className="Last-reservs">
-              <p className="p-container">
-                Um título Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Donec purus neque, adipiscing malesuada lectus non,
-                ullamcorper gravida augue. Donec rutrum augue eu dolor cursus,
-                id luctus felis tincidunt. Pellentesque consectetur luctus dui
-                quis adipiscing. Donec volutpat varius nulla, pretium vestibulum
-                quam imperdiet et. Sed semper a erat nec mattis. In elementum
-                nibh mauris, sit amet aliquet quam pharetra in. Nullam magna
-                mauris, tempus a tellus varius, hendrerit mattis neque. Duis
-                lacinia commodo magna eget scelerisque. Integer molestie
-                fermentum nisl a bibendum. Donec congue, diam nec commodo
-                elementum, tortor mauris vestibulum erat, adipiscing aliquet
-                enim quam sit amet nulla. Maecenas dignissim varius mattis.
-                Class aptent taciti sociosqu ad litora torquent per conubia
-                nostra, per inceptos himenaeos. Maecenas ligula lectus, rhoncus
-                eget scelerisque in, consectetur eu nulla. Vestibulum eu sem
-                massa. Pellentesque consectetur luctus Nullam magna mauris,
-                tempus a tellus varius, hendrerit mattis neque. Duis lacinia
-                commodo magna eget scelerisque. Integer molestie fermentum nisl
-                a bibendum. Donec congue, diam nec commodo elementum, tortor
-                mauris vestibulum erat, adipiscing aliquet enim quam sit amet
-                nulla. Maecenas dignissim varius mattis. Class aptent taciti
-                sociosqu ad litora torquent per conubia nostra, per inceptos
-                himenaeos. Maecenas ligula lectus, rhoncus eget scelerisque in,
-                consectetur eu nulla. Vestibulum eu sem massa. Nullam magna
-                mauris Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Donec purus neque, adipiscing malesuada lectus non, ullamcorper
-                gravida augue. Donec rutrum augue eu dolor cursus, id luctus
-                felis tincidunt. Pellentesque consectetur luctus dui quis
-                adipiscing. Donec volutpat varius nulla, pretium vestibulum quam
-                imperdiet et. Sed semper a erat nec mattis. In elementum nibh
-                mauris, sit amet aliquet quam pharetra in. Maecenas ligula
-                lectus, rhoncus eget scelerisque in, consectetur eu nulla.
-                Vestibulum eu sem massa.
-              </p>
+              <h2 className="h2-container">
+                {`No Tienes Reservaciones Previas :(`}
+              </h2>
             </div>
           </div>
         </div>
@@ -148,7 +84,3 @@ function DashboardUser() {
 }
 
 export default DashboardUser;
-
-/*
-
- */
