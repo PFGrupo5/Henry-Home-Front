@@ -42,7 +42,7 @@ const ChangePassword = () => {
     axios
       .put(`${URL_BACK}/user/change-password`, newUserPassword)
       .then(({ data }) => {
-        message.success(data.msg);
+        message.success(data.message);
         setTimeout(() => {
           history.push("/");
         },3000);
