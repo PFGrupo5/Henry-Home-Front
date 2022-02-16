@@ -20,7 +20,7 @@ const modalBtn = {
   width: 100,
 };
 
-export default function NavBar() {
+export default function NavBar({resetHome}) {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")))
 
@@ -51,6 +51,8 @@ export default function NavBar() {
     dispatch(googleLogOut());
     setUser(null)
     window.location.replace("")
+    dispatch(logOut())
+
   }
 
   const provincias = [

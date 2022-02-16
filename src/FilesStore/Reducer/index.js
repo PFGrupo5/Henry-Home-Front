@@ -6,6 +6,9 @@ import {
   CREATE_HOUSE,
   ADMIN_STATUS,
   SIGNIN,
+  ADD_FAV,
+  DELETE_FAV,
+  LOG_OUT,
   /* SIGNUP, */
   USER_DETAIL,
   GET_SERVICES,
@@ -109,6 +112,19 @@ function rootReducer(state = initialState, action) {
         ...state,
         errors: action.payload,
       };
+    case ADD_FAV:
+      return {
+        ...state,
+      }
+    case DELETE_FAV:
+      return {
+        ...state,
+      }
+    case LOG_OUT:
+      return {
+        ...state,
+        userDetail: []
+      }
 
     default:
       return {
