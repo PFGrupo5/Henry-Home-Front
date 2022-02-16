@@ -7,7 +7,7 @@ import {
   CREATE_HOUSE,
   ADMIN_STATUS,
   SIGNIN,
- /*  SIGNUP, */
+  /*  SIGNUP, */
   USER_DETAIL,
   GET_SERVICES,
   GET_FACILITIES,
@@ -80,10 +80,10 @@ export function SignIn(values, history) {
         type: SIGNIN,
         payload: json.data
       })
-       history.push("/home")
+      history.push("/home")
     } catch (error) {
       dispatch({
-        type:ERROR_LOGIN,
+        type: ERROR_LOGIN,
         payload: error
       })
       console.log(error)
@@ -208,6 +208,6 @@ export function getLocations() {
   }
 }
 
-export function cleanError(){
-  return {type: CLEAN_ERROR, payload:{}}
+export function cleanError() {
+  return { type: CLEAN_ERROR, payload: {} }
 }

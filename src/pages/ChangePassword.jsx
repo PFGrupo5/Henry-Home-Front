@@ -45,7 +45,7 @@ const ChangePassword = () => {
         message.success(data.msg);
         setTimeout(() => {
           history.push("/");
-        },3000);
+        }, 3000);
       })
       .catch((error) => {
         console.log(error);
