@@ -9,6 +9,8 @@ import Moderator from "../pages/Moderator";
 import DashboardAdmin from "../pages/DashboardAdmin";
 import RegisterVerify from "../pages/RegisterVerify";
 import ChangePassword from "../pages/ChangePassword";
+import Reservation from "../pages/Reservation";
+import PaymentSuccess from "../pages/PaymentSuccess";
 
 function Routes() {
   return (
@@ -18,14 +20,16 @@ function Routes() {
           {/* <Route exact path="/" component={LandingPage} /> */}
 
           <Route exact path="/" component={LandingPage2} />
-          <Route exact path="/login" component={LandingPage2} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/home/:id" component={Detail} />
+          <Route exact path="/home/:id/reservation" component={Reservation} />
           <Route exact path="/user/:id" component={Moderator} />
           <Route exact path="/create" component={CreateHouse} />
           <Route exact path="/admin/:id" component={DashboardAdmin} />
           <Route exact path="/register" component={RegisterVerify} />
           <Route exact path="/change-password" component={ChangePassword} />
+          <Route exact path="/payment/success" component={PaymentSuccess} />
+          
           <Route exact path="*" component={ErrorPage} />
         </Switch>
       </div>

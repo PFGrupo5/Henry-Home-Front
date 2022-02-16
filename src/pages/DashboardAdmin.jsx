@@ -17,15 +17,6 @@ export default function DashboardAdmin() {
     const allHotels = useSelector((state) => state.hotels);
     const count = useSelector((state) => state.count);
 
-    const filter = {
-        minPrice: "a",
-        maxPrice: "a",
-        location: "a",
-        stars: "a",
-        numberOfPeople: "a",
-        numberOfBeds: "a",
-        status: "Pending"
-    }
 
     const changePage = (e) => {
         setPage(e)
@@ -37,7 +28,7 @@ export default function DashboardAdmin() {
     }
 
     useEffect(() => {
-        dispatch(getHotels(page, size, filter));
+        dispatch(getHotels(page, size, { status: "Pending" }));
     }, [dispatch, page, size]);
 
     if (allHotels?.length === 0) {
