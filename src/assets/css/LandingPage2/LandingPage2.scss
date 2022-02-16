@@ -10,7 +10,7 @@
     }
     button{
         padding: 5px 10px 0px 10px !important;
-            border-radius: 15px !important;
+        border-radius: 15px !important;
     }
 }
 
@@ -26,25 +26,4 @@
 
 .title-container{
     padding: 1rem;
-}
-
-@media screen and (max-width: 768px) {
-  .title-container{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .title-container{
-      display: block;
-      position: absolute;
-      top: 10rem;
-      left: 2rem;
-      z-index: 100;
-    background-color: #29344186 ;
-    border-radius: 1rem;
-  }
 }

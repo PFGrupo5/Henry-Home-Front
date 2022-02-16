@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { HomeOutlined, UserOutlined, SearchOutlined } from "@ant-design/icons";
-import "../assets/css/DashboardAdmin/admin.scss";
+import "../assets/css/DashboardOwner/DashboardOwner.scss";
 import { getUserDetail } from "../FilesStore/Actions";
 import Cards from "../components/Cards";
 
