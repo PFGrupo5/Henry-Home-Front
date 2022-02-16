@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 // import LandingPage from "../pages/LandingPage";
 import LandingPage2 from "../pages/LandingPage2";
 import Home from "../pages/Home";
@@ -13,13 +13,15 @@ import Reservation from "../pages/Reservation";
 import PaymentSuccess from "../pages/PaymentSuccess";
 
 function Routes() {
+  const user = JSON.parse(localStorage.getItem("profile"));
+
   return (
     <BrowserRouter>
       <div className="App">
         <Switch>
           {/* <Route exact path="/" component={LandingPage} /> */}
 
-          <Route exact path="/" component={LandingPage2} />
+          <Route exact path="/" component={()=>(!user? <LandingPage2/> : <Redirect to="/home"/>)} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/home/:id" component={Detail} />
           <Route exact path="/home/:id/reservation" component={Reservation} />
@@ -29,7 +31,7 @@ function Routes() {
           <Route exact path="/register" component={RegisterVerify} />
           <Route exact path="/change-password" component={ChangePassword} />
           <Route exact path="/payment/success" component={PaymentSuccess} />
-          
+
           <Route exact path="*" component={ErrorPage} />
         </Switch>
       </div>
