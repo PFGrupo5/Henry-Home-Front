@@ -1,49 +1,18 @@
-// ------------------ NAV ---------
-.Container-Nav-user {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.2rem;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  position: static;
-  top: 0;
-  right: 0;
-  z-index: 101;
-  width: 100%;
-  background-color: #fff;
-
-  .logo-container-user {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .h2-user {
-      margin-top: 0.5rem;
-      font-size: 1.25rem;
-      font-weight: bold;
-
-      .span-user {
-        color: #f2994a;
-      }
-    }
-  }
-}
-
 // ------------------ MENU ---------
 
-.Container-user {
+.Container-Genral {
   display: flex;
   flex-direction: column;
 }
 
-.Container-menu-icon {
+.icon-DashboardUser {
   font-size: 30px;
   margin: 10px;
   display: flex;
   justify-content: flex-end;
 }
 
-.Container-menu {
+.Container-sidebar {
   width: 100%;
   max-width: 390px;
   height: 100vh;
@@ -57,7 +26,7 @@
   background-color: white;
 }
 
-.Container-menu.active {
+.Container-sidebar.active {
   animation: slide-menu-in 1s ease 0s 1 normal forwards;
 }
 
