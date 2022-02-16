@@ -13,6 +13,7 @@ import {
   LOCATIONS,
   ERROR_LOGIN,
   CLEAN_ERROR,
+  FAVS,
 } from "../Const Types/constActions";
 const initialState = {
   hotels: [],
@@ -22,7 +23,7 @@ const initialState = {
   services: [],
   locations: [],
   facilities: [],
-  errors:{},
+  errors: {},
   authData: null,
   count: null,
 };
@@ -35,6 +36,7 @@ function rootReducer(state = initialState, action) {
         hotels: action.payload.rows,
         allHotels: action.payload.rows,
         count: action.payload.count,
+        favoritos: action.payload.rows,
       };
 
     case DETAIL:
@@ -76,10 +78,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
-    /* case SIGNUP:
+    case FAVS:
       return {
         ...state,
-      }; */
+        // favoritos: action?.payload,
+      };
 
     case GET_SERVICES:
       return {

@@ -14,6 +14,7 @@ import {
   LOCATIONS,
   ERROR_LOGIN,
   CLEAN_ERROR,
+  FAVS
 } from "../Const Types/constActions";
 
 export function getHotels(page = 1, size = 10) {
@@ -91,29 +92,27 @@ export function SignIn(values, history) {
   }
 }
 
-/* export function SignUp(values, history) {
-  return async function (dispatch) {
-    try {
-      const json = await axios.post("https://henry-home-back.herokuapp.com/api/user/register", values)
-      console.log(json.data)
-      dispatch({
-        type: SIGNUP,
-        payload: json.data
-      })
-    } catch (error) {
-      dispatch({
-        type: ERROR_LOGIN,
-        payload: error,
-      });
-      console.log(error.message);
-    }
-  }
-} */
+// export function GetFavs() {
+//   return async function (dispatch) {
+//     try {
+//       const json = await axios.get("https://henry-home-back.herokuapp.com/api/favs")
+//       console.log(json.data)
+//       dispatch({
+//         type: FAVS,
+//         payload: json.data
+//       })
+//     } catch (error) {
+//       console.log(error.message);
+//     }
+//   }
+// }
 
 export function getUserDetail(id, role) {
+  console.log(id, role)
   return async function (dispatch) {
     try {
       const json = await axios.get(`https://henry-home-back.herokuapp.com/api/user/${id}/${role}`);
+      console.log(json)
       dispatch({
         type: USER_DETAIL,
         payload: json.data
