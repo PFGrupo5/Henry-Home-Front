@@ -1,7 +1,7 @@
 import React from "react";
 import '../assets/css/Paginado/Paginado.scss'
 
-export default function Pages({ pages, actualPage, changePage }) {
+export default function Pages({ pages, changePage }) {
   var pageNumbers = [];
   for (let x = 1; x <= pages; x++) {
     pageNumbers.push(x);

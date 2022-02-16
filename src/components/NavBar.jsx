@@ -20,7 +20,7 @@ const modalBtn = {
   width: 100,
 };
 
-export default function NavBar({resetHome}) {
+export default function NavBar() {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")))
 

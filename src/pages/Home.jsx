@@ -49,11 +49,14 @@ console.log("ARRAY",favsIds)
     setPage(e)
   }
   useEffect(() => {
-    dispatch(getHotels(page, size));
+
+    dispatch(getHotels(page, size, { status: "Accepted" }));
     infoUser.id && dispatch(getUserDetail(infoUser.id, infoUser.role));
   }, [dispatch, page, size,infoUser.id, infoUser.role, renderFav]);
 
   
+
+
 
   if (allHotels?.length === 0 && (User && (favsIds===null || userDetail.favs )) ) {
     return (
@@ -64,8 +67,8 @@ console.log("ARRAY",favsIds)
   } else {
     return (
       <div className="fullHome">
-        <NavBar resetHome={resetHome}/>
-        <Pages pages={Math.floor(count / size)} actualPage={page} changePage={changePage} />
+        <NavBar />
+        <Pages pages={Math.ceil(count / size)} actualPage={page} changePage={changePage} />
         <Aside />
         <div className="home">
           <div className="cardsHome">

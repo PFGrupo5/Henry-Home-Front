@@ -3,8 +3,8 @@ import {
   DETAIL,
   GOOGLE_LOGIN,
   GOOGLE_LOGOUT,
-  CREATE_HOUSE,
-  ADMIN_STATUS,
+ /*  CREATE_HOUSE,
+  ADMIN_STATUS, */
   SIGNIN,
   ADD_FAV,
   DELETE_FAV,
@@ -17,19 +17,100 @@ import {
   ERROR_LOGIN,
   CLEAN_ERROR,
 } from "../Const Types/constActions";
+
 const initialState = {
   hotels: [],
   allHotels: [],
-  detail: [],
+  detail: {},
   userDetail: [],
   services: [],
   locations: [],
   facilities: [],
-  errors:{},
+  errors: {},
   authData: null,
   count: null,
 };
 
+const cases = {};
+cases[ALL_HOTELS] = (state, payload) => ({
+  ...state,
+  hotels: payload.rows,
+  allHotels: payload.rows,
+  count: payload.count,
+});
+cases[DETAIL] = (state, payload) => ({
+  ...state,
+  detail: payload,
+});
+cases[USER_DETAIL] = (state, payload) => ({
+  ...state,
+  userDetail: payload,
+});
+cases[GOOGLE_LOGIN] = (state, payload) => {
+  localStorage.setItem("profile", JSON.stringify({ ...payload }));
+  return {
+    ...state,
+    authData: payload,
+  };
+};
+cases[GOOGLE_LOGOUT] = (state, payload) => {
+  localStorage.clear();
+  return {
+    ...state,
+    authData: null,
+  };
+};
+cases[SIGNIN] = (state, payload) => {
+  localStorage.setItem("profile", JSON.stringify({ ...payload }));
+  window.location.replace("/home");
+  return {
+    ...state,
+  };
+};
+cases[GET_SERVICES] = (state, payload) => {
+  return {
+    ...state,
+    services: payload,
+  };
+};
+cases[GET_FACILITIES] = (state, payload) => {
+  return {
+    ...state,
+    facilities: payload,
+  };
+};
+cases[LOCATIONS] = (state, payload) => {
+  return {
+    ...state,
+    locations: payload,
+  };
+};
+cases[ERROR_LOGIN] = (state, payload) => {
+  return {
+    ...state,
+    errors: payload,
+  };
+};
+cases[CLEAN_ERROR] = (state, payload) => {
+  return {
+    ...state,
+    errors: payload,
+  };
+};
+cases[LOG_OUT] = (state,payload) => {
+  return {
+    ...state,
+    userDetail: []
+  }
+}
+
+
+      
+
+export default function reducer(state = initialState, { type, payload }) {
+  return cases[type] ? cases[type](state, payload) : state;
+}
+/* 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case ALL_HOTELS:
@@ -69,6 +150,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
+
     case ADMIN_STATUS:
       return {
         ...state,
@@ -79,11 +161,6 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
-    /* case SIGNUP:
-      return {
-        ...state,
-      }; */
-
     case GET_SERVICES:
       return {
         ...state,
@@ -133,4 +210,4 @@ function rootReducer(state = initialState, action) {
   }
 }
 
-export default rootReducer;
+export default rootReducer; */
