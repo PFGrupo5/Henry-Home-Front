@@ -20,9 +20,8 @@ const LandingPage2 = () => {
 
   useEffect(() => {
     if (Object.keys(errors).length) {
-      console.log(errors.response.data.message)
       message.error(errors.response.data.message)
-      // dispatch(cleanError());
+      dispatch(cleanError());
     }
   }, [errors, dispatch]);
 
