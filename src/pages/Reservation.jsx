@@ -46,7 +46,7 @@ const Reservation = (props) => {
     (r) => r.userClientId === userId
   ).find((s) => s.status === "Pending");
 
-if(userReservations== undefined){
+if(userReservations === undefined){
   userReservations = {}
 }
 
