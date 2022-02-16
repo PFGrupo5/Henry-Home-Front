@@ -14,6 +14,7 @@ import PaymentSuccess from "../pages/PaymentSuccess";
 
 function Routes() {
   const user = JSON.parse(localStorage.getItem("profile"));
+  console.log(!user ? "si" : "no");
 
   return (
     <BrowserRouter>

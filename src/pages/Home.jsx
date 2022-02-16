@@ -41,7 +41,6 @@ export default function Home() {
         <div className="home">
           <div className="cardsHome">
             {allHotels.map((e) => {
-              console.log(e)
               return (
                 <Cards
                   name={e.name}

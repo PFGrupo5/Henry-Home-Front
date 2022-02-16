@@ -8,7 +8,6 @@ import {
   CREATE_HOUSE,
   ADMIN_STATUS,
   SIGNIN,
-  /*  SIGNUP, */
   USER_DETAIL,
   GET_SERVICES,
   GET_FACILITIES,
@@ -91,24 +90,6 @@ export function SignIn(values, history) {
   };
 }
 
-/* export function SignUp(values, history) {
-  return async function (dispatch) {
-    try {
-      const json = await axios.post("https://henry-home-back.herokuapp.com/api/user/register", values)
-      console.log(json.data)
-      dispatch({
-        type: SIGNUP,
-        payload: json.data
-      })
-    } catch (error) {
-      dispatch({
-        type: ERROR_LOGIN,
-        payload: error,
-      });
-      console.log(error.message);
-    }
-  }
-} */
 
 export function getUserDetail(id, role) {
   return async function (dispatch) {
