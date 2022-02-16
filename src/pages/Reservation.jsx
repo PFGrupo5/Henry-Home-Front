@@ -10,6 +10,7 @@ import { message } from "antd";
 import NavBar2 from "../components/NavBar2";
 import "../assets/css/Reservation/Reservation.scss";
 import { useHistory } from "react-router-dom";
+import { URL_BACK } from "../config";
 
 const daysCalculator = (dates) => {
   if (dates.length === 1) return 1;
@@ -23,7 +24,7 @@ const daysCalculator = (dates) => {
 
 const Reservation = (props) => {
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
   const { detail } = useSelector((state) => state);
   const { name, pricePerNight } = detail;
   const [value, onChange] = useState(new Date());
@@ -43,9 +44,11 @@ const Reservation = (props) => {
 
   let userReservations = detail.Reservations?.filter(
     (r) => r.userClientId === userId
-  );
-  userReservations = userReservations.find((s) => s.status === "Pending");
-  console.log(userReservations);
+  ).find((s) => s.status === "Pending");
+
+if(userReservations== undefined){
+  userReservations = {}
+}
 
   let disabledRanges = detail.Reservations?.map(({ date_start, date_end }) => [
     new Date(date_start),
@@ -78,15 +81,17 @@ const Reservation = (props) => {
       title: name,
     };
     if (Object.keys(userReservations).length) {
-      message.info("Todavia tienen una reserva pendiente con este alojamiento, redirigiendo a su perfil");
-      setTimeout(()=>{
-        history.push(`/user/${id}`)
-      },5000)
+      message.info(
+        "Todavia tienen una reserva pendiente con este alojamiento, redirigiendo a su perfil"
+      );
+      setTimeout(() => {
+        history.push(`/user/${id}`);
+      }, 5000);
       setPayment(userReservations.link_mercado_pago);
       setDisplay(true);
     } else {
       axios
-        .post("http://localhost:3002/api/reservation", reservation, {
+        .post(`${URL_BACK}/reservation`, reservation, {
           headers: { authorization: token },
         })
         .then(({ data }) => {
@@ -135,7 +140,7 @@ const Reservation = (props) => {
                 <p>
                   {value[0] ? (
                     <>
-                      Del <span>{`${dateForm(value[0])}`}</span> al {" "}
+                      Del <span>{`${dateForm(value[0])}`}</span> al{" "}
                       <span>{`${dateForm(value[1])}`}</span>
                     </>
                   ) : (
