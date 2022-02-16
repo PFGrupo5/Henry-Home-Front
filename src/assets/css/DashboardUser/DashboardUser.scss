@@ -1,0 +1,235 @@
+// ------------------ NAV ---------
+.Container-Nav-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  position: static;
+  top: 0;
+  right: 0;
+  z-index: 101;
+  width: 100%;
+  background-color: #fff;
+
+  .logo-container-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .h2-user {
+      margin-top: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: bold;
+
+      .span-user {
+        color: #f2994a;
+      }
+    }
+  }
+}
+
+// ------------------ MENU ---------
+
+.Container-user{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.Container-menu-icon {
+  font-size: 30px;
+  margin: 10px;
+}
+
+.Container-menu {
+  width: 100%;
+  max-width: 390px;
+  height: 100vh;
+  position: fixed;
+  z-index: 10;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+  border: 2px solid black;
+  animation: slide-menu-out 1s ease 0s 1 normal forwards;
+  background-color: white;
+}
+
+.Container-menu.active {
+  animation: slide-menu-in 1s ease 0s 1 normal forwards;
+}
+
+// ------------------ CONTENT ---------
+
+.Container-dash-name {
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid black;
+  font-size: 30px;
+}
+
+.p-container {
+  font-size: 15px;
+}
+
+.Favs-hotels-name,
+.Last-reservs-name {
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid black;
+}
+
+.li-menu {
+  border-bottom: 2px solid black;
+  margin-top: 100px;
+  margin-bottom: 200px;
+  display: flex;
+  justify-content: center;
+}
+
+.li-menu:hover {
+  border: 2px solid black;
+}
+
+.Container-data{
+  margin: 40px;
+}
+
+// ---------- KEY FRAMES -----------
+
+@keyframes slide-menu-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-250px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-menu-out {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-250px);
+  }
+}
+
+// ---------------------------------
+/*
+$black: #2d2d2d;
+$white: #f1f1f1;
+$red: #e74c3c;
+$green: #2ecc71;
+
+*{
+  box-sizing: border-box;
+}
+
+body{
+   background-color: coral;
+   font-family: "Open Sans", sans-serif;
+}
+
+.text{
+  width: 100%;
+  text-align: center;
+  margin-top: 10%;
+  font-size: 3em;
+  color: $white;
+  font-weight: 800;
+}
+
+.menu-tab{
+  width: 90px;
+  height: 70px;
+  position: fixed;
+  z-index: 100;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+  transition: all .6s ease-in-out;
+  
+  div{
+    width: 33px;
+    height: 4px;
+    background-color: $black;
+    display: block;
+    margin: 5px 28px;
+    transition: all .6s ease-in-out;
+    
+    &:nth-child(1){
+      margin-top: 20px;
+    }
+  }
+}
+.menu-tab.active{
+  left: 345px;
+  transition: all 600ms ease-in-out;
+  background-color: rgba(255,255,255,0.2);
+  
+    #one{
+      transform: translateY(9px) rotate(-135deg);
+      transition: all .6s ease-in-out;
+      background-color: $red;
+    }
+    
+    #two{
+      opacity: 0;
+      transition: .4s ease;
+    }
+    
+    #three{
+      transform: translateY(-9px) rotate(-45deg);
+      transition: all .6s ease-in-out;
+      background-color: $red;
+    }
+}
+
+.menu-hide{
+  width: 345px;
+  left: -345px;
+  height: 100vh;
+  position: fixed;
+  z-index: 10;
+  top: 0px;
+  transition: all .6s ease-in-out;
+  
+  nav{
+    ul{
+      li{
+        height: 70px;
+        list-style-type: none;
+        text-align: center;
+        line-height: 70px;
+        transition: all .5s ease;
+        
+        &:hover{
+          background-color: $red;
+          transition: all .5s ease;
+        }
+
+        a{
+          padding: 30px 25px;
+          text-decoration: none;
+          color: $white;
+          font-weight: 800;
+
+        }
+      }
+    }
+  }
+}
+.menu-hide.show{
+  left: 0px;
+  background-color: rgba(255,255,255,0.2);
+  transition: all .6s ease-in-out;
+}
+*/

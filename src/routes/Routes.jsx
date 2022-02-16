@@ -5,8 +5,9 @@ import Home from "../pages/Home";
 import Detail from "../pages/Detail";
 import ErrorPage from "../pages/ErrorPage";
 import CreateHouse from "../pages/CreatePost";
-import Moderator from "../pages/Moderator";
+import DashboardOwner from "../pages/DashboardOwner";
 import DashboardAdmin from "../pages/DashboardAdmin";
+import DashbiardUser from "../pages/DashboardUser";
 import RegisterVerify from "../pages/RegisterVerify";
 
 function Routes() {
@@ -20,8 +21,9 @@ function Routes() {
           <Route exact path="/login" component={LandingPage2} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/home/:id" component={Detail} />
-          <Route exact path="/user/:id" component={Moderator} />
           <Route exact path="/create" component={CreateHouse} />
+          <Route exact path="/user/:id" component={DashbiardUser} />
+          <Route exact path="/owner/:id" component={DashboardOwner} />
           <Route exact path="/admin/:id" component={DashboardAdmin} />
           <Route exact path="/register" component={RegisterVerify} />
           <Route exact path="*" component={ErrorPage} />

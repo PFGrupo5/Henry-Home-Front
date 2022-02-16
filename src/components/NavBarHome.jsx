@@ -7,11 +7,11 @@ import { useDispatch } from "react-redux";
 import "../assets/css/NavBar/NavBar.scss";
 import "antd/dist/antd.css";
 
-import Logo from "../assets/img/HenryHome.png"
-import Button from "../UI/Button.jsx"
-import Login from "./Formulario"
+import Logo from "../assets/img/HenryHome.png";
+import Button from "../UI/Button.jsx";
+import Login from "./Formulario";
 
-import { Selects } from "../UI/Input.jsx"
+import { Selects } from "../UI/Input.jsx";
 
 const navBtn = {
   fontSize: 15,
@@ -19,21 +19,21 @@ const navBtn = {
 
 const modalBtn = {
   fontSize: 15,
-  width: 100
+  width: 100,
 };
 
 export default function NavBar() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [typeLogIn, setTypeLogIn] = useState("");
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")))
-  const dispatch = useDispatch()
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // const token = user?.token;
 
-    setUser(JSON.parse(localStorage.getItem("profile")))
-  }, [])
+    setUser(JSON.parse(localStorage.getItem("profile")));
+  }, []);
 
   const showModalR = () => {
     setTypeLogIn("Register");
@@ -59,8 +59,8 @@ export default function NavBar() {
 
   const logOut = () => {
     dispatch(googleLogOut());
-    setUser(null)
-  }
+    setUser(null);
+  };
   const provincias = [
     "buenos aires",
     "catamarca",
@@ -104,50 +104,55 @@ export default function NavBar() {
           <Selects options={provincias} />
         </Col>
         <Col className="navBtn" xs={0} sm={0} md={3} lg={3}>
-          {
-            user ? (
-              <img src={user.result.imageUrl} alt="" />
-            ) : (
-              <Button
-                styles={navBtn}
-                click={showModalS}
-                types="ghost"
-                text="Sign In"
-              />
-            )
-          }
+          {user ? (
+            <img src={user.result.imageUrl} alt="" />
+          ) : (
+            <Button
+              styles={navBtn}
+              click={showModalS}
+              types="ghost"
+              text="Sign In"
+            />
+          )}
         </Col>
         <Col className="navBtn" xs={0} sm={0} md={3} lg={3}>
-          {
-            user ? (
-              user?.result?.role === "Moderator" ? (
-                <Link to={`/user/${user?.result?.id}`}>
-                  <h3>{user.result.name ? user.result.name : `${user.result.firstName} ${user.result.lastName}`}</h3>
-                </Link>
-              ) :
-                <h3>{user.result.name ? user.result.name : `${user.result.firstName} ${user.result.lastName}`}</h3>
+          {user ? (
+            user?.result?.role === "Moderator" ? (
+              <Link to={`/owner/${user?.result?.id}`}>
+                <h3>
+                  {user.result.name
+                    ? user.result.name
+                    : `${user.result.firstName} ${user.result.lastName}`}
+                </h3>
+              </Link>
             ) : (
-              <Button
-                styles={navBtn}
-                click={showModalR}
-                types="ghost"
-                text="Register"
-              />
+              <Link to={`/user/${user?.result?.id}`}>
+                <h3>
+                  {user.result.name
+                    ? user.result.name
+                    : `${user.result.firstName} ${user.result.lastName}`}
+                </h3>
+              </Link>
             )
-          }
+          ) : (
+            <Button
+              styles={navBtn}
+              click={showModalR}
+              types="ghost"
+              text="Register"
+            />
+          )}
         </Col>
         <Col className="navBtn" xs={0} sm={0} md={3} lg={3}>
-          {
-            user && (
-              <Button
-                styles={navBtn}
-                click={logOut}
-                types="danger"
-                text="Log Out"
-              />)
-          }
+          {user && (
+            <Button
+              styles={navBtn}
+              click={logOut}
+              types="danger"
+              text="Log Out"
+            />
+          )}
         </Col>
-
 
         {/* ---------------- Mobile version ---------------- */}
 
@@ -166,13 +171,11 @@ export default function NavBar() {
           md={0}
           lg={0}
         >
-          {
-            user ? (
-              <img src={user.result.imageUrl} alt="" />
-            ) : (
-              <SolutionOutlined className="navIcon" onClick={showModalS} />
-            )
-          }
+          {user ? (
+            <img src={user.result.imageUrl} alt="" />
+          ) : (
+            <SolutionOutlined className="navIcon" onClick={showModalS} />
+          )}
         </Col>
       </Row>
 
@@ -183,7 +186,6 @@ export default function NavBar() {
         onCancel={closeModal}
       >
         <Login nombre={typeLogIn} landing={false} />
-
       </Modal>
 
       <Modal
@@ -203,11 +205,10 @@ export default function NavBar() {
             click={closeSearch}
             types="ghost"
             text="Search"
-          />
+          />,
         ]}
       >
         <Selects options={provincias} />
-
       </Modal>
     </div>
   );
