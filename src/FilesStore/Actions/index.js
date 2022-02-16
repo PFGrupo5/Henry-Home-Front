@@ -23,6 +23,7 @@ export function getHotels(page = 1, size = 10) {
       var json = await axios.get(
         `${URL_BACK}/houses?page=${page}&size=${size}`
       );
+      console.log(json);
       return dispatch({
         type: ALL_HOTELS,
         payload: json.data,
