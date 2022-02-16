@@ -9,10 +9,13 @@ import { PushpinOutlined, DollarOutlined } from "@ant-design/icons";
 import "../assets/css/Detail/Detail.scss";
 import NavBar from "../components/NavBar";
 
+
+
 const { Title, Text } = Typography;
 
 export default function Detail(props) {
   const dispatch = useDispatch();
+  
 
   useEffect(() => {
     dispatch(getDetail(props.match.params.id));
@@ -69,7 +72,7 @@ export default function Detail(props) {
       </div>
 
       <div className="btnDetail">
-        <Link>
+        <Link to={`/home/${props.match.params.id}/reservation`}>
           <button className="reservar">Reservar</button>
         </Link>
 

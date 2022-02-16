@@ -23,7 +23,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    dispatch(getHotels(page, size));
+    dispatch(getHotels(page, size, { status: "Accepted" }));
   }, [dispatch, page, size]);
 
   if (allHotels?.length === 0) {
@@ -36,7 +36,7 @@ export default function Home() {
     return (
       <div className="fullHome">
         <NavBar />
-        <Pages pages={Math.floor(count / size)} actualPage={page} changePage={changePage} />
+        <Pages pages={Math.ceil(count / size)} actualPage={page} changePage={changePage} />
         <Aside />
         <div className="home">
           <div className="cardsHome">
