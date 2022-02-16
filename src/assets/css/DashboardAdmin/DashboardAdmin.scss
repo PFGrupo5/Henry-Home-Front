@@ -1,0 +1,46 @@
+
+// /admin/fdd2a9f8-b364-47e1-a80a-9c541b7ba7a9
+// #092c4c
+// #29344186
+// #f2994a
+
+.adminCards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color:#29344186;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+
+    button{
+        border: none;
+        color: #fff;
+        margin: 10px;
+        padding: 0.5rem 1rem;
+        font-size: 1.3rem;
+        font-weight: 500;
+        border-radius: 0.3rem;
+        transition: all 0.2s;
+        cursor: pointer;
+    }
+
+    button:hover{
+        transform:scale(1.05);
+    }
+
+    section{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .accepted{
+    background-color:#092c4c;
+
+    }
+    .rejected{
+        background-color:#f2994a;
+    }
+   
+}

@@ -78,15 +78,15 @@ export function SignIn(values, history) {
       console.log(json.data);
       dispatch({
         type: SIGNIN,
-        payload: json.data,
-      });
-      history.push("/home");
+        payload: json.data
+      })
+      history.push("/home")
     } catch (error) {
       dispatch({
         type: ERROR_LOGIN,
-        payload: error,
-      });
-      console.log(error);
+        payload: error
+      })
+      console.log(error)
     }
   };
 }
@@ -215,5 +215,6 @@ export function getLocations() {
 }
 
 export function cleanError() {
-  return { type: CLEAN_ERROR, payload: {} };
+  return { type: CLEAN_ERROR, payload: {} }
 }
+
