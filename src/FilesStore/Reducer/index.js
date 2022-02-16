@@ -17,7 +17,7 @@ import {
 const initialState = {
   hotels: [],
   allHotels: [],
-  detail: [],
+  detail: {},
   userDetail: [],
   services: [],
   locations: [],
