@@ -20,7 +20,7 @@ const LandingPage2 = () => {
 
   useEffect(() => {
     if (Object.keys(errors).length) {
-      message.error(errors.message);
+      message.error(errors.response.data.message)
       dispatch(cleanError());
     }
   }, [errors, dispatch]);
@@ -28,8 +28,8 @@ const LandingPage2 = () => {
   return (
     <div className="landingPage-container">
       <NavBar2 />
-      <Carrousel imgs={[img1, img2, img3]} dotsBool={true} styles="img" />
-      <TitleContainer/>
+      <Carrousel imgs={[img1, img2, img3]} dotsBool={true} styles="landingCarrousel" />
+      <TitleContainer />
       <Form />
       <Footer />
     </div>

@@ -51,6 +51,8 @@ export default function NavBar() {
     dispatch(googleLogOut());
     setUser(null)
     window.location.replace("")
+    dispatch(logOut())
+
   }
 
   const provincias = [

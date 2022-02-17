@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Carrousel from "../UI/Carrousel"
 import { Link } from "react-router-dom";
 import "../assets/css/Cards/Cards.scss"
@@ -13,8 +13,13 @@ export default function Cards({
   location,
   img,
   price,
+  favs,
+  click,
+  role,
+
 }) {
   const renderName = name.length <= 12 ? name : `${name.slice(0, 12)}...`;
+  const [excusa, setExcusa] = useState(favs)
   return (
     <div key={id} className="containerCards">
       <div className="divText">
@@ -24,6 +29,13 @@ export default function Cards({
             {renderName}
           </h1>
         </Link>
+
+        {
+          role === "Client" &&
+          <button onClick={() => click(excusa, id, setExcusa)}>
+            {excusa < 0 ? "agregar" : "borrar"}
+          </button>
+        }
 
         <Text className="textCards"> <PushpinOutlined /> {location}</Text>
         <Text className="textCards"><DollarOutlined /> {price}</Text>

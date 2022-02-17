@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,OAAO,CAAA;EACH,OAAO,EAAE,kBAAkB;CAC9B",
-    "sources": [
-        "Aside-components.scss"
-    ],
-    "names": [],
-    "file": "Aside-components.css"
-}
