@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import {Link} from 'react-router-dom'
 import "../assets/css/DashboardUser/DashboardUser.scss";
 import {
   CloseOutlined,
   MenuOutlined,
   ArrowLeftOutlined,
 } from "@ant-design/icons";
+import Carrusel from "../UI/Carrousel";
 import Loading from "../components/Loading";
 import { getUserDetail } from "../FilesStore/Actions";
 
@@ -23,8 +25,6 @@ function DashboardUser() {
   useEffect(() => {
     dispatch(getUserDetail(user.result.id, user.result.role));
   }, [dispatch, user.result.id, user.result.role]);
-
-
 
   const ShowSideBar = () => {
     setShowsidebar(!Showsidebar);
@@ -93,7 +93,28 @@ function DashboardUser() {
                 {userDetail.favs.length === 0 ? (
                   <div>{`No Tienes Hotel Favorito :(`}</div>
                 ) : (
-                  <div>{`Si Tienes Hotel Favorito :)`}</div>
+                  <div>
+                    {userDetail.favs.map((f) => {
+                      return (
+                        <div className="container-card">
+                          <Carrusel
+                            imgs={f.images}
+                            dotsBool={false}
+                            styles="imgCard"
+                          ></Carrusel>
+                          <Link to={`/home/${f.id}`}>
+                          <p className="name-dash">{f.name}</p>
+                          </Link>
+                          <p className="price-dash">
+                            Precio por Noche: {f.pricePerNight}
+                          </p>
+                          <p className="person-dash">
+                            Cantidad de Personas: {f.numberOfPeople}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
                 )}
               </h2>
             </div>
@@ -104,10 +125,24 @@ function DashboardUser() {
             </h1>
             <div className="Last-reservs">
               <h2 className="h2-container">
-                {!userDetail.reservations ? (
+                {!userDetail.Reservations ? (
                   <div>{`No Tienes Reservaciones Previas :(`}</div>
                 ) : (
-                  <div>{`Si Tienes Reservaciones Previas :)`}</div>
+                  <div>
+                    {userDetail.Reservations.map((f) => {
+                      return (
+                        <div className="container-reserv">
+                          <p className="in-dash">Check-In: {f.date_start}</p>
+                          <p className="out-dash">
+                            Check-Out: {f.date_end}
+                          </p>
+                            <Link to={`/home/${f.id_hotel}`} >
+                              <span className="boton-dash-user">Ver Lugar Reservado</span>
+                            </Link>
+                        </div>
+                      );
+                    })}
+                  </div>
                 )}
               </h2>
             </div>
