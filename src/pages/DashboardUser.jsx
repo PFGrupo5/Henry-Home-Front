@@ -22,7 +22,7 @@ function DashboardUser() {
 
   useEffect(() => {
     dispatch(getUserDetail(user.result.id, user.result.role));
-  }, [dispatch]);
+  }, [dispatch, user.result.id, user.result.role]);
 
 
 

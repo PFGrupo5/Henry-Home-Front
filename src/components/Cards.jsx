@@ -16,7 +16,7 @@ export default function Cards({
   favs,
   click,
   role,
-  
+
 }) {
   const renderName = name.length <= 12 ? name : `${name.slice(0, 12)}...`;
   const [excusa, setExcusa] = useState(favs)
@@ -30,7 +30,12 @@ export default function Cards({
           </h1>
         </Link>
 
-        {role==="Client"&&<button onClick={()=>click(excusa,id,setExcusa)}>{excusa<0 ? "agregar" : "borrar" }</button>}
+        {
+          role === "Client" &&
+          <button onClick={() => click(excusa, id, setExcusa)}>
+            {excusa < 0 ? "agregar" : "borrar"}
+          </button>
+        }
 
         <Text className="textCards"> <PushpinOutlined /> {location}</Text>
         <Text className="textCards"><DollarOutlined /> {price}</Text>

@@ -30,10 +30,8 @@ export default function NavBar() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // const token = user?.token;
-
-    setUser(JSON.parse(localStorage.getItem("profile")));
-  }, []);
+    setUser(JSON.parse(localStorage.getItem("profile")))
+  }, [])
 
   const showModalR = () => {
     setTypeLogIn("Register");
@@ -59,8 +57,9 @@ export default function NavBar() {
 
   const logOut = () => {
     dispatch(googleLogOut());
-    setUser(null);
-  };
+    setUser(null)
+    window.location.reload()
+  }
   const provincias = [
     "buenos aires",
     "catamarca",
