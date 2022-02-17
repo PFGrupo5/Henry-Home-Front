@@ -18,7 +18,7 @@ export default function Cards({
   role,
 
 }) {
-  const renderName = name.length <= 12 ? name : `${name.slice(0, 12)}...`;
+  const renderName = name.length <= 12 ? name : `${name.slice(0, 12)}...`
   const [excusa, setExcusa] = useState(favs)
   return (
     <div key={id} className="containerCards">
