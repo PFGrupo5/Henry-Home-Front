@@ -89,7 +89,7 @@ export default function CreatePost() {
         <LeftOutlined className="back" />
       </Link>
       <div className="nav">
-        <img src={Logo} className="logo" alt="Logo"></img>
+        {/* <img src={Logo} className="logo" alt="Logo"></img> */}
       </div>
 
       <h2 className="title">Create Post</h2>

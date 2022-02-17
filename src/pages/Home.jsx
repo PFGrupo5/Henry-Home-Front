@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Cards from "../components/Cards";
 import Footer from "../components/Footer";
-import NavBar from "../components/NavBarHome";
+import NavBarHome2 from "../components/NavBarHome2/NavBarHome2.js";
 import Loading from "../components/Loading";
 import { AddFav, DelFav, getHotels, getUserDetail } from "../FilesStore/Actions/index.js";
 import Aside from "../components/Aside";
@@ -63,8 +63,8 @@ export default function Home() {
   } else {
     return (
       <div className="fullHome">
-        <NavBar />
-        <Pages pages={Math.ceil(count / size)} actualPage={page} changePage={changePage} />
+        <NavBarHome2 />
+        <Pages pages={Math.floor(count / size)} actualPage={page} changePage={changePage} />
         <Aside />
         <div className="home">
           <div className="cardsHome">
