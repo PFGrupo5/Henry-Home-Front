@@ -3,7 +3,7 @@ import { GoogleLogin } from 'react-google-login'
 import { useDispatch } from 'react-redux'
 import { googleLogIn } from '../../../FilesStore/Actions'
 import axios from 'axios'
-import { URL_LOCAL } from '../../../config'
+import { URL_BACK } from '../../../config'
 import { useState } from 'react'
 
 const LoginForm = ({setLoginData,handleForm,loginData})=>{
@@ -20,7 +20,7 @@ const LoginForm = ({setLoginData,handleForm,loginData})=>{
         if(!loginData.email || !loginData.inputPassword){
             console.log('Llenar formulario por favor')
         }else{
-            axios.post(`${URL_LOCAL}/user/login`,loginData)
+            axios.post(`${URL_BACK}/user/login`,loginData)
             .then(res=>{
                 const { data } = res
                 dispatch(googleLogIn(data.result,data.token))
