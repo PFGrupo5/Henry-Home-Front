@@ -3,11 +3,11 @@ import {
   DETAIL,
   GOOGLE_LOGIN,
   GOOGLE_LOGOUT,
- /*  CREATE_HOUSE,
-  ADMIN_STATUS, */
+  /*  CREATE_HOUSE,
+   ADMIN_STATUS, */
   SIGNIN,
-  ADD_FAV,
-  DELETE_FAV,
+  // ADD_FAV,
+  // DELETE_FAV,
   LOG_OUT,
   /* SIGNUP, */
   USER_DETAIL,
@@ -97,7 +97,7 @@ cases[CLEAN_ERROR] = (state, payload) => {
     errors: payload,
   };
 };
-cases[LOG_OUT] = (state,payload) => {
+cases[LOG_OUT] = (state, payload) => {
   return {
     ...state,
     userDetail: []
@@ -105,7 +105,7 @@ cases[LOG_OUT] = (state,payload) => {
 }
 
 
-      
+
 
 export default function reducer(state = initialState, { type, payload }) {
   return cases[type] ? cases[type](state, payload) : state;
