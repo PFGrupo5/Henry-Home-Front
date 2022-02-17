@@ -30,8 +30,6 @@ export default function NavBar() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    // const token = user?.token;
-
     setUser(JSON.parse(localStorage.getItem("profile")))
   }, [])
 
@@ -60,6 +58,7 @@ export default function NavBar() {
   const logOut = () => {
     dispatch(googleLogOut());
     setUser(null)
+    window.location.reload()
   }
   const provincias = [
     "buenos aires",
