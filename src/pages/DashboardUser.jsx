@@ -24,17 +24,13 @@ function DashboardUser() {
     dispatch(getUserDetail(user.result.id, user.result.role));
   }, [dispatch]);
 
-  console.log(user.result.id, user.result.role);
 
-  console.log("soy el detail general", userDetail);
-  console.log("soy el detail de favoritos", userDetail.favs);
-  console.log("soy el detail de las reservas", userDetail.reservations);
 
   const ShowSideBar = () => {
     setShowsidebar(!Showsidebar);
   };
 
-  if (!userDetail) {
+  if (userDetail.length === 0) {
     return (
       <div>
         <Loading />
@@ -94,7 +90,7 @@ function DashboardUser() {
             </h1>
             <div className="Favs-Cards">
               <h2 className="h2-container">
-                {!userDetail.favs ? (
+                {userDetail.favs.length === 0 ? (
                   <div>{`No Tienes Hotel Favorito :(`}</div>
                 ) : (
                   <div>{`Si Tienes Hotel Favorito :)`}</div>
