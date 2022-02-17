@@ -22,12 +22,11 @@ const initialState = {
   hotels: [],
   allHotels: [],
   detail: {},
-  userDetail: [],
+  userDetail: null,
   services: [],
   locations: [],
   facilities: [],
   errors: {},
-  authData: null,
   count: null,
 };
 
@@ -46,25 +45,27 @@ cases[USER_DETAIL] = (state, payload) => ({
   ...state,
   userDetail: payload,
 });
+
 cases[GOOGLE_LOGIN] = (state, payload) => {
   localStorage.setItem("profile", JSON.stringify({ ...payload }));
   return {
     ...state,
-    authData: payload,
+    userDetail: payload,
   };
 };
 cases[GOOGLE_LOGOUT] = (state, payload) => {
   localStorage.clear();
   return {
     ...state,
-    authData: null,
+    userDetail: null,
   };
 };
 cases[SIGNIN] = (state, payload) => {
   localStorage.setItem("profile", JSON.stringify({ ...payload }));
-  window.location.replace("/home");
+  // window.location.replace("/home");
   return {
     ...state,
+    userDetail:payload
   };
 };
 cases[GET_SERVICES] = (state, payload) => {

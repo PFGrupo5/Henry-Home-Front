@@ -7,10 +7,11 @@ import { isWithinInterval } from "date-fns";
 import moment from "moment";
 import axios from "axios";
 import { message } from "antd";
-import NavBar2 from "../components/NavBar2";
+
 import "../assets/css/Reservation/Reservation.scss";
 import { useHistory } from "react-router-dom";
 import { URL_BACK } from "../config";
+
 
 const daysCalculator = (dates) => {
   if (dates.length === 1) return 1;
@@ -118,7 +119,6 @@ if(userReservations === undefined){
 
   return (
     <div>
-      <NavBar2 />
       <div className="reservation-container">
         <div>
           <div>

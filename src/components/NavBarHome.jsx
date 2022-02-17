@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { Row, Col, Image, Modal } from "antd";
 import { SearchOutlined, SolutionOutlined } from "@ant-design/icons";
 import { googleLogOut } from "../FilesStore/Actions";
@@ -28,6 +28,11 @@ export default function NavBar() {
   const [typeLogIn, setTypeLogIn] = useState("");
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
+
+  const params = useParams()
+  const location = useLocation()
+  console.log({params});
+  console.log({location});
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")))

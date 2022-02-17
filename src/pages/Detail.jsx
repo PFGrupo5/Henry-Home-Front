@@ -7,7 +7,7 @@ import imgDefault from "../assets/img/HenryHome.png";
 import { Typography } from "antd";
 import { PushpinOutlined, DollarOutlined } from "@ant-design/icons";
 import "../assets/css/Detail/Detail.scss";
-import NavBar from "../components/NavBar";
+
 
 
 
@@ -15,17 +15,16 @@ const { Title, Text } = Typography;
 
 export default function Detail(props) {
   const dispatch = useDispatch();
-  
+  const { userDetail} = useSelector(state=>state)
 
   useEffect(() => {
     dispatch(getDetail(props.match.params.id));
-  }, [dispatch, props]);
+  }, [dispatch, props, userDetail]);
 
   let hotel = useSelector((state) => state.detail);
   return (
     <div className="allDetail">
       <div className="navbar">
-        <NavBar />
       </div>
       <Title className="title">{hotel.name}</Title>
       <div className="carrouselConteiner">
@@ -70,11 +69,15 @@ export default function Detail(props) {
           return <Text className="text-detail">•{e.name} </Text>;
         })}
       </div>
-
-      <div className="btnDetail">
-        <Link to={`/home/${props.match.params.id}/reservation`}>
+        {
+        userDetail ? (<Link to={`/home/${props.match.params.id}/reservation`}>
           <button className="reservar">Reservar</button>
-        </Link>
+        </Link>) : (<div>
+          <p>Necesitas estar logeado para reservar</p>
+        </div>)
+        }
+      <div className="btnDetail">
+        
 
         <Link to="/home">
           <button className="back">Go back</button>

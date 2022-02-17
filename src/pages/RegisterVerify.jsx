@@ -6,6 +6,7 @@ import { URL_BACK } from "../config";
 import { useHistory } from "react-router-dom";
 import "../assets/css/RegisterVerify/RegisterVerify.scss";
 import NavBar2 from "../components/NavBar2";
+import NavBarHome2 from "../components/NavBarHome2/NavBarHome2";
 
 const RegisterVerify = () => {
   const history = useHistory();
@@ -43,7 +44,7 @@ const RegisterVerify = () => {
 
   return (
     <div className="register-verify-container">
-      <NavBar2 />
+      <NavBarHome2 />
       <div>
         <h2>Registrando email</h2>
         <p>Redirigiendo al home en {num}...</p>

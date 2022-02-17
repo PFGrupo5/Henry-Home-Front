@@ -10,7 +10,7 @@ import * as Unicons from "@iconscout/react-unicons";
 import axios from "axios";
 import { URL_BACK } from "../config";
 
-const Form = () => {
+const Form = ({ role, google }) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -41,12 +41,12 @@ const Form = () => {
     if (!Object.keys(ValidateForm(inputForm)).length) {
       axios
         .post(`${URL_BACK}/user/register`, inputForm)
-        .then(({data}) => {
-          console.log({data});
+        .then(({ data }) => {
+          console.log({ data });
           message.success(data.message);
         })
         .catch((error) => {
-          console.log({error});
+          console.log({ error });
           message.error(error.response.data.message);
         });
       // dispatch(SignUp(inputForm));
@@ -68,8 +68,9 @@ const Form = () => {
     const userSignIn = {
       email: inputForm.email,
       inputPassword: inputForm.inputPassword,
-      role: "Client",
+      role: role,
     };
+    console.log(userSignIn)
     dispatch(SignIn(userSignIn, history));
     clear();
   };
@@ -77,15 +78,15 @@ const Form = () => {
   const forgotPasswordHandler = async () => {
     if (!inputForm.email.trim().length) return message.info("Colocar email");
     console.log(inputForm.email);
-   axios
-     .post(`${URL_BACK}/user/confirm-update-password`, {email:inputForm.email})
-     .then(() => {
-       message.success("Correo enviado");
-     })
-     .catch((error) => {
-       console.log(error.response.data, "aca");
-       message.error(error.response.data.message);
-     });
+    axios
+      .post(`${URL_BACK}/user/confirm-update-password`, { email: inputForm.email })
+      .then(() => {
+        message.success("Correo enviado");
+      })
+      .catch((error) => {
+        console.log(error.response.data, "aca");
+        message.error(error.response.data.message);
+      });
   };
 
   const googleSuccess = async (res) => {
@@ -110,7 +111,7 @@ const Form = () => {
       email: "",
       inputPassword: "",
       confirmPassword: "",
-      role: "Client",
+      role: role,
     });
   };
 
@@ -209,22 +210,25 @@ const Form = () => {
           </div>
           <p onClick={forgotPasswordHandler}>¿Olvidaste la contraseña?</p>
           <button onClick={loginHandler}>Ingresar</button>
-          <GoogleLogin
-            clientId="109526159096-dk6c06q28lkm7uq041ievngdekh1p8k2.apps.googleusercontent.com"
-            render={(renderProps) => (
-              <button
-                onClick={renderProps.onClick}
-                disabled={renderProps.disabled}
-                id="google-btn"
-              >
-                <Unicons.UilGoogle />
-                Ingresar con Google
-              </button>
-            )}
-            onSuccess={googleSuccess}
-            onFailure={googleFailure}
-            cookiePolicy="single_host_origin"
-          />
+          {
+            google &&
+            <GoogleLogin
+              clientId="109526159096-dk6c06q28lkm7uq041ievngdekh1p8k2.apps.googleusercontent.com"
+              render={(renderProps) => (
+                <button
+                  onClick={renderProps.onClick}
+                  disabled={renderProps.disabled}
+                  id="google-btn"
+                >
+                  <Unicons.UilGoogle />
+                  Ingresar con Google
+                </button>
+              )}
+              onSuccess={googleSuccess}
+              onFailure={googleFailure}
+              cookiePolicy="single_host_origin"
+            />
+          }
         </div>
       </form>
     </div>
