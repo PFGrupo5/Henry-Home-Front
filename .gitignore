@@ -26,3 +26,4 @@ yarn-error.log*
 .scss
 .map.css
 /harcodeado.json
+node_modules

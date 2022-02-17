@@ -6,6 +6,10 @@ import {
  /*  CREATE_HOUSE,
   ADMIN_STATUS, */
   SIGNIN,
+  ADD_FAV,
+  DELETE_FAV,
+  LOG_OUT,
+  /* SIGNUP, */
   USER_DETAIL,
   GET_SERVICES,
   GET_FACILITIES,
@@ -93,6 +97,15 @@ cases[CLEAN_ERROR] = (state, payload) => {
     errors: payload,
   };
 };
+cases[LOG_OUT] = (state,payload) => {
+  return {
+    ...state,
+    userDetail: []
+  }
+}
+
+
+      
 
 export default function reducer(state = initialState, { type, payload }) {
   return cases[type] ? cases[type](state, payload) : state;
@@ -176,6 +189,19 @@ function rootReducer(state = initialState, action) {
         ...state,
         errors: action.payload,
       };
+    case ADD_FAV:
+      return {
+        ...state,
+      }
+    case DELETE_FAV:
+      return {
+        ...state,
+      }
+    case LOG_OUT:
+      return {
+        ...state,
+        userDetail: []
+      }
 
     default:
       return {
