@@ -7,10 +7,10 @@ import ErrorPage from "../pages/ErrorPage";
 import CreateHouse from "../pages/CreatePost";
 import DashboardOwner from "../pages/DashboardOwner";
 import DashboardAdmin from "../pages/DashboardAdmin";
-import DashbiardUser from "../pages/DashboardUser";
+import DashboardUser from "../pages/DashboardUser";
 import RegisterVerify from "../pages/RegisterVerify";
 import ChangePassword from "../pages/ChangePassword";
-// import Reservation from "../pages/Reservation";
+import Reservation from "../pages/Reservation";
 import PaymentSuccess from "../pages/PaymentSuccess";
 
 function Routes() {
@@ -26,8 +26,9 @@ function Routes() {
           <Route exact path="/" component={() => (!user ? <LandingPage2 /> : <Redirect to="/home" />)} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/home/:id" component={Detail} />
+          <Route exact path="/home/:id/reservation" component={Reservation} />
           <Route exact path="/create" component={CreateHouse} />
-          <Route exact path="/user/:id" component={DashbiardUser} />
+          <Route exact path="/user/:id" component={DashboardUser} />
           <Route exact path="/owner/:id" component={DashboardOwner} />
           <Route exact path="/admin/:id" component={DashboardAdmin} />
           <Route exact path="/register" component={RegisterVerify} />

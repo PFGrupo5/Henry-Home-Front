@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Form, Input, Button, Cascader } from "antd";
 import "../assets/css/CreatePost/createPost.scss";
-import Logo from "../assets/img/HenryHome.png";
+// import Logo from "../assets/img/HenryHome.png";
 import { LeftOutlined } from "@ant-design/icons";
 import { getFacilities, getServices, getLocations, createHouse } from "../FilesStore/Actions/index"
 

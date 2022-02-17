@@ -24,7 +24,7 @@ const UserCard = ({user})=>{
         <div className='UserCard_profilePic' >
             <div onClick={appear} >
                 <span>{ user.result.firstName }</span>
-                <img src={ user.result.profilePic || userImg } />
+                <img src={ user.result.profilePic || userImg } alt="profile-pic" />
             </div>
             <div ref={options} >
                 <Link to='/profile' >Profile</Link><br/>
