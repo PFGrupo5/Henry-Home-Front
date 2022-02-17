@@ -63,13 +63,8 @@ export default function Home() {
   } else {
     return (
       <div className="fullHome">
-<<<<<<< HEAD
         <NavBarHome2 />
         <Pages pages={Math.floor(count / size)} actualPage={page} changePage={changePage} />
-=======
-        <NavBar />
-        <Pages pages={Math.ceil(count / size)} actualPage={page} changePage={changePage} />
->>>>>>> 4c4c8b5f39d320f19eba8bf662930673217a4d37
         <Aside />
         <div className="home">
           <div className="cardsHome">
