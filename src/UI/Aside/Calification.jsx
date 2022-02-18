@@ -2,39 +2,44 @@ import React from "react";
 import { Cascader } from "antd";
 import "../../assets/css/Aside/Components/Aside-components.scss";
 
-export default function Calification() {
+export default function Calification({setInfo, Info}) {
   const options = [
     {
-      value: "oneStar",
+      value: "0",
+      label: "-",
+    },
+    {
+      value: "1",
       label: "⭐",
     },
     {
-      value: "twoStar",
+      value: "2",
       label: "⭐⭐",
     },
     {
-      value: "threeStar",
+      value: "3",
       label: "⭐⭐⭐",
     },
     {
-      value: "fourStar",
+      value: "4",
       label: "⭐⭐⭐⭐",
     },
     {
-      value: "fiveStar",
+      value: "5",
       label: "⭐⭐⭐⭐⭐",
     },
   ];
 
-  function onChange(value) {
-    console.log(value);
+  const starsChange = (e) => {
+    setInfo({ ...Info, stars: e[0] });
+    console.log(Info)
   }
 
   return (
     <div className="filter">
       <Cascader
         options={options}
-        onChange={onChange}
+        onChange={starsChange}
         placeholder="Calification..."
       />
     </div>

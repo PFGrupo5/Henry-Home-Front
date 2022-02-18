@@ -1,39 +1,29 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { Cascader } from "antd";
+import {InputNumber} from "antd";
 import "../../assets/css/Aside/Components/Aside-components.scss";
 
-export default function Price() {
-  const options = [
-    {
-      value: "0-15",
-      label: "Hasta $15000",
-    },
-    {
-      value: "15-30",
-      label: "$15000 a $30000",
-    },
-    {
-      value: "30-45",
-      label: "$30000 a $45000",
-    },
-    {
-      value: "45-60",
-      label: "$45000 a $60000",
-    },
-    {
-      value: "60up",
-      label: "Más de $60000",
-    },
-  ];
+export default function Minprice({setInfo, Info}) {
+  
 
-  function onChange(value) {
-    console.log(value);
+  
+  
+  const maxChange = (e) => {
+    setInfo({ ...Info, maxPrice: e });
+    console.log(Info)
+  }
+  const minChange = (e) => {
+      setInfo({ ...Info, minPrice: e });
+      console.log(Info)
+      
+    
+    
   }
 
   return (
     <div className="filter">
-      <Cascader options={options} onChange={onChange} placeholder="Price..." />
+     <InputNumber style={{marginRight:"3px"}} size="small" placeholder= "Min $..." onChange={minChange} ></InputNumber>
+     <InputNumber size="small" placeholder= "Max $..." onChange={maxChange} controls="false" ></InputNumber>
     </div>
   );
 }

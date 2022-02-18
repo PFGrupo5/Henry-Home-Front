@@ -4,9 +4,15 @@ import "../assets/css/Aside/Aside.scss";
 import Calification from "../UI/Aside/Calification";
 import People from "../UI/Aside/People";
 import Place from "../UI/Aside/Place";
-import Price from "../UI/Aside/Price";
-
-export default function Aside() {
+import Minprice from "../UI/Aside/Price";
+import Beds from "../UI/Aside/Beds";
+import {Button}   from "antd";
+export default function Aside({
+   setInfo,
+   Info, 
+   findHouses,
+   findAllHouses,
+  }) {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => {
@@ -24,10 +30,17 @@ export default function Aside() {
         <div
           className={sidebar ? "filtersContainer active" : "filtersContainer"}
         >
-          <Calification />
-          <People />
-          <Place />
-          <Price />
+          <Calification setInfo={setInfo} Info={Info} />
+          <People setInfo={setInfo} Info={Info} />
+          <Beds setInfo={setInfo} Info={Info} />
+          <Place setInfo={setInfo} Info={Info} />
+          <Minprice setInfo={setInfo} Info={Info} />
+          <div>
+            <Button style={{marginRight:"3px"}} onClick={findHouses}>Filtro</Button>
+            <Button onClick={findAllHouses}> Todos</Button>
+
+          </div>
+          
         </div>
       </div>
     </div>

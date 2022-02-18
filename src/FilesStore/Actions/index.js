@@ -23,11 +23,11 @@ import filterUrl from "../../utils/FilterUrl"
 
 export function getHotels(page = 1, size = 10, filter) {
   return async function (dispatch) {
-
+    console.log("EEEE",filter)
     const URL = filterUrl(page, size, filter)
     try {
       var json = await axios.get(URL);
-      // &minPrice=${filter?.minPrice}&maxPrice=${filter?.maxPrice}&location=${filter?.location}&stars=${filter?.stars}&numberofPeople=${filter?.numberofPeople}&numberOfBeds=${filter?.numberOfBeds}
+      
       return dispatch({
         type: ALL_HOTELS,
         payload: json.data,
