@@ -14,6 +14,7 @@ import Reservation from "../pages/Reservation";
 import PaymentSuccess from "../pages/PaymentSuccess";
 import NavBarHome2 from "../components/NavBarHome2/NavBarHome2";
 import LandingOwner from "../pages/LandingOwner";
+import EditPost from "../pages/EditPost";
 import { useEffect, useState } from "react";
 
 
@@ -36,6 +37,7 @@ function Routes() {
           <Route exact path="/owners" component={LandingOwner} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/home/:id" component={Detail} />
+          <Route exact path="/home/:id/editar" component={EditPost} />
           <Route exact path="/home/:id/reservation" component={Reservation} />
           <Route exact path="/create" component={CreateHouse} />
           <Route exact path="/user/:id" component={DashboardUser} />

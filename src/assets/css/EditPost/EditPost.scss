@@ -1,0 +1,50 @@
+// .formEditPost {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-around;
+// }
+
+.inputs {
+  width: 400px;
+  margin-top: 10px;
+  border: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.textareaEditPost {
+  width: 400px;
+  margin-top: 10px;
+  border: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.cascader {
+  width: 400px;
+  margin-top: 10px;
+  border: none;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.btnEditPost {
+  margin-top: 10px;
+  background-color: #092c4c;
+  color: #fff;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.15s;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+
+.btnEditPost:hover {
+  transform: scale(1.05);
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}

@@ -4,6 +4,7 @@ import { Cascader } from "antd";
 import "../../assets/css/Aside/Components/Aside-components.scss";
 
 export const provinces = [
+  "All",
   "Buenos Aires",
   "Capital Federal",
   "Catamarca",
@@ -30,20 +31,22 @@ export const provinces = [
   "Tucumán",
 ];
 
-export default function Place() {
+export default function Place({setInfo, Info}) {
   const options = provinces.map((e) => {
-    return { input: e, label: e };
+    if(e==="All"){return { input: e, label: e , value: null} }
+    return { input: e, label: e ,value: e};
   });
 
-  function onChange(value) {
-    console.log(value);
+  const locationChange = (e) => {
+    setInfo({ ...Info, location: e[0] });
+    console.log(Info)
   }
 
   return (
     <div className="filter">
       <Cascader
         options={options}
-        onChange={onChange}
+        onChange={locationChange}
         placeholder="Location..."
       />
     </div>

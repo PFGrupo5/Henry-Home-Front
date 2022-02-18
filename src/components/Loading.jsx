@@ -3,7 +3,7 @@ import "../assets/css/Loading/Loading.scss";
 
 function Loading() {
   return (
-    <div className="body">
+    // <div className="body">
       <div className="load">
         <div>G</div>
         <div>N</div>
@@ -13,7 +13,7 @@ function Loading() {
         <div>O</div>
         <div>L</div>
       </div>
-    </div>
+    // </div>
   );
 }
 

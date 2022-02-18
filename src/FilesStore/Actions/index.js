@@ -18,16 +18,16 @@ import {
   LOCATIONS,
   ERROR_LOGIN,
   CLEAN_ERROR,
+  PATCH_HOUSE,
 } from "../Const Types/constActions";
 import filterUrl from "../../utils/FilterUrl"
 
 export function getHotels(page = 1, size = 10, filter) {
   return async function (dispatch) {
-
     const URL = filterUrl(page, size, filter)
     try {
       var json = await axios.get(URL);
-      // &minPrice=${filter?.minPrice}&maxPrice=${filter?.maxPrice}&location=${filter?.location}&stars=${filter?.stars}&numberofPeople=${filter?.numberofPeople}&numberOfBeds=${filter?.numberOfBeds}
+      
       return dispatch({
         type: ALL_HOTELS,
         payload: json.data,
@@ -259,9 +259,23 @@ export function logOut() {
   return { type: LOG_OUT, payload: {} };
 }
 
-export function fillSingUser() {
-  return {
-    type: FILL_SING_USER,
-    payload: JSON.parse(localStorage.getItem("profile")),
+
+export function patchHouse(payload) {
+  return async function (dispatch) {
+    try {
+      var json = await axios.patch(
+        `https://henry-home-back.herokuapp.com/api/houses`,
+        payload
+      );
+      console.log(json);
+      return dispatch({
+        type: PATCH_HOUSE,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log("Error action");
+      console.log(error);
+    }
   };
 }
+

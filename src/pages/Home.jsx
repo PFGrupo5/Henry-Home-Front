@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Cards from "../components/Cards";
 import Footer from "../components/Footer";
+// import NavBarHome2 from "../components/NavBarHome2/NavBarHome2.js";
 import Loading from "../components/Loading";
 import { AddFav, DelFav, getHotels, getUserDetail } from "../FilesStore/Actions/index.js";
 import Aside from "../components/Aside";
@@ -27,11 +28,19 @@ export default function Home() {
       excusa(e - 1) :
       excusa(e * -1)
   }
-
-  // const resetHome = () => {
-  //   setRenderFav(renderFav + 1)
-  //   console.log("EMMMMMM")
-  // }
+  //filtros
+  const [Info , setInfo] = useState({
+    status: "Accepted",
+    stars: 0, // min de estrellas
+    numberOfPeople: null, // numero de gente 
+    numberOfBeds: null, // numero de camas
+    location: null, // all-created-notCreated
+    minPrice: null,
+    maxPrice: null,
+})
+  const setearInfo = (e)=>{
+    setInfo(e)
+  }
 
   //paginado
   const [page, setPage] = useState(1)
@@ -44,6 +53,20 @@ export default function Home() {
   const changePage = (e) => {
     setPage(e)
   }
+  const findHouses = (e) => {
+    dispatch(getHotels(page,size, Info))
+  }
+  const findAllHouses = (e) => {
+    dispatch(getHotels(page,size, {
+      status: "Accepted",
+      stars: 0, 
+      numberOfPeople: null, 
+      numberOfBeds: null, 
+      location: null, 
+      minPrice: null,
+      maxPrice: null,
+  }))
+  }
 
   useEffect(() => {
     dispatch(getHotels(page, size, { status: "Accepted" }));
@@ -52,20 +75,21 @@ export default function Home() {
   }, [dispatch, page, size, infoUser.id, infoUser.role, renderFav]);
 
 
-  if (allHotels?.length === 0/*  && (User && (favsIds === null || userDetail.favs)) */) {
-    return (
-      <div>
-        <Loading />
-      </div>
-    );
-  } else {
+  // if (allHotels?.length === 0 && (User && (favsIds === null || userDetail?.favs))) {
+  //   return (
+  //     <div>
+  //       <Loading />
+  //     </div>
+  //   );
+  // } else {
     return (
       <div className="fullHome">
         <Pages pages={Math.floor(count / size)} actualPage={page} changePage={changePage} />
-        <Aside />
+        <Aside findHouses={findHouses} setInfo={setearInfo} Info={Info} findAllHouses={findAllHouses}/>
         <div className="home">
           <div className="cardsHome">
-            {allHotels.map((e) => {
+          
+            {allHotels?.length ? allHotels.map((e) => {
               return (
 
                 <Cards
@@ -80,11 +104,10 @@ export default function Home() {
 
                 />
               );
-            })}
+            }) : <Loading />}
           </div>
         </div>
         <Footer />
       </div>
     );
   }
-}
