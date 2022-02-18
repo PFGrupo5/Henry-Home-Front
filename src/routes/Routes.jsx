@@ -1,4 +1,4 @@
-import { BrowserRouter, Redirect, Route, Switch, useLocation } from "react-router-dom";
+import { Redirect, Route, Switch, useLocation } from "react-router-dom";
 // import LandingPage from "../pages/LandingPage";
 import LandingPage2 from "../pages/LandingPage2";
 import Home from "../pages/Home";
@@ -15,19 +15,20 @@ import PaymentSuccess from "../pages/PaymentSuccess";
 import NavBarHome2 from "../components/NavBarHome2/NavBarHome2";
 import LandingOwner from "../pages/LandingOwner";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+
 
 
 
 function Routes() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const location = useLocation()
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")))
-    console.log(user);
-  })
+  }, [location])
   
+  console.log(user);
   return (
-    <BrowserRouter>
+    
       <div className="App">
         <NavBarHome2 />
         <Switch>
@@ -47,7 +48,7 @@ function Routes() {
           <Route exact path="*" component={ErrorPage} />
         </Switch>
       </div>
-    </BrowserRouter>
+
   );
 }
 

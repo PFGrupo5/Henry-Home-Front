@@ -1,18 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Routes from './routes/Routes.jsx';
+import React from "react";
+import ReactDOM from "react-dom";
+import Routes from "./routes/Routes.jsx";
 import { store } from "./FilesStore/Store";
 import { Provider } from "react-redux";
-import "./index.css"
-import "./index.scss"
-
+import { BrowserRouter} from "react-router-dom";
+import "./index.css";
+import "./index.scss";
 
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <Routes />
-    </React.StrictMode>
+    <BrowserRouter>
+      <React.StrictMode>
+        <Routes />
+      </React.StrictMode>
+    </BrowserRouter>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-

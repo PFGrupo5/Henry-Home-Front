@@ -122,7 +122,7 @@ export function createHouse(formData, token) {
   return async function (dispatch) {
     try {
       var json = await axios.post(
-        `https://henry-home-back.herokuapp.com/api/houses`,
+        `${URL_BACK}/houses`,
         formData,
         {
           headers: {
