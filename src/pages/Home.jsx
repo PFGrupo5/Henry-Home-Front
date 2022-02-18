@@ -11,7 +11,6 @@ import Pages from "../components/Pages";
 
 export default function Home() {
   const dispatch = useDispatch();
-
   const User = JSON.parse(localStorage.getItem("profile"));
   const infoUser = User ? User.result : { id: null, role: null }
   const [renderFav, setRenderFav] = useState(1)

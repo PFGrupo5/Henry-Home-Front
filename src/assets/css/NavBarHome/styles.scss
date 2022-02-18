@@ -1,109 +1,117 @@
-.NavBarHome_container{
-    background: white;
-    width: 100%;
-    padding: 0.5rem 3rem;
-    padding-right: 3.2rem;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.NavBarHome_container {
+  background: white;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.NavBarHome_logo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .NavBarHome_linkHome {
-        margin-top: 0.3rem;
-        font-size: 1.25rem;
-        font-weight: bold;
+.NavBarHome_logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .NavBarHome_linkHome {
+    margin-top: 0.3rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    span {
+      color: #f2994a;
+    }
+  }
+}
+.NavBarHome_btnContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    padding: 0.3rem 1rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-registro {
+    background-color: transparent;
+    font-weight: 600;
+  }
+  .btn-ingreso {
+    background-color: #092c4c;
+    color: #fff;
+  }
+}
+
+.NavBarHome_selector {
+  width: 500px;
+}
+.NavBarHome_forms {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s all;
+  transform-origin: 90% 0%;
+  transform: scale(0);
+  form {
+    z-index: 10000;
+    background: white;
+    padding: 25px;
+    border-radius: 5px;
+    position: relative;
+    > div {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      right: 15px;
+      display: flex;
+      justify-content: flex-end;
       span {
-        color: #f2994a;
+        cursor: pointer;
+        border-radius: 50%;
+        font-size: 1.5em;
       }
     }
-}
-.NavBarHome_btnContainer{
-    display: flex;
-    >button {
-        padding: 0.3rem 1rem;
-        border-radius: 0.3rem;
-        margin: 0 7px;
-        cursor: pointer;
-        border: none;
-
+    > input {
+      margin: 10px 0;
     }
-    >button:nth-child(1){
-        background-color: transparent;
-        font-weight: 600;
+    .NavBarHome_loginBtn {
+      background: #f2994a;
+      border: none;
+      padding: 3px;
+      color: #092c4c;
+      cursor: pointer;
+      :hover {
+        background: #97897c;
+      }
     }
-    >button:nth-child(2){
-        background-color: #092c4c;
-        color: #fff;
+    .NavBarHome_errorMsg {
+      color: red;
+      width: 100%;
+      text-align: center;
     }
+  }
 }
-
-.NavBarHome_selector{
-    width: 500px;
-}
-.NavBarHome_forms{
-    position: fixed;
-    width: 100%;
-    top:0;
-    z-index: 100;
-    background: rgba(0,0,0,0.5);
-    height:100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.3s all;
-    transform-origin: 90% 0%;
-    transform: scale(0);
-    form{
-        z-index: 10000;
-        background: white;
-        padding: 25px;
-        border-radius: 5px;
-        position: relative;
-        >div{
-            width: 100%;
-            position: absolute;
-            top: 0;
-            right: 15px;
-            display: flex;
-            justify-content: flex-end;
-            span{
-                cursor: pointer;
-                border-radius: 50%;
-                font-size: 1.5em;
-            }
-        }
-        >input{
-            margin: 10px 0;
-        }
-        .NavBarHome_loginBtn{
-            background: #f2994a;
-            border: none;
-            padding: 3px;
-            color: #092c4c;
-            cursor: pointer;
-            :hover{
-                background: #97897c;
-            }
-        }
-        .NavBarHome_errorMsg{
-            color: red;
-            width: 100%;
-            text-align: center;
-        }
-    }
-}
-.NavBarHome_googleBtn{
-    width: 100%;
-    padding: 5px;
-    margin-top: 15px;
-    cursor: pointer;
-    border:none;
+.NavBarHome_googleBtn {
+  width: 100%;
+  padding: 5px;
+  margin-top: 15px;
+  cursor: pointer;
+  border: none;
 }
 
-.noShow{
-    display: none;
+.noShow {
+  display: none;
 }
+
+@media screen and (min-width: 600px) {
+  .NavBarHome_container {
+    padding: 0.5rem 3rem;
+  }
+}
+

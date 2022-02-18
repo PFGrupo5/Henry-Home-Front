@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch, } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch, } from "react-router-dom";
 // import LandingPage from "../pages/LandingPage";
 import LandingPage2 from "../pages/LandingPage2";
 import Home from "../pages/Home";
@@ -14,21 +14,29 @@ import Reservation from "../pages/Reservation";
 import PaymentSuccess from "../pages/PaymentSuccess";
 import NavBarHome2 from "../components/NavBarHome2/NavBarHome2";
 import LandingOwner from "../pages/LandingOwner";
+import EditPost from "../pages/EditPost";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 
 
 function Routes() {
-
-
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const { userDetail } = useSelector(state => state)
+  useEffect(() => {
+    setUser(userDetail)
+  }, [userDetail])
+  
   return (
     <BrowserRouter>
       <div className="App">
         <NavBarHome2 />
         <Switch>
-          <Route exact path="/" component={LandingPage2} />
+          <Route exact path="/" component={() => (!user ? <LandingPage2 /> : <Redirect to="/home" />)} />
           <Route exact path="/owners" component={LandingOwner} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/home/:id" component={Detail} />
+          <Route exact path="/home/:id/editar" component={EditPost} />
           <Route exact path="/home/:id/reservation" component={Reservation} />
           <Route exact path="/create" component={CreateHouse} />
           <Route exact path="/user/:id" component={DashboardUser} />

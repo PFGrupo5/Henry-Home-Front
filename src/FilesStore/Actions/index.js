@@ -18,6 +18,7 @@ import {
   LOCATIONS,
   ERROR_LOGIN,
   CLEAN_ERROR,
+  PATCH_HOUSE,
 } from "../Const Types/constActions";
 import filterUrl from "../../utils/FilterUrl"
 
@@ -260,4 +261,23 @@ export function DelFav(id, token) {
 
 export function logOut() {
   return { type: LOG_OUT, payload: {} };
+}
+
+export function patchHouse(payload) {
+  return async function (dispatch) {
+    try {
+      var json = await axios.patch(
+        `https://henry-home-back.herokuapp.com/api/houses`,
+        payload
+      );
+      console.log(json);
+      return dispatch({
+        type: PATCH_HOUSE,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log("Error action");
+      console.log(error);
+    }
+  };
 }
