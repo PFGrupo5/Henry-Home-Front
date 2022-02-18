@@ -96,6 +96,7 @@ const NavBarHome2 = () => {
           <Link to="/" className="NavBarHome_linkHome">
             Henry <span>Home</span>{" "}
             {path === "/owners" && <span id="owners"> - Propietario</span>}
+            {path === "/admins" && <span id="owners"> - Administrador</span>}
           </Link>
         </div>
         <div className="NavBarHome_btnContainer">
