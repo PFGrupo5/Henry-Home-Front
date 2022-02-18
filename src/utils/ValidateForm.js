@@ -5,6 +5,7 @@ export const ValidateForm = ({
   inputPassword,
   confirmPassword,
 }) => {
+  console.log({inputPassword});
   const errors = {};
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
   if (!firstName) {

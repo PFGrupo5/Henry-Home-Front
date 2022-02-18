@@ -9,9 +9,10 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 
 import UserCard from "./UserCard";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { googleLogOut } from "../../FilesStore/Actions";
+import { cleanError, fillSingUser, googleLogOut } from "../../FilesStore/Actions";
+import { message } from "antd";
 /* const provincias = [
   "buenos aires",
   "catamarca",
@@ -43,26 +44,15 @@ const NavBarHome2 = () => {
   const history = useHistory();
   const location = useLocation();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const { errors, signUser } = useSelector((state) => state);
   // referencia al contenedor de los formularios
   const formularios = useRef(null);
   // estado para hacer visible determinado formulario en el contenedor
   const [visible, setVisible] = useState(true);
   const [display, setDisplay] = useState(true);
   // instancias para los datos de registro
-  const [registerData, setRegisterData] = useState({
-    firstName: "",
-    lastName: "",
-    inputPassword: "",
-    confirmPassword: "",
-    email: "",
-    role: "Client",
-  });
+ 
   // instancias para los datos de login
-  const [loginData, setLoginData] = useState({
-    email: "",
-    inputPassword: "",
-    role: "Client",
-  });
 
   // console.log(location)
   const logout = () => {
@@ -73,7 +63,11 @@ const NavBarHome2 = () => {
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));
-  }, [location]);
+    if (Object.keys(errors).length) {
+      message.error(errors.response.data.message);
+      dispatch(cleanError());
+    }
+  }, [errors, location]);
 
   const handleForm = (e) => {
     setDisplay(true);
@@ -93,7 +87,7 @@ const NavBarHome2 = () => {
 
     if (e.target.classList[0] === "NavBarHome_forms") setDisplay(false);
   };
-  console.log(history.location.pathname);
+
   const path = history.location.pathname;
   return (
     <>
@@ -104,9 +98,6 @@ const NavBarHome2 = () => {
             {path === "/owners" && <span id="owners"> - Propietario</span>}
           </Link>
         </div>
-        {/* <div className="NavBarHome_selector">
-          <Selects options={provincias} />
-        </div> */}
         <div className="NavBarHome_btnContainer">
           {user ? (
             <UserCard user={user} logout={logout} />
@@ -144,17 +135,10 @@ const NavBarHome2 = () => {
         >
           {visible ? (
             <LoginForm
-              setLoginData={setLoginData}
-              handleForm={handleForm}
-              loginData={loginData}
-              setUser={setUser}
               setDisplay={setDisplay}
             />
           ) : (
             <RegisterForm
-              setRegisterData={setRegisterData}
-              handleForm={handleForm}
-              registerData={registerData}
               setDisplay={setDisplay}
             />
           )}

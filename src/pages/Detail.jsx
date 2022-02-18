@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail } from "../FilesStore/Actions";
@@ -15,6 +15,7 @@ const { Title, Text } = Typography;
 
 export default function Detail(props) {
   const dispatch = useDispatch();
+  const [user] = useState(JSON.parse(localStorage.getItem("profile")));
   const { userDetail} = useSelector(state=>state)
   const find = userDetail?.Housings?.filter(
     (e) => e.id === props.match.params.id
@@ -82,7 +83,7 @@ export default function Detail(props) {
         })}
       </div>
         {
-        userDetail ? (<Link to={`/home/${props.match.params.id}/reservation`}>
+        user ? (<Link to={`/home/${props.match.params.id}/reservation`}>
           <button className="reservar">Reservar</button>
         </Link>) : (<div>
           <p>Necesitas estar logeado para reservar</p>

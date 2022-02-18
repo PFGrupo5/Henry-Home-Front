@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 const UserCard = ({ user, logout }) => {
   const options = useRef(null);
   const [visible, setVisible] = useState(false);
-  const { userDetail } = useSelector((state) => state);
+  // const { signUser } = useSelector((state) => state);
 
   const appear = () => {
     setVisible(!visible);
@@ -20,16 +20,21 @@ const UserCard = ({ user, logout }) => {
 
   const menu = (
     <Menu>
-      <Menu.Item>
-        <Link to={`/user/${userDetail?.id}`}>Perfil</Link>
-      </Menu.Item>
-      <Menu.Item>
-        {userDetail?.role === "Moderator" ? (
-          <Link to={`/owner/${userDetail?.id}`}>Perfil Dueño</Link>
-        ) : (
-          <Link to="/owners">Convertirse en dueño</Link>
-        )}
-      </Menu.Item>
+      {user?.result?.role === "Moderator" ? (
+        <Menu.Item>
+          <Link to={`/owner/${user?.result?.id}`}>Perfil Dueño</Link>
+        </Menu.Item>
+      ) : (
+        <>
+          <Menu.Item>
+            <Link to={`/user/${user?.result?.id}`}>Perfil</Link>
+          </Menu.Item>
+          <Menu.Item>
+            <Link to="/owners">Convertirse en dueño</Link>
+          </Menu.Item>
+        </>
+      )}
+
       <Menu.Item>
         <p onClick={logout}>Cerrar sesión</p>
       </Menu.Item>
@@ -40,7 +45,7 @@ const UserCard = ({ user, logout }) => {
     <div className="UserCard_profilePic">
       <div onClick={appear}>
         <Dropdown overlay={menu} placement="bottomLeft" arrow>
-          <span>{user.result.firstName || user.result.givenName}</span>
+          <span className="user-name">{user.result.firstName || user.result.givenName}</span>
         </Dropdown>
         <img src={user.result.imageUrl || userImg} alt="profile-pic" />
       </div>
