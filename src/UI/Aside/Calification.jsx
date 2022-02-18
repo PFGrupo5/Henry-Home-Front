@@ -36,12 +36,13 @@ export default function Calification({setInfo, Info}) {
   }
 
   return (
-    <div className="filter">
+
       <Cascader
         options={options}
         onChange={starsChange}
-        placeholder="Calification..."
+        placeholder="Calificación..."
+        className="filter"
       />
-    </div>
+
   );
 }

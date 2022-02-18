@@ -21,7 +21,7 @@ import {
 const initialState = {
   hotels: [],
   allHotels: [],
-  detail: {},
+  detail: null,
   userDetail: null,
   signUser: null,
   services: [],
@@ -49,6 +49,7 @@ cases[USER_DETAIL] = (state, payload) => ({
 });
 
 cases[GOOGLE_LOGIN] = (state, payload) => {
+  console.log(payload);
   localStorage.setItem("profile", JSON.stringify({ ...payload }));
   return {
     ...state,
@@ -60,6 +61,7 @@ cases[GOOGLE_LOGOUT] = (state, payload) => {
   return {
     ...state,
     signUser: null,
+    userDetail:null
   };
 };
 cases[SIGNIN] = (state, payload) => {

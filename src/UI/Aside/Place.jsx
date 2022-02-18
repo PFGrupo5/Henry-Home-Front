@@ -43,12 +43,13 @@ export default function Place({setInfo, Info}) {
   }
 
   return (
-    <div className="filter">
+
       <Cascader
         options={options}
         onChange={locationChange}
-        placeholder="Location..."
+        placeholder="Ubicación..."
+        className="filter"
       />
-    </div>
+
   );
 }
