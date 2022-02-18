@@ -23,7 +23,6 @@ import filterUrl from "../../utils/FilterUrl"
 
 export function getHotels(page = 1, size = 10, filter) {
   return async function (dispatch) {
-    console.log("EEEE",filter)
     const URL = filterUrl(page, size, filter)
     try {
       var json = await axios.get(URL);
