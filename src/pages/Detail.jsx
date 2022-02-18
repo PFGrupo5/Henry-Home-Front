@@ -16,15 +16,25 @@ const { Title, Text } = Typography;
 export default function Detail(props) {
   const dispatch = useDispatch();
   const { userDetail} = useSelector(state=>state)
+  const find = userDetail?.Housings?.filter(
+    (e) => e.id === props.match.params.id
+  );
 
   useEffect(() => {
     dispatch(getDetail(props.match.params.id));
   }, [dispatch, props, userDetail]);
 
+  let id = props.match.params.id;
+
   let hotel = useSelector((state) => state.detail);
   return (
     <div className="allDetail">
       <div className="navbar">
+      </div>
+      <div className={!find ? "isOwner" : "isNotOwner"}>
+        <Link to={`/home/${id}/editar`}>
+          <button>Editar</button>
+        </Link>
       </div>
       <Title className="title">{hotel.name}</Title>
       <div className="carrouselConteiner">
@@ -34,6 +44,7 @@ export default function Detail(props) {
           styles="imgDetail"
         />
       </div>
+      <Text>Publicado por {hotel.userMod.email}</Text>
       <div className="description">
         <Text>{hotel.description}</Text>
         <br />
@@ -46,6 +57,7 @@ export default function Detail(props) {
         <Text className="price">
           <DollarOutlined /> {hotel.pricePerNight}
         </Text>
+        <Text>Cantidad de camas: {hotel.numberOfBeds}</Text>
       </div>
       {/* <div className="facilities">
         Facilities:
