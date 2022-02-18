@@ -14,7 +14,7 @@ export default function Minprice({setInfo, Info}) {
   }
   const minChange = (e) => {
       setInfo({ ...Info, minPrice: e });
-      console.log(Info)
+    console.log(Info)
       
     
     
