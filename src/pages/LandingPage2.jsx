@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Form from "../components/Form";
-import NavBar2 from "../components/NavBar2";
+
 import TitleContainer from "../components/TitleContainer";
 import img1 from "../assets/img/Landing Page 1.jpg";
 import img2 from "../assets/img/Landing Page 2.jpg";
@@ -27,7 +27,6 @@ const LandingPage2 = () => {
 
   return (
     <div className="landingPage-container">
-      <NavBar2 />
       <Carrousel imgs={[img1, img2, img3]} dotsBool={true} styles="landingCarrousel" />
       <TitleContainer />
       <Form role="Client" google={true}/>

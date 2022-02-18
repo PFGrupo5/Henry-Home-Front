@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Cards from "../components/Cards";
 import Footer from "../components/Footer";
-import NavBarHome2 from "../components/NavBarHome2/NavBarHome2.js";
 import Loading from "../components/Loading";
 import { AddFav, DelFav, getHotels, getUserDetail } from "../FilesStore/Actions/index.js";
 import Aside from "../components/Aside";
@@ -11,7 +10,6 @@ import Pages from "../components/Pages";
 
 export default function Home() {
   const dispatch = useDispatch();
-
   const User = JSON.parse(localStorage.getItem("profile"));
   const infoUser = User ? User.result : { id: null, role: null }
   const [renderFav, setRenderFav] = useState(1)
@@ -54,7 +52,7 @@ export default function Home() {
   }, [dispatch, page, size, infoUser.id, infoUser.role, renderFav]);
 
 
-  if (allHotels?.length === 0 && (User && (favsIds === null || userDetail.favs))) {
+  if (allHotels?.length === 0/*  && (User && (favsIds === null || userDetail.favs)) */) {
     return (
       <div>
         <Loading />

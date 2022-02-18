@@ -30,7 +30,7 @@ function DashboardUser() {
     setShowsidebar(!Showsidebar);
   };
 
-  if (userDetail.length === 0) {
+  if (!userDetail) {
     return (
       <div>
         <Loading />

@@ -2,8 +2,7 @@ import { URL_BACK } from "../config"
 
 export default function filterUrl(page,size,query){
     
-   var URL= URL_BACK + "/houses?" + "page=" + page + "&size=" + size
-    console.log("1: ",URL)
+   var URL= URL_BACK + "/houses?page=" + page + "&size=" + size
    if(query){
     if(query.status){
         URL += "&status=" + query.status
@@ -26,7 +25,6 @@ export default function filterUrl(page,size,query){
     if(query.numberOfBeds){
         URL += "&numberOfBeds=" + query.numberOfBeds
     }
-
    }
 
    return URL
