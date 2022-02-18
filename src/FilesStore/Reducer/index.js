@@ -10,7 +10,6 @@ import {
   // DELETE_FAV,
   LOG_OUT,
   /* SIGNUP, */
-  FILL_SING_USER,
   USER_DETAIL,
   GET_SERVICES,
   GET_FACILITIES,
@@ -22,7 +21,7 @@ import {
 const initialState = {
   hotels: [],
   allHotels: [],
-  detail: {},
+  detail: null,
   userDetail: null,
   signUser: null,
   services: [],
@@ -33,10 +32,7 @@ const initialState = {
 };
 
 const cases = {};
-cases[FILL_SING_USER] = (state, payload) => ({
-  ...state,
-  signUser: payload,
-});
+
 cases[ALL_HOTELS] = (state, payload) => ({
   ...state,
   hotels: payload.rows,
@@ -53,6 +49,7 @@ cases[USER_DETAIL] = (state, payload) => ({
 });
 
 cases[GOOGLE_LOGIN] = (state, payload) => {
+  console.log(payload);
   localStorage.setItem("profile", JSON.stringify({ ...payload }));
   return {
     ...state,
@@ -64,6 +61,7 @@ cases[GOOGLE_LOGOUT] = (state, payload) => {
   return {
     ...state,
     signUser: null,
+    userDetail:null
   };
 };
 cases[SIGNIN] = (state, payload) => {

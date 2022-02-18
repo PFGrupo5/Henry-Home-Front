@@ -47,7 +47,6 @@ const PaymentSuccess = () => {
 
   return (
     <div className="register-verify-container">
-      <NavBarHome2 />
       <div>
         <h2>Reserva confirmada</h2>
         <p>Redirigiendo al home en {num}...</p>

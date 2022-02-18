@@ -6,13 +6,13 @@ import People from "../UI/Aside/People";
 import Place from "../UI/Aside/Place";
 import Minprice from "../UI/Aside/Price";
 import Beds from "../UI/Aside/Beds";
-import {Button}   from "antd";
+import { Button } from "antd";
 export default function Aside({
-   setInfo,
-   Info, 
-   findHouses,
-   findAllHouses,
-  }) {
+  setInfo,
+  Info,
+  findHouses,
+  findAllHouses,
+}) {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => {
@@ -20,29 +20,21 @@ export default function Aside({
   };
 
   return (
-    <div className="containerOfContainers">
-      {sidebar === false ? (
-        <MenuOutlined onClick={showSidebar} className="buttons" />
-      ) : (
-        <CloseOutlined onClick={showSidebar} className="buttons" />
-      )}
-      <div className="generalContainer">
-        <div
-          className={sidebar ? "filtersContainer active" : "filtersContainer"}
-        >
-          <Calification setInfo={setInfo} Info={Info} />
-          <People setInfo={setInfo} Info={Info} />
-          <Beds setInfo={setInfo} Info={Info} />
-          <Place setInfo={setInfo} Info={Info} />
-          <Minprice setInfo={setInfo} Info={Info} />
-          <div>
-            <Button style={{marginRight:"3px"}} onClick={findHouses}>Filtro</Button>
-            <Button onClick={findAllHouses}> Todos</Button>
-
-          </div>
-          
+    <div className="aside-container">
+      <div className="filter-container">
+        <div>
+          <h2>Filtrar</h2>
+        </div>
+        <Place setInfo={setInfo} Info={Info} className="filter" />
+        <People setInfo={setInfo} Info={Info} className="filter" />
+        <Beds setInfo={setInfo} Info={Info} className="filter" />
+        <Calification setInfo={setInfo} Info={Info} className="filter" />
+        <Minprice setInfo={setInfo} Info={Info} className="filter" />
+        <div className="btn-container">
+          <button onClick={findHouses} className="filtrar">Filtrar</button>
+          <button onClick={findAllHouses}> Resetear</button>
         </div>
       </div>
-    </div>
+    </div >
   );
 }

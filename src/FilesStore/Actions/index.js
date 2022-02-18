@@ -11,7 +11,6 @@ import {
   ADD_FAV,
   DELETE_FAV,
   LOG_OUT,
-  FILL_SING_USER,
   USER_DETAIL,
   GET_SERVICES,
   GET_FACILITIES,
@@ -41,10 +40,10 @@ export function getHotels(page = 1, size = 10, filter) {
 export function getDetail(id) {
   return async function (dispatch) {
     try {
-      var json = await axios.get(`${URL_BACK}/houses/${id}`);
+      var {data} = await axios.get(`${URL_BACK}/houses/${id}`);
       return dispatch({
         type: DETAIL,
-        payload: json.data,
+        payload: data,
       });
     } catch (error) {
       console.log(error);

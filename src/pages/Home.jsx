@@ -29,7 +29,7 @@ export default function Home() {
       excusa(e * -1)
   }
   //filtros
-  const [Info , setInfo] = useState({
+  const [Info, setInfo] = useState({
     status: "Accepted",
     stars: 0, // min de estrellas
     numberOfPeople: null, // numero de gente 
@@ -37,8 +37,8 @@ export default function Home() {
     location: null, // all-created-notCreated
     minPrice: null,
     maxPrice: null,
-})
-  const setearInfo = (e)=>{
+  })
+  const setearInfo = (e) => {
     setInfo(e)
   }
 
@@ -54,18 +54,18 @@ export default function Home() {
     setPage(e)
   }
   const findHouses = (e) => {
-    dispatch(getHotels(page,size, Info))
+    dispatch(getHotels(page, size, Info))
   }
   const findAllHouses = (e) => {
-    dispatch(getHotels(page,size, {
+    dispatch(getHotels(page, size, {
       status: "Accepted",
-      stars: 0, 
-      numberOfPeople: null, 
-      numberOfBeds: null, 
-      location: null, 
+      stars: 0,
+      numberOfPeople: null,
+      numberOfBeds: null,
+      location: null,
       minPrice: null,
       maxPrice: null,
-  }))
+    }))
   }
 
   useEffect(() => {
@@ -82,13 +82,12 @@ export default function Home() {
   //     </div>
   //   );
   // } else {
-    return (
-      <div className="fullHome">
-        <Pages pages={Math.floor(count / size)} actualPage={page} changePage={changePage} />
-        <Aside findHouses={findHouses} setInfo={setearInfo} Info={Info} findAllHouses={findAllHouses}/>
-        <div className="home">
+  return (
+    <main >
+      <div className="home-containter">
+        <Aside findHouses={findHouses} setInfo={setearInfo} Info={Info} findAllHouses={findAllHouses} />
+        <div className="cards-container">
           <div className="cardsHome">
-          
             {allHotels?.length ? allHotels.map((e) => {
               return (
 
@@ -106,8 +105,10 @@ export default function Home() {
               );
             }) : <Loading />}
           </div>
+          <Pages pages={Math.floor(count / size)} actualPage={page} changePage={changePage} />
         </div>
-        <Footer />
       </div>
-    );
-  }
+      <Footer />
+    </main>
+  );
+}

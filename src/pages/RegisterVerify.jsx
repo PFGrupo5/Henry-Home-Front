@@ -44,7 +44,6 @@ const RegisterVerify = () => {
 
   return (
     <div className="register-verify-container">
-      <NavBarHome2 />
       <div>
         <h2>Registrando email</h2>
         <p>Redirigiendo al home en {num}...</p>
