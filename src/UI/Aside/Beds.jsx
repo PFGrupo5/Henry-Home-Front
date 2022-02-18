@@ -3,12 +3,8 @@ import "antd/dist/antd.css";
 import { Cascader } from "antd";
 import "../../assets/css/Aside/Components/Aside-components.scss";
 
-export default function People({setInfo, Info}) {
+export default function Beds({setInfo, Info}) {
   const options = [
-    {
-      value: 0,
-      label: "-",
-    },
     {
       value: "1",
       label: "1",
@@ -41,16 +37,17 @@ export default function People({setInfo, Info}) {
       value: "8",
       label: "8",
     },
+
   ];
 
-  const peopleChange = (e) => {
-    setInfo({ ...Info, numberOfPeople: e[0] });
+  const bedsChange = (e) => {
+    setInfo({ ...Info, numberOfBeds: e[0] });
     console.log(Info)
   }
 
   return (
     <div className="filter">
-      <Cascader name="numberOfPeople" options={options} onChange={peopleChange} placeholder="People..." />
+      <Cascader options={options} onChange={bedsChange} placeholder="Beds..." />
     </div>
   );
 }
