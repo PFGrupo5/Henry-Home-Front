@@ -7,7 +7,6 @@ import jwt from "jwt-decode";
 import axios from "axios";
 import { ValidateForm } from "../utils/ValidateForm";
 import "../assets/css/ChangePassword/ChangePassword.scss";
-import NavBar2 from "../components/NavBar2";
 
 const ChangePassword = () => {
   const [inputForm, setInputForm] = useState({
@@ -54,7 +53,6 @@ const ChangePassword = () => {
   };
   return (
     <div>
-      <NavBar2 />
       <div className="change-password-container">
         <form onSubmit={changePasswordHandler}>
           <h2>Cambiar contraseña</h2>
