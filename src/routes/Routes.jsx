@@ -1,4 +1,4 @@
-import { BrowserRouter, Redirect, Route, Switch, } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch, useLocation } from "react-router-dom";
 // import LandingPage from "../pages/LandingPage";
 import LandingPage2 from "../pages/LandingPage2";
 import Home from "../pages/Home";
@@ -21,10 +21,10 @@ import { useSelector } from "react-redux";
 
 function Routes() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  const { userDetail } = useSelector(state => state)
   useEffect(() => {
-    setUser(userDetail)
-  }, [userDetail])
+    setUser(JSON.parse(localStorage.getItem("profile")))
+    console.log(user);
+  })
   
   return (
     <BrowserRouter>

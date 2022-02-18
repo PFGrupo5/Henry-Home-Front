@@ -16,3 +16,4 @@ export const CLEAN_ERROR = "CLEAN_ERROR"
 export const ADD_FAV = "ADD_FAV"
 export const DELETE_FAV = "DELETE_FAV"
 export const LOG_OUT = "LOG_OUT"
+export const FILL_SING_USER = "FILL_SING_USER";

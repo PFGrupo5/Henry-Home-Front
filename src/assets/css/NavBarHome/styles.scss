@@ -18,6 +18,10 @@
     span {
       color: #f2994a;
     }
+    #owners {
+      color: var(--main-blue);
+      font-size: 0.9rem;
+    }
   }
 }
 .NavBarHome_btnContainer {
@@ -60,11 +64,11 @@
   transform: scale(0);
   form {
     z-index: 10000;
-    background: white;
-    padding: 25px;
-    border-radius: 5px;
-    position: relative;
-    > div {
+    background-color: var(--main-blue);
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 99%;
+    /*  div {
       width: 100%;
       position: absolute;
       top: 0;
@@ -76,15 +80,46 @@
         border-radius: 50%;
         font-size: 1.5em;
       }
+    } */
+
+    h3 {
+      color: #fff;
+      font-size: 1.2rem;
+      text-align: center;
     }
-    > input {
-      margin: 10px 0;
+    .inputContainer {
+      input {
+        width: 100%;
+        background: rgb(255, 255, 255);
+        justify-content: center;
+        display: flex;
+        margin: 0.2rem 0;
+        padding: 0.4rem 1rem;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+      }
+      .error-message {
+        margin-top: -0.3rem;
+        color: rgb(240, 82, 82);
+      }
     }
-    .NavBarHome_loginBtn {
-      background: #f2994a;
+
+    p {
+      color: #fff;
+      text-align: center;
+    }
+    button {
       border: none;
       padding: 3px;
       color: #092c4c;
+      border-radius: 5px;
+      font-size: 1em;
+      font-weight: bold;
+      margin: 0.5rem 1rem;
+    }
+    .NavBarHome_loginBtn {
+      background: #f2994a;
       cursor: pointer;
       :hover {
         background: #97897c;
@@ -98,20 +133,30 @@
   }
 }
 .NavBarHome_googleBtn {
-  width: 100%;
-  padding: 5px;
-  margin-top: 15px;
-  cursor: pointer;
-  border: none;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1rem;
 }
 
 .noShow {
   display: none;
 }
-
-@media screen and (min-width: 600px) {
-  .NavBarHome_container {
-    padding: 0.5rem 3rem;
-  }
+.user-name{
+  cursor: pointer;
 }
 
+@media screen and (min-width: 600px) {
+  .NavBarHome_forms {
+    form {
+      max-width: 600px;
+      padding: 3rem;
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}

@@ -11,7 +11,7 @@ import {
   ADD_FAV,
   DELETE_FAV,
   LOG_OUT,
-  /*  SIGNUP, */
+  FILL_SING_USER,
   USER_DETAIL,
   GET_SERVICES,
   GET_FACILITIES,
@@ -104,10 +104,9 @@ export function SignIn(values, history) {
 
 export function getUserDetail(id, role) {
   return async function (dispatch) {
-    console.log(id, role, "aca");
     try {
       const json = await axios.get(
-        `https://henry-home-back.herokuapp.com/api/user/${id}/${role}`
+        `${URL_BACK}/user/${id}/${role}`
       );
       dispatch({
         type: USER_DETAIL,
@@ -215,7 +214,7 @@ export function AddFav(id, token) {
   return async function (dispatch) {
     try {
       var json = await axios.post(
-        `https://henry-home-back.herokuapp.com/api/favs`,
+        `${URL_BACK}/favs`,
         { HousingId: id },
         {
           headers: {
@@ -237,15 +236,12 @@ export function AddFav(id, token) {
 export function DelFav(id, token) {
   return async function (dispatch) {
     try {
-      var json = await axios.delete(
-        `https://henry-home-back.herokuapp.com/api/favs`,
-        {
-          headers: {
-            Authorization: token,
-          },
-          data: { HousingId: id },
-        }
-      );
+      var json = await axios.delete(`${URL_BACK}/favs`, {
+        headers: {
+          Authorization: token,
+        },
+        data: { HousingId: id },
+      });
       console.log(json.data);
 
       console.log("BORRAR");
@@ -261,4 +257,11 @@ export function DelFav(id, token) {
 
 export function logOut() {
   return { type: LOG_OUT, payload: {} };
+}
+
+export function fillSingUser() {
+  return {
+    type: FILL_SING_USER,
+    payload: JSON.parse(localStorage.getItem("profile")),
+  };
 }
