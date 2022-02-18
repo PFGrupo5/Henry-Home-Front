@@ -46,8 +46,8 @@ export default function Beds({setInfo, Info}) {
   }
 
   return (
-    <div className="filter">
-      <Cascader options={options} onChange={bedsChange} placeholder="Beds..." />
-    </div>
+
+      <Cascader className="filter" options={options} onChange={bedsChange} placeholder="Número habitaciones..." />
+
   );
 }

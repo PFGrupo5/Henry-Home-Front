@@ -22,6 +22,8 @@ const LoginForm = ({ setDisplay }) => {
         const result = res?.profileObj;
         const token = res?.tokenId;
 
+        console.log(res);
+
         try {
             dispatch(googleLogIn(result, token));
             setDisplay(false)

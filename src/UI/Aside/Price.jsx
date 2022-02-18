@@ -21,7 +21,7 @@ export default function Minprice({setInfo, Info}) {
   }
 
   return (
-    <div className="filter">
+    <div >
      <InputNumber style={{marginRight:"3px"}} size="small" placeholder= "Min $..." onChange={minChange} ></InputNumber>
      <InputNumber size="small" placeholder= "Max $..." onChange={maxChange} controls="false" ></InputNumber>
     </div>
