@@ -11,7 +11,6 @@ import {
   ADD_FAV,
   DELETE_FAV,
   LOG_OUT,
-  FILL_SING_USER,
   USER_DETAIL,
   GET_SERVICES,
   GET_FACILITIES,
@@ -27,7 +26,7 @@ export function getHotels(page = 1, size = 10, filter) {
     const URL = filterUrl(page, size, filter)
     try {
       var json = await axios.get(URL);
-      
+
       return dispatch({
         type: ALL_HOTELS,
         payload: json.data,

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import "../assets/css/DashboardUser/DashboardUser.scss";
 import {
   CloseOutlined,
@@ -12,15 +12,15 @@ import Loading from "../components/Loading";
 import { getUserDetail } from "../FilesStore/Actions";
 
 function DashboardUser() {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const [user] = useState(JSON.parse(localStorage.getItem("profile")));
   const [Showsidebar, setShowsidebar] = useState(false);
   const { userDetail } = useSelector((state) => state);
   const dispatch = useDispatch()
- 
+
 
   useEffect(() => {
-    dispatch(getUserDetail(user.result.id,user.result.role))
-  }, [ dispatch]);
+    dispatch(getUserDetail(user.result.id, user.result.role))
+  }, [dispatch, user.result.id, user.result.role]);
 
 
 
@@ -92,7 +92,7 @@ function DashboardUser() {
                   <div>{`No Tienes Hotel Favorito :(`}</div>
                 ) : (
                   <div>
-                      {userDetail.favs.map((f) => {
+                    {userDetail.favs.map((f) => {
                       return (
                         <div className="container-card">
                           <Carrusel
@@ -127,7 +127,7 @@ function DashboardUser() {
                   <div>{`No Tienes Reservaciones Previas :(`}</div>
                 ) : (
                   <div>
-                      {userDetail.Reservations.map((f) => {
+                    {userDetail.Reservations.map((f) => {
                       return (
                         <div className="container-reserv">
                           <p className="in-dash">Check-In: {f.date_start}</p>
