@@ -10,6 +10,7 @@ import {
 import Carrusel from "../UI/Carrousel";
 import Loading from "../components/Loading";
 import { getUserDetail } from "../FilesStore/Actions";
+import defaultUser from '../assets/img/user_default.png'
 
 function DashboardUser() {
   const [user] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -81,13 +82,18 @@ function DashboardUser() {
           </div>
         </div>
         <div className="Container-data">
-          <h1 className="Container-dash-name">{`${userDetail.firstName} ${userDetail.lastName}`}</h1>
+          <div className="DashboardUser-userInfo">
+            <h1>Información General</h1>
+            <img src={userDetail.imageUrl || defaultUser} />
+            <p>Nombre: {`${userDetail.firstName} ${userDetail.lastName}`}</p>
+            <p>Email: {`${userDetail.email}`}</p>
+            <p>Rol: {userDetail.role}</p>
+          </div>
           <div className="Container-Favs">
             <h1 className="Favs-hotels-name" id="Favs-hotels">
               Hoteles Favoritos
             </h1>
             <div className="Favs-Cards">
-              <h2 className="h2-container">
                 {userDetail.favs.length === 0 ? (
                   <div>{`No Tienes Hotel Favorito :(`}</div>
                 ) : (
@@ -95,11 +101,10 @@ function DashboardUser() {
                     {userDetail.favs.map((f) => {
                       return (
                         <div className="container-card">
-                          <Carrusel
-                            imgs={f.images}
-                            dotsBool={false}
-                            styles="imgCard"
-                          ></Carrusel>
+                          <img
+                            src={f.images}
+                            className="cardUserImg_here"
+                          />
                           <Link to={`/home/${f.id}`}>
                             <p className="name-dash">{f.name}</p>
                           </Link>
@@ -114,7 +119,6 @@ function DashboardUser() {
                     })}
                   </div>
                 )}
-              </h2>
             </div>
           </div>
           <div className="Container-Reservs">
