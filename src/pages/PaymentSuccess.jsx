@@ -5,7 +5,7 @@ import { message } from "antd";
 import { URL_BACK } from "../config";
 import { useHistory } from "react-router-dom";
 import "../assets/css/RegisterVerify/RegisterVerify.scss";
-import NavBar2 from "../components/NavBar2";
+// import NavBar2 from "../components/NavBar2";
 import NavBarHome2 from "../components/NavBarHome2/NavBarHome2";
 
 const PaymentSuccess = () => {
@@ -40,7 +40,7 @@ const PaymentSuccess = () => {
 
     if (num <= 0) history.push("/");
     return () => clearInterval(intervalRef.current);
-  }, [num, history,collection_status, preference_id, sendReservation]);
+  }, [num, history, collection_status, preference_id, sendReservation]);
 
   console.log(preference_id);
   console.log(collection_status);

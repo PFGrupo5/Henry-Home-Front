@@ -11,7 +11,7 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import UserCard from "./UserCard";
 import { useDispatch, useSelector } from "react-redux";
 
-import { cleanError, fillSingUser, googleLogOut } from "../../FilesStore/Actions";
+import { cleanError, googleLogOut } from "../../FilesStore/Actions";
 import { message } from "antd";
 /* const provincias = [
   "buenos aires",
@@ -44,14 +44,14 @@ const NavBarHome2 = () => {
   const history = useHistory();
   const location = useLocation();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  const { errors, signUser } = useSelector((state) => state);
+  const { errors } = useSelector((state) => state);
   // referencia al contenedor de los formularios
   const formularios = useRef(null);
   // estado para hacer visible determinado formulario en el contenedor
   const [visible, setVisible] = useState(true);
   const [display, setDisplay] = useState(true);
   // instancias para los datos de registro
- 
+
   // instancias para los datos de login
 
   // console.log(location)
@@ -67,7 +67,7 @@ const NavBarHome2 = () => {
       message.error(errors.response.data.message);
       dispatch(cleanError());
     }
-  }, [errors, location]);
+  }, [dispatch, errors, location]);
 
   const handleForm = (e) => {
     setDisplay(true);

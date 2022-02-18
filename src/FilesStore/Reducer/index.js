@@ -10,7 +10,6 @@ import {
   // DELETE_FAV,
   LOG_OUT,
   /* SIGNUP, */
-  FILL_SING_USER,
   USER_DETAIL,
   GET_SERVICES,
   GET_FACILITIES,
@@ -33,10 +32,7 @@ const initialState = {
 };
 
 const cases = {};
-cases[FILL_SING_USER] = (state, payload) => ({
-  ...state,
-  signUser: payload,
-});
+
 cases[ALL_HOTELS] = (state, payload) => ({
   ...state,
   hotels: payload.rows,
