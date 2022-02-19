@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from "react";
-import {  useParams } from "react-router-dom";
+import {  useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail } from "../FilesStore/Actions";
 import Carrousel from "../UI/Carrousel";
 import imgDefault from "../assets/img/HenryHome.png";
 import { PushpinOutlined } from "@ant-design/icons";
 import "../assets/css/Detail/Detail.scss";
-<<<<<<< HEAD
 import ReviewCard from "../components/ReviewCard";
-=======
 import Reservation from "./Reservation2";
 import IconProvider from "../utils/IconProvider";
->>>>>>> 30765102bb46faf16af3ff9753fe890d0623181d
-
 
 
 export default function Detail() {
 
   const dispatch = useDispatch();
+  const User = JSON.parse(localStorage.getItem("profile"));
   const { id } = useParams()
   const [user] = useState(JSON.parse(localStorage.getItem("profile")));
   const { detail } = useSelector((state) => state);
+  const find  = detail.Reviews.length ?
+  detail.Reviews.filter((e)=>e.userClientId===User.result.id) : []
+  var haveReview = find.length? true : false
 
   useEffect(() => {
     dispatch(getDetail(id));
@@ -77,7 +77,6 @@ export default function Detail() {
               </div>
             </div>
           </div>
-<<<<<<< HEAD
           
         </div>
         {
@@ -87,8 +86,19 @@ export default function Detail() {
             <p className="need-login">Necesitas estar logeado para reservar</p>
           </div>)
         }
-        <div className="description-container">
+        
+        <div className="btnDetail">
+          <Reservation id={id} user={user} />
+        </div>
+        <div className="reviews-container">
             <h3>Reseñas: </h3>
+            {haveReview ? <div>
+              <h4>Tu Reseña:</h4>
+              <ReviewCard review={find[0]}/>
+            </div> : <div>
+              <h4>Quieres escribir una reseña?</h4>
+            </div> }
+            
             <div>
               {detail.Reviews.length ?
                detail.Reviews.map((e)=><ReviewCard
@@ -98,12 +108,8 @@ export default function Detail() {
                }
             </div>
 
+
           </div>
-        <div className="btnDetail">
-=======
-          <Reservation id={id} user={user} />
->>>>>>> 30765102bb46faf16af3ff9753fe890d0623181d
-        </div>
       </div>
     </div>
 
