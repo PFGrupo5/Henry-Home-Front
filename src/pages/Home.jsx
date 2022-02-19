@@ -124,6 +124,7 @@ export default function Home() {
                         click={onClickFav}
 >>>>>>> 30765102bb46faf16af3ff9753fe890d0623181d
 
+
                       />
                     );
                   }) : <Loading />)
@@ -132,6 +133,7 @@ export default function Home() {
                   <h2>No hay casas disponibles</h2>
                 </div>
             }
+
           </div>
           <Pages pages={Math.ceil(count / size)} actualPage={page} changePage={changePage} />
         </div>

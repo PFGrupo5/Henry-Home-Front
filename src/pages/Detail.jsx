@@ -24,7 +24,7 @@ export default function Detail() {
 
   if (!detail) return (<div>Cargando</div>)
 
-  const { name, images, Location, numberOfPeople, /* houseRules */ } = detail
+  const { name, images, Location, numberOfPeople, houseRules } = detail
   return (
     <div className="house-datail">
       <div className="house-datail-container">
@@ -47,6 +47,8 @@ export default function Detail() {
             <div className="description-container">
               <h3>Descriptión</h3>
               <p>{detail.description}</p>
+              <h4>Reglas de la casa:</h4>
+              <p>{houseRules}</p>
               <div className="icon-center">
                 <p>Cantidad de camas: {detail.numberOfBeds}</p>
                 <span> {IconProvider("bed")}</span>
