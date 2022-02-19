@@ -23,7 +23,7 @@ const daysCalculator = (dates) => {
     : 1;
 };
 
-const Reservation = (props) => {
+const Reservation = ({id, user}) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { detail } = useSelector((state) => state);
@@ -32,9 +32,9 @@ const Reservation = (props) => {
   const [days, setDates] = useState(1);
   const [payment, setPayment] = useState(null);
   const [display, setDisplay] = useState(false);
-  const { id } = props.match.params;
-  const { token } = JSON.parse(localStorage.getItem("profile"));
-  const userId = JSON.parse(localStorage.getItem("profile")).result.id;
+
+  const { token } = user;
+  const userId = user.result.id;
 
   useEffect(() => {
     dispatch(getDetail(id));
@@ -119,7 +119,7 @@ if(userReservations === undefined){
 
   return (
     <div>
-      <div className="">
+      <div className="reservation-container">
         <div>
           <div>
             <h2>Reserva</h2>
