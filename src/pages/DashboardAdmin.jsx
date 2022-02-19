@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getHotels, adminStatus, postServices, postFacilities } from "../FilesStore/Actions/index.js";
 import Cards from "../components/Cards";
-// import Loading from "../components/Loading";
+import Loading from "../components/Loading";
 import Pages from "../components/Pages";
 
 import "../assets/css/DashboardAdmin/DashboardAdmin.scss";
@@ -55,36 +55,51 @@ export default function DashboardAdmin() {
     }
 
 
+    allHotels.map((e) => {
+        return (
+            <div className="adminCards">
+                <Cards
+                    name={e.name}
+                    id={e.id}
+                    location={e.Location.name}
+                    img={e.images}
+                    price={e.pricePerNight}
+                />
+                <section>
+                    <button className="accepted" onClick={() => modifyStatus(e.id, "Accepted")}> Aceptar </button>
+                    <button className="rejected" onClick={() => modifyStatus(e.id, "Rejected")}> Rechazar </button>
+                </section>
+            </div>
+        )
+    })
 
 
     return (
         <div className="cardsHome">
-            {/* if (allHotels?.length === 0) {
-                return (
-                    <div>
-                        <Loading />
-                    </div>
-                );
-            } else { */}
-            <Pages pages={Math.ceil(count / size)} actualPage={page} changePage={changePage} />
-            {allHotels.map((e) => {
-                return (
-                    <div className="adminCards">
-                        <Cards
-                            name={e.name}
-                            id={e.id}
-                            location={e.Location.name}
-                            img={e.images}
-                            price={e.pricePerNight}
-                        />
-                        <section>
-                            <button className="accepted" onClick={() => modifyStatus(e.id, "Accepted")}> Aceptar </button>
-                            <button className="rejected" onClick={() => modifyStatus(e.id, "Rejected")}> Rechazar </button>
-                        </section>
-                    </div>
-                )
-            })}
-            {/* } */}
+            {allHotels?.length ?
+                <div>
+                    <Pages pages={Math.ceil(count / size)} actualPage={page} changePage={changePage} />
+                    {allHotels.map((e) => {
+                        return (
+                            <div className="adminCards">
+                                <Cards
+                                    name={e.name}
+                                    id={e.id}
+                                    location={e.Location.name}
+                                    img={e.images}
+                                    price={e.pricePerNight}
+                                />
+                                <section>
+                                    <button className="accepted" onClick={() => modifyStatus(e.id, "Accepted")}> Aceptar </button>
+                                    <button className="rejected" onClick={() => modifyStatus(e.id, "Rejected")}> Rechazar </button>
+                                </section>
+                            </div>
+                        )
+                    })}
+                </div>
+                :
+                <Loading />
+            }
 
             <input type="text" value={services} onChange={handleChangeS} />
             <button onClick={sendServices} >Agregar Servicio</button>

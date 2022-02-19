@@ -3,7 +3,7 @@ import "antd/dist/antd.css";
 import { Cascader } from "antd";
 import "../../assets/css/Aside/Components/Aside-components.scss";
 
-export default function Beds({setInfo, Info}) {
+export default function Beds({ setInfo, Info }) {
   const options = [
     {
       value: "1",
@@ -47,7 +47,13 @@ export default function Beds({setInfo, Info}) {
 
   return (
 
-      <Cascader className="filter" options={options} onChange={bedsChange} placeholder="Número habitaciones..." />
+    <Cascader
+      className="filter"
+      options={options}
+      onChange={bedsChange}
+      placeholder="Número habitaciones..."
+      allowClear={false}
+    />
 
   );
 }
