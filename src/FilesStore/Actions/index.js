@@ -14,8 +14,6 @@ import {
   USER_DETAIL,
   GET_SERVICES,
   GET_FACILITIES,
-  POST_SERVICES,
-  POST_FACILITIES,
   LOCATIONS,
   ERROR_LOGIN,
   CLEAN_ERROR,
@@ -28,7 +26,6 @@ export function getHotels(page = 1, size = 10, filter) {
     const URL = filterUrl(page, size, filter)
     try {
       var json = await axios.get(URL);
-      console.log(json)
       return dispatch({
         type: ALL_HOTELS,
         payload: json.data,
@@ -191,6 +188,7 @@ export function getServices() {
       var json = await axios.get(
         `${URL_BACK}/services`
       );
+
       return dispatch({
         type: GET_SERVICES,
         payload: json.data,
@@ -292,47 +290,22 @@ export function patchHouse(payload) {
   };
 }
 
-export function postServices(payload) {
-  return async function (dispatch) {
-    console.log("servicio", payload)
-    try {
-
-      var json = await axios.post(
-        `https://henry-home-back.herokuapp.com/api/services`,
-        payload
-      );
-
-      console.log("servicies post", json);
-
-      return dispatch({
-        type: POST_SERVICES,
-        payload: json.data,
-      });
-
-    } catch (error) {
-      console.log("Post services error: ", error)
-    }
-  }
-}
-
-export function postFacilities(payload) {
-  return async function (dispatch) {
-    try {
-
-      var json = await axios.post(
-        `https://henry-home-back.herokuapp.com/api/facilities`,
-        payload
-      );
-
-      console.log("facilities post", json);
-
-      return dispatch({
-        type: POST_FACILITIES,
-        payload: json.data,
-      });
-
-    } catch (error) {
-      console.log("Post facilities error: ", error)
-    }
-  }
-}
+      // var json = await axios.post(
+      //   `https://henry-home-back.herokuapp.com/api/services`,
+      //   payload,
+      //   {
+      //     headers: {
+      //       Authorization: token,
+      //     },
+      //   }
+      // );
+      
+      // var json = await axios.post(
+      //   `https://henry-home-back.herokuapp.com/api/facilities`,
+      //   payload,
+      //   {
+      //     headers: {
+      //       Authorization: token,
+      //     },
+      //   }
+      // );

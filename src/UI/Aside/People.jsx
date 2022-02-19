@@ -1,7 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
 import { Cascader } from "antd";
-import "../../assets/css/Aside/Components/Aside-components.scss";
 
 export default function People({ setInfo, Info }) {
   const options = [
@@ -49,7 +48,6 @@ export default function People({ setInfo, Info }) {
   }
 
   return (
-
     <Cascader
       name="numberOfPeople"
       options={options}

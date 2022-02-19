@@ -8,7 +8,6 @@ import {
   getFacilities,
   getServices,
   getLocations,
-  createHouse,
 } from "../FilesStore/Actions/index";
 import axios from "axios";
 import { URL_BACK } from "../config";

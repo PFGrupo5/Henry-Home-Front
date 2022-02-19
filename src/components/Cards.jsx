@@ -37,7 +37,7 @@ export default function Cards({
           </button>
         }
 
-        <Text className="textCards"> <PushpinOutlined /> {location}</Text>
+        {location?<Text className="textCards"> <PushpinOutlined /> {location}</Text>:''}
         <Text className="textCards"><DollarOutlined /> {price}</Text>
 
       </div>
