@@ -40,7 +40,7 @@ function Routes() {
         <Route exact path="/create" component={CreateHouse} />
         <Route exact path="/user/:id" component={DashboardUser} />
         <Route exact path="/owner/:id" component={DashboardOwner} />
-        <Route exact path="/admin/:id" component={DashboardAdmin} />
+        <Route exact path="/adminDash" component={DashboardAdmin} />
         <Route exact path="/register" component={RegisterVerify} />
         <Route exact path="/change-password" component={ChangePassword} />
         <Route exact path="/payment/success" component={PaymentSuccess} />
