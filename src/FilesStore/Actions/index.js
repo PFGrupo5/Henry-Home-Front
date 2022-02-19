@@ -53,12 +53,17 @@ export function getDetail(id) {
   };
 }
 
-export function googleLogIn(result, token) {
+export function googleLogIn(googleInfo, role) {
   return async function (dispatch) {
     try {
+      console.log("semando")
+      const {email, familyName, givenName, googleId, imageUrl} = googleInfo
+      var json = await axios.post(`${URL_BACK}/user/google-login`,{email, familyName, givenName, googleId, imageUrl, role});
+      console.log(json.data)
+      
       return dispatch({
         type: GOOGLE_LOGIN,
-        payload: { result, token },
+        payload: json.data
       });
     } catch (error) {
       console.log(error);
@@ -150,7 +155,7 @@ export function adminStatus(payload) {
   return async function (dispatch) {
     try {
       var json = await axios.patch(
-        `https://henry-home-back.herokuapp.com/api/houses/status`,
+        `${URL_BACK}/houses/status`,
         payload
       );
       console.log(json.data);
@@ -168,7 +173,7 @@ export function getFacilities() {
   return async function (dispatch) {
     try {
       var json = await axios.get(
-        `https://henry-home-back.herokuapp.com/api/facilities`
+        `${URL_BACK}/facilities`
       );
       return dispatch({
         type: GET_FACILITIES,
@@ -184,7 +189,7 @@ export function getServices() {
   return async function (dispatch) {
     try {
       var json = await axios.get(
-        `https://henry-home-back.herokuapp.com/api/services`
+        `${URL_BACK}/services`
       );
       return dispatch({
         type: GET_SERVICES,
@@ -199,7 +204,7 @@ export function getLocations() {
   return async function (dispatch) {
     try {
       var json = await axios.get(
-        `https://henry-home-back.herokuapp.com/api/locations`
+        `${URL_BACK}/locations`
       );
       return dispatch({
         type: LOCATIONS,
@@ -241,12 +246,15 @@ export function AddFav(id, token) {
 export function DelFav(id, token) {
   return async function (dispatch) {
     try {
-      var json = await axios.delete(`${URL_BACK}/favs`, {
-        headers: {
-          Authorization: token,
-        },
-        data: { HousingId: id },
-      });
+      var json = await axios.delete(
+        `${URL_BACK}/favs`,
+        {
+          headers: {
+            Authorization: token,
+          },
+          data: { HousingId: id },
+        }
+      );
       console.log(json.data);
 
       console.log("BORRAR");
