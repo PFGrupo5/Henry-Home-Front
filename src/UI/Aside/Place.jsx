@@ -1,7 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
 import { Cascader } from "antd";
-import "../../assets/css/Aside/Components/Aside-components.scss";
 
 export const provinces = [
   "Todas las provincias",

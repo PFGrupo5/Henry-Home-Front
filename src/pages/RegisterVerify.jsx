@@ -5,7 +5,7 @@ import { message } from "antd";
 import { URL_BACK } from "../config";
 import { useHistory } from "react-router-dom";
 import "../assets/css/RegisterVerify/RegisterVerify.scss";
-// import NavBarHome2 from "../components/NavBarHome2/NavBarHome2";
+
 
 const RegisterVerify = () => {
   const history = useHistory();

@@ -3,44 +3,158 @@
 // #29344186
 // #f2994a
 
-.adminCards{
+.loading{
+    padding:10rem;
+}
+
+.allAdmin{
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    background-color:#29344186;
-    border-radius: 10px;
-    padding: 10px;
-    border: none;
-    margin: 100px;
+    flex-direction: column;
 
-    button{
-        border: none;
-        color: #fff;
-        margin: 10px;
-        padding: 0.5rem 1rem;
-        font-size: 1.3rem;
-        font-weight: 500;
-        border-radius: 0.3rem;
-        transition: all 0.2s;
-        cursor: pointer;
+    .cardsDash{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: center;   
+        align-items: center; 
+        margin: 2rem;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.75);
+
+        button{
+            border: none;
+            color: #fff;
+            margin: 10px;
+            padding: 0.5rem 1rem;
+            font-size: 1.3rem;
+            font-weight: 500;
+            border-radius: 0.3rem;
+            transition: all 0.2s;
+            cursor: pointer;
+            background-color:#092c4c;
+        }
+        
+        button:hover{
+            transform:scale(1.05);
+        }
+        
+        button:active{
+            transform:translateY(4px);
+        }
     }
-
-    button:hover{
-        transform:scale(1.05);
-    }
-
-    section{
-        display: flex;
+    
+    
+    .adminCards{
         flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        background-color:#29344186;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px;
+        border: none;
+        width: fit-content;
+    
+
+        .rejected{
+            background-color:#f2994a;
+        }
     }
 
-    .accepted{
-    background-color:#092c4c;
+
+    .inputsDash{
+        display: grid;
+        justify-content: center;   
+        align-items: center; 
+        grid-template-columns: repeat(2, 1fr);
+        margin: 3rem;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.75);
+
+        button{
+            border: none;
+            color: #fff;
+            margin: 10px;
+            padding: 0.5rem 1rem;
+            font-size: 1.3rem;
+            font-weight: 500;
+            border-radius: 0.3rem;
+            transition: all 0.2s;
+            cursor: pointer;
+            background-color:#092c4c;
+        }
+        
+        button:hover{
+            transform:scale(1.05);
+        }
+        
+        button:active{
+            transform:translateY(4px);
+        }
+        .create{
+            .sectionsInputDash{
+                display: flex;
+                flex-direction: column;
+                padding: 2rem;
+                width: 100%;
+    
+                label{
+                    font-size: xx-large;
+                }
+    
+                input{
+                    border: none;
+                    border-bottom: 1px solid black;
+                    outline: none;
+                }
+    
+                input:focus{
+                    border-bottom: 1px solid black;
+                }
+    
+            }
+        }
+        .view{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            .each{
+                padding: 4rem;
+            }
+        }
 
     }
-    .rejected{
-        background-color:#f2994a;
+}
+
+@media screen and (max-width: 1100px) {
+    .allAdmin{
+
+        .cardsDash{
+            grid-template-columns: repeat(2, 1fr);
+        }
     }
-   
+}
+
+@media screen and (max-width: 768px) {
+    .allAdmin{
+
+        .cardsDash{
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        .inputsDash{
+            display: grid;
+            justify-content: center;   
+            align-items: center; 
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
 }
