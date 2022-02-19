@@ -5,13 +5,19 @@ function Loading() {
   return (
     // <div className="body">
       <div className="load">
-        <div>G</div>
-        <div>N</div>
-        <div>I</div>
-        <div>D</div>
-        <div>A</div>
+        
+        
+        
+        <div>R</div>
         <div>O</div>
-        <div>L</div>
+        <div>R</div>
+        <div>R</div>
+        <div>E</div>
+        <div> </div>
+        <div>4</div>
+        <div>0</div>
+        <div>4</div>
+        
       </div>
     // </div>
   );
