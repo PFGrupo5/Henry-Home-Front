@@ -1,14 +1,15 @@
+import * as Unicons from "@iconscout/react-unicons";
+import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { message } from "antd";
 import { /* SignUp, */ googleLogIn, SignIn } from "../FilesStore/Actions/index";
 import { ValidateForm } from "../utils/ValidateForm";
-import { message } from "antd";
 import { GoogleLogin } from "react-google-login";
-import "../assets/css/Form/Form.scss";
-import * as Unicons from "@iconscout/react-unicons";
-import axios from "axios";
 import { URL_BACK } from "../config";
+
+import "../assets/css/Form/Form.scss";
 
 const Form = ({ role, google }) => {
   const history = useHistory();
@@ -114,7 +115,9 @@ const Form = ({ role, google }) => {
     });
   };
 
+
   return (
+
     <div id="registro" className="container-form">
       <form className="content-form">
         <div className="register-container">

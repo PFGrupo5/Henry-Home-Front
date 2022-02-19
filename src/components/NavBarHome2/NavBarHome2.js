@@ -5,13 +5,14 @@ import "../../assets/css/NavBarHome/styles.scss";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 // react hooks
-import { useEffect, useRef, useState,  } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 
 import UserCard from "./UserCard";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { googleLogOut } from "../../FilesStore/Actions";
+import { cleanError, googleLogOut } from "../../FilesStore/Actions";
+import { message } from "antd";
 /* const provincias = [
   "buenos aires",
   "catamarca",
@@ -43,27 +44,15 @@ const NavBarHome2 = () => {
   const history = useHistory();
   const location = useLocation();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const { errors } = useSelector((state) => state);
   // referencia al contenedor de los formularios
   const formularios = useRef(null);
   // estado para hacer visible determinado formulario en el contenedor
   const [visible, setVisible] = useState(true);
   const [display, setDisplay] = useState(true);
   // instancias para los datos de registro
-  const [registerData, setRegisterData] = useState({
-    firstName: "",
-    lastName: "",
-    inputPassword: "",
-    confirmPassword: "",
-    email: "",
-    role: "Client",
-  });
-  // instancias para los datos de login
-  const [loginData, setLoginData] = useState({
-    email: "",
-    inputPassword: "",
-    role: "Client",
-  });
 
+  // instancias para los datos de login
 
   // console.log(location)
   const logout = () => {
@@ -72,15 +61,16 @@ const NavBarHome2 = () => {
     setUser(null);
   };
 
-
-
   useEffect(() => {
-   setUser(JSON.parse(localStorage.getItem("profile")));
-  }, [location]);
-
+    setUser(JSON.parse(localStorage.getItem("profile")));
+    if (Object.keys(errors).length) {
+      message.error(errors.response.data.message);
+      dispatch(cleanError());
+    }
+  }, [dispatch, errors, location]);
 
   const handleForm = (e) => {
-    setDisplay(true)
+    setDisplay(true);
     const text = e.target.innerText;
     if (text === "Registro") {
       setVisible(false);
@@ -92,29 +82,47 @@ const NavBarHome2 = () => {
       formularios.current.style.transform = "scale(0)";
     }
   };
-const handlerDisplay = (e)=>{
-  e.stopPropagation();
-  console.log(e.target.classList[0]);
-  if (e.target.classList[0] === "NavBarHome_forms") setDisplay(false);
-}
+  const handlerDisplay = (e) => {
+    e.stopPropagation();
+
+    if (e.target.classList[0] === "NavBarHome_forms") setDisplay(false);
+  };
+
+  const path = history.location.pathname;
   return (
     <>
       <div className="NavBarHome_container">
         <div className="NavBarHome_logo">
           <Link to="/" className="NavBarHome_linkHome">
-            Henry <span>Home</span>
+            Henry <span>Home</span>{" "}
+            {path === "/owners" && <span id="owners"> - Propietario</span>}
+            {path === "/admins" && <span id="owners"> - Administrador</span>}
           </Link>
         </div>
-        {/* <div className="NavBarHome_selector">
-          <Selects options={provincias} />
-        </div> */}
         <div className="NavBarHome_btnContainer">
           {user ? (
             <UserCard user={user} logout={logout} />
           ) : (
             <>
-              <button onClick={handleForm}>Registro</button>
-              <button onClick={handleForm}>Ingreso</button>
+              {path === "/" ? (
+                <>
+                  <a href="#registro">
+                    <button className="btn-registro">Registro</button>
+                  </a>
+                  <a href="#registro">
+                    <button className="btn-ingreso">Ingreso</button>
+                  </a>{" "}
+                </>
+              ) : (
+                <>
+                  <button onClick={handleForm} className="btn-registro">
+                    Registro
+                  </button>
+                  <button onClick={handleForm} className="btn-ingreso">
+                    Ingreso
+                  </button>
+                </>
+              )}
             </>
           )}
         </div>
@@ -128,18 +136,11 @@ const handlerDisplay = (e)=>{
         >
           {visible ? (
             <LoginForm
-              setLoginData={setLoginData}
-              handleForm={handleForm}
-              loginData={loginData}
-              setUser={setUser}
               setDisplay={setDisplay}
-              />
-              ) : (
-                <RegisterForm
-                setRegisterData={setRegisterData}
-                handleForm={handleForm}
-                registerData={registerData}
-                setDisplay={setDisplay}
+            />
+          ) : (
+            <RegisterForm
+              setDisplay={setDisplay}
             />
           )}
         </div>

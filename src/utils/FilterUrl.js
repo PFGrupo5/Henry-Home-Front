@@ -1,8 +1,8 @@
 import { URL_BACK } from "../config"
 
 export default function filterUrl(page,size,query){
-    
-   var URL= URL_BACK + `/houses?page=${page}&size=${size}`
+
+   var URL= URL_BACK + "/houses?page=" + page + "&size=" + size
    if(query){
     if(query.status){
         URL += "&status=" + query.status
@@ -17,7 +17,6 @@ export default function filterUrl(page,size,query){
         URL += "&location=" + query.location
     }
     if(query.stars){
-        
         URL += "&stars=" + query.stars
     }
     if(query.numberOfPeople){
@@ -26,7 +25,6 @@ export default function filterUrl(page,size,query){
     if(query.numberOfBeds){
         URL += "&numberOfBeds=" + query.numberOfBeds
     }
-
    }
    return URL
 }

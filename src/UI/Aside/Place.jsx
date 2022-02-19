@@ -4,7 +4,7 @@ import { Cascader } from "antd";
 import "../../assets/css/Aside/Components/Aside-components.scss";
 
 export const provinces = [
-  "All",
+  "Todas las provincias",
   "Buenos Aires",
   "Capital Federal",
   "Catamarca",
@@ -31,10 +31,10 @@ export const provinces = [
   "Tucumán",
 ];
 
-export default function Place({setInfo, Info}) {
+export default function Place({ setInfo, Info }) {
   const options = provinces.map((e) => {
-    if(e==="All"){return { input: e, label: e , value: null} }
-    return { input: e, label: e ,value: e};
+    if (e === "Todas las provincias") { return { input: e, label: e, value: null } }
+    return { input: e, label: e, value: e };
   });
 
   const locationChange = (e) => {
@@ -43,12 +43,14 @@ export default function Place({setInfo, Info}) {
   }
 
   return (
-    <div className="filter">
-      <Cascader
-        options={options}
-        onChange={locationChange}
-        placeholder="Location..."
-      />
-    </div>
+
+    <Cascader
+      options={options}
+      onChange={locationChange}
+      placeholder="Ubicación..."
+      className="filter"
+      allowClear={false}
+    />
+
   );
 }

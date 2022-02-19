@@ -5,8 +5,8 @@ import { message } from "antd";
 import { URL_BACK } from "../config";
 import { useHistory } from "react-router-dom";
 import "../assets/css/RegisterVerify/RegisterVerify.scss";
-import NavBar2 from "../components/NavBar2";
-import NavBarHome2 from "../components/NavBarHome2/NavBarHome2";
+// import NavBar2 from "../components/NavBar2";
+// import NavBarHome2 from "../components/NavBarHome2/NavBarHome2";
 
 const PaymentSuccess = () => {
   const history = useHistory();
@@ -40,14 +40,13 @@ const PaymentSuccess = () => {
 
     if (num <= 0) history.push("/");
     return () => clearInterval(intervalRef.current);
-  }, [num, history,collection_status, preference_id, sendReservation]);
+  }, [num, history, collection_status, preference_id, sendReservation]);
 
   console.log(preference_id);
   console.log(collection_status);
 
   return (
     <div className="register-verify-container">
-      <NavBarHome2 />
       <div>
         <h2>Reserva confirmada</h2>
         <p>Redirigiendo al home en {num}...</p>

@@ -3,7 +3,7 @@ import "antd/dist/antd.css";
 import { Cascader } from "antd";
 import "../../assets/css/Aside/Components/Aside-components.scss";
 
-export default function People({setInfo, Info}) {
+export default function People({ setInfo, Info }) {
   const options = [
     {
       value: 0,
@@ -49,8 +49,14 @@ export default function People({setInfo, Info}) {
   }
 
   return (
-    <div className="filter">
-      <Cascader name="numberOfPeople" options={options} onChange={peopleChange} placeholder="People..." />
-    </div>
+
+    <Cascader
+      name="numberOfPeople"
+      options={options}
+      onChange={peopleChange}
+      placeholder="Número de personas..."
+      className="filter"
+      allowClear={false}
+    />
   );
 }

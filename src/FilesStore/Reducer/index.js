@@ -3,8 +3,7 @@ import {
   DETAIL,
   GOOGLE_LOGIN,
   GOOGLE_LOGOUT,
-  /*  CREATE_HOUSE,
-   ADMIN_STATUS, */
+  // CREATE_HOUSE,
   SIGNIN,
   // ADD_FAV,
   // DELETE_FAV,
@@ -13,6 +12,8 @@ import {
   USER_DETAIL,
   GET_SERVICES,
   GET_FACILITIES,
+  POST_SERVICES,
+  POST_FACILITIES,
   LOCATIONS,
   ERROR_LOGIN,
   CLEAN_ERROR,
@@ -21,8 +22,9 @@ import {
 const initialState = {
   hotels: [],
   allHotels: [],
-  detail: {},
+  detail: null,
   userDetail: null,
+  signUser: null,
   services: [],
   locations: [],
   facilities: [],
@@ -31,6 +33,7 @@ const initialState = {
 };
 
 const cases = {};
+
 cases[ALL_HOTELS] = (state, payload) => ({
   ...state,
   hotels: payload.rows,
@@ -47,18 +50,18 @@ cases[USER_DETAIL] = (state, payload) => ({
 });
 
 cases[GOOGLE_LOGIN] = (state, payload) => {
-  console.log("state",payload )
   localStorage.setItem("profile", JSON.stringify({ ...payload }));
   return {
     ...state,
-    userDetail: payload,
+    signUser: payload,
   };
 };
 cases[GOOGLE_LOGOUT] = (state, payload) => {
   localStorage.clear();
   return {
     ...state,
-    userDetail: null,
+    signUser: null,
+    userDetail: null
   };
 };
 cases[SIGNIN] = (state, payload) => {
@@ -66,7 +69,7 @@ cases[SIGNIN] = (state, payload) => {
   // window.location.replace("/home");
   return {
     ...state,
-    userDetail:payload
+    signUser: payload,
   };
 };
 cases[GET_SERVICES] = (state, payload) => {
@@ -102,8 +105,26 @@ cases[CLEAN_ERROR] = (state, payload) => {
 cases[LOG_OUT] = (state, payload) => {
   return {
     ...state,
-    userDetail: null
-  }
+    signUser: null,
+  };
+}
+
+cases[POST_FACILITIES] = (state, payload) => {
+  state.facilities.push(payload)
+  console.log(state.facilities)
+  return {
+    ...state,
+    facilities: state.facilities
+  };
+}
+
+cases[POST_SERVICES] = (state, payload) => {
+  state.services.push(payload)
+  console.log(state.services)
+  return {
+    ...state,
+    services: state.services
+  };
 }
 
 

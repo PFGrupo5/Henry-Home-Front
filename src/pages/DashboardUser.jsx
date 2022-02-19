@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import "../assets/css/DashboardUser/DashboardUser.scss";
 import {
   CloseOutlined,
@@ -12,25 +12,23 @@ import Loading from "../components/Loading";
 import { getUserDetail } from "../FilesStore/Actions";
 
 function DashboardUser() {
+  const [user] = useState(JSON.parse(localStorage.getItem("profile")));
   const [Showsidebar, setShowsidebar] = useState(false);
-  const userDetail = useSelector((state) => state.userDetail);
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const { userDetail } = useSelector((state) => state);
+  const dispatch = useDispatch()
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem("profile")));
-  }, []);
 
   useEffect(() => {
-    dispatch(getUserDetail(user.result.id, user.result.role));
+    dispatch(getUserDetail(user.result.id, user.result.role))
   }, [dispatch, user.result.id, user.result.role]);
+
+
 
   const ShowSideBar = () => {
     setShowsidebar(!Showsidebar);
   };
 
-  if (userDetail.length === 0) {
+  if (!userDetail) {
     return (
       <div>
         <Loading />
@@ -83,7 +81,7 @@ function DashboardUser() {
           </div>
         </div>
         <div className="Container-data">
-          <h1 className="Container-dash-name">{`${user.result.firstName} ${user.result.lastName}`}</h1>
+          <h1 className="Container-dash-name">{`${userDetail.firstName} ${userDetail.lastName}`}</h1>
           <div className="Container-Favs">
             <h1 className="Favs-hotels-name" id="Favs-hotels">
               Hoteles Favoritos
@@ -103,7 +101,7 @@ function DashboardUser() {
                             styles="imgCard"
                           ></Carrusel>
                           <Link to={`/home/${f.id}`}>
-                          <p className="name-dash">{f.name}</p>
+                            <p className="name-dash">{f.name}</p>
                           </Link>
                           <p className="price-dash">
                             Precio por Noche: {f.pricePerNight}
@@ -136,9 +134,9 @@ function DashboardUser() {
                           <p className="out-dash">
                             Check-Out: {f.date_end}
                           </p>
-                            <Link to={`/home/${f.id_hotel}`} >
-                              <span className="boton-dash-user">Ver Lugar Reservado</span>
-                            </Link>
+                          <Link to={`/home/${f.id_hotel}`} >
+                            <span className="boton-dash-user">Ver Lugar Reservado</span>
+                          </Link>
                         </div>
                       );
                     })}

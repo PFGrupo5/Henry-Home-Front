@@ -2,7 +2,7 @@ import React from "react";
 import { Cascader } from "antd";
 import "../../assets/css/Aside/Components/Aside-components.scss";
 
-export default function Calification({setInfo, Info}) {
+export default function Calification({ setInfo, Info }) {
   const options = [
     {
       value: "0",
@@ -36,12 +36,14 @@ export default function Calification({setInfo, Info}) {
   }
 
   return (
-    <div className="filter">
-      <Cascader
-        options={options}
-        onChange={starsChange}
-        placeholder="Calification..."
-      />
-    </div>
+
+    <Cascader
+      options={options}
+      onChange={starsChange}
+      placeholder="Calificación..."
+      className="filter"
+      allowClear={false}
+    />
+
   );
 }

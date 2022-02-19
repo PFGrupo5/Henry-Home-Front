@@ -1,109 +1,255 @@
-.NavBarHome_container{
-    background: white;
-    width: 100%;
-    padding: 0.5rem 3rem;
-    padding-right: 3.2rem;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.NavBarHome_container {
+  background: white;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.NavBarHome_logo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .NavBarHome_linkHome {
-        margin-top: 0.3rem;
-        font-size: 1.25rem;
-        font-weight: bold;
+.NavBarHome_logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .NavBarHome_linkHome {
+    margin-top: 0.3rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    span {
+      color: #f2994a;
+    }
+    #owners {
+      color: var(--main-blue);
+      font-size: 0.9rem;
+    }
+  }
+}
+.NavBarHome_btnContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    padding: 0.3rem 1rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-registro {
+    background-color: transparent;
+    font-weight: 600;
+  }
+  .btn-ingreso {
+    background-color: #092c4c;
+    color: #fff;
+  }
+}
+
+.NavBarHome_selector {
+  width: 500px;
+}
+.NavBarHome_forms {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s all;
+  transform-origin: 90% 0%;
+  transform: scale(0);
+  form {
+    z-index: 10000;
+    background-color: var(--main-blue);
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 99%;
+    /*  div {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      right: 15px;
+      display: flex;
+      justify-content: flex-end;
       span {
-        color: #f2994a;
+        cursor: pointer;
+        border-radius: 50%;
+        font-size: 1.5em;
+      }
+    } */
+
+    h3 {
+      color: #fff;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+    .inputContainer {
+      input {
+        width: 100%;
+        background: rgb(255, 255, 255);
+        justify-content: center;
+        display: flex;
+        margin: 0.2rem 0;
+        padding: 0.4rem 1rem;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+      }
+      .error-message {
+        margin-top: -0.3rem;
+        color: rgb(240, 82, 82);
       }
     }
-}
-.NavBarHome_btnContainer{
-    display: flex;
-    >button {
-        padding: 0.3rem 1rem;
-        border-radius: 0.3rem;
-        margin: 0 7px;
-        cursor: pointer;
-        border: none;
 
+    p {
+      color: #fff;
+      text-align: center;
     }
-    >button:nth-child(1){
-        background-color: transparent;
-        font-weight: 600;
+    button {
+      border: none;
+      padding: 3px;
+      color: #092c4c;
+      border-radius: 5px;
+      font-size: 1em;
+      font-weight: bold;
+      margin: 0.5rem 1rem;
     }
-    >button:nth-child(2){
+    .NavBarHome_loginBtn {
+      background: #f2994a;
+      cursor: pointer;
+      :hover {
+        background: #97897c;
+      }
+    }
+    .NavBarHome_errorMsg {
+      color: red;
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+.NavBarHome_googleBtn {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1rem;
+}
+
+.noShow {
+  display: none;
+}
+.user-name{
+  cursor: pointer;
+}
+
+@media screen and (min-width: 600px) {
+  .NavBarHome_forms {
+    form {
+      max-width: 600px;
+      padding: 3rem;
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+// FORM
+
+.containerForm {
+  padding: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5rem ;
+  
+  h2 {
+      color: #fff;
+      font-weight: 600;
+      font-size: 2em;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+    .content-form {
         background-color: #092c4c;
-        color: #fff;
-    }
-}
+        border-radius: 2rem;
+        overflow: hidden;
+        width: 500px;
+  }
 
-.NavBarHome_selector{
-    width: 500px;
-}
-.NavBarHome_forms{
-    position: fixed;
-    width: 100%;
-    top:0;
-    z-index: 100;
-    background: rgba(0,0,0,0.5);
-    height:100vh;
+  .ingreso-container {
+    /* display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column; */
+    text-align: center;
+    background-color: #f2994a ;
+    padding: 10px;
+    border-radius: 1rem 1rem 0 0;
+    transition: .8s ease-in-out;
+    min-height: 100%;
+   
+    h2 {
+      color: #fff;
+    }
+  }
+
+  input {
+    width: 70%;
+    background: #fff;
+    justify-content: center;
+    display: flex;
+    margin: 20px auto;
+    padding: 0.4rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+  }
+
+  button {
+    width: 60%;
+    height: 40px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: #fff;
+    background: #757d87 ;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: 0.2s ease-in;
+    cursor: pointer;
+  }
+
+  #google-btn{
+    background-color: #fff;
+    color: #000;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 0.3s all;
-    transform-origin: 90% 0%;
-    transform: scale(0);
-    form{
-        z-index: 10000;
-        background: white;
-        padding: 25px;
-        border-radius: 5px;
-        position: relative;
-        >div{
-            width: 100%;
-            position: absolute;
-            top: 0;
-            right: 15px;
-            display: flex;
-            justify-content: flex-end;
-            span{
-                cursor: pointer;
-                border-radius: 50%;
-                font-size: 1.5em;
-            }
-        }
-        >input{
-            margin: 10px 0;
-        }
-        .NavBarHome_loginBtn{
-            background: #f2994a;
-            border: none;
-            padding: 3px;
-            color: #092c4c;
-            cursor: pointer;
-            :hover{
-                background: #97897c;
-            }
-        }
-        .NavBarHome_errorMsg{
-            color: red;
-            width: 100%;
-            text-align: center;
-        }
-    }
-}
-.NavBarHome_googleBtn{
-    width: 100%;
-    padding: 5px;
-    margin-top: 15px;
-    cursor: pointer;
-    border:none;
+    gap: 1rem;
+    font-size: 1rem;
 }
 
-.noShow{
-    display: none;
+  .error-message{
+    margin-top: -.7rem;
+    color: rgb(240, 82, 82);
+  }
 }
+
+@media screen and (min-width: 446px) {
+  .content-form{
+      min-width: 30%;
+  }
+}
+
+

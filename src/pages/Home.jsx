@@ -11,7 +11,6 @@ import Pages from "../components/Pages";
 
 export default function Home() {
   const dispatch = useDispatch();
-
   const User = JSON.parse(localStorage.getItem("profile"));
   const infoUser = User ? User.result : { id: null, role: null }
   const [renderFav, setRenderFav] = useState(1)
@@ -30,7 +29,7 @@ export default function Home() {
       excusa(e * -1)
   }
   //filtros
-  const [Info , setInfo] = useState({
+  const [Info, setInfo] = useState({
     status: "Accepted",
     stars: 0, // min de estrellas
     numberOfPeople: null, // numero de gente 
@@ -38,8 +37,8 @@ export default function Home() {
     location: null, // all-created-notCreated
     minPrice: null,
     maxPrice: null,
-})
-  const setearInfo = (e)=>{
+  })
+  const setearInfo = (e) => {
     setInfo(e)
   }
 
@@ -54,19 +53,21 @@ export default function Home() {
   const changePage = (e) => {
     setPage(e)
   }
+
   const findHouses = (e) => {
-    dispatch(getHotels(page,size, Info))
+    dispatch(getHotels(page, size, Info))
+    console.log("info", Info)
   }
   const findAllHouses = (e) => {
-    dispatch(getHotels(page,size, {
+    dispatch(getHotels(page, size, {
       status: "Accepted",
-      stars: 0, 
-      numberOfPeople: null, 
-      numberOfBeds: null, 
-      location: null, 
+      stars: 0,
+      numberOfPeople: null,
+      numberOfBeds: null,
+      location: null,
       minPrice: null,
       maxPrice: null,
-  }))
+    }))
   }
 
   useEffect(() => {
@@ -83,32 +84,34 @@ export default function Home() {
   //     </div>
   //   );
   // } else {
-    return (
-      <div className="fullHome">
-        <Pages pages={Math.floor(count / size)} actualPage={page} changePage={changePage} />
-        <Aside findHouses={findHouses} setInfo={setearInfo} Info={Info} findAllHouses={findAllHouses}/>
-        <div className="home">
-          <div className="cardsHome">
-          
-            {allHotels?.length ? allHotels.map((e) => {
-              return (
+  return (
+    <main >
+      <div className="over-home-containter">
+        <div className="home-containter">
+          <Aside findHouses={findHouses} setInfo={setearInfo} Info={Info} findAllHouses={findAllHouses} />
+          <div className="cards-container">
+            <div className="cardsHome">
+              {allHotels?.length ? allHotels.map((e) => {
+                return (
+                  <Cards
+                    name={e.name}
+                    id={e.id}
+                    location={e.Location.name}
+                    img={e.images}
+                    price={e.pricePerNight}
+                    favs={favsIds ? favsIds.indexOf(e.id) : -1}
+                    role={userRole}
+                    click={onClickFav}
 
-                <Cards
-                  name={e.name}
-                  id={e.id}
-                  location={e.Location.name}
-                  img={e.images}
-                  price={e.pricePerNight}
-                  favs={favsIds ? favsIds.indexOf(e.id) : -1}
-                  role={userRole}
-                  click={onClickFav}
-
-                />
-              );
-            }) : <Loading />}
+                  />
+                );
+              }) : <Loading />}
+            </div>
+            <Pages pages={Math.floor(count / size)} actualPage={page} changePage={changePage} />
           </div>
         </div>
-        <Footer />
       </div>
-    );
-  }
+      <Footer />
+    </main>
+  );
+}

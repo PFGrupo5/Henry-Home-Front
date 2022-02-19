@@ -1,88 +1,87 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail } from "../FilesStore/Actions";
 import Carrousel from "../UI/Carrousel";
 import imgDefault from "../assets/img/HenryHome.png";
-import { Typography } from "antd";
+
 import { PushpinOutlined, DollarOutlined } from "@ant-design/icons";
 import "../assets/css/Detail/Detail.scss";
 
 
 
+export default function Detail() {
 
-const { Title, Text } = Typography;
-
-export default function Detail(props) {
   const dispatch = useDispatch();
-  const { userDetail} = useSelector(state=>state)
+  const { id } = useParams()
+  const [user] = useState(JSON.parse(localStorage.getItem("profile")));
+  const { detail } = useSelector((state) => state);
 
   useEffect(() => {
-    dispatch(getDetail(props.match.params.id));
-  }, [dispatch, props, userDetail]);
+    dispatch(getDetail(id));
+  }, [dispatch, id ]);
 
-  let hotel = useSelector((state) => state.detail);
+  if (!detail) return (<div>Cargando</div>)
+
+  const {  name, pricePerNight, images, Location } = detail
   return (
-    <div className="allDetail">
-      <div className="navbar">
-      </div>
-      <Title className="title">{hotel.name}</Title>
-      <div className="carrouselConteiner">
-        <Carrousel
-          imgs={hotel.images ? hotel.images : [imgDefault]}
-          dotsBool={true}
-          styles="imgDetail"
-        />
-      </div>
-      <div className="description">
-        <Text>{hotel.description}</Text>
-        <br />
-        <br />
-        <Text className="location">
-          <PushpinOutlined /> {hotel.Location ? hotel.Location.name : null}
-        </Text>
-        <br />
-        <br />
-        <Text className="price">
-          <DollarOutlined /> {hotel.pricePerNight}
-        </Text>
-      </div>
-      {/* <div className="facilities">
-        Facilities:
-        {hotel.Facilities?.map((e) => {
-          return <Text>{e.name} </Text>;
-        })}
-      </div>
-      <div className="services">
-        Services:
-        {hotel.Services?.map((e) => {
-          return <Text>{e.name} </Text>;
-        })}
-      </div> */}
-
-      <div className="facilities">
-        <p className="offer">¿Que ofrece este lugar?</p>
-        {hotel.Facilities?.map((e) => {
-          return <Text className="text-detail">•{e.name} </Text>;
-        })}
-        {hotel.Services?.map((e) => {
-          return <Text className="text-detail">•{e.name} </Text>;
-        })}
-      </div>
+    <div className="house-datail">
+      <div className="house-datail-container">
+        {/* <div className={"isOwner"}>
+        <Link to={`/home/${id}/editar`}>
+          <button>Editar</button>
+          </Link>
+        </div> */}
+        <h2>{name}</h2>
+        <p>Publicado por {detail.userMod.firstName}</p>
+        <div className="carrousel-conteiner">
+          <Carrousel
+            imgs={images ? images : [imgDefault]}
+            dotsBool={true}
+            styles="imgDetail"
+          />
+        </div>
+        <div className="location-container">
+          <PushpinOutlined /> {detail.Location ? `Ubicación: ${Location.name}` : null}
+        </div>
+        <div className="description-container">
+          <h3>Descriptión</h3>
+          <p>{detail.description}</p>
+          <div className="price-per-night-container">
+            <DollarOutlined />
+            <p>Precio por noche: {pricePerNight}</p>
+          </div>
+          <p>Cantidad de camas: {detail.numberOfBeds}</p>
+        </div>
+        <div >
+          <h3>¿Que ofrece este lugar?</h3>
+          <div className="facilities-services-container">
+            <div>
+              <h4>Instalaciones</h4>
+              {detail.Facilities?.map((e) => {
+                return <p className="p-detail"> - {e.name} </p>;
+              })}
+            </div>
+            <div>
+              <h4>Servicios</h4>
+              {detail.Services?.map((e) => {
+                return <p className="p-detail"> - {e.name} </p>;
+              })}
+            </div>
+          </div>
+        </div>
         {
-        userDetail ? (<Link to={`/home/${props.match.params.id}/reservation`}>
-          <button className="reservar">Reservar</button>
-        </Link>) : (<div>
-          <p>Necesitas estar logeado para reservar</p>
-        </div>)
+          user ? (<Link to={`/home/${id}/reservation`}>
+            <button className="reservar">Reservar</button>
+          </Link>) : (<div>
+            <p className="need-login">Necesitas estar logeado para reservar</p>
+          </div>)
         }
-      <div className="btnDetail">
-        
-
-        <Link to="/home">
-          <button className="back">Go back</button>
-        </Link>
+        <div className="btnDetail">
+        </div>
       </div>
+
     </div>
+
   );
 }
