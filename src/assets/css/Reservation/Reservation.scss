@@ -1,20 +1,22 @@
 .reservation-container {
  
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-
+  flex-direction: column;
+  
   h2 {
     font-size: 2rem;
   }
-
+  
   .information-container {
     background-color: var(--main-blue);
     padding: 2rem;
     border-radius: 1rem;
     color: var(--main-white);
     transition: 1s ease-in;
-
+    // min-height: 521px;
+   
     h3 {
       text-transform: capitalize;
       font-size: 1.4rem;
@@ -51,6 +53,14 @@
     }
     .display {
       display: block;
+    }
+    .need-login{
+      padding: 1rem;
+      font-size: 1rem;
+      background-color: var(--main-orange);
+      display: flex;
+      align-items: center;
+      border-radius: .5rem;
     }
   }
 }

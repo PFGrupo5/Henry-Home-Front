@@ -23,7 +23,7 @@ const daysCalculator = (dates) => {
     : 1;
 };
 
-const Reservation = ({id, user}) => {
+const Reservation = ({ id, user }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { detail } = useSelector((state) => state);
@@ -33,24 +33,40 @@ const Reservation = ({id, user}) => {
   const [payment, setPayment] = useState(null);
   const [display, setDisplay] = useState(false);
 
-  const { token } = user;
-  const userId = user.result.id;
+
 
   useEffect(() => {
     dispatch(getDetail(id));
     setDates(daysCalculator(value));
   }, [value, dispatch, id]);
 
-  if (!Object.keys(detail).length) return <div>Loading</div>;
+  if (!user) return (<div className="reservation-container">
+    <div>
+      <h2>Reservar</h2>
+    </div>
+    <div className="information-container">
+      <h3>{name}</h3>
+      <div>
+        <h4>Precio por noche: ${pricePerNight} ARS</h4>
+      </div>
+      <div className="need-login">
+        <span>Necesitas estar logeado para reservar</span>
+      </div>
+    </div>
+  </div>
+  )
+
+  const { token } = user;
+  const userId = user.result.id;
 
   let userReservations = detail.Reservations?.filter(
     (r) => r.userClientId === userId
   ).find((s) => s.status === "Pending");
 
 
-if(userReservations === undefined){
-  userReservations = {}
-}
+  if (userReservations === undefined) {
+    userReservations = {}
+  }
 
 
   let disabledRanges = detail.Reservations?.map(({ date_start, date_end }) => [
@@ -122,7 +138,7 @@ if(userReservations === undefined){
       <div className="reservation-container">
         <div>
           <div>
-            <h2>Reserva</h2>
+            <h2>Reservar</h2>
           </div>
           <div className="information-container">
             <h3>{name}</h3>
