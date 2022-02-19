@@ -86,29 +86,35 @@ export default function Home() {
   // } else {
   return (
     <main >
-      <div className="over-home-containter">
-        <div className="home-containter">
-          <Aside findHouses={findHouses} setInfo={setearInfo} Info={Info} findAllHouses={findAllHouses} />
-          <div className="cards-container">
-            <div className="cardsHome">
-              {allHotels?.length ? allHotels.map((e) => {
-                return (
-                  <Cards
-                    name={e.name}
-                    id={e.id}
-                    location={e.Location.name}
-                    img={e.images}
-                    price={e.pricePerNight}
-                    favs={favsIds ? favsIds.indexOf(e.id) : -1}
-                    role={userRole}
-                    click={onClickFav}
+      <div className="home-containter">
+        <Aside findHouses={findHouses} setInfo={setearInfo} Info={Info} findAllHouses={findAllHouses} />
+        <div className="cards-container">
+          <div className="cardsHome">
+            {
+              typeof allHotels !== "string" ? (
+                allHotels?.length ?
+                  allHotels.map((e) => {
+                    return (
+                      <Cards
+                        name={e.name}
+                        id={e.id}
+                        location={e.Location.name}
+                        img={e.images}
+                        price={e.pricePerNight}
+                        favs={favsIds ? favsIds.indexOf(e.id) : -1}
+                        role={userRole}
+                        click={onClickFav}
 
-                  />
-                );
-              }) : <Loading />}
-            </div>
-            <Pages pages={Math.floor(count / size)} actualPage={page} changePage={changePage} />
+                      />
+                    );
+                  }) : <Loading />)
+                :
+                <div>
+                  <h2>No hay casas disponibles</h2>
+                </div>
+            }
           </div>
+          <Pages pages={Math.ceil(count / size)} actualPage={page} changePage={changePage} />
         </div>
       </div>
       <Footer />
