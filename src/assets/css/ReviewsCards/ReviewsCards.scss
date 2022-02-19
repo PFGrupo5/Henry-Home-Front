@@ -1,0 +1,30 @@
+.Reviews-div{
+    border-radius: 0.3rem;
+    // border: 1px solid #fff;
+    text-align: justify;
+      font-weight: 500;
+    position:relative;
+      
+      padding: 1rem;
+      margin: 1rem 0;
+      background-color: #0d4577;
+      .fecha-review{
+          font-weight: 300;
+          font-size: small;
+          position:absolute;
+          top: 0.5rem;
+          right: 1rem;
+        }
+        .estrellas-review{
+            background-color: var(--main-blue);
+            border-radius: 0.3rem;
+            font-weight: 300;
+            font-size: medium;
+            position:absolute;
+            top: 0.5rem;
+            left: 1rem;
+          }
+        .description-review{
+            font-size: small;
+        }
+}

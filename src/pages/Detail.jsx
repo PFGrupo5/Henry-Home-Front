@@ -70,7 +70,16 @@ export default function Detail() {
               })}
             </div>
           </div>
-          <div className="description-container">
+          
+        </div>
+        {
+          user ? (<Link to={`/home/${id}/reservation`}>
+            <button className="reservar">Reservar</button>
+          </Link>) : (<div>
+            <p className="need-login">Necesitas estar logeado para reservar</p>
+          </div>)
+        }
+        <div className="description-container">
             <h3>Reseñas: </h3>
             <div>
               {detail.Reviews.length ?
@@ -82,14 +91,6 @@ export default function Detail() {
             </div>
 
           </div>
-        </div>
-        {
-          user ? (<Link to={`/home/${id}/reservation`}>
-            <button className="reservar">Reservar</button>
-          </Link>) : (<div>
-            <p className="need-login">Necesitas estar logeado para reservar</p>
-          </div>)
-        }
         <div className="btnDetail">
         </div>
       </div>
