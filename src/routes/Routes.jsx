@@ -3,7 +3,6 @@ import LandingPage2 from "../pages/LandingPage2";
 import Home from "../pages/Home";
 import Detail from "../pages/Detail";
 import ErrorPage from "../pages/ErrorPage";
-import CreateHouse from "../pages/CreatePost";
 import DashboardOwner from "../pages/DashboardOwner";
 import DashboardAdmin from "../pages/DashboardAdmin";
 import DashboardUser from "../pages/DashboardUser";
@@ -24,7 +23,6 @@ function Routes() {
     setUser(JSON.parse(localStorage.getItem("profile")))
   }, [location])
 
-  // console.log(user);
   return (
 
     <div className="App">
