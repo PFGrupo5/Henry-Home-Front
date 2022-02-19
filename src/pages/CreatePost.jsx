@@ -71,15 +71,15 @@ export default function CreatePost() {
     console.log(formData)
   }
 
-  const optionsServices = services.map((e) => {
+  const optionsServices = services?.map((e) => {
     return { label: e.name[0].toUpperCase() + e.name.slice(1), value: e.name }
   })
 
-  const optionsLocations = locations.map((e) => {
+  const optionsLocations = locations?.map((e) => {
     return { label: e.name, value: e.id }
   })
 
-  const optionsFacilities = facilities.map((e) => {
+  const optionsFacilities = facilities?.map((e) => {
     return { label: e.name[0].toUpperCase() + e.name.slice(1), value: e.name }
   })
 

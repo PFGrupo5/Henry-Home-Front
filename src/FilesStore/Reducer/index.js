@@ -3,17 +3,11 @@ import {
   DETAIL,
   GOOGLE_LOGIN,
   GOOGLE_LOGOUT,
-  // CREATE_HOUSE,
   SIGNIN,
-  // ADD_FAV,
-  // DELETE_FAV,
   LOG_OUT,
-  /* SIGNUP, */
   USER_DETAIL,
   GET_SERVICES,
   GET_FACILITIES,
-  POST_SERVICES,
-  POST_FACILITIES,
   LOCATIONS,
   ERROR_LOGIN,
   CLEAN_ERROR,
@@ -34,12 +28,24 @@ const initialState = {
 
 const cases = {};
 
-cases[ALL_HOTELS] = (state, payload) => ({
-  ...state,
-  hotels: payload.rows,
-  allHotels: payload.rows,
-  count: payload.count,
-});
+cases[ALL_HOTELS] = (state, payload) => {
+  if (payload.rows) {
+    return ({
+      ...state,
+      hotels: payload.rows,
+      allHotels: payload.rows,
+      count: payload.count,
+    }
+    )
+  } else {
+    return ({
+      ...state,
+      hotels: payload.message,
+      allHotels: payload.message,
+    })
+  }
+}
+
 cases[DETAIL] = (state, payload) => ({
   ...state,
   detail: payload,
@@ -66,7 +72,6 @@ cases[GOOGLE_LOGOUT] = (state, payload) => {
 };
 cases[SIGNIN] = (state, payload) => {
   localStorage.setItem("profile", JSON.stringify({ ...payload }));
-  // window.location.replace("/home");
   return {
     ...state,
     signUser: payload,
@@ -84,24 +89,28 @@ cases[GET_FACILITIES] = (state, payload) => {
     facilities: payload,
   };
 };
+
 cases[LOCATIONS] = (state, payload) => {
   return {
     ...state,
     locations: payload,
   };
 };
+
 cases[ERROR_LOGIN] = (state, payload) => {
   return {
     ...state,
     errors: payload,
   };
 };
+
 cases[CLEAN_ERROR] = (state, payload) => {
   return {
     ...state,
     errors: payload,
   };
 };
+
 cases[LOG_OUT] = (state, payload) => {
   return {
     ...state,
@@ -109,30 +118,12 @@ cases[LOG_OUT] = (state, payload) => {
   };
 }
 
-cases[POST_FACILITIES] = (state, payload) => {
-  state.facilities.push(payload)
-  console.log(state.facilities)
-  return {
-    ...state,
-    facilities: state.facilities
-  };
-}
-
-cases[POST_SERVICES] = (state, payload) => {
-  state.services.push(payload)
-  console.log(state.services)
-  return {
-    ...state,
-    services: state.services
-  };
-}
-
-
-
-
 export default function reducer(state = initialState, { type, payload }) {
   return cases[type] ? cases[type](state, payload) : state;
 }
+
+
+
 /* 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
