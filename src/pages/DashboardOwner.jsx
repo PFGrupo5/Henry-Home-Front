@@ -15,7 +15,7 @@ export default function Admin() {
   }, [dispatch, infoUser.id, infoUser.role]);
 
   const userDetail = useSelector((state) => state.userDetail);
-  
+
   return (
     <div className="containerAdmin">
       <div>
@@ -37,7 +37,7 @@ export default function Admin() {
       </div>
 
       <div className="housesAdmin">
-        {userDetail.Housings?.map((e) => {
+        {userDetail?.Housings?.map((e) => {
           return (
             <Cards
               name={e?.name}
