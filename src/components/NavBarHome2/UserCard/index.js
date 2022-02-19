@@ -44,7 +44,7 @@ const UserCard = ({ user, logout }) => {
     <div className="UserCard_profilePic">
       <div onClick={appear}>
         <Dropdown overlay={menu} placement="bottomLeft" arrow>
-        <span>{user.result?.firstName || user.result?.lastName}</span>
+        <span className="user-name">{user.result?.firstName} { user.result?.lastName}</span>
         </Dropdown>
         <img src={user.result.profile_img || userImg} alt="profile-pic" />
       </div>
