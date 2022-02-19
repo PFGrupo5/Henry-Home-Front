@@ -68,6 +68,9 @@ a:active {
   color: #000000;
   text-decoration: none;
   cursor: pointer;
+  margin: 0;
+  padding: 0;
+  outline: none;
 }
 
 /*========== Scroll-Bar ==========*/

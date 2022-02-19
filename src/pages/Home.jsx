@@ -107,7 +107,7 @@ export default function Home() {
                 );
               }) : <Loading />}
             </div>
-            <Pages pages={Math.floor(count / size)} actualPage={page} changePage={changePage} />
+            <Pages pages={Math.ceil(count / size)} actualPage={page} changePage={changePage} />
           </div>
         </div>
       </div>

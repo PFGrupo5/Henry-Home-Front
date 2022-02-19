@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Button, Cascader } from 'antd';
+import { Modal, Cascader, message } from 'antd';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { HomeOutlined, UserOutlined, SearchOutlined } from "@ant-design/icons";
 import "../assets/css/DashboardOwner/DashboardOwner.scss";
 import { getFacilities, getLocations, getServices, getUserDetail } from "../FilesStore/Actions";
-import Cards from "../components/Cards";
 import ListHouses from "../components/ListHouses";
-import { ValidateForm } from '../utils/ValidateForm';
+import axios from 'axios';
+import { URL_BACK } from '../config';
+import iconProvider from '../utils/IconProvider';
 
 export default function Admin() {
   const dispatch = useDispatch();
-  const { id, role } = JSON.parse(localStorage.getItem("profile")).result;
+  const user = JSON.parse(localStorage.getItem("profile"));
+  const { id, role } = user.result
 
   useEffect(() => {
     dispatch(getUserDetail(id, role));
@@ -41,7 +42,7 @@ export default function Admin() {
   });
 
   const optionsLocations = locations.map((e) => {
-    return { label: e.name, value: e.name };
+    return { label: e.name, value: e };
   });
 
   const optionsFacilities = facilities.map((e) => {
@@ -57,19 +58,48 @@ export default function Admin() {
     // setFormErrors(ValidateForm({ ...inputForm, [name]: value }));
   };
 
-  const serviceHandler = (e)=>{
+  const serviceHandler = (e) => {
     setHouse((prev) => ({
       ...prev,
       services: e,
     }));
   }
- 
+  const locationHandler = (e) => {
+    setHouse((prev) => ({
+      ...prev,
+      location: e,
+    }));
+  }
+  const facilitiesHandler = (e) => {
+    setHouse((prev) => ({
+      ...prev,
+      facilities: e,
+    }));
+  }
+
   const showModal = () => {
     setIsModalVisible(true);
   };
 
   const handleOk = () => {
-    console.log(house);
+    const servicesFlat = house.services?.flat()
+    const facilitiesFlat = house.facilities?.flat()
+    const houseUpdate = {
+      ...house,
+      services: servicesFlat,
+      facilities: facilitiesFlat
+    }
+    console.log(houseUpdate);
+    axios.patch(`${URL_BACK}/houses`, houseUpdate, {
+      headers: {
+        authorization: user.token
+      }
+    })
+      .then(({ data }) => {
+        message.success(data.message)
+        dispatch(getUserDetail(id, role));
+      })
+      .catch(error => message.error(error.response.data.message))
     setIsModalVisible(false);
   };
 
@@ -80,132 +110,140 @@ export default function Admin() {
   const { userDetail } = useSelector((state) => state);
 
   if (!userDetail) return (<div>Cargando</div>)
-  console.log(house)
+
   return (
     <div className="container-moderator">
       <div>
         <h2 className="titleAdmin">Mis Alojamientos</h2>
-        <div className="btonCreate">
+        <div className="btn-create-container">
           <Link to={"/create"}>
-            <button>Public your House</button>
+            <span>  Agregar casa {iconProvider("add")}</span>
           </Link>
         </div>
       </div>
-      <div className="housesAdmin">
-        <table>
-
-          <tr>
-            <th>Imagen</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Precio por noche</th>
-            <th>Status</th>
-          </tr>
-          {userDetail.Housings?.map((e) =>
-          (
-            <ListHouses
-              houseInfo={e}
-              onClick={showModal}
-              setHouse={setHouse}
-            />
-          ))}
-        </table>
-        <div>
-          <Modal  visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-            <div>
-              <div>
-                <input
-                  type="text"
-                  value={house.name}
-                  name="name"
-                  onChange={inputFormHanlder}
-                  className="inputs"
-                />
-              </div>
-
-              <div>
-                <input
-                  type="number"
-                  key="price"
-                  value={house.pricePerNight}
-                  name="pricePerNight"
-                  onChange={inputFormHanlder}
-                  className="inputs"
-                />
-              </div>
-
-              <div>
-                <input
-                  type="text"
-                  key="people"
-                  value={house.numberOfPeople}
-                  name="numberOfPeople"
-                  onChange={inputFormHanlder}
-                  className="inputs"
-                />
-              </div>
-
-              <div>
-                <textarea
-                  type="text"
-                  key="description"
-                  value={house.description}
-                  name="description"
-                  onChange={inputFormHanlder}
-                  rows="4"
-                  cols="50"
-                  className="textareaEditPost"
-                />
-              </div>
-              <div>
-                <textarea
-                  type="text"
-                  value={house.houseRules}
-                  name="houseRules"
-                  onChange={inputFormHanlder}
-                  rows="4"
-                  cols="50"
-                  className="textareaEditPost"
-                />
-              </div>
-
-              <div>
-                <Cascader
-                  options={optionsServices}
-                  multiple
-                  maxTagCount="responsive"
-                  placeholder="Services"
-      
-                  value={house.services}
-                  onChange={serviceHandler}
-                />
-              </div>
-
-              <div>
-                <Cascader
-                  options={optionsFacilities}
-                  multiple
-                  maxTagCount="responsive"
-                  placeholder="Facilitites"
-           
-                  value={house.facilities}
-                  onChange={serviceHandler}
+      <>
+        <div class="container-table100">
+          <div class="wrap-table100">
+            <div class="table">
+              <div className="table-container">
+                <div class="table">
+                  <div class="row header">
+                    <div class="cell">Imagen</div>
+                    <div class="cell">Nombre</div>
+                    <div class="cell">Descripción</div>
+                    <div class="cell">Precio por noche</div>
+                    <div class="cell">Status</div>
+                    <div class="cell">Acción</div>
+                  </div>
+                </div>
+                {userDetail.Housings?.map((e) =>
+                (
+                  <ListHouses
+                    user={user}
+                    houseInfo={e}
+                    onClick={showModal}
+                    setHouse={setHouse}
                   />
-              </div>
+                ))}
+                <div>
+                  <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                    <div>
+                      <div>
+                        <input
+                          type="text"
+                          value={house.name}
+                          name="name"
+                          onChange={inputFormHanlder}
+                          className="inputs"
+                        />
+                      </div>
 
-              <div>
-                <Cascader
-                  options={optionsLocations}
-                  maxTagCount="responsive"
-                  placeholder="Location"
-                  onChange={serviceHandler}
-          
-                />
+                      <div>
+                        <input
+                          type="number"
+                          key="price"
+                          value={house.pricePerNight}
+                          name="pricePerNight"
+                          onChange={inputFormHanlder}
+                          className="inputs"
+                        />
+                      </div>
+
+                      <div>
+                        <input
+                          type="text"
+                          key="people"
+                          value={house.numberOfPeople}
+                          name="numberOfPeople"
+                          onChange={inputFormHanlder}
+                          className="inputs"
+                        />
+                      </div>
+
+                      <div>
+                        <textarea
+                          type="text"
+                          key="description"
+                          value={house.description}
+                          name="description"
+                          onChange={inputFormHanlder}
+                          rows="4"
+                          cols="50"
+                          className="textareaEditPost"
+                        />
+                      </div>
+                      <div>
+                        <textarea
+                          type="text"
+                          value={house.houseRules}
+                          name="houseRules"
+                          onChange={inputFormHanlder}
+                          rows="4"
+                          cols="50"
+                          className="textareaEditPost"
+                        />
+                      </div>
+
+                      <div>
+                        <Cascader
+                          options={optionsServices}
+                          multiple
+                          maxTagCount="responsive"
+                          placeholder="Services"
+                          value={house.services}
+                          onChange={serviceHandler}
+                        />
+                      </div>
+
+                      <div>
+                        <Cascader
+                          options={optionsFacilities}
+                          multiple
+                          maxTagCount="responsive"
+                          placeholder="Facilitites"
+                          value={house.facilities}
+                          onChange={facilitiesHandler}
+                        />
+                      </div>
+
+                      <div>
+                        <Cascader
+                          options={optionsLocations}
+                          maxTagCount="responsive"
+                          placeholder="Location"
+                          onChange={locationHandler}
+
+                        />
+                      </div>
+                    </div>
+                  </Modal>
+                </div>
               </div>
             </div>
-          </Modal>
+          </div>
         </div>
-      </div>
+      </>
     </div>
+
   );
 }
