@@ -1,24 +1,16 @@
-import React, { useState } from "react";
-import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
+import React from "react";
 import "../assets/css/Aside/Aside.scss";
 import Calification from "../UI/Aside/Calification";
 import People from "../UI/Aside/People";
 import Place from "../UI/Aside/Place";
 import Minprice from "../UI/Aside/Price";
 import Beds from "../UI/Aside/Beds";
-import { Button } from "antd";
 export default function Aside({
   setInfo,
   Info,
   findHouses,
   findAllHouses,
 }) {
-  const [sidebar, setSidebar] = useState(false);
-
-  const showSidebar = () => {
-    setSidebar(!sidebar);
-  };
-
   return (
     <div className="aside-container">
       <div className="filter-container">

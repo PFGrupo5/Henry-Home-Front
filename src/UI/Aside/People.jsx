@@ -50,7 +50,13 @@ export default function People({ setInfo, Info }) {
 
   return (
 
-    <Cascader name="numberOfPeople" options={options} onChange={peopleChange} placeholder="Número de personas..." className="filter" />
-
+    <Cascader
+      name="numberOfPeople"
+      options={options}
+      onChange={peopleChange}
+      placeholder="Número de personas..."
+      className="filter"
+      allowClear={false}
+    />
   );
 }

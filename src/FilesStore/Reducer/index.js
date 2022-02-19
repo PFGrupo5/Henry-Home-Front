@@ -3,8 +3,7 @@ import {
   DETAIL,
   GOOGLE_LOGIN,
   GOOGLE_LOGOUT,
-  /*  CREATE_HOUSE,
-   ADMIN_STATUS, */
+  // CREATE_HOUSE,
   SIGNIN,
   // ADD_FAV,
   // DELETE_FAV,
@@ -13,6 +12,8 @@ import {
   USER_DETAIL,
   GET_SERVICES,
   GET_FACILITIES,
+  POST_SERVICES,
+  POST_FACILITIES,
   LOCATIONS,
   ERROR_LOGIN,
   CLEAN_ERROR,
@@ -49,7 +50,6 @@ cases[USER_DETAIL] = (state, payload) => ({
 });
 
 cases[GOOGLE_LOGIN] = (state, payload) => {
-  console.log(payload);
   localStorage.setItem("profile", JSON.stringify({ ...payload }));
   return {
     ...state,
@@ -61,7 +61,7 @@ cases[GOOGLE_LOGOUT] = (state, payload) => {
   return {
     ...state,
     signUser: null,
-    userDetail:null
+    userDetail: null
   };
 };
 cases[SIGNIN] = (state, payload) => {
@@ -106,6 +106,24 @@ cases[LOG_OUT] = (state, payload) => {
   return {
     ...state,
     signUser: null,
+  };
+}
+
+cases[POST_FACILITIES] = (state, payload) => {
+  state.facilities.push(payload)
+  console.log(state.facilities)
+  return {
+    ...state,
+    facilities: state.facilities
+  };
+}
+
+cases[POST_SERVICES] = (state, payload) => {
+  state.services.push(payload)
+  console.log(state.services)
+  return {
+    ...state,
+    services: state.services
   };
 }
 

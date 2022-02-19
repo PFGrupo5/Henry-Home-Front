@@ -92,10 +92,9 @@ const Form = ({ role, google }) => {
 
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
-    const token = res?.tokenId;
 
     try {
-      dispatch(googleLogIn(result, token));
+      dispatch(googleLogIn(result, "Client"));
       history.push("/home");
       window.location.replace("");
     } catch (error) {
@@ -116,18 +115,13 @@ const Form = ({ role, google }) => {
     });
   };
 
-  const tryRegister = () => {
-    role !== "Admin" ?
-      setLogin(!login)
-      : message.error("No puede registrarse como Administrador. Intente iniciando sesión")
-  }
 
   return (
 
     <div id="registro" className="container-form">
       <form className="content-form">
         <div className="register-container">
-          <h2 onClick={tryRegister}>Registro</h2>
+          <h2 onClick={() => setLogin(!login)}>Registro</h2>
           <div>
             <input
               type="text"
@@ -191,7 +185,7 @@ const Form = ({ role, google }) => {
           <button onClick={registerHandler}>Registro</button>
         </div>
         <div className={`ingreso-container ${login ? "translate" : ""}`}>
-          <h2 onClick={tryRegister}>Ingresar</h2>
+          <h2 onClick={() => setLogin(!login)}>Ingresar</h2>
           <div>
             <input
               type="text"
