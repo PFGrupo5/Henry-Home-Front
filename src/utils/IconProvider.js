@@ -15,6 +15,9 @@ const iconObj = {
   dishwasher: <Unicons.UilTear />,
   bed: <Unicons.UilBed />,
   people: <Unicons.UilUsersAlt />,
+  delete: <Unicons.UilTrashAlt />,
+  edit: <Unicons.UilEditAlt />,
+  add: <Unicons.UilPlusCircle />,
 };
 
 export default function iconProvider (icon) {

@@ -21,7 +21,7 @@ const Form = ({ role, google }) => {
     email: "",
     inputPassword: "",
     confirmPassword: "",
-    role: "Client",
+    role,
   });
 
   const [formErrors, setFormErrors] = useState({});

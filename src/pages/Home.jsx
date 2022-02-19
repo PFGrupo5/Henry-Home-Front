@@ -105,6 +105,7 @@ export default function Home() {
                         role={userRole}
                         click={onClickFav}
 
+
                       />
                     );
                   }) : <Loading />)
@@ -113,6 +114,7 @@ export default function Home() {
                   <h2>No hay casas disponibles</h2>
                 </div>
             }
+
           </div>
           <Pages pages={Math.ceil(count / size)} actualPage={page} changePage={changePage} />
         </div>
