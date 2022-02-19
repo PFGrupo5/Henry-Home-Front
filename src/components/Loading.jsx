@@ -5,6 +5,7 @@ function Loading() {
   return (
     <div className="loading">
       <div className="load">
+
         <div>G</div>
         <div>N</div>
         <div>I</div>
@@ -12,6 +13,7 @@ function Loading() {
         <div>A</div>
         <div>O</div>
         <div>L</div>
+
       </div>
     </div>
   );

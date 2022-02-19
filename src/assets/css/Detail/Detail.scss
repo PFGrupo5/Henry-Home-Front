@@ -14,39 +14,44 @@
       justify-content: center;
       align-items: center;
     }
-    .location-container {
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-    .description-container {
-      background-color: var(--main-blue);
-      margin: 1rem 0;
-      color: #fff;
-      padding: 1rem;
-      border-radius: 0.3rem;
-      text-align: justify;
-      font-weight: 500;
+    .info-container {
+      display: grid;
+      // grid-template-columns: repeat(1, 1fr);
 
-      .price-per-night-container{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
+      .location-container {
+        font-size: 1.2rem;
+        font-weight: 600;
       }
+      .description-container {
+        margin: 1rem 0;
+        padding: 1rem;
+        border-radius: 0.3rem;
+        text-align: justify;
+        font-weight: 500;
+        background-color: rgba(211, 211, 211, 0.644);
+        /* border: 2px solid var(--main-blue);; */
+      }
+      .facilities-services-container{
+       
+        .icon-fs-container{
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          gap: .5rem;
+          text-transform: capitalize;
+          margin: 1rem 0;
+        }
+      }
+      
     }
-    .reservar {
-      padding: 0.3rem 1rem;
-      border-radius: 0.3rem;
-      cursor: pointer;
-      border: none;
-      background-color: var(--main-orange);
-      color: #fff;
-      font-size: 1rem;
-      font-weight: 600;
-    }
-    .need-login{
-      text-align: center;
-      font-size: 1rem;
+  }
+  .icon-center{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    p{
+      margin-top: .5rem;
     }
   }
 }
@@ -54,7 +59,10 @@
 @media only screen and (min-width: 1000px) {
   .house-datail-container {
     max-width: 1020px;
-
+    .info-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
     .description-container {
     }
   }
