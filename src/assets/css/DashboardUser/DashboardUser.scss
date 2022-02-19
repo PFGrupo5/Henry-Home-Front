@@ -46,8 +46,6 @@
 .Last-reservs{
   width: 100%;
   overflow-x: scroll;
-  display: flex;
-  justify-content: center;
 }
 
 .DashboardUser_reservationInfo{
@@ -95,4 +93,11 @@
     width: 300px;
     margin: 0 25px;
   }
+  .Last-reservs{
+    width: 100%;
+    overflow-x: scroll;
+    display: flex;
+    justify-content: center;
+  }
+  
 }
