@@ -47,6 +47,7 @@ cases[USER_DETAIL] = (state, payload) => ({
 });
 
 cases[GOOGLE_LOGIN] = (state, payload) => {
+  console.log("state",payload )
   localStorage.setItem("profile", JSON.stringify({ ...payload }));
   return {
     ...state,
@@ -101,7 +102,7 @@ cases[CLEAN_ERROR] = (state, payload) => {
 cases[LOG_OUT] = (state, payload) => {
   return {
     ...state,
-    userDetail: []
+    userDetail: null
   }
 }
 

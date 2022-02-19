@@ -52,12 +52,17 @@ export function getDetail(id) {
   };
 }
 
-export function googleLogIn(result, token) {
+export function googleLogIn(googleInfo, role) {
   return async function (dispatch) {
     try {
+      console.log("semando")
+      const {email, familyName, givenName, googleId, imageUrl} = googleInfo
+      var json = await axios.post(`${URL_BACK}/user/google-login`,{email, familyName, givenName, googleId, imageUrl, role});
+      console.log(json.data)
+      
       return dispatch({
         type: GOOGLE_LOGIN,
-        payload: { result, token },
+        payload: json.data
       });
     } catch (error) {
       console.log(error);
@@ -107,7 +112,7 @@ export function getUserDetail(id, role) {
     console.log(id, role, "aca");
     try {
       const json = await axios.get(
-        `https://henry-home-back.herokuapp.com/api/user/${id}/${role}`
+        `${URL_BACK}/user/${id}/${role}`
       );
       dispatch({
         type: USER_DETAIL,
@@ -123,7 +128,7 @@ export function createHouse(formData, token) {
   return async function (dispatch) {
     try {
       var json = await axios.post(
-        `https://henry-home-back.herokuapp.com/api/houses`,
+        `${URL_BACK}/houses`,
         formData,
         {
           headers: {
@@ -146,7 +151,7 @@ export function adminStatus(payload) {
   return async function (dispatch) {
     try {
       var json = await axios.patch(
-        `https://henry-home-back.herokuapp.com/api/houses/status`,
+        `${URL_BACK}/houses/status`,
         payload
       );
       console.log(json.data);
@@ -164,7 +169,7 @@ export function getFacilities() {
   return async function (dispatch) {
     try {
       var json = await axios.get(
-        `https://henry-home-back.herokuapp.com/api/facilities`
+        `${URL_BACK}/facilities`
       );
       return dispatch({
         type: GET_FACILITIES,
@@ -180,7 +185,7 @@ export function getServices() {
   return async function (dispatch) {
     try {
       var json = await axios.get(
-        `https://henry-home-back.herokuapp.com/api/services`
+        `${URL_BACK}/services`
       );
       return dispatch({
         type: GET_SERVICES,
@@ -195,7 +200,7 @@ export function getLocations() {
   return async function (dispatch) {
     try {
       var json = await axios.get(
-        `https://henry-home-back.herokuapp.com/api/locations`
+        `${URL_BACK}/locations`
       );
       return dispatch({
         type: LOCATIONS,
@@ -215,7 +220,7 @@ export function AddFav(id, token) {
   return async function (dispatch) {
     try {
       var json = await axios.post(
-        `https://henry-home-back.herokuapp.com/api/favs`,
+        `${URL_BACK}/favs`,
         { HousingId: id },
         {
           headers: {
@@ -238,7 +243,7 @@ export function DelFav(id, token) {
   return async function (dispatch) {
     try {
       var json = await axios.delete(
-        `https://henry-home-back.herokuapp.com/api/favs`,
+        `${URL_BACK}/favs`,
         {
           headers: {
             Authorization: token,

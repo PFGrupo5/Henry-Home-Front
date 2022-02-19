@@ -91,10 +91,9 @@ const Form = ({ role, google }) => {
 
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
-    const token = res?.tokenId;
 
     try {
-      dispatch(googleLogIn(result, token));
+      dispatch(googleLogIn(result, "Client"));
       history.push("/home");
       window.location.replace("");
     } catch (error) {

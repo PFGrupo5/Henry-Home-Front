@@ -5,7 +5,7 @@ import { useRef, useState } from 'react'
 import {  Dropdown, Menu } from 'antd'
 import { useSelector } from 'react-redux'
 const UserCard = ({ user, logout }) => {
-  
+  console.log("AAAAAA", user)
   const options = useRef(null);
   const [visible, setVisible] = useState(false);
     const { userDetail} = useSelector(state=>state)
@@ -36,9 +36,9 @@ const UserCard = ({ user, logout }) => {
     <div className="UserCard_profilePic">
       <div onClick={appear}>
         <Dropdown overlay={menu} placement="bottomLeft" arrow>
-        <span>{user.result.firstName || user.result.givenName}</span>
+        <span>{user.result?.firstName || user.result?.lastName}</span>
         </Dropdown>
-        <img src={user.result.imageUrl || userImg} alt="profile-pic" />
+        <img src={user.result.profile_img || userImg} alt="profile-pic" />
       </div>
     </div>
   );

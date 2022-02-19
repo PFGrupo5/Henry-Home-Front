@@ -101,7 +101,7 @@ export default function NavBar() {
         <Col className="navBtn" xs={0} sm={0} md={user ? 3 : 6} lg={user ? 3 : 6}>
           {
             user ? (
-              <img src={user.result.imageUrl} alt="" />
+              <img src={user.result.profile_img} alt="" />
             ) : (
               <Button
                 styles={navBtn}
@@ -154,7 +154,7 @@ export default function NavBar() {
         >
           {
             user ? (
-              <img src={user.result.imageUrl} alt="" />
+              <img src={user.result.profile_img} alt="" />
             ) : (
               <SolutionOutlined className="navIcon" onClick={goToLogIn} />
             )
