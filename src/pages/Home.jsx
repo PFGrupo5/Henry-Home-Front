@@ -53,8 +53,10 @@ export default function Home() {
   const changePage = (e) => {
     setPage(e)
   }
+
   const findHouses = (e) => {
     dispatch(getHotels(page, size, Info))
+    console.log("info", Info)
   }
   const findAllHouses = (e) => {
     dispatch(getHotels(page, size, {
@@ -84,28 +86,29 @@ export default function Home() {
   // } else {
   return (
     <main >
-      <div className="home-containter">
-        <Aside findHouses={findHouses} setInfo={setearInfo} Info={Info} findAllHouses={findAllHouses} />
-        <div className="cards-container">
-          <div className="cardsHome">
-            {allHotels?.length ? allHotels.map((e) => {
-              return (
+      <div className="over-home-containter">
+        <div className="home-containter">
+          <Aside findHouses={findHouses} setInfo={setearInfo} Info={Info} findAllHouses={findAllHouses} />
+          <div className="cards-container">
+            <div className="cardsHome">
+              {allHotels?.length ? allHotels.map((e) => {
+                return (
+                  <Cards
+                    name={e.name}
+                    id={e.id}
+                    location={e.Location.name}
+                    img={e.images}
+                    price={e.pricePerNight}
+                    favs={favsIds ? favsIds.indexOf(e.id) : -1}
+                    role={userRole}
+                    click={onClickFav}
 
-                <Cards
-                  name={e.name}
-                  id={e.id}
-                  location={e.Location.name}
-                  img={e.images}
-                  price={e.pricePerNight}
-                  favs={favsIds ? favsIds.indexOf(e.id) : -1}
-                  role={userRole}
-                  click={onClickFav}
-
-                />
-              );
-            }) : <Loading />}
+                  />
+                );
+              }) : <Loading />}
+            </div>
+            <Pages pages={Math.floor(count / size)} actualPage={page} changePage={changePage} />
           </div>
-          <Pages pages={Math.floor(count / size)} actualPage={page} changePage={changePage} />
         </div>
       </div>
       <Footer />

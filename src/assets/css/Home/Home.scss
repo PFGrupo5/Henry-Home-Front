@@ -4,18 +4,25 @@ main{
     align-items: center;
     flex-direction: column;
 
+    .over-home-container{
+      visibility: visible;
+      background-color: rgb(0, 0, 0);
+      width: 1000px;
+      height: 10000px;
+    }
+
     .home-containter {
       display: grid;
       box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
       width: 98%;
-      border-radius: 2rem;
+      // border-radius: 2rem;
+      border-radius: 2rem 2rem 2rem 8rem;
       background-color: #ffffff;
       margin: 1rem;
       
 
       .cards-container{
           padding: 1rem;
-
           .cardsHome{
               display:grid;
               justify-items: center;

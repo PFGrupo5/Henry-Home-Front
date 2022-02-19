@@ -14,6 +14,8 @@ import {
   USER_DETAIL,
   GET_SERVICES,
   GET_FACILITIES,
+  POST_SERVICES,
+  POST_FACILITIES,
   LOCATIONS,
   ERROR_LOGIN,
   CLEAN_ERROR,
@@ -26,7 +28,7 @@ export function getHotels(page = 1, size = 10, filter) {
     const URL = filterUrl(page, size, filter)
     try {
       var json = await axios.get(URL);
-
+      console.log(json)
       return dispatch({
         type: ALL_HOTELS,
         payload: json.data,
@@ -40,7 +42,7 @@ export function getHotels(page = 1, size = 10, filter) {
 export function getDetail(id) {
   return async function (dispatch) {
     try {
-      var {data} = await axios.get(`${URL_BACK}/houses/${id}`);
+      var { data } = await axios.get(`${URL_BACK}/houses/${id}`);
       return dispatch({
         type: DETAIL,
         payload: data,
@@ -78,7 +80,7 @@ export function SignIn(values, history) {
   return async function (dispatch) {
     try {
       const { data } = await axios.post(`${URL_BACK}/user/login`, values);
-      console.log(data);
+      console.log("aaaaa", data);
       dispatch({
         type: SIGNIN,
         payload: data,
@@ -87,6 +89,10 @@ export function SignIn(values, history) {
       if (data.result.role === "Moderator") {
         console.log('si')
         history.push(`/owner/${data.result.id}`);
+      }
+      if (data.result.role === "Admin") {
+        console.log('si')
+        history.push(`/adminDash`);
       } else {
         console.log("noe");
         history.push("/home");
@@ -278,3 +284,47 @@ export function patchHouse(payload) {
   };
 }
 
+export function postServices(payload) {
+  return async function (dispatch) {
+    console.log("servicio", payload)
+    try {
+
+      var json = await axios.post(
+        `https://henry-home-back.herokuapp.com/api/services`,
+        payload
+      );
+
+      console.log("servicies post", json);
+
+      return dispatch({
+        type: POST_SERVICES,
+        payload: json.data,
+      });
+
+    } catch (error) {
+      console.log("Post services error: ", error)
+    }
+  }
+}
+
+export function postFacilities(payload) {
+  return async function (dispatch) {
+    try {
+
+      var json = await axios.post(
+        `https://henry-home-back.herokuapp.com/api/facilities`,
+        payload
+      );
+
+      console.log("facilities post", json);
+
+      return dispatch({
+        type: POST_FACILITIES,
+        payload: json.data,
+      });
+
+    } catch (error) {
+      console.log("Post facilities error: ", error)
+    }
+  }
+}
