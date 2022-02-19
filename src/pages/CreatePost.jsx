@@ -1,27 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Form, Input, Button, Cascader } from "antd";
+import { Form, Input, Button, Cascader, message } from "antd";
 import "../assets/css/CreatePost/createPost.scss";
-// import Logo from "../assets/img/HenryHome.png";
 import { LeftOutlined } from "@ant-design/icons";
-import { getFacilities, getServices, getLocations, createHouse } from "../FilesStore/Actions/index"
+import {
+  getFacilities,
+  getServices,
+  getLocations,
+  createHouse,
+} from "../FilesStore/Actions/index";
+import axios from "axios";
+import { URL_BACK } from "../config";
 
 export default function CreatePost() {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getFacilities());
     dispatch(getServices());
     dispatch(getLocations());
-  }, [dispatch])
+  }, [dispatch]);
 
   const services = useSelector((state) => state.services);
   const locations = useSelector((state) => state.locations);
   const facilities = useSelector((state) => state.facilities);
 
-  const user = JSON.parse(localStorage.getItem("profile"))
+  const user = JSON.parse(localStorage.getItem("profile"));
 
   const [formData, setFormData] = useState({
     name: "",
@@ -33,11 +38,23 @@ export default function CreatePost() {
     facilities: [],
     location: null,
     images: [],
-  })
+  });
 
   const onFinish = () => {
-    console.log("Success:", formData);
-    dispatch(createHouse(formData, user.token))
+    // console.log("Success:", formData);
+    // dispatch(createHouse(formData, user.token))
+    axios
+    .post(`${URL_BACK}/houses`, formData, {
+      headers: {
+        Authorization: user.token,
+      },
+    })
+    .then(()=> {
+      message.success("Casa Creada Con Exito")
+    })
+    .catch((error)=> {
+      message.error(error)
+    })
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -50,38 +67,38 @@ export default function CreatePost() {
       setFormData({ ...formData, images: [value] });
     } else {
       setFormData({ ...formData, [name]: value });
-      console.log(formData)
+      console.log(formData);
     }
-  }
+  };
 
   const locationChange = (e) => {
     setFormData({ ...formData, location: e[0] });
-    console.log(formData)
-  }
+    console.log(formData);
+  };
 
   const servicesChange = (e) => {
-    let services = e.map(e => e[0])
+    let services = e.map((e) => e[0]);
     setFormData({ ...formData, services });
-    console.log(formData)
-  }
+    console.log(formData);
+  };
 
   const facilitiesChange = (e) => {
-    let facilities = e.map(e => e[0])
+    let facilities = e.map((e) => e[0]);
     setFormData({ ...formData, facilities });
-    console.log(formData)
-  }
+    console.log(formData);
+  };
 
   const optionsServices = services.map((e) => {
-    return { label: e.name[0].toUpperCase() + e.name.slice(1), value: e.name }
-  })
+    return { label: e.name[0].toUpperCase() + e.name.slice(1), value: e.name };
+  });
 
   const optionsLocations = locations.map((e) => {
-    return { label: e.name, value: e.id }
-  })
+    return { label: e.name, value: e.id };
+  });
 
   const optionsFacilities = facilities.map((e) => {
-    return { label: e.name[0].toUpperCase() + e.name.slice(1), value: e.name }
-  })
+    return { label: e.name[0].toUpperCase() + e.name.slice(1), value: e.name };
+  });
 
   return (
     <div className="generalCont">
@@ -114,7 +131,9 @@ export default function CreatePost() {
             { required: true, message: "Please input the name of the post" },
           ]}
         >
-          <Input placeholder="Name" className="input"
+          <Input
+            placeholder="Name"
+            className="input"
             name="name"
             value={formData.name}
             onChange={handleChange}
@@ -139,10 +158,14 @@ export default function CreatePost() {
           name="pricePerNight"
           rules={[{ required: true, message: "Please input the price" }]}
         >
-          <Input placeholder="Price" className="input"
+          <Input
+            placeholder="Price"
+            className="input"
             name="pricePerNight"
             value={formData.pricePerNight}
-            onChange={handleChange} />
+            type="number"
+            onChange={handleChange}
+          />
         </Form.Item>
 
         <Form.Item
@@ -154,10 +177,13 @@ export default function CreatePost() {
             },
           ]}
         >
-          <Input placeholder="Guest" className="input beds"
+          <Input
+            placeholder="Guest"
+            className="input beds"
             name="numberOfPeople"
             value={formData.numberOfPeople}
             onChange={handleChange}
+            type="number"
           />
         </Form.Item>
 
@@ -170,7 +196,9 @@ export default function CreatePost() {
             },
           ]}
         >
-          <Input placeholder="Description" className="input beds"
+          <Input
+            placeholder="Description"
+            className="input beds"
             name="description"
             value={formData.description}
             onChange={handleChange}
@@ -186,7 +214,9 @@ export default function CreatePost() {
             },
           ]}
         >
-          <Input placeholder="House Rules" className="input beds"
+          <Input
+            placeholder="House Rules"
+            className="input beds"
             name="houseRules"
             value={formData.houseRules}
             onChange={handleChange}
@@ -233,7 +263,9 @@ export default function CreatePost() {
         </Form.Item>
 
         <Form.Item name="images" className="uploadImg">
-          <Input placeholder="URL image" className="input beds"
+          <Input
+            placeholder="URL image"
+            className="input beds"
             name="images"
             value={formData.images}
             onChange={handleChange}
