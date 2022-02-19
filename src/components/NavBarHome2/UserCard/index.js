@@ -3,6 +3,7 @@ import "../../../assets/css/NavBarHome/UserCard/styles.scss";
 import { Link } from "react-router-dom";
 import { useRef, useState } from "react";
 import { Dropdown, Menu } from "antd";
+
 const UserCard = ({ user, logout }) => {
   const options = useRef(null);
   const [visible, setVisible] = useState(false);

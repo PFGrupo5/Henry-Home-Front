@@ -45,26 +45,26 @@ const LoginForm = ({ setDisplay }) => {
         }
         if (formErrors.email || formErrors.inputPassword)
             return message.error("Error con los datos");
-            dispatch(SignIn(loginData, history));
-            setLoginData({
-                email: "",
-                inputPassword: "",
-                role: "Client",
-            })
-            setDisplay(false)
-        } 
-        
-    
+        dispatch(SignIn(loginData, history));
+        setLoginData({
+            email: "",
+            inputPassword: "",
+            role: "Client",
+        })
+        setDisplay(false)
+    }
 
-    const inputFormHandler = (e)=>{
-        const {name,value} = e.target
-        setLoginData(prev=>({ ...prev, [name]: value }))
+
+
+    const inputFormHandler = (e) => {
+        const { name, value } = e.target
+        setLoginData(prev => ({ ...prev, [name]: value }))
         setFormErrors(ValidateForm({ ...loginData, [name]: value }));
     }
 
 
 
-   
+
 
     return (
         <form onSubmit={e => e.preventDefault()} className="ingresar">
@@ -92,7 +92,7 @@ const LoginForm = ({ setDisplay }) => {
                 <p className="error-message">
                     {formErrors.inputPassword ? formErrors.inputPassword : "ㅤㅤ"}
                 </p>
-            
+
             </div>
             <p type='text'>¿Olvidaste tu contraseña?</p>
             <button onClick={login} className='NavBarHome_loginBtn'>Ingresar</button>
