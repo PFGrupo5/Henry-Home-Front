@@ -87,6 +87,7 @@ export default function CreatePost() {
     console.log(formData);
   };
 
+<<<<<<< HEAD
   const optionsServices = services.map((e) => {
     return { label: e.name[0].toUpperCase() + e.name.slice(1), value: e.name };
   });
@@ -98,6 +99,19 @@ export default function CreatePost() {
   const optionsFacilities = facilities.map((e) => {
     return { label: e.name[0].toUpperCase() + e.name.slice(1), value: e.name };
   });
+=======
+  const optionsServices = services?.map((e) => {
+    return { label: e.name[0].toUpperCase() + e.name.slice(1), value: e.name }
+  })
+
+  const optionsLocations = locations?.map((e) => {
+    return { label: e.name, value: e.id }
+  })
+
+  const optionsFacilities = facilities?.map((e) => {
+    return { label: e.name[0].toUpperCase() + e.name.slice(1), value: e.name }
+  })
+>>>>>>> 933d37e5fafd65c37b20b5e38ae40dc9355d8af1
 
   return (
     <div className="generalCont">
