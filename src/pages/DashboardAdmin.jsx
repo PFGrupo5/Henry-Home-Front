@@ -127,7 +127,7 @@ export default function DashboardAdmin() {
                                     })}
                                 </div>
                                 :
-                                <Loading style="loading" />
+                                <Loading />
                             }
                         </div>
                     ) :
