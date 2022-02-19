@@ -85,6 +85,7 @@ export default function Home() {
   // } else {
   return (
     <main >
+<<<<<<< HEAD
       <div className="over-home-containter">
         <div className="home-containter">
           <Aside findHouses={findHouses} setInfo={setearInfo} Info={Info} findAllHouses={findAllHouses} />
@@ -102,13 +103,37 @@ export default function Home() {
                     favs={favsIds ? favsIds.indexOf(e.id) : -1}
                     role={userRole}
                     click={onClickFav}
+=======
+      <div className="home-containter">
+        <Aside findHouses={findHouses} setInfo={setearInfo} Info={Info} findAllHouses={findAllHouses} />
+        <div className="cards-container">
+          <div className="cardsHome">
+            {
+              typeof allHotels !== "string" ? (
+                allHotels?.length ?
+                  allHotels.map((e) => {
+                    return (
+                      <Cards
+                        name={e.name}
+                        id={e.id}
+                        location={e.Location.name}
+                        img={e.images}
+                        price={e.pricePerNight}
+                        favs={favsIds ? favsIds.indexOf(e.id) : -1}
+                        role={userRole}
+                        click={onClickFav}
+>>>>>>> 30765102bb46faf16af3ff9753fe890d0623181d
 
-                  />
-                );
-              }) : <Loading />}
-            </div>
-            <Pages pages={Math.floor(count / size)} actualPage={page} changePage={changePage} />
+                      />
+                    );
+                  }) : <Loading />)
+                :
+                <div>
+                  <h2>No hay casas disponibles</h2>
+                </div>
+            }
           </div>
+          <Pages pages={Math.ceil(count / size)} actualPage={page} changePage={changePage} />
         </div>
       </div>
       <Footer />

@@ -11,7 +11,6 @@ import { URL_BACK } from "../config";
 
 
 const LandingOwner = (role) => {
-  console.log(role)
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -71,7 +70,6 @@ const LandingOwner = (role) => {
 
   const forgotPasswordHandler = async () => {
     if (!inputForm.email.trim().length) return message.info("Colocar email");
-    console.log(inputForm.email);
     axios
       .post(`${URL_BACK}/user/confirm-update-password`, { email: inputForm.email })
       .then(() => {

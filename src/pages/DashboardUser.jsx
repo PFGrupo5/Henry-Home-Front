@@ -29,7 +29,7 @@ function DashboardUser() {
         <div>
           <div className="DashboardUser-userInfo">
             <h1>Información General</h1>
-            <img src={userDetail.imageUrl || defaultUser} />
+            <img src={userDetail.imageUrl || defaultUser} alt="" />
             <p>Nombre: {`${userDetail.firstName} ${userDetail.lastName}`}</p>
             <p>Email: {`${userDetail.email}`}</p>
             <p>Rol: {userDetail.role}</p>
@@ -39,23 +39,23 @@ function DashboardUser() {
               Hoteles Favoritos
             </h1>
             <div className="Favs-Cards">
-                {userDetail.favs.length === 0 ? (
-                  <div>{`No Tienes Hotel Favorito :(`}</div>
-                ) : (
-                  <div>
-                    {userDetail.favs.map((f) => {
-                      return (
-                        <Cards
-                          name={f.name}
-                          key={f.id}
-                          id={f.id}
-                          img={f.images}
-                          price={f.pricePerNight}
-                        />
-                      );
-                    })}
-                  </div>
-                )}
+              {userDetail.favs.length === 0 ? (
+                <div>{`No Tienes Hotel Favorito :(`}</div>
+              ) : (
+                <div>
+                  {userDetail.favs.map((f) => {
+                    return (
+                      <Cards
+                        name={f.name}
+                        key={f.id}
+                        id={f.id}
+                        img={f.images}
+                        price={f.pricePerNight}
+                      />
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
           <div className="Container-Reservs">
