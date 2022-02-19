@@ -76,6 +76,8 @@ export default function EditPost(props) {
     console.log("Handle");
   };
 
+  if (!hotel) return (<div>cargando</div>)
+
   return (
     <Modal visible="true">
       <div className="EditPost__container">
