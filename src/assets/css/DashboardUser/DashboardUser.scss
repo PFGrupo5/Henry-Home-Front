@@ -1,138 +1,103 @@
-// ------------------ MENU ---------
-
-.Container-Genral {
-  display: flex;
-  flex-direction: column;
-}
-
-.icon-DashboardUser {
-  font-size: 30px;
-  margin: 10px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.Container-sidebar {
-  max-width: 390px;
-  height: 100vh;
-  position: fixed;
-  z-index: 10;
-  top: 0px;
-  left: 0px;
-  cursor: pointer;
-  border: 2px solid black;
-  animation: slide-menu-out 1s ease 0s 1 normal forwards;
-  background-color: white;
-}
-
-.Container-sidebar.active {
+.Container-General {
   width: 100%;
-  animation: slide-menu-in 1s ease 0s 1 normal forwards;
 }
 
-// ------------------ CONTENT ---------
 
-.Container-dash-name {
-  display: flex;
-  justify-content: center;
+.DashboardUser-userInfo {
   border-bottom: 2px solid black;
-  font-size: 30px;
+  text-align: center;
+  padding-top: 10px;
+  >img{
+    width: 50%;
+    border: solid
+  }
+  p{
+    margin: 10px 0;
+  } 
 }
 
-.Favs-Cards,
-.Last-reservs {
-  height: 100vh;
+.Container-Favs{
+  width: 100%;
+  .Favs-Cards{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    >div{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.DashboardUser-section-Title{
   display: flex;
   justify-content: center;
-  align-items: center;
+  text-align: center;
 }
 
-.Favs-hotels-name,
-.Last-reservs-name {
-  display: flex;
-  justify-content: center;
-  border-bottom: 2px solid black;
+.Container-Reservs{
+  width: 100%;
+  height: 300px;
 }
 
-.li-menu {
-  border-bottom: 2px solid black;
-  margin-top: 100px;
-  margin-bottom: 200px;
-  display: flex;
-  justify-content: center;
+.Last-reservs{
+  width: 100%;
+  overflow-x: scroll;
 }
 
-.li-menu:hover {
-  border: 2px solid black;
+.DashboardUser_reservationInfo{
+  width: 700px;
+  tr:first-child{
+    background: rgb(223, 133, 49);
+  }
+  th{
+    border-bottom: solid black 1px;
+    padding: 5px 0;
+    button{
+      margin: 0 5px;
+    }
+  }
 }
-
-.Container-data {
-  margin: 40px;
-}
-
-.h2-container {
-  display: flex;
-  justify-content: center;
-  font-size: 20px;
-}
-
-// ---------- CARDS -----------
 
 .container-card {
   display: flex;
   flex-direction: column;
-  border: 2px solid black;
-  margin-bottom: 20px;
-}
-
-.container-reserv{
-  width: 400px;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  border: 2px solid black;
-  margin-bottom: 20px;
-}
-
-.img-dash,
-.name-dash,
-.price-dash,
-.person-dash {
-  display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-}
-
-.boton-dash-user{
-  border: 2px solid black;
-  border-radius: 5px;
-  display: flex;
-  position: absolute;
-  right: 21rem;
-}
-
-// ---------- KEY FRAMES -----------
-
-@keyframes slide-menu-in {
-  0% {
-    opacity: 0;
-    transform: translateX(-250px);
+  width: 95%;
+  height: 400px;
+  margin: 5px;
+  .cardUserImg_here{
+    width: 100%;
+    height: 50%;
   }
-
-  100% {
-    opacity: 1;
-    transform: translateX(0);
+  p{
+    font-size: 1em;
   }
 }
 
-@keyframes slide-menu-out {
-  0% {
-    opacity: 1;
-    transform: translateX(0);
-  }
 
-  100% {
-    opacity: 0;
-    transform: translateX(-250px);
+@media (min-width:768px){
+  .Container-sidebar{
+    max-width: 300px;
   }
+  .DashboardUser-userInfo {
+    >img{
+      width: 200px;
+    }
+  }
+  .container-card{
+    width: 300px;
+    margin: 0 25px;
+  }
+  .Last-reservs{
+    width: 100%;
+    overflow-x: scroll;
+    display: flex;
+    justify-content: center;
+  }
+  
 }

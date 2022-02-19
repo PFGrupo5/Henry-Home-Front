@@ -5,7 +5,6 @@ export const ValidateForm = ({
   inputPassword,
   confirmPassword,
 }) => {
-  console.log({inputPassword});
   const errors = {};
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
   if (!firstName) {
@@ -23,7 +22,7 @@ export const ValidateForm = ({
     errors.inputPassword = "Contraseña es requerida!";
   } else if (inputPassword.length < 5) {
     errors.inputPassword = "Debe ser mayor a 4 caracteres";
-  } 
+  }
   if (!confirmPassword) {
     errors.confirmPassword = "Contraseña es requerida!";
   } else if (confirmPassword.length < 5) {
