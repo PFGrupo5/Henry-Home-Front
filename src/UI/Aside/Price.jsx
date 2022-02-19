@@ -1,7 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
 import { InputNumber } from "antd";
-import "../../assets/css/Aside/Components/Aside-components.scss";
 
 export default function Minprice({ setInfo, Info }) {
 

@@ -169,6 +169,7 @@ export default function Admin() {
                         />
                       </div>
 
+
                       <div>
                         <input
                           type="text"
@@ -179,6 +180,7 @@ export default function Admin() {
                           className="inputs"
                         />
                       </div>
+
 
                       <div>
                         <textarea
