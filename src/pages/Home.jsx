@@ -56,7 +56,6 @@ export default function Home() {
 
   const findHouses = (e) => {
     dispatch(getHotels(page, size, Info))
-    console.log("info", Info)
   }
   const findAllHouses = (e) => {
     dispatch(getHotels(page, size, {
@@ -94,6 +93,7 @@ export default function Home() {
               {allHotels?.length ? allHotels.map((e) => {
                 return (
                   <Cards
+                    key={e.id}
                     name={e.name}
                     id={e.id}
                     location={e.Location.name}
