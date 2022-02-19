@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail } from "../FilesStore/Actions";
 import Carrousel from "../UI/Carrousel";
 import imgDefault from "../assets/img/HenryHome.png";
-import * as Unicons from "@iconscout/react-unicons";
-import { PushpinOutlined, DollarOutlined } from "@ant-design/icons";
+import { PushpinOutlined } from "@ant-design/icons";
 import "../assets/css/Detail/Detail.scss";
 import Reservation from "./Reservation2";
 import IconProvider from "../utils/IconProvider";
@@ -25,7 +24,7 @@ export default function Detail() {
 
   if (!detail) return (<div>Cargando</div>)
 
-  const { name, images, Location, numberOfPeople, houseRules } = detail
+  const { name, images, Location, numberOfPeople, /* houseRules */ } = detail
   return (
     <div className="house-datail">
       <div className="house-datail-container">
