@@ -7,6 +7,7 @@ import imgDefault from "../assets/img/HenryHome.png";
 
 import { PushpinOutlined, DollarOutlined } from "@ant-design/icons";
 import "../assets/css/Detail/Detail.scss";
+import ReviewCard from "../components/ReviewCard";
 
 
 
@@ -68,6 +69,18 @@ export default function Detail() {
                 return <p className="p-detail"> - {e.name} </p>;
               })}
             </div>
+          </div>
+          <div className="description-container">
+            <h3>Reseñas: </h3>
+            <div>
+              {detail.Reviews.length ?
+               detail.Reviews.map((e)=><ReviewCard
+                review={e}
+               />) :
+              <p> El establecimiento no tiene reseñas de momento reseñas por el momento </p>
+               }
+            </div>
+
           </div>
         </div>
         {
