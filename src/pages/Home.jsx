@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Cards from "../components/Cards";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 // import NavBarHome2 from "../components/NavBarHome2/NavBarHome2.js";
 import Loading from "../components/Loading";
 import { AddFav, DelFav, getHotels, getUserDetail } from "../FilesStore/Actions/index.js";
 import Aside from "../components/Aside";
 import "../assets/css/Home/Home.scss";
 import Pages from "../components/Pages";
+import Footer2 from "../components/Footer2";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -85,25 +86,6 @@ export default function Home() {
   // } else {
   return (
     <main >
-<<<<<<< HEAD
-      <div className="over-home-containter">
-        <div className="home-containter">
-          <Aside findHouses={findHouses} setInfo={setearInfo} Info={Info} findAllHouses={findAllHouses} />
-          <div className="cards-container">
-            <div className="cardsHome">
-              {allHotels?.length ? allHotels.map((e) => {
-                return (
-                  <Cards
-                    key={e.id}
-                    name={e.name}
-                    id={e.id}
-                    location={e.Location.name}
-                    img={e.images}
-                    price={e.pricePerNight}
-                    favs={favsIds ? favsIds.indexOf(e.id) : -1}
-                    role={userRole}
-                    click={onClickFav}
-=======
       <div className="home-containter">
         <Aside findHouses={findHouses} setInfo={setearInfo} Info={Info} findAllHouses={findAllHouses} />
         <div className="cards-container">
@@ -122,7 +104,6 @@ export default function Home() {
                         favs={favsIds ? favsIds.indexOf(e.id) : -1}
                         role={userRole}
                         click={onClickFav}
->>>>>>> 30765102bb46faf16af3ff9753fe890d0623181d
 
 
                       />
@@ -138,7 +119,7 @@ export default function Home() {
           <Pages pages={Math.ceil(count / size)} actualPage={page} changePage={changePage} />
         </div>
       </div>
-      <Footer />
+      <Footer2 />
     </main>
   );
 }

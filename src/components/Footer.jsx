@@ -8,13 +8,8 @@ export default function Footer() {
       <div className="div-about">
         <h4 className="footTitle">About Us</h4>
         <p className="footDescription">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
-          exercitationem qui laudantium reiciendis sunt porro voluptatum
-          consequuntur atque soluta aut totam corrupti sint in tenetur alias
-          quam, dolorem neque tempora? Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Id accusamus tempore corporis excepturi aliquid,
-          dolorum illo, distinctio expedita sit qui exercitationem. Tenetur hic
-          distinctio voluptas, rerum quidem eligendi nulla ab?
+          Bienvenidos a Henry-Home, una pagina en la que podras publicar tus
+          alojamientos y alquilar otros
         </p>
       </div>
       <div className="underFoot">
@@ -31,10 +26,12 @@ export default function Footer() {
             <GithubOutlined className="git-icon" />
           </a>
 
-          <a href="https://henry-home.vercel.app/admins"
+          <a
+            href="https://henry-home.vercel.app/admins"
             target="_blank"
             rel="noopener noreferrer"
-          >Admin
+          >
+            Admin
           </a>
         </div>
       </div>
