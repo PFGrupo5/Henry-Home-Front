@@ -36,7 +36,6 @@ export default function FromCreate() {
     images: [],
   });
 
-
   const handlerChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -86,6 +85,7 @@ export default function FromCreate() {
     }
   };
 
+
   const optionsServices = services.map((e) => {
     return { label: e.name[0].toUpperCase() + e.name.slice(1), value: e.name };
   });
@@ -115,7 +115,7 @@ export default function FromCreate() {
         </div>
         <div>
           <input
-            type="number"
+            type="text"
             key="price"
             value={formData.pricePerNight}
             name="pricePerNight"
@@ -129,7 +129,7 @@ export default function FromCreate() {
         </div>
         <div>
           <input
-            type="number"
+            type="text"
             key="camas"
             value={formData.numberOfBeds}
             name="numberOfBeds"
@@ -157,6 +157,7 @@ export default function FromCreate() {
         </div>
         <div>
           <textarea
+            id="description"
             type="text"
             key="description"
             value={formData.description}
