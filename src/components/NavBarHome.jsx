@@ -65,32 +65,7 @@ export default function NavBar() {
     setUser(null)
     window.location.reload()
   }
-  const provincias = [
-    "buenos aires",
-    "catamarca",
-    "chaco",
-    "chubut",
-    "cordoba",
-    "corrientes",
-    "entre rios",
-    "formosa",
-    "jujuy",
-    "la pampa",
-    "la rioja",
-    "mendoza",
-    "misiones",
-    "neuquen",
-    "río negro",
-    "salta",
-    "san juan",
-    "san luis",
-    "santa cruz",
-    "santa fe",
-    "santiago del estero",
-    "tierra del fuego",
-    "tucuman",
-  ];
-
+ 
   return (
     <div className="allNav">
       <Row gutter={20}>

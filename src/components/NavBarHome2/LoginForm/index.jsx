@@ -26,7 +26,7 @@ const LoginForm = ({ setDisplay }) => {
         try {
             dispatch(googleLogIn(result, "Client"));
             setDisplay(false)
-            history.push("/home");
+            window.location.reload()
         } catch (error) {
             console.log(error);
         }
@@ -95,23 +95,25 @@ const LoginForm = ({ setDisplay }) => {
 
             </div>
             <p type='text'>¿Olvidaste tu contraseña?</p>
-            <button onClick={login} className='NavBarHome_loginBtn'>Ingresar</button>
-            <GoogleLogin
-                clientId="109526159096-dk6c06q28lkm7uq041ievngdekh1p8k2.apps.googleusercontent.com"
-                // personalización del boton de google
-                render={(renderProps) => (
-                    <button
-                        onClick={renderProps.onClick}
-                        disabled={renderProps.disabled}
-                        className="NavBarHome_googleBtn"
-                    >
-                        <Unicons.UilGoogle />
-                        Ingresar con Google
-                    </button>
-                )}
-                onSuccess={googleSuccess}
-                onFailure={googleFailure}
-            />
+            <div className='btn-container-navbar'>
+                <button onClick={login} className='NavBarHome_loginBtn'>Ingresar</button>
+                <GoogleLogin
+                    clientId="109526159096-dk6c06q28lkm7uq041ievngdekh1p8k2.apps.googleusercontent.com"
+                    // personalización del boton de google
+                    render={(renderProps) => (
+                        <button
+                            onClick={renderProps.onClick}
+                            disabled={renderProps.disabled}
+                            className="NavBarHome_googleBtn"
+                        >
+                            <Unicons.UilGoogle />
+                            Ingresar con Google
+                        </button>
+                    )}
+                    onSuccess={googleSuccess}
+                    onFailure={googleFailure}
+                />
+            </div>
         </form>
     )
 }
