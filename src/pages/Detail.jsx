@@ -19,7 +19,6 @@ export default function Detail() {
   const { id } = useParams()
   const { detail } = useSelector((state) => state);
   const [user] = useState(JSON.parse(localStorage.getItem("profile")));
-  
   if(user){
     const find  = detail?.Reviews.length ?
   detail.Reviews.filter((e)=>e.userClientId===user.result.id) : []
@@ -71,7 +70,10 @@ export default function Detail() {
           },
         }
         )
-        //window.location.reload()    
+        setReviewDetail({
+          stars: 1,
+          description: "",
+        })
         setReview()
         console.log(haveReview)
  }catch(error){console.log(error)}
@@ -174,16 +176,17 @@ export default function Detail() {
             <h3>Reseñas: </h3>
             {user && (comprobante ? <div>
               <h4>Tu Reseña:</h4>
-              <ReviewCard funcion={setReview} token={user.token} review={reviewpropia}/>
+              <ReviewCard setReview={setReview} funcion={setReview} token={user.token} review={reviewpropia}/>
             </div> : <div>
               <h4>¿Quieres redactar una reseña?</h4>
               <form>
                 <div>
                   <div>
                     <>Estrellas:</> 
-                    <button className="more" onClick={onChangeStarsMore}>+</button>
-                      <>{reviewDetail.stars}</> 
+
                     <button onClick={onChangeStarsLess}>-</button>
+                      <>{reviewDetail.stars}</> 
+                    <button  onClick={onChangeStarsMore}>+</button>
                   </div>
                   <div>
                   <textarea placeholder="Description (160 char max)" onChange={(e)=>onChangeDescription(e)} value={reviewDetail.description}></textarea>
