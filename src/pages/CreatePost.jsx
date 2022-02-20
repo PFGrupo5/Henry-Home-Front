@@ -31,14 +31,20 @@ export default function CreatePost() {
     name: "",
     pricePerNight: null,
     numberOfPeople: null,
+    numberOfBeds: null,
     description: "",
     houseRules: "",
     services: [],
     facilities: [],
     location: null,
     images: [],
+<<<<<<< HEAD
+  })
+  
+=======
   });
 
+>>>>>>> ba2711f2f2eb6a3f416396825bb4d7c83dbf56bb
   const onFinish = () => {
     // console.log("Success:", formData);
     // dispatch(createHouse(formData, user.token))
@@ -187,6 +193,22 @@ export default function CreatePost() {
         </Form.Item>
 
         <Form.Item
+          name="numberOfBeds"
+          rules={[
+            {
+              required: true,
+              message: "Please select the number of beds",
+            },
+          ]}
+        >
+          <Input placeholder="Beds" className="input beds"
+            name="numberOfBeds"
+            value={formData.numberOfBeds}
+            onChange={handleChange}
+          />
+        </Form.Item>
+
+        <Form.Item
           name="description"
           rules={[
             {
@@ -224,12 +246,7 @@ export default function CreatePost() {
 
         <Form.Item
           name="services"
-          rules={[
-            {
-              required: true,
-              message: "Please select which services are available",
-            },
-          ]}
+          
           className="input"
         >
           <Cascader
@@ -243,12 +260,7 @@ export default function CreatePost() {
         </Form.Item>
         <Form.Item
           name="facilities"
-          rules={[
-            {
-              required: true,
-              message: "Please select which facilities are available",
-            },
-          ]}
+          
           className="input"
         >
           <Cascader
