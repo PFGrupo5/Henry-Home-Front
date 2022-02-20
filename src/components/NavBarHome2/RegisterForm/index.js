@@ -32,7 +32,11 @@ const RegisterForm = ({ setDisplay }) => {
           });
           setDisplay(false);
         })
-        .catch((err) => console.log(err.response.data));
+        .catch((err) => {
+          console.log(err.response.data);
+          message.error(err.response.data.message);
+          setDisplay(false);
+        });
     } else {
       message.error("Error con los datos");
     }
@@ -86,7 +90,7 @@ const RegisterForm = ({ setDisplay }) => {
         <input
           name="inputPassword"
           type="password"
-          placeholder="Contreseña"
+          placeholder="Contraseña"
           onChange={inputFormHandler}
           value={registerData.inputPassword}
         />

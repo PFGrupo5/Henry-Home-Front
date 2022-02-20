@@ -22,13 +22,21 @@ export default function Footer() {
           <CopyrightOutlined /> 2022 HenryHotel, Inc
         </div>
 
-        <a
-          href="https://github.com/PFGrupo5"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <GithubOutlined className="git-icon" />
-        </a>
+        <div>
+          <a
+            href="https://github.com/PFGrupo5"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GithubOutlined className="git-icon" />
+          </a>
+
+          <a href="https://henry-home.vercel.app/admins"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Admin
+          </a>
+        </div>
       </div>
     </div>
   );

@@ -63,30 +63,34 @@ function DashboardUser() {
               Ultimas reservaciones
             </h1>
             <div className="Last-reservs">
-              {!userDetail.Reservations ? (
-                <div>{`No Tienes Reservaciones Previas :(`}</div>
-              ) : (
-                <table className="DashboardUser_reservationInfo" >
-                  <tr>
-                    <th>Fecha Inicio</th>
-                    <th>Fecha Fin</th>
-                    <th>Descripcion</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                  </tr>
-                  {userDetail.Reservations.map((f) => {
-                    return (
+                {!userDetail.Reservations ? (
+                  <div>{`No Tienes Reservaciones Previas :(`}</div>
+                ) : (
+                  <table className="DashboardUser_reservationInfo" >
+                    <thead>
                       <tr>
-                        <th>{f.date_start}</th>
-                        <th>{f.date_end}</th>
-                        <th>{f.detail}</th>
-                        <th>{f.status}</th>
-                        <th><a href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a><Button type="text">Eliminar</Button></th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Fin</th>
+                        <th>Descripcion</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
                       </tr>
-                    );
-                  })}
-                </table>
-              )}
+                    </thead>
+                    <tbody>
+                      {userDetail.Reservations.map((f) => {
+                        return (
+                          <tr key={f.id}>
+                            <td>{f.date_start}</td>
+                            <td>{f.date_end}</td>
+                            <td>{f.detail}</td>
+                            <td>{f.status}</td>
+                            <td><a href={f.link_mercado_pago} target='_blank'>Pagar</a><Button type="text"><strong>Eliminar</strong></Button></td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                )}
             </div>
           </div>
         </div>
