@@ -1,0 +1,97 @@
+
+.Reviews-div{
+    border-radius: 0.3rem;
+    // border: 1px solid #fff;
+    text-align: justify;
+      font-weight: 500;
+    position:relative;
+      
+      padding: 1rem;
+      margin: 1rem 0;
+      background-color: #0d4577;
+      .fecha-review{
+          font-weight: 300;
+          font-size: small;
+          position:absolute;
+          top: 0.5rem;
+          right: 1rem;
+          
+        }
+        .fecha-review2{
+            font-weight: 300;
+          font-size: small;
+          position:absolute;
+          top: 0.5rem;
+          right: 2rem;
+            
+          }
+        .estrellas-review{
+            background-color: var(--main-blue);
+            border-radius: 0.3rem;
+            font-weight: 300;
+            font-size: medium;
+            position:absolute;
+            top: 0.5rem;
+            left: 1rem;
+            
+            
+          }
+          
+        .description-review{
+            font-size: small;
+            text-align: justify;
+            
+        }
+        .deleteReview{
+            background-color: 
+            #d10018;
+            font-size: small;
+            margin: 0;
+            padding: 2px;
+            position:absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            &:hover{
+                background-color: 
+                #b30418;
+            }
+            
+        }
+        .modificar{
+            background-color: var(--main-blue);
+            font-size: small;
+            margin: 0;
+            position:absolute;
+            top: 0.5rem;
+            left: 9.5rem;
+            &:hover{
+                background-color: 
+                #0b3b64;
+            }
+        }
+        .publicar{
+            background-color: var(--main-blue);
+            font-size: small;
+            
+            
+            &:hover{
+                background-color: 
+                #0b3b64;
+            }
+        }
+        .buttonPoP{
+            border: 1px solid #fff;
+            border-radius: 0.3rem;
+        
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+            padding: 0px;
+            background-color: var(--main-blue);
+            &:hover{
+                background-color: 
+                #0b3b64;
+            }
+          }
+        
+}
+

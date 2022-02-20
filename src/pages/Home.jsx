@@ -85,25 +85,6 @@ export default function Home() {
   // } else {
   return (
     <main >
-<<<<<<< HEAD
-      <div className="over-home-containter">
-        <div className="home-containter">
-          <Aside findHouses={findHouses} setInfo={setearInfo} Info={Info} findAllHouses={findAllHouses} />
-          <div className="cards-container">
-            <div className="cardsHome">
-              {allHotels?.length ? allHotels.map((e) => {
-                return (
-                  <Cards
-                    key={e.id}
-                    name={e.name}
-                    id={e.id}
-                    location={e.Location.name}
-                    img={e.images}
-                    price={e.pricePerNight}
-                    favs={favsIds ? favsIds.indexOf(e.id) : -1}
-                    role={userRole}
-                    click={onClickFav}
-=======
       <div className="home-containter">
         <Aside findHouses={findHouses} setInfo={setearInfo} Info={Info} findAllHouses={findAllHouses} />
         <div className="cards-container">
@@ -122,7 +103,6 @@ export default function Home() {
                         favs={favsIds ? favsIds.indexOf(e.id) : -1}
                         role={userRole}
                         click={onClickFav}
->>>>>>> 30765102bb46faf16af3ff9753fe890d0623181d
 
 
                       />
