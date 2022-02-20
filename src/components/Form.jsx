@@ -50,7 +50,6 @@ const Form = ({ role, google }) => {
           console.log({ error });
           message.error(error.response.data.message);
         });
-      // dispatch(SignUp(inputForm));
       clear();
     } else {
       message.error("Error con los datos");
@@ -71,7 +70,6 @@ const Form = ({ role, google }) => {
       inputPassword: inputForm.inputPassword,
       role: role,
     };
-    console.log(userSignIn)
     dispatch(SignIn(userSignIn, history));
     clear();
   };
