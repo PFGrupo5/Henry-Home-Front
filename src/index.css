@@ -73,6 +73,14 @@ a:active {
   outline: none;
 }
 
+button{
+  cursor:pointer
+}
+
+textarea {
+  resize: none;
+}
+
 /*========== Scroll-Bar ==========*/
 
 ::-webkit-scrollbar {

@@ -5,7 +5,7 @@ import { store } from "./FilesStore/Store";
 import { Provider } from "react-redux";
 import { BrowserRouter} from "react-router-dom";
 import "./index.css";
-import "./index.scss";
+
 
 ReactDOM.render(
   <Provider store={store}>

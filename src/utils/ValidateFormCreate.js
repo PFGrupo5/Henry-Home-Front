@@ -9,10 +9,11 @@ export const ValidateFormCreate = ({
   numberOfBeds,
   location,
   images,
+
 }) => {
   const error = {};
 
-  console.log(description.length)
+
 
   if (!name) {
     error.name = "Nombre del alojamiento es requerido!";
@@ -74,25 +75,12 @@ export const ValidateFormCreate = ({
   } else if(houseRules.length >= 500){
     error.houseRules = "Las Reglas de la Casa no puede tener mas de 500 Caracteres"
   }
-  if (!facilities) {
-    error.facilities = "Las Comodidades son requerida!";
+  console.log(location)
+  
+ if (!location || !location.length) {
+    error.location = "La Ubicacion es Obligatoriaaaa";
   }
-  if (!services) {
-    error.services = "Los Servicions son requerida!";
-  }
-  if (!location) {
-    error.location = "La Ubicacion es requerida!";
-  } else if (
-    location === null ||
-    location.length === 0 ||
-    /^\s+$/.test(location)
-  ) {
-    error.location = "La Ubicacion es Obligatoria";
-  }
-  if (!images) {
-    error.images = "La Imagen es requerida!";
-  } else if (images === null || images.length === 0 || /^\s+$/.test(images)) {
-    error.images = "La Imagen es Obligatoria";
-  }
+
+
   return error;
 };

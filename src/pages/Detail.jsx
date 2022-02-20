@@ -33,11 +33,12 @@ export default function Detail() {
           <p>Publicado por {detail.userMod.firstName}</p>
         </div>
         <div className="carrousel-conteiner">
-          <Carrousel
+          <img src={images[0]} alt="" width="1020px"/>
+          {/* <Carrousel
             imgs={images ? images : [imgDefault]}
             dotsBool={true}
             styles="imgDetail"
-          />
+          /> */}
         </div>
         <div className="info-container">
           <div>
@@ -75,6 +76,7 @@ export default function Detail() {
               </div>
             </div>
           </div>
+          <img src={detail.image || ""} alt="" width="300px"/>
           <Reservation id={id} user={user} />
         </div>
       </div>
