@@ -1,0 +1,85 @@
+$background: #092c4c;
+$font-color: #ffffff;
+
+// -------- Container --------
+
+.foot2Container {
+  background-color: $background;
+  padding: 20px 100px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  color: $font-color;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+// -------- Description --------
+
+.foot2Description {
+  color: $font-color;
+  margin-top: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  span {
+    color: #f2994a;
+  }
+}
+
+.foot2PDeta {
+  font-size: 15px;
+  font-feature-settings: "smcp";
+  font-variant: small-caps;
+  line-height: 1em;
+  width: 300px;
+  padding-top: 20px;
+}
+
+// -------- Ser Parte --------
+
+.title {
+  color: #ffffff;
+  margin-top: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.foot2A {
+  color: $font-color !important;
+}
+
+.span {
+  background: #839fad none repeat scroll 0 0;
+  display: block;
+  height: 1px;
+  width: 20%;
+}
+
+.foot2Ul {
+  display: flex;
+  flex-direction: column;
+}
+
+// -------- Contac --------
+
+.foot2Contact,
+.foot2Github {
+  color: #ffffff !important;
+  margin-top: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+// -------- Extra -----------
+
+.foot2Copy {
+  display: flex;
+  justify-content: center;
+  grid-column: 2;
+  grid-row: 4;
+}
+
+.spanCopy {
+  background: #839fad none repeat scroll 0 0;
+  display: block;
+  height: 1px;
+}
