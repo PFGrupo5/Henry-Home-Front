@@ -10,7 +10,7 @@ function Carrousels({ imgs, dotsBool, styles }) {
             {imgs.map((i,index) => {
                 return (
                     <div key={index}>
-                        <img src={i} className={styles} width="200px"/>
+                        <Image src={i} className={styles} width="200px"/>
                     </div>
                 );
             })}

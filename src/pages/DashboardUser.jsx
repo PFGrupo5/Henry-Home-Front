@@ -84,7 +84,7 @@ function DashboardUser() {
                             <td>{f.date_end}</td>
                             <td>{f.detail}</td>
                             <td>{f.status}</td>
-                            <td><a href={f.link_mercado_pago} target='_blank'>Pagar</a><Button type="text"><strong>Eliminar</strong></Button></td>
+                            <td><a href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a><Button type="text"><strong>Eliminar</strong></Button></td>
                           </tr>
                         );
                       })}

@@ -18,6 +18,7 @@ const iconObj = {
   delete: <Unicons.UilTrashAlt />,
   edit: <Unicons.UilEditAlt />,
   add: <Unicons.UilPlusCircle />,
+  github: <Unicons.UilGithub />,
 };
 
 export default function iconProvider (icon) {

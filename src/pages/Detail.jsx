@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import {  useParams, Link } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail } from "../FilesStore/Actions";
-import Carrousel from "../UI/Carrousel";
-import imgDefault from "../assets/img/HenryHome.png";
+
 import { PushpinOutlined } from "@ant-design/icons";
 import "../assets/css/Detail/Detail.scss";
 import ReviewCard from "../components/ReviewCard";
