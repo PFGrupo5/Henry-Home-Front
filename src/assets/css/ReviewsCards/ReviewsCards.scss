@@ -15,7 +15,16 @@
           position:absolute;
           top: 0.5rem;
           right: 1rem;
+          
         }
+        .fecha-review2{
+            font-weight: 300;
+          font-size: small;
+          position:absolute;
+          top: 0.5rem;
+          right: 2rem;
+            
+          }
         .estrellas-review{
             background-color: var(--main-blue);
             border-radius: 0.3rem;
@@ -24,8 +33,29 @@
             position:absolute;
             top: 0.5rem;
             left: 1rem;
+            
+            
           }
+          
         .description-review{
             font-size: small;
+            text-align: justify;
+            text-transform: capitalize;
         }
+        .deleteReview{
+            background-color: 
+            #d10018;
+            font-size: small;
+            margin: 0;
+            position:absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            &:hover{
+                background-color: 
+                #b30418;
+            }
+            
+        }
+        
 }
+
