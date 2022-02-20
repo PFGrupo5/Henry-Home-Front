@@ -50,10 +50,10 @@
 
 .DashboardUser_reservationInfo{
   width: 700px;
-  tr:first-child{
+  thead{
     background: rgb(223, 133, 49);
   }
-  th{
+  td{
     border-bottom: solid black 1px;
     padding: 5px 0;
     button{

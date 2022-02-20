@@ -6,9 +6,9 @@ function Carrousels({ imgs, dotsBool, styles }) {
     return (
 
         <Carousel dots={dotsBool} autoplay autoplaySpeed={4000}>
-            {imgs.map((i) => {
+            {imgs.map((i,index) => {
                 return (
-                    <div>
+                    <div key={index}>
                         <Image preview={false} src={i} className={styles} />
                     </div>
                 );
