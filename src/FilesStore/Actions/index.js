@@ -91,14 +91,17 @@ export function SignIn(values, history) {
       if (data.result.role === "Moderator") {
         console.log('si')
         history.push(`/owner/${data.result.id}`);
+        return
       }
-      if (data.result.role === "Admin") {
+      else if (data.result.role === "Admin") {
         console.log('si')
         history.push(`/adminDash`);
+        return
       } else {
         console.log("noe");
         history.push("/home");
       }
+      
     } catch (error) {
       dispatch({
         type: ERROR_LOGIN,
@@ -125,28 +128,28 @@ export function getUserDetail(id, role) {
   };
 }
 
-export function createHouse(formData, token) {
-  return async function (dispatch) {
-    try {
-      var json = await axios.post(
-        `${URL_BACK}/houses`,
-        formData,
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
-      console.log("aaa", json);
-      return dispatch({
-        type: CREATE_HOUSE,
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
+// export function createHouse(formData, token) {
+//   return async function (dispatch) {
+//     try {
+//       var json = await axios.post(
+//         `${URL_BACK}/houses`,
+//         formData,
+//         {
+//           headers: {
+//             Authorization: token,
+//           },
+//         }
+//       );
+//       console.log("json", json);
+//       return dispatch({
+//         type: CREATE_HOUSE,
+//         payload: json.data,
+//       });
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// }
 
 export function adminStatus(payload) {
   return async function (dispatch) {

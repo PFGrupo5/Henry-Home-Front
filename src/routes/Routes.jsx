@@ -1,10 +1,8 @@
 import { Redirect, Route, Switch, useLocation } from "react-router-dom";
-// import LandingPage from "../pages/LandingPage";
 import LandingPage2 from "../pages/LandingPage2";
 import Home from "../pages/Home";
 import Detail from "../pages/Detail";
 import ErrorPage from "../pages/ErrorPage";
-import CreateHouse from "../pages/CreatePost";
 import DashboardOwner from "../pages/DashboardOwner";
 import DashboardAdmin from "../pages/DashboardAdmin";
 import DashboardUser from "../pages/DashboardUser";
@@ -16,6 +14,7 @@ import NavBarHome2 from "../components/NavBarHome2/NavBarHome2";
 import LandingLog from "../pages/LandingLog";
 import EditPost from "../pages/EditPost";
 import { useEffect, useState } from "react";
+import FromCreate from "../pages/FromCreate";
 
 function Routes() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -24,7 +23,6 @@ function Routes() {
     setUser(JSON.parse(localStorage.getItem("profile")))
   }, [location])
 
-  // console.log(user);
   return (
 
     <div className="App">
@@ -37,7 +35,7 @@ function Routes() {
         <Route exact path="/home/:id" component={Detail} />
         <Route exact path="/home/:id/editar" component={EditPost} />
         <Route exact path="/home/:id/reservation" component={Reservation} />
-        <Route exact path="/create" component={CreateHouse} />
+        <Route exact path="/create" component={FromCreate} />
         <Route exact path="/user/:id" component={DashboardUser} />
         <Route exact path="/owner/:id" component={DashboardOwner} />
         <Route exact path="/adminDash" component={DashboardAdmin} />
