@@ -117,11 +117,12 @@ export default function Detail() {
           <p>Publicado por {detail.userMod.firstName}</p>
         </div>
         <div className="carrousel-conteiner">
-          <Carrousel
+          <img src={images[0]} alt="" width="1020px"/>
+          {/* <Carrousel
             imgs={images ? images : [imgDefault]}
             dotsBool={true}
             styles="imgDetail"
-          />
+          /> */}
         </div>
         <div className="info-container">
           <div>
@@ -159,17 +160,6 @@ export default function Detail() {
               </div>
             </div>
           </div>
-          
-        </div>
-        {
-          user ? (<Link to={`/home/${id}/reservation`}>
-            <button className="reservar">Reservar</button>
-          </Link>) : (<div>
-            <p className="need-login">Necesitas estar logeado para reservar</p>
-          </div>)
-        }
-        
-        <div className="btnDetail">
           <Reservation id={id} user={user} />
         </div>
         <div className="reviews-container">

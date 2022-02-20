@@ -11,57 +11,54 @@ const ListHouses = ({
   houseInfo,
   onClick,
   setHouse,
-  user
+  user,
+  setCreateHouse
 }) => {
-  const { id, images, name, description, pricePerNight, status, numberOfPeople, houseRules, services, facilities, LocationId } = houseInfo
+  const { id, images, name, description, pricePerNight, status, numberOfPeople, houseRules, services, facilities, LocationId, numberOfBeds} = houseInfo
+
   const history = useHistory()
   
-  console.log(services, facilities, LocationId)
-  
   const clickHandler = () => {
+    setCreateHouse(false)
     setHouse(prev => (
       {
         ...prev,
-        id, images, name, description, pricePerNight, status, numberOfPeople, houseRules, services, facilities, LocationId
+        id, images, name, description, pricePerNight, status, numberOfPeople, houseRules, numberOfBeds,services, facilities, LocationId
       }))
       onClick()
     }
   const confirm = () => {
-    console.log(user.token);
-    console.log(id);
-
-
+   
+    
     axios.delete(`${URL_BACK}/houses/${id}`, {
       headers: {
         authorization: user.token
       },
     })
-      .then(({ data }) => {
-        message.success(data.message)
-        window.location.reload()
-   
-      })
-      .catch((error) => console.log(error))
+    .then(({ data }) => {
+      message.success(data.message)
+      window.location.reload()
+      
+    })
+    .catch((error) => console.log(error))
   }
-
-
+  
   function cancel(e) {
     console.log(e);
-
   }
 
   return (
-    <div class="row item" key={id}>
-      <div class="cell ">
-        <img src={images[0]} alt=""  onClick={()=>history.push(`/home/${id}`)}/>
+    <div className="row item" key={id}>
+      <div className="cell ">
+        <img src={images[0]} alt=""  onClick={()=>history.push(`/home/${id}`)} className="image-home-list"/>
       </div >
-      <div class="cell">
+      <div className="cell">
         {name}
       </div >
-      <div class="cell">{description}</div >
-      <div class="cell">{pricePerNight}</div >
-      <div class="cell">{status}</div>
-      <div class="cell btn-container">
+      <div className="cell">{description}</div >
+      <div className="cell">{pricePerNight}</div >
+      <div className="cell">{status}</div>
+      <div className="cell btn-container">
         <Popconfirm onConfirm={confirm} onCancel={cancel} title="Seguro que quieres eliminar esta casa?" okText="Si"
           cancelText="No">
           <button  className="delete">{iconProvider("delete")}</button>
