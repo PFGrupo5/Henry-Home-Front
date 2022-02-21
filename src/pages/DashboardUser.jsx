@@ -7,6 +7,8 @@ import defaultUser from '../assets/img/user_default.png'
 import Cards from '../components/Cards'
 import { Button } from 'antd'
 import ReviewCard from "../components/ReviewCard";
+import axios from "axios";
+import { URL_BACK } from '../config'
 
 function DashboardUser() {
   const [user] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -17,6 +19,16 @@ function DashboardUser() {
   const actualiza = ()=>{
     setActualizar(actualizar+1)
   }
+
+  const deleteReservation= id => {
+    axios.delete(`${URL_BACK}/reservation/${id}`)
+    .then(res=>{
+      dispatch(getUserDetail(user.result.id, user.result.role))
+      console.log(res)
+    })
+    .catch(err=>console.log(err))
+  }
+
   useEffect(() => {
     dispatch(getUserDetail(user.result.id, user.result.role))
   }, [dispatch, user.result.id, user.result.role, actualizar]);
@@ -76,7 +88,6 @@ function DashboardUser() {
                       <tr>
                         <th>Fecha Inicio</th>
                         <th>Fecha Fin</th>
-                        <th>Descripcion</th>
                         <th>Estado</th>
                         <th>Acciones</th>
                       </tr>
@@ -87,9 +98,8 @@ function DashboardUser() {
                           <tr key={f.id}>
                             <td>{f.date_start}</td>
                             <td>{f.date_end}</td>
-                            <td>{f.detail}</td>
                             <td>{f.status}</td>
-                            <td><a href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a><Button type="text"><strong>Eliminar</strong></Button></td>
+                            <td><a href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a><Button type="text" onClick={()=>deleteReservation(f.id)}><strong>Eliminar</strong></Button></td>
                           </tr>
                         );
                       })}
