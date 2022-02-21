@@ -165,7 +165,7 @@ export default function Detail() {
             <h3>Reseñas: </h3>
             {user && (comprobante ? <div>
               <h4>Tu Reseña:</h4>
-              <ReviewCard setReview={setReview} funcion={setReview} token={user.token} review={reviewpropia}/>
+              <ReviewCard actualizar={setReview}  token={user.token} review={reviewpropia}/>
             </div> : <div>
               <h4>¿Quieres redactar una reseña?</h4>
               <form>

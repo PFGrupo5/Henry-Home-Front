@@ -4,16 +4,18 @@ import React, { useState } from "react";
 import "../assets/css/ReviewsCards/ReviewsCards.scss"
 import { URL_BACK } from "../config";
 import { Popup } from "./PopUpReview";
+import { Link } from "react-router-dom";
+
 
 export default function ReviewCard ({
-    funcion,
+    dash,
     token,
     user,
    review,
-   setReview,
+   actualizar,
 })
 {   
-    
+    console.log(review.description)
     const [popup , setpopup] = useState(false)
     const configpop= (e)=>{
         setpopup(!popup)
@@ -35,27 +37,51 @@ export default function ReviewCard ({
                 },
                 data: { id: review.id },
               })
-             if (json.data) funcion()
+             if (json.data) actualizar()
 
         }catch(error){console.log(error)}
         
     }
     
-
+    // dashboard User
+    if(dash){
+        return(
+        <div className="Reviews-div">
+        {!user && <button onClick={borrar} className="deleteReview"> X </button> }
+        {!user && <button className="modificar" onClick={configpop}> Modificar </button> }
+        {!user && <Popup setReview={actualizar} setpopup={configpop} token={token} review={review}  e={popup}/> }
+    {!popup&&<>
+    <p className="fecha-review2">{fecha}</p>
+    <p className="estrellas-review">{estrellas}</p>
+    <br/>
+    <p >{review?.Housing?.name} :</p>
+    <div styles={{display:"flex"}} > 
+    <Link to={`/home/${review?.Housing?.id}`} >
+    <img src={review?.Housing?.images[0]} alt="Imagen de la casa"/>
+    </Link>
+    
+    <span className="description-review">{review?.description}</span>
+    </div>
+    </>
+    }
     
 
+    </div>
+    )
+    }
+    // Detail
      if(!user || user!==review.userClientId){
         return(
 
             <div className="Reviews-div">
                 {!user && <button onClick={borrar} className="deleteReview"> X </button> }
                 {!user && <button className="modificar" onClick={configpop}> Modificar </button> }
-                {!user && <Popup setReview={setReview} setpopup={configpop} token={token} review={review}  e={popup}/> }
+                {!user && <Popup setReview={actualizar} setpopup={configpop} token={token} review={review}  e={popup}/> }
             {!popup&&<>
             <p className="fecha-review2">{fecha}</p>
             <p className="estrellas-review">{estrellas}</p>
             <br/>
-            <p >{review?.userClient.firstName} {review?.userClient.lastName}:</p>
+            <p >{review?.userClient?.firstName} {review?.userClient?.lastName}:</p>
             <div styles={{display:"flex"}} > 
             <span className="description-review">{review?.description}</span>
             </div>
