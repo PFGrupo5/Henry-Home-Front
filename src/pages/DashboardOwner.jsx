@@ -96,7 +96,7 @@ export default function Admin() {
       ...house,
       services: servicesFlat,
       facilities: facilitiesFlat,
-      images: [house.image1, house.image2, house.image3]
+      images: [house.image1, house.image2, house.image3]/* .filter(e => e !== undefined) */
     }
 
     if (Object.keys(formErrors).length) return message.error("Error en los datos")

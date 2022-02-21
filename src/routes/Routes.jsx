@@ -41,7 +41,7 @@ function Routes() {
         <Route exact path="/adminDash" component={DashboardAdmin} />
         <Route exact path="/register" component={RegisterVerify} />
         <Route exact path="/change-password" component={ChangePassword} />
-        <Route exact path="/payment/success" component={PaymentSuccess} />
+        <Route exact path="/payment/:status" component={PaymentSuccess} />
 
         <Route exact path="*" component={ErrorPage} />
       </Switch>
