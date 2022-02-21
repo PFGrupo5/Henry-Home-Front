@@ -20,9 +20,9 @@ const PaymentSuccess = () => {
   const decreaseNum = () => setNum((prev) => prev - 1);
   console.log(status);
   useEffect(() => {
-    // intervalRef.current = setInterval(decreaseNum, 1000);
-
+    
     if (sendReservation) {
+      intervalRef.current = setInterval(decreaseNum, 1000);
       if (status === "success") {
         axios
           .put(`${URL_BACK}/reservation/`, {
