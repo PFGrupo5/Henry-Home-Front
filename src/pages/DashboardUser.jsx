@@ -6,16 +6,20 @@ import { getUserDetail } from "../FilesStore/Actions";
 import defaultUser from '../assets/img/user_default.png'
 import Cards from '../components/Cards'
 import { Button } from 'antd'
+import ReviewCard from "../components/ReviewCard";
 
 function DashboardUser() {
   const [user] = useState(JSON.parse(localStorage.getItem("profile")));
   const { userDetail } = useSelector((state) => state);
   const dispatch = useDispatch()
-
-
+  console.log(userDetail)
+  const [actualizar, setActualizar] = useState(1)
+  const actualiza = ()=>{
+    setActualizar(actualizar+1)
+  }
   useEffect(() => {
     dispatch(getUserDetail(user.result.id, user.result.role))
-  }, [dispatch, user.result.id, user.result.role]);
+  }, [dispatch, user.result.id, user.result.role, actualizar]);
 
   if (!userDetail) {
     return (
@@ -26,6 +30,7 @@ function DashboardUser() {
   } else {
     return (
       <div className="Container-General">
+        
         <div>
           <div className="DashboardUser-userInfo">
             <h1>Información General</h1>
@@ -84,7 +89,7 @@ function DashboardUser() {
                             <td>{f.date_end}</td>
                             <td>{f.detail}</td>
                             <td>{f.status}</td>
-                            <td><a href={f.link_mercado_pago} target='_blank'>Pagar</a><Button type="text"><strong>Eliminar</strong></Button></td>
+                            <td><a href={f.link_mercado_pago} rel="noreferrer" target='_blank'>Pagar</a><Button type="text"><strong>Eliminar</strong></Button></td>
                           </tr>
                         );
                       })}
@@ -93,10 +98,16 @@ function DashboardUser() {
                 )}
             </div>
           </div>
+            
         </div>
+            <div className="reviews-container">
+              <h3>Tus reseñas: </h3>
+                {userDetail?.Reviews?.length ? userDetail.Reviews.map((e)=><ReviewCard actualizar={actualiza} review={e} dash={true} token={user.token} />) 
+                : <p> Aun no has redactado ninguna reseña </p>}
+            </div>
       </div>
     );
   }
 }
-
+// 
 export default DashboardUser;

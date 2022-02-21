@@ -22,28 +22,31 @@ export default function Cards({
   const [excusa, setExcusa] = useState(favs)
   return (
     <div key={id} className="containerCards">
+      
       <div className="divText">
-
+      {
+          role === "Client" &&
+          <button className="stars" onClick={() => click(excusa, id, setExcusa)}>
+            {excusa < 0 ? "🤍" : "💖"}
+          </button>
+        }
         <Link to={`/home/${id}`} >
           <h1 className="titleCards" level={2} >
             {renderName}
           </h1>
         </Link>
 
-        {
-          role === "Client" &&
-          <button onClick={() => click(excusa, id, setExcusa)}>
-            {excusa < 0 ? "agregar" : "borrar"}
-          </button>
-        }
+        
 
         {location?<Text className="textCards"> <PushpinOutlined /> {location}</Text>:''}
         <Text className="textCards"><DollarOutlined /> {price}</Text>
 
       </div>
+      
       <div className="divImg">
         <Carrousel imgs={img} dotsBool={false} styles="imgCard"></Carrousel>
       </div>
+      
     </div>
   );
 }
