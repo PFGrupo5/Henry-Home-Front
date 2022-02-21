@@ -9,6 +9,7 @@ import Loading from "../components/Loading";
 import Pages from "../components/Pages";
 
 import "../assets/css/DashboardAdmin/DashboardAdmin.scss";
+import { URL_BACK } from "../config/index.js";
 
 export default function DashboardAdmin() {
 
@@ -37,7 +38,7 @@ export default function DashboardAdmin() {
     const modifyStatus = (id, status) => {
         dispatch(adminStatus());
         axios.patch(
-            `https://henry-home-back.herokuapp.com/api/houses/status`,
+            `${URL_BACK}/houses/status`,
             { id, status }
         ).then((response) => {
             console.log(response)
@@ -59,7 +60,7 @@ export default function DashboardAdmin() {
     }
 
     const sendServices = () => {
-        axios.post(`https://henry-home-back.herokuapp.com/api/services`,
+        axios.post(`${URL_BACK}/services`,
             { name: services },
             { headers: { Authorization: user.token } }
         ).then((response) => {
@@ -75,7 +76,7 @@ export default function DashboardAdmin() {
     }
 
     const sendFacilities = () => {
-        axios.post(`https://henry-home-back.herokuapp.com/api/facilities`,
+        axios.post(`${URL_BACK}/facilities`,
             { name: facilities },
             { headers: { Authorization: user.token } }
         ).then((response) => {
