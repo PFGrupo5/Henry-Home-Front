@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Cards from "../components/Cards";
-// import Footer from "../components/Footer";
-// import NavBarHome2 from "../components/NavBarHome2/NavBarHome2.js";
+
+import axios from "axios"
+import { URL_BACK } from "../config";
 import Loading from "../components/Loading";
-import { AddFav, DelFav, getHotels, getUserDetail } from "../FilesStore/Actions/index.js";
+import { getHotels, getUserDetail } from "../FilesStore/Actions/index.js";
 import Aside from "../components/Aside";
 import "../assets/css/Home/Home.scss";
 import Pages from "../components/Pages";
@@ -14,21 +15,13 @@ export default function Home() {
   const dispatch = useDispatch();
   const User = JSON.parse(localStorage.getItem("profile"));
   const infoUser = User ? User.result : { id: null, role: null }
-  const [renderFav, setRenderFav] = useState(1)
   const userDetail = useSelector((state) => state.userDetail);
 
-  var favsIds = userDetail && userDetail.favs ? userDetail.favs.map(e => e.id) : 0;
+  useEffect(() => {
+    infoUser.id && dispatch(getUserDetail(infoUser.id, infoUser.role));
 
-  const onClickFav = (e, id, excusa) => {
-    setRenderFav(renderFav + 1)
+  }, [dispatch, infoUser.id, infoUser.role]);
 
-    e < 0 ?
-      dispatch(AddFav(id, User.token)) :
-      dispatch(DelFav(id, User.token))
-    e === 0 ?
-      excusa(e - 1) :
-      excusa(e * -1)
-  }
   //filtros
   const [Info, setInfo] = useState({
     status: "Accepted",
@@ -39,8 +32,49 @@ export default function Home() {
     minPrice: null,
     maxPrice: null,
   })
+
   const setearInfo = (e) => {
     setInfo(e)
+  }
+
+  const onClickFav = (id, favState) => {
+    favState ?
+      (
+        axios.delete(
+          `${URL_BACK}/favs`,
+          {
+            headers: {
+              Authorization: User.token,
+            },
+            data: { HousingId: id },
+          }
+        ).then((response) => {
+          console.log("Borrado con exito", response)
+          dispatch(getUserDetail(infoUser.id, infoUser.role));
+
+        }).catch((error) => {
+          console.log({ error });
+        }
+        )
+      )
+      :
+      (
+        axios.post(
+          `${URL_BACK}/favs`,
+          { HousingId: id },
+          {
+            headers: {
+              Authorization: User.token,
+            },
+          }
+        ).then((response) => {
+          console.log("Agregado con exito", response)
+          dispatch(getUserDetail(infoUser.id, infoUser.role));
+
+        }).catch((error) => {
+          console.log({ error });
+        })
+      )
   }
 
   //paginado
@@ -55,10 +89,11 @@ export default function Home() {
     setPage(e)
   }
 
-  const findHouses = (e) => {
+  const findHouses = () => {
     dispatch(getHotels(page, size, Info))
   }
-  const findAllHouses = (e) => {
+
+  const findAllHouses = () => {
     dispatch(getHotels(page, size, {
       status: "Accepted",
       stars: 0,
@@ -72,9 +107,8 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getHotels(page, size, { status: "Accepted" }));
-    infoUser.id && dispatch(getUserDetail(infoUser.id, infoUser.role));
 
-  }, [dispatch, page, size, infoUser.id, infoUser.role, renderFav]);
+  }, [dispatch, page, size, infoUser.id, infoUser.role]);
 
 
   // if (allHotels?.length === 0 && (User && (favsIds === null || userDetail?.favs))) {
@@ -94,6 +128,7 @@ export default function Home() {
               typeof allHotels !== "string" ? (
                 allHotels?.length ?
                   allHotels.map((e) => {
+                    console.log(e.Location.name)
                     return (
                       <Cards
                         name={e.name}
@@ -101,9 +136,9 @@ export default function Home() {
                         location={e.Location.name}
                         img={e.images}
                         price={e.pricePerNight}
-                        favs={favsIds ? favsIds.indexOf(e.id) : -1}
                         role={userRole}
-                        click={onClickFav}
+                        detail={userDetail}
+                        onClickFav={onClickFav}
                       />
                     );
                   }) : <Loading />)

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Carrousel from "../UI/Carrousel"
 import { Link } from "react-router-dom";
 import "../assets/css/Cards/Cards.scss"
@@ -12,22 +12,23 @@ export default function Cards({
   id,
   location,
   img,
+  detail,
   price,
-  favs,
-  click,
   role,
-
+  onClickFav,
 }) {
   const renderName = name.length <= 12 ? name : `${name.slice(0, 12)}...`
-  const [excusa, setExcusa] = useState(favs)
+  var favsIds = detail && detail.favs ? detail.favs.map(e => e.id) : 0;
+  const favState = favsIds?.length && favsIds?.includes(id)
+
   return (
     <div key={id} className="containerCards">
-      
+
       <div className="divText">
-      {
+        {
           role === "Client" &&
-          <button className="stars" onClick={() => click(excusa, id, setExcusa)}>
-            {excusa < 0 ? "🤍" : "💖"}
+          <button className="stars" onClick={() => onClickFav(id, favState)}>
+            {favState ? "💖" : "🤍"}
           </button>
         }
         <Link to={`/home/${id}`} >
@@ -36,17 +37,14 @@ export default function Cards({
           </h1>
         </Link>
 
-        
-
-        {location?<Text className="textCards"> <PushpinOutlined /> {location}</Text>:''}
+        {location ? <Text className="textCards"> <PushpinOutlined /> {location}</Text> : ''}
         <Text className="textCards"><DollarOutlined /> {price}</Text>
-
       </div>
-      
+
       <div className="divImg">
         <Carrousel imgs={img} dotsBool={false} styles="imgCard"></Carrousel>
       </div>
-      
+
     </div>
   );
 }

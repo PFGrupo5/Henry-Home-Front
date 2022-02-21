@@ -74,7 +74,6 @@ cases[GOOGLE_LOGOUT] = (state, payload) => {
   };
 };
 cases[SIGNIN] = (state, payload) => {
-  console.log("aaaaaa", payload)
   localStorage.setItem("profile", JSON.stringify({ ...payload }));
   return {
     ...state,

@@ -54,7 +54,16 @@ $maxWidth2: 1920px;
   font-size: 2rem;
   color:rgb(238, 205, 15);
   position: absolute;
+  transition: all 0.2s;
   right: 1rem;
+}
+
+.stars:hover{
+  transform:scale(1.05);
+}
+
+.stars:active{
+  transform:scale(1.2);
 }
 /* ---------------- Card content Style ---------------- */
 
