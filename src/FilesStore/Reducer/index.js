@@ -56,12 +56,15 @@ cases[USER_DETAIL] = (state, payload) => ({
 });
 
 cases[GOOGLE_LOGIN] = (state, payload) => {
+  // console.log(...payload)
   localStorage.setItem("profile", JSON.stringify({ ...payload }));
+  window.location.reload()
   return {
     ...state,
     signUser: payload,
   };
 };
+
 cases[GOOGLE_LOGOUT] = (state, payload) => {
   localStorage.clear();
   return {

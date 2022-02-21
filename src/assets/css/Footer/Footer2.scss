@@ -7,7 +7,7 @@ $font-color: #ffffff;
   background-color: $background;
   padding: 20px 100px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   color: $font-color;
   width: 100%;
   padding-bottom: 10px;
@@ -67,6 +67,14 @@ $font-color: #ffffff;
   margin-top: 0.5rem;
   font-size: 1.25rem;
   font-weight: bold;
+  
+  a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    
+  }
 }
 
 // -------- Extra -----------
@@ -82,4 +90,11 @@ $font-color: #ffffff;
   background: #839fad none repeat scroll 0 0;
   display: block;
   height: 1px;
+}
+
+@media screen and (min-width: 900px) {
+  .foot2Container {
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+  }
 }

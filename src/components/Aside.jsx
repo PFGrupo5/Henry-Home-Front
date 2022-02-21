@@ -24,7 +24,7 @@ export default function Aside({
         <Minprice setInfo={setInfo} Info={Info} className="filter" />
         <div className="btn-container">
           <button onClick={findHouses} className="filtrar">Filtrar</button>
-          <button onClick={findAllHouses}> Resetear</button>
+          <button onClick={findAllHouses} className="resetear"> Resetear</button>
         </div>
       </div>
     </div >

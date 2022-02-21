@@ -1,9 +1,10 @@
 import React from "react";
 import "../assets/css/Footer/Footer2.scss";
-import { CopyrightOutlined, GithubOutlined } from "@ant-design/icons";
+import iconProvider from "../utils/IconProvider";
 
 export default function Footer2() {
   return (
+
     <div className="foot2Container">
       <div className="foot2Description">
         Henry <span>Home</span> <span className="span"></span>
@@ -43,18 +44,17 @@ export default function Footer2() {
           rel="noopener noreferrer"
           className="foot2Github"
         >
-          {`Nuestro GitHub  `}
-          {"       "}
-          <GithubOutlined />
+          <span>Nuestro GitHub</span> {iconProvider("github")}
         </a>
       </div>
-      <div className="foot2Copy">
+      {/*  <div className="foot2Copy">
         <p>
-          <span className="spanCopy"></span>
-          <CopyrightOutlined /> 2022 HenryHotel, Inc
-          <span className="spanCopy"></span>
+        <span className="spanCopy"></span>
+        <CopyrightOutlined /> 2022 HenryHome, Inc
+        <span className="spanCopy"></span>
         </p>
-      </div>
+      </div> */}
     </div>
+
   );
 }

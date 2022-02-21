@@ -104,8 +104,6 @@ export default function Home() {
                         favs={favsIds ? favsIds.indexOf(e.id) : -1}
                         role={userRole}
                         click={onClickFav}
-
-
                       />
                     );
                   }) : <Loading />)

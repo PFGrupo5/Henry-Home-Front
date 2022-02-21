@@ -110,9 +110,11 @@ const RegisterForm = ({ setDisplay }) => {
           {formErrors.confirmPassword ? formErrors.confirmPassword : "ㅤㅤ"}
         </p>
       </div>
-      <button onClick={register} className="NavBarHome_loginBtn">
-        Registrarse
-      </button>
+      <div className="btn-container-navbar">
+        <button onClick={register} className="NavBarHome_loginBtn">
+          Registrarse
+        </button>
+      </div>
     </form>
   );
 };

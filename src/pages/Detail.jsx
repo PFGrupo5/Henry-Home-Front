@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import {  useParams, Link } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail } from "../FilesStore/Actions";
-import Carrousel from "../UI/Carrousel";
-import imgDefault from "../assets/img/HenryHome.png";
+
 import { PushpinOutlined } from "@ant-design/icons";
 import "../assets/css/Detail/Detail.scss";
 import ReviewCard from "../components/ReviewCard";
@@ -117,11 +116,12 @@ export default function Detail() {
           <p>Publicado por {detail.userMod.firstName}</p>
         </div>
         <div className="carrousel-conteiner">
-          <Carrousel
+          <img src={images[0]} alt="" width="1020px"/>
+          {/* <Carrousel
             imgs={images ? images : [imgDefault]}
             dotsBool={true}
             styles="imgDetail"
-          />
+          /> */}
         </div>
         <div className="info-container">
           <div>
@@ -159,17 +159,6 @@ export default function Detail() {
               </div>
             </div>
           </div>
-          
-        </div>
-        {
-          user ? (<Link to={`/home/${id}/reservation`}>
-            <button className="reservar">Reservar</button>
-          </Link>) : (<div>
-            <p className="need-login">Necesitas estar logeado para reservar</p>
-          </div>)
-        }
-        
-        <div className="btnDetail">
           <Reservation id={id} user={user} />
         </div>
         <div className="reviews-container">
