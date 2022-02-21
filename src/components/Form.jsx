@@ -47,7 +47,6 @@ const Form = ({ role, google }) => {
           message.success(data.message);
         })
         .catch((error) => {
-          console.log({ error });
           message.error(error.response.data.message);
         });
       clear();
@@ -55,6 +54,7 @@ const Form = ({ role, google }) => {
       message.error("Error con los datos");
     }
   };
+
   const loginHandler = (e) => {
     e.preventDefault();
     if (!inputForm.email.trim().length) {

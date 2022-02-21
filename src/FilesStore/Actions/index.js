@@ -106,7 +106,7 @@ export function SignIn(values, history) {
         type: ERROR_LOGIN,
         payload: error,
       });
-      console.log(error);
+      console.log("Error", error);
     }
   };
 }
