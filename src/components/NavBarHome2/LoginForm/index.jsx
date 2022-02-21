@@ -26,7 +26,6 @@ const LoginForm = ({ setDisplay }) => {
         try {
             dispatch(googleLogIn(result, "Client"));
             setDisplay(false)
-            window.location.reload()
         } catch (error) {
             console.log(error);
         }
