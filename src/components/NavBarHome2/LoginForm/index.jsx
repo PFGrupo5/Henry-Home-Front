@@ -6,10 +6,14 @@ import { googleLogIn, SignIn } from '../../../FilesStore/Actions'
 import { ValidateForm } from "../../../utils/ValidateForm"
 import { useHistory } from 'react-router-dom'
 import { useState } from 'react';
+import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons"
+
 
 const LoginForm = ({ setDisplay }) => {
     const history = useHistory()
     const dispatch = useDispatch()
+
+    const [passwordView, setPasswordView] = useState("password")
 
     const [loginData, setLoginData] = useState({
         email: "",
@@ -53,17 +57,11 @@ const LoginForm = ({ setDisplay }) => {
         setDisplay(false)
     }
 
-
-
     const inputFormHandler = (e) => {
         const { name, value } = e.target
         setLoginData(prev => ({ ...prev, [name]: value }))
         setFormErrors(ValidateForm({ ...loginData, [name]: value }));
     }
-
-
-
-
 
     return (
         <form onSubmit={e => e.preventDefault()} className="ingresar">
@@ -80,14 +78,28 @@ const LoginForm = ({ setDisplay }) => {
                     {formErrors.email ? formErrors.email : "ㅤㅤ"}
                 </p>
             </div>
-            <div className='inputContainer'>
+            <div className='inputContainer passNav'>
                 <input
                     name='inputPassword'
-                    type='password'
+                    type={passwordView}
                     placeholder='Password'
                     onChange={inputFormHandler}
                     value={loginData.inputPassword}
                 />
+                {
+                    passwordView === "text" ?
+                        <EyeOutlined
+                            className="passIcon"
+                            onClick={() => {
+                                setPasswordView("password")
+                            }} />
+                        :
+                        <EyeInvisibleOutlined
+                            className="passIcon"
+                            onClick={() => {
+                                setPasswordView("text")
+                            }} />
+                }
                 <p className="error-message">
                     {formErrors.inputPassword ? formErrors.inputPassword : "ㅤㅤ"}
                 </p>

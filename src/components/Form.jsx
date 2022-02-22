@@ -7,6 +7,7 @@ import { message } from "antd";
 import { /* SignUp, */ googleLogIn, SignIn } from "../FilesStore/Actions/index";
 import { ValidateForm } from "../utils/ValidateForm";
 import { GoogleLogin } from "react-google-login";
+import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons"
 import { URL_BACK } from "../config";
 
 import "../assets/css/Form/Form.scss";
@@ -25,6 +26,8 @@ const Form = ({ role, google }) => {
   });
 
   const [formErrors, setFormErrors] = useState({});
+  const [passwordView, setPasswordView] = useState("password")
+  const [passwordConfirm, setPasswordConfirm] = useState("password")
 
   const [login, setLogin] = useState(true);
 
@@ -156,31 +159,59 @@ const Form = ({ role, google }) => {
               {formErrors.lastName ? formErrors.lastName : "ㅤㅤ"}
             </p>
           </div>
-          <div>
+          <div className="passInput">
             <input
-              type="password"
+              type={passwordView}
               placeholder="Contraseña"
               name="inputPassword"
               onChange={inputFormHanlder}
               value={inputForm.inputPassword}
             />
+            {
+              passwordView === "text" ?
+                <EyeOutlined
+                  className="passIcon"
+                  onClick={() => {
+                    setPasswordView("password")
+                  }} />
+                :
+                <EyeInvisibleOutlined
+                  className="passIcon"
+                  onClick={() => {
+                    setPasswordView("text")
+                  }} />
+            }
             <p className="error-message">
               {formErrors.inputPassword ? formErrors.inputPassword : "ㅤㅤ"}
             </p>
           </div>
-          <div>
+          <div className="passInput">
             <input
-              type="password"
+              type={passwordConfirm}
               placeholder="Repetir contraseña"
               name="confirmPassword"
               onChange={inputFormHanlder}
               value={inputForm.confirmPassword}
             />
+            {
+              passwordConfirm === "text" ?
+                <EyeOutlined
+                  className="passIcon"
+                  onClick={() => {
+                    setPasswordConfirm("password")
+                  }} />
+                :
+                <EyeInvisibleOutlined
+                  className="passIcon"
+                  onClick={() => {
+                    setPasswordConfirm("text")
+                  }} />
+            }
             <p className="error-message">
               {formErrors.confirmPassword ? formErrors.confirmPassword : "ㅤㅤ"}
             </p>
           </div>
-          <button onClick={registerHandler}>Registro</button>
+          <button type="button" onClick={registerHandler}>Registro</button>
         </div>
         <div className={`ingreso-container ${login ? "translate" : ""}`}>
           <h2 onClick={() => setLogin(!login)}>Ingresar</h2>
@@ -196,20 +227,34 @@ const Form = ({ role, google }) => {
               {formErrors.email ? formErrors.email : "ㅤㅤ"}
             </p>
           </div>
-          <div>
+          <div className="passInput">
             <input
-              type="password"
+              type={passwordView}
               placeholder="Contraseña"
               name="inputPassword"
               value={inputForm.inputPassword}
               onChange={inputFormHanlder}
             />
+            {
+              passwordView === "text" ?
+                <EyeOutlined
+                  className="passIcon"
+                  onClick={() => {
+                    setPasswordView("password")
+                  }} />
+                :
+                <EyeInvisibleOutlined
+                  className="passIcon"
+                  onClick={() => {
+                    setPasswordView("text")
+                  }} />
+            }
             <p className="error-message">
               {formErrors.inputPassword ? formErrors.inputPassword : "ㅤㅤ"}
             </p>
           </div>
           <p onClick={forgotPasswordHandler}>¿Olvidaste la contraseña?</p>
-          <button onClick={loginHandler}>Ingresar</button>
+          <button type="button" onClick={loginHandler}>Ingresar</button>
           {
             google &&
             <GoogleLogin
