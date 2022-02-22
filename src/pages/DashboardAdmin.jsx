@@ -7,9 +7,9 @@ import { Cascader, message } from "antd";
 import Cards from "../components/Cards";
 import Loading from "../components/Loading";
 import Pages from "../components/Pages";
+import { URL_BACK } from "../config";
 
 import "../assets/css/DashboardAdmin/DashboardAdmin.scss";
-import { URL_BACK } from "../config/index.js";
 
 export default function DashboardAdmin() {
 

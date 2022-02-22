@@ -49,7 +49,7 @@ function DashboardUser() {
         <div>
           <div className="DashboardUser-userInfo">
             <h1>Información General</h1>
-            <img src={userDetail.imageUrl || defaultUser} alt="" />
+            <img src={userDetail.profile_img || defaultUser} alt="" />
             <p>Nombre: {`${userDetail.firstName} ${userDetail.lastName}`}</p>
             <p>Email: {`${userDetail.email}`}</p>
             <p>Rol: Cliente</p>
