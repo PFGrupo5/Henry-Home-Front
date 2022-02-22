@@ -10,6 +10,7 @@ import Loading from "../components/Loading";
 import Reservation from "./Reservation2";
 import IconProvider from "../utils/IconProvider";
 import axios from "axios";
+import { Image } from "antd";
 import { URL_BACK } from "../config";
 
 
@@ -115,7 +116,7 @@ export default function Detail() {
           <p>Publicado por {detail.userMod.firstName}</p>
         </div>
         <div className="carrousel-conteiner">
-          <img src={images[0]} alt="" width="1020px" />
+          <Image src={images[0]} alt="" width="1020px" />
           {/* <Carrousel
             // imgs={images ? images : [imgDefault]}
             imgs={images}

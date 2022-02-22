@@ -6,9 +6,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  
 }
+
 .NavBarHome_logo {
   display: flex;
   justify-content: center;
@@ -251,6 +250,24 @@
   .error-message {
     margin-top: -0.7rem;
     color: rgb(240, 82, 82);
+  }
+}
+
+.passInput{
+  position: relative;
+  .passIcon{
+    position: absolute;
+    bottom: 64%;
+    left: 80%;
+  }
+}
+
+.passNav{
+  position: relative;
+  .passIcon{
+    position: absolute;
+    bottom: 55%;
+    left: 95%;
   }
 }
 

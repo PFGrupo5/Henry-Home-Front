@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { SignIn } from "../FilesStore/Actions/index";
 import axios from "axios";
 import { URL_BACK } from "../config";
+import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons"
 
 
 const LandingOwner = (role) => {
@@ -15,6 +16,7 @@ const LandingOwner = (role) => {
   const dispatch = useDispatch();
 
   const [formErrors, setFormErrors] = useState({});
+  const [passwordView, setPasswordView] = useState("password")
 
 
   const [inputForm, setInputForm] = useState({
@@ -93,6 +95,7 @@ const LandingOwner = (role) => {
                 <div className={`ingreso-container`}>
                   <h2>Ingresar</h2>
                   <div>
+
                     <input
                       type="text"
                       name="email"
@@ -104,14 +107,31 @@ const LandingOwner = (role) => {
                       {formErrors.email ? formErrors.email : "ㅤㅤ"}
                     </p>
                   </div>
-                  <div>
-                    <input
-                      type="password"
-                      placeholder="Contraseña"
-                      name="inputPassword"
-                      value={inputForm.inputPassword}
-                      onChange={inputFormHanlder}
-                    />
+                  <div className="passInput">
+                    <p>
+                      <input
+                        type={passwordView}
+                        placeholder="Contraseña"
+                        name="inputPassword"
+                        value={inputForm.inputPassword}
+                        onChange={inputFormHanlder}
+                      />
+                      {
+                        passwordView === "text" ?
+                          <EyeOutlined
+                            className="passIcon"
+                            onClick={() => {
+                              setPasswordView("password")
+                            }} />
+                          :
+                          <EyeInvisibleOutlined
+                            className="passIcon"
+                            onClick={() => {
+                              setPasswordView("text")
+                            }} />
+                      }
+
+                    </p>
                     <p className="error-message">
                       {formErrors.inputPassword ? formErrors.inputPassword : "ㅤㅤ"}
                     </p>
