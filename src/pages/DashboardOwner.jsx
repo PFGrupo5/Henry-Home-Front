@@ -12,7 +12,7 @@ import ListHouses from "../components/ListHouses";
 import axios from "axios";
 import { URL_BACK } from "../config";
 import iconProvider from "../utils/IconProvider";
-import FileBase from "react-file-base64";
+// import FileBase from "react-file-base64";
 import { ValidateFormCreate } from "../utils/ValidateFormCreate";
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -419,7 +419,7 @@ export default function Admin() {
                             let size = e.target.files[0].size;
                             let files = e.target.files;
                             if (size > 2000000) {
-                              alert(
+                              message.error(
                                 "El tamaño de la imagen no puede ser mayor a 2MB"
                               );
                               e.target.value = "";
@@ -429,7 +429,8 @@ export default function Admin() {
                                 reader.readAsDataURL(archivo);
                                 reader.onload = function () {
                                   var base64 = reader.result;
-                                  setHouse({ ...house, image1: base64 });
+                                  if (base64 !== null)
+                                    setHouse({ ...house, image1: base64 });
                                 };
                               });
                             }
@@ -442,7 +443,7 @@ export default function Admin() {
                             let size = e.target.files[0].size;
                             let files = e.target.files;
                             if (size > 2000000) {
-                              alert(
+                              message.error(
                                 "El tamaño de la imagen no puede ser mayor a 2MB"
                               );
                               e.target.value = "";
@@ -452,7 +453,8 @@ export default function Admin() {
                                 reader.readAsDataURL(archivo);
                                 reader.onload = function () {
                                   var base64 = reader.result;
-                                  setHouse({ ...house, image2: base64 });
+                                  if (base64 !== null)
+                                    setHouse({ ...house, image2: base64 });
                                 };
                               });
                             }
@@ -465,7 +467,7 @@ export default function Admin() {
                             let size = e.target.files[0].size;
                             let files = e.target.files;
                             if (size > 2000000) {
-                              alert(
+                              message.error(
                                 "El tamaño de la imagen no puede ser mayor a 2MB"
                               );
                               e.target.value = "";
@@ -475,7 +477,8 @@ export default function Admin() {
                                 reader.readAsDataURL(archivo);
                                 reader.onload = function () {
                                   var base64 = reader.result;
-                                  setHouse({ ...house, image3: base64 });
+                                  if (base64 !== null)
+                                    setHouse({ ...house, image3: base64 });
                                 };
                               });
                             }
