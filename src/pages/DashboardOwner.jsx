@@ -387,7 +387,8 @@ export default function Admin() {
                                       : "#fff",
                                   };
                                   return (
-                                    <div
+                                    <div 
+                                    key={suggestion.description}
                                       {...getSuggestionItemProps(suggestion, {
                                         style,
                                       })}
