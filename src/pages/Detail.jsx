@@ -5,6 +5,7 @@ import { getDetail } from "../FilesStore/Actions";
 import { PushpinOutlined } from "@ant-design/icons";
 import "../assets/css/Detail/Detail.scss";
 import ReviewCard from "../components/ReviewCard";
+// import Carrousel from "../UI/Carrousel";
 import Loading from "../components/Loading";
 import Reservation from "./Reservation2";
 import IconProvider from "../utils/IconProvider";
@@ -102,9 +103,10 @@ export default function Detail() {
     dispatch(getDetail(id));
   }, [dispatch, id, reviewDetail, haveReview]);
 
-  if (!detail) return (<div className="loadDetail"><Loading className="loadDetail" /></div>)
+  if (!detail) return (<Loading />)
 
   const { name, images, Location, numberOfPeople, houseRules } = detail
+  console.log("name", images)
   return (
     <div className="house-datail">
       <div className="house-datail-container">
@@ -115,9 +117,11 @@ export default function Detail() {
         <div className="carrousel-conteiner">
           <img src={images[0]} alt="" width="1020px" />
           {/* <Carrousel
-            imgs={images ? images : [imgDefault]}
+            // imgs={images ? images : [imgDefault]}
+            imgs={images}
             dotsBool={true}
             styles="imgDetail"
+            preview={true}
           /> */}
         </div>
         <div className="info-container">

@@ -53,7 +53,7 @@ function DashboardUser() {
               ) : (
                 <div>
                   {userDetail.favs.map((f) => {
-                    const location = locations.find(e => e.id === f.LocationId)
+                    const location = locations?.find(e => e.id === f.LocationId)
                     return (
                       <Cards
                         name={f.name}
@@ -61,8 +61,7 @@ function DashboardUser() {
                         id={f.id}
                         img={f.images}
                         price={f.pricePerNight}
-                        location={location.name}
-
+                        location={location?.name}
                       />
                     );
                   })}

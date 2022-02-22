@@ -110,14 +110,6 @@ export default function Home() {
 
   }, [dispatch, page, size, infoUser.id, infoUser.role]);
 
-
-  // if (allHotels?.length === 0 && (User && (favsIds === null || userDetail?.favs))) {
-  //   return (
-  //     <div>
-  //       <Loading />
-  //     </div>
-  //   );
-  // } else {
   return (
     <main >
       <div className="home-containter">
@@ -128,7 +120,6 @@ export default function Home() {
               typeof allHotels !== "string" ? (
                 allHotels?.length ?
                   allHotels.map((e) => {
-                    console.log(e.Location.name)
                     return (
                       <Cards
                         name={e.name}
