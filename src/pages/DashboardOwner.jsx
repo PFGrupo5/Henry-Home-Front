@@ -116,7 +116,7 @@ export default function Admin() {
       ...house,
       services: servicesFlat,
       facilities: facilitiesFlat,
-      images: [house.image1, house.image2, house.image3]/* .filter(e => e !== undefined) */
+      images: [house.image1, house.image2, house.image3] .filter(e => e !== undefined) 
     }
 
     if (Object.keys(formErrors).length) return message.error("Error en los datos")
@@ -337,7 +337,7 @@ export default function Admin() {
                  const style={
                    backgroundColor: suggestion.active ? "#bbbaba" :"#fff"
                  }
-               return <div {...getSuggestionItemProps(suggestion,{style})} >
+               return <div key={suggestion.description} {...getSuggestionItemProps(suggestion,{style})} >
 
                  {suggestion.description}
                  </div>
