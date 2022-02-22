@@ -163,7 +163,7 @@ export default function Detail() {
         </div>
         <div className="reviews-container">
             <h3>Reseñas: </h3>
-            {user && (comprobante ? <div>
+            {user && user.role==="Client" &&  (comprobante ? <div>
               <h4>Tu Reseña:</h4>
               <ReviewCard actualizar={setReview}  token={user.token} review={reviewpropia}/>
             </div> : <div>
