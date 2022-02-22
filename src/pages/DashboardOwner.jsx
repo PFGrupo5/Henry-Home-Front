@@ -1,23 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { Modal, Cascader, message } from 'antd';
+import React, { useState, useEffect } from "react";
+import { Modal, Cascader, message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import "../assets/css/DashboardOwner/DashboardOwner.scss";
-import { getFacilities, getLocations, getServices, getUserDetail } from "../FilesStore/Actions";
+import {
+  getFacilities,
+  getLocations,
+  getServices,
+  getUserDetail,
+} from "../FilesStore/Actions";
 import ListHouses from "../components/ListHouses";
-import axios from 'axios';
-import { URL_BACK } from '../config';
-import iconProvider from '../utils/IconProvider';
+import axios from "axios";
+import { URL_BACK } from "../config";
+import iconProvider from "../utils/IconProvider";
 import FileBase from "react-file-base64";
-import { ValidateFormCreate } from '../utils/ValidateFormCreate';
+import { ValidateFormCreate } from "../utils/ValidateFormCreate";
 import PlacesAutocomplete, {
   geocodeByAddress,
-  getLatLng
+  getLatLng,
 } from "react-places-autocomplete";
 
 export default function Admin() {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
-  const { id, role } = user.result
+  const { id, role } = user.result;
   useEffect(() => {
     dispatch(getUserDetail(id, role));
     dispatch(getServices());
@@ -27,18 +32,20 @@ export default function Admin() {
   const [coordinates, setCoordinates] = useState({
     lat: null,
     lng: null,
-  })
-  const [location, setLocation] = useState("")
-  const settLocation= async (e)=>{
-    setLocation(e)
-    var results
-    try{
-       results = await geocodeByAddress(e)
-    }catch{ results={lat: null, lng: null,}}
-    setCoordinates(results)
-    setFormErrors(ValidateFormCreate({ ...house, location: e }))
-    console.log(location)
-  }
+  });
+  const [location, setLocation] = useState("");
+  const settLocation = async (e) => {
+    setLocation(e);
+    var results;
+    try {
+      results = await geocodeByAddress(e);
+    } catch {
+      results = { lat: null, lng: null };
+    }
+    setCoordinates(results);
+    setFormErrors(ValidateFormCreate({ ...house, location: e }));
+    console.log(location);
+  };
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [house, setHouse] = useState({
     name: "",
@@ -52,16 +59,15 @@ export default function Admin() {
     location: null,
     images: null,
   });
-  const handleLocSelect = async e=>{
+  const handleLocSelect = async (e) => {
+    const results = await geocodeByAddress(e);
+    const ubicacion = await getLatLng(results[0]);
 
-    const results = await geocodeByAddress(e)
-    const ubicacion= await getLatLng(results[0])
-
-    setLocation(e)
-    setCoordinates(ubicacion)
-    setFormErrors(ValidateFormCreate({ ...house, location: e }))
-    console.log(results)
-  }
+    setLocation(e);
+    setCoordinates(ubicacion);
+    setFormErrors(ValidateFormCreate({ ...house, location: e }));
+    console.log(results);
+  };
   const [createHouse, setCreateHouse] = useState(false);
   const [formErrors, setFormErrors] = useState({ msg: "Error" });
 
@@ -71,14 +77,9 @@ export default function Admin() {
     return { label: e.name[0].toUpperCase() + e.name.slice(1), value: e.name };
   });
 
- 
-
   const optionsFacilities = facilities.map((e) => {
     return { label: e.name[0].toUpperCase() + e.name.slice(1), value: e.name };
   });
-
-  
-  
 
   const inputFormHanlder = (e) => {
     const { name, value } = e.target;
@@ -95,69 +96,80 @@ export default function Admin() {
       ...prev,
       services: e,
     }));
-  }
-  
+  };
+
   const facilitiesHandler = (e) => {
     setHouse((prev) => ({
       ...prev,
       facilities: e,
     }));
-  }
+  };
 
   const showModal = () => {
     setIsModalVisible(true);
   };
 
   const handleOk = () => {
-
-    const servicesFlat = house.services?.flat()
-    const facilitiesFlat = house.facilities?.flat()
+    const servicesFlat = house.services?.flat();
+    const facilitiesFlat = house.facilities?.flat();
     const houseUpdate = {
       ...house,
       services: servicesFlat,
       facilities: facilitiesFlat,
-      images: [house.image1, house.image2, house.image3] .filter(e => e !== undefined) 
-    }
+      images: [
+        house.image1,
+        house.image2,
+        house.image3,
+      ] /* .filter(e => e !== undefined) */,
+    };
 
-    if (Object.keys(formErrors).length) return message.error("Error en los datos")
-    if (!houseUpdate.images.some(i => i !== undefined)) return message.error("Subir una imagen del alojamiento")
+    if (Object.keys(formErrors).length)
+      return message.error("Error en los datos");
+    if (!houseUpdate.images.some((i) => i !== undefined))
+      return message.error("Subir una imagen del alojamiento");
     if (createHouse) {
-      axios.post(`${URL_BACK}/houses`, {...houseUpdate, location: location, coordinates:coordinates}, {
-        headers: {
-          authorization: user.token
-        }
-      })
+      axios
+        .post(
+          `${URL_BACK}/houses`,
+          { ...houseUpdate, location: location, coordinates: coordinates },
+          {
+            headers: {
+              authorization: user.token,
+            },
+          }
+        )
         .then(({ data }) => {
-          message.success(data.message)
+          message.success(data.message);
           dispatch(getUserDetail(id, role));
         })
-        .catch(error => message.error(error.response.data.message))
+        .catch((error) => message.error(error.response.data.message));
     } else {
-      axios.patch(`${URL_BACK}/houses`, houseUpdate, {
-        headers: {
-          authorization: user.token
-        }
-      })
+      axios
+        .patch(`${URL_BACK}/houses`, houseUpdate, {
+          headers: {
+            authorization: user.token,
+          },
+        })
         .then(({ data }) => {
-          message.success(data.message)
+          message.success(data.message);
           dispatch(getUserDetail(id, role));
         })
-        .catch(error => message.error(error.response.data.message))
+        .catch((error) => message.error(error.response.data.message));
     }
     setIsModalVisible(false);
-    clean()
+    clean();
   };
 
   const handleCancel = () => {
-    console.log('holis');
+    console.log("holis");
     setIsModalVisible(false);
-    clean()
+    clean();
   };
 
   const createHouseHandler = () => {
-    showModal()
-    setCreateHouse(true)
-  }
+    showModal();
+    setCreateHouse(true);
+  };
   const clean = () => {
     setHouse({
       name: "",
@@ -170,20 +182,24 @@ export default function Admin() {
       facilities: [],
       location: null,
       images: [],
-    })
-    setLocation(null)
-  }
-  console.log(location)
+    });
+    setLocation(null);
+  };
+  console.log(location);
 
-  if (!userDetail || userDetail.role !== "Moderator") return (<div>Cargando</div>)
-  const { Housings } = userDetail
+  if (!userDetail || userDetail.role !== "Moderator")
+    return <div>Cargando</div>;
+  const { Housings } = userDetail;
 
   return (
     <div className="container-moderator">
       <div>
         <h2 className="titleAdmin">Mis Alojamientos</h2>
         <div className="btn-create-container">
-          <button onClick={createHouseHandler}> Agregar casa {iconProvider("add")}</button>
+          <button onClick={createHouseHandler}>
+            {" "}
+            Agregar casa {iconProvider("add")}
+          </button>
         </div>
       </div>
       <>
@@ -201,20 +217,35 @@ export default function Admin() {
                     <div className="cell">Acción</div>
                   </div>
                 </div>
-                {(Housings.length) ? Housings?.map((e) =>
-                (
-                  <ListHouses
-                    user={user}
-                    houseInfo={e}
-                    onClick={showModal}
-                    setHouse={setHouse}
-                    setCreateHouse={setCreateHouse}
-                  />
-                )) : (<div><p className='no-home-message'>No hay alojamientos</p></div>)}
+                {Housings.length ? (
+                  Housings?.map((e) => (
+                    <ListHouses
+                      user={user}
+                      houseInfo={e}
+                      onClick={showModal}
+                      setHouse={setHouse}
+                      setCreateHouse={setCreateHouse}
+                    />
+                  ))
+                ) : (
+                  <div>
+                    <p className="no-home-message">No hay alojamientos</p>
+                  </div>
+                )}
                 <div>
-                  <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} className="modal" okText="Confimar" cancelText="Cancelar" title={createHouse ? "Crear alojamiento" : "Editar alojamiento"}>
-                    <div className='modal-container'>
-                      <div className='input-container'>
+                  <Modal
+                    visible={isModalVisible}
+                    onOk={handleOk}
+                    onCancel={handleCancel}
+                    className="modal"
+                    okText="Confimar"
+                    cancelText="Cancelar"
+                    title={
+                      createHouse ? "Crear alojamiento" : "Editar alojamiento"
+                    }
+                  >
+                    <div className="modal-container">
+                      <div className="input-container">
                         <span>Nombre</span>
                         <input
                           type="text"
@@ -226,7 +257,7 @@ export default function Admin() {
                           {formErrors.name ? formErrors.name : "ㅤㅤ"}
                         </p>
                       </div>
-                      <div className='input-container'>
+                      <div className="input-container">
                         <span>Precio por noche</span>
                         <input
                           type="number"
@@ -237,10 +268,12 @@ export default function Admin() {
                           defaultValue="0"
                         />
                         <p className="error-message">
-                          {formErrors.pricePerNight ? formErrors.pricePerNight : "ㅤㅤ"}
+                          {formErrors.pricePerNight
+                            ? formErrors.pricePerNight
+                            : "ㅤㅤ"}
                         </p>
                       </div>
-                      <div className='input-container'>
+                      <div className="input-container">
                         <span>Número de personas</span>
                         <input
                           type="number"
@@ -250,10 +283,12 @@ export default function Admin() {
                           onChange={inputFormHanlder}
                         />
                         <p className="error-message">
-                          {formErrors.numberOfPeople ? formErrors.numberOfPeople : "ㅤㅤ"}
+                          {formErrors.numberOfPeople
+                            ? formErrors.numberOfPeople
+                            : "ㅤㅤ"}
                         </p>
                       </div>
-                      <div className='input-container'>
+                      <div className="input-container">
                         <span>Número de camas</span>
                         <input
                           type="number"
@@ -263,10 +298,12 @@ export default function Admin() {
                           onChange={inputFormHanlder}
                         />
                         <p className="error-message">
-                          {formErrors.numberOfBeds ? formErrors.numberOfBeds : "ㅤㅤ"}
+                          {formErrors.numberOfBeds
+                            ? formErrors.numberOfBeds
+                            : "ㅤㅤ"}
                         </p>
                       </div>
-                      <div className='input-container'>
+                      <div className="input-container">
                         <span>Descripción</span>
                         <textarea
                           type="text"
@@ -276,13 +313,14 @@ export default function Admin() {
                           onChange={inputFormHanlder}
                           rows="4"
                           cols="55"
-
                         />
                         <p className="error-message">
-                          {formErrors.description ? formErrors.description : "ㅤㅤ"}
+                          {formErrors.description
+                            ? formErrors.description
+                            : "ㅤㅤ"}
                         </p>
                       </div>
-                      <div className='input-container'>
+                      <div className="input-container">
                         <span>Reglas de la casa</span>
                         <textarea
                           type="text"
@@ -293,10 +331,12 @@ export default function Admin() {
                           cols="55"
                         />
                         <p className="error-message">
-                          {formErrors.houseRules ? formErrors.houseRules : "ㅤㅤ"}
+                          {formErrors.houseRules
+                            ? formErrors.houseRules
+                            : "ㅤㅤ"}
                         </p>
                       </div>
-                      <div className='input-container'>
+                      <div className="input-container">
                         <Cascader
                           options={optionsServices}
                           multiple
@@ -306,10 +346,9 @@ export default function Admin() {
                           onChange={serviceHandler}
                           className="Cascader"
                         />
-
                       </div>
 
-                      <div className='input-container'>
+                      <div className="input-container">
                         <Cascader
                           options={optionsFacilities}
                           multiple
@@ -319,35 +358,49 @@ export default function Admin() {
                           onChange={facilitiesHandler}
                           className="Cascader"
                         />
-
                       </div>
-                      <div className='input-container'>
-                      <PlacesAutocomplete 
-                      value={location} 
-                      onChange={(e)=>settLocation(e)}
-                      onSelect={handleLocSelect}
-                      >
-                      {({ getInputProps, suggestions, getSuggestionItemProps, loading })=>( <div>
-             <input {...getInputProps({ placeholder:"Ubicacion..." })} />
+                      <div className="input-container">
+                        <PlacesAutocomplete
+                          value={location}
+                          onChange={(e) => settLocation(e)}
+                          onSelect={handleLocSelect}
+                        >
+                          {({
+                            getInputProps,
+                            suggestions,
+                            getSuggestionItemProps,
+                            loading,
+                          }) => (
+                            <div>
+                              <input
+                                {...getInputProps({
+                                  placeholder: "Ubicacion...",
+                                })}
+                              />
 
-             <div>
-               {loading ? <div>...cargando</div> : null}
-               {suggestions.map((suggestion)=>{
-
-                 const style={
-                   backgroundColor: suggestion.active ? "#bbbaba" :"#fff"
-                 }
-               return <div key={suggestion.description} {...getSuggestionItemProps(suggestion,{style})} >
-
-                 {suggestion.description}
-                 </div>
-                 
-                      })}
-             </div>
-             </div>)
-             }
-
-          </PlacesAutocomplete>
+                              <div>
+                                {loading ? <div>...cargando</div> : null}
+                                {suggestions.map((suggestion) => {
+                                  const style = {
+                                    backgroundColor: suggestion.active
+                                      ? "#bbbaba"
+                                      : "#fff",
+                                  };
+                                  return (
+                                    <div 
+                                    key={suggestion.description}
+                                      {...getSuggestionItemProps(suggestion, {
+                                        style,
+                                      })}
+                                    >
+                                      {suggestion.description}
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          )}
+                        </PlacesAutocomplete>
                         {/* <Cascader
                           options={optionsLocations}
                           maxTagCount="responsive"
@@ -361,36 +414,75 @@ export default function Admin() {
                         </p>
                       </div>
                       <div>
-                        <FileBase
+                        <input
                           type="file"
-                          multiple={false}
-                          onDone={({ base64 }) => {
-                            setHouse({ ...house, image1: base64 })
-                          }
-                          }
+                          onChange={(e) => {
+                            let size = e.target.files[0].size;
+                            let files = e.target.files;
+                            if (size > 2000000) {
+                              alert(
+                                "El tamaño de la imagen no puede ser mayor a 2MB"
+                              );
+                              e.target.value = "";
+                            } else {
+                              Array.from(files).forEach((archivo) => {
+                                var reader = new FileReader();
+                                reader.readAsDataURL(archivo);
+                                reader.onload = function () {
+                                  var base64 = reader.result;
+                                  setHouse({ ...house, image1: base64 });
+                                };
+                              });
+                            }
+                          }}
                         />
 
-                        <FileBase
+                        <input
                           type="file"
-                          multiple={false}
-                          onDone={({ base64 }) => {
-                            console.log(base64)
-                            setHouse({ ...house, image2: base64 })
-                          }
-                          }
+                          onChange={(e) => {
+                            let size = e.target.files[0].size;
+                            let files = e.target.files;
+                            if (size > 2000000) {
+                              alert(
+                                "El tamaño de la imagen no puede ser mayor a 2MB"
+                              );
+                              e.target.value = "";
+                            } else {
+                              Array.from(files).forEach((archivo) => {
+                                var reader = new FileReader();
+                                reader.readAsDataURL(archivo);
+                                reader.onload = function () {
+                                  var base64 = reader.result;
+                                  setHouse({ ...house, image2: base64 });
+                                };
+                              });
+                            }
+                          }}
                         />
-                        <FileBase
-                          type="file"
-                          multiple={false}
-                          onDone={({ base64 }) => {
-                            console.log(base64)
-                            setHouse({ ...house, image3: base64 })
 
-                          }
-                          }
+                        <input
+                          type="file"
+                          onChange={(e) => {
+                            let size = e.target.files[0].size;
+                            let files = e.target.files;
+                            if (size > 2000000) {
+                              alert(
+                                "El tamaño de la imagen no puede ser mayor a 2MB"
+                              );
+                              e.target.value = "";
+                            } else {
+                              Array.from(files).forEach((archivo) => {
+                                var reader = new FileReader();
+                                reader.readAsDataURL(archivo);
+                                reader.onload = function () {
+                                  var base64 = reader.result;
+                                  setHouse({ ...house, image3: base64 });
+                                };
+                              });
+                            }
+                          }}
                         />
                       </div>
-
                     </div>
                   </Modal>
                 </div>
@@ -400,6 +492,5 @@ export default function Admin() {
         </div>
       </>
     </div>
-
   );
 }
