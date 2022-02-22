@@ -16,7 +16,7 @@ function Loading() {
 
       </div> */}
 
-      <div class="loadingio-spinner-double-ring-idd5l9mdbp"><div class="ldio-iu24m8g4v5s">
+      <div className="loadingio-spinner-double-ring-idd5l9mdbp"><div className="ldio-iu24m8g4v5s">
         <div></div>
         <div></div>
         <div><div></div></div>

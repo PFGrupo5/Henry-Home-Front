@@ -116,7 +116,7 @@ export default function Admin() {
       ...house,
       services: servicesFlat,
       facilities: facilitiesFlat,
-      images: [house.image1, house.image2, house.image3]
+      images: [house.image1, house.image2, house.image3]/* .filter(e => e !== undefined) */
     }
 
     if (Object.keys(formErrors).length) return message.error("Error en los datos")
@@ -212,7 +212,7 @@ export default function Admin() {
                   />
                 )) : (<div><p className='no-home-message'>No hay alojamientos</p></div>)}
                 <div>
-                  <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} className="modal" okText="Confimar" cancelText="Cancelar" title={createHouse? "Crear alojamiento" : "Editar alojamiento"}>
+                  <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} className="modal" okText="Confimar" cancelText="Cancelar" title={createHouse ? "Crear alojamiento" : "Editar alojamiento"}>
                     <div className='modal-container'>
                       <div className='input-container'>
                         <span>Nombre</span>
@@ -228,7 +228,7 @@ export default function Admin() {
                       </div>
                       <div className='input-container'>
                         <span>Precio por noche</span>
-                        <input 
+                        <input
                           type="number"
                           key="price"
                           value={house.pricePerNight}
@@ -276,7 +276,7 @@ export default function Admin() {
                           onChange={inputFormHanlder}
                           rows="4"
                           cols="55"
-                          
+
                         />
                         <p className="error-message">
                           {formErrors.description ? formErrors.description : "ㅤㅤ"}
@@ -306,7 +306,7 @@ export default function Admin() {
                           onChange={serviceHandler}
                           className="Cascader"
                         />
-                       
+
                       </div>
 
                       <div className='input-container'>
@@ -319,7 +319,7 @@ export default function Admin() {
                           onChange={facilitiesHandler}
                           className="Cascader"
                         />
-                        
+
                       </div>
                       <div className='input-container'>
                       <PlacesAutocomplete 

@@ -30,7 +30,7 @@ const LandingPage2 = () => {
     <div className="landingPage-container">
       <Carrousel imgs={[img1, img2, img3]} dotsBool={true} styles="landingCarrousel" />
       <TitleContainer />
-      <Form role="Client" google={true}/>
+      <Form role="Client" google={true} />
       <Footer2 />
     </div>
   );

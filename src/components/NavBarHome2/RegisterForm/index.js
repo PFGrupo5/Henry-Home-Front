@@ -3,6 +3,8 @@ import axios from "axios";
 import { useState } from "react";
 import { URL_BACK } from "../../../config";
 import { ValidateForm } from "../../../utils/ValidateForm";
+import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons"
+
 
 const RegisterForm = ({ setDisplay }) => {
   const [registerData, setRegisterData] = useState({
@@ -15,6 +17,9 @@ const RegisterForm = ({ setDisplay }) => {
   });
 
   const [formErrors, setFormErrors] = useState({});
+
+  const [passwordView, setPasswordView] = useState("password")
+  const [passwordConfirm, setPasswordConfirm] = useState("password")
 
   const register = () => {
     if (!Object.keys(formErrors).length) {
@@ -86,26 +91,57 @@ const RegisterForm = ({ setDisplay }) => {
           {formErrors.lastName ? formErrors.lastName : "ㅤㅤ"}
         </p>
       </div>
-      <div className="inputContainer">
+
+      <div className="inputContainer passNav">
         <input
           name="inputPassword"
-          type="password"
+          type={passwordView}
           placeholder="Contraseña"
           onChange={inputFormHandler}
           value={registerData.inputPassword}
         />
+
+        {
+          passwordView === "text" ?
+            <EyeOutlined
+              className="passIcon"
+              onClick={() => {
+                setPasswordView("password")
+              }} />
+            :
+            <EyeInvisibleOutlined
+              className="passIcon"
+              onClick={() => {
+                setPasswordView("text")
+              }} />
+        }
         <p className="error-message">
           {formErrors.inputPassword ? formErrors.inputPassword : "ㅤㅤ"}
         </p>
       </div>
-      <div className="inputContainer">
+
+      <div className="inputContainer passNav">
         <input
           name="confirmPassword"
-          type="password"
+          type={passwordConfirm}
           placeholder="Confirmar contraseña"
           onChange={inputFormHandler}
           value={registerData.confirmPassword}
         />
+        {
+          passwordConfirm === "text" ?
+            <EyeOutlined
+              className="passIcon"
+              onClick={() => {
+                setPasswordConfirm("password")
+              }} />
+            :
+            <EyeInvisibleOutlined
+              className="passIcon"
+              onClick={() => {
+                setPasswordConfirm("text")
+              }} />
+        }
         <p className="error-message">
           {formErrors.confirmPassword ? formErrors.confirmPassword : "ㅤㅤ"}
         </p>

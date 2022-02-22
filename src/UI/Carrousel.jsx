@@ -8,7 +8,7 @@ function Carrousels({ imgs, dotsBool, styles, preview = false }) {
             {imgs?.map((i, index) => {
                 return (
                     <div key={index}>
-                        <Image src={i} preview={preview} className={styles} width="200px" />
+                        <Image src={i} preview={preview} className={styles} />
                     </div>
                 );
             })}

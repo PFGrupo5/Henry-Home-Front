@@ -4,7 +4,7 @@ const iconObj = {
   wifi: <Unicons.UilWifi />,
   catering: <Unicons.UilUtensilsAlt />,
   "room service": <Unicons.UilBedDouble />,
-  "shops ": <Unicons.UilShop />,
+  shops: <Unicons.UilShop />,
   pool: <Unicons.UilSwimmer />,
   gym: <Unicons.UilDumbbell />,
   sauna: <Unicons.UilBath />,
@@ -21,9 +21,6 @@ const iconObj = {
   github: <Unicons.UilGithub />,
 };
 
-export default function iconProvider (icon) {
-    return iconObj[icon]
+export default function iconProvider(icon) {
+  return iconObj[icon];
 }
-
-
-
