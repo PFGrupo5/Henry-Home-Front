@@ -20,7 +20,7 @@ const PaymentSuccess = () => {
   const decreaseNum = () => setNum((prev) => prev - 1);
   console.log(status);
   useEffect(() => {
-    
+
     if (sendReservation) {
       intervalRef.current = setInterval(decreaseNum, 1000);
       if (status === "success") {
@@ -38,7 +38,7 @@ const PaymentSuccess = () => {
             console.log(error);
             message.error(error.response.data.message);
           });
-        } else {
+      } else {
         setSendReservation(false);
         message.error("No se a realizado la reserva");
       }
@@ -46,7 +46,7 @@ const PaymentSuccess = () => {
 
     if (num <= 0) history.push("/");
     return () => clearInterval(intervalRef.current);
-  }, [num, history, collection_status, preference_id, sendReservation]);
+  }, [num, history, collection_status, preference_id, sendReservation, status]);
 
   console.log(preference_id);
   console.log(collection_status);
