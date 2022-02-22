@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../assets/css/DashboardUser/DashboardUser.scss";
 import Loading from "../components/Loading";
-import { getUserDetail } from "../FilesStore/Actions";
+import { getLocations, getUserDetail } from "../FilesStore/Actions";
 import defaultUser from '../assets/img/user_default.png'
 import Cards from '../components/Cards'
 import { Button } from 'antd'
@@ -11,13 +11,14 @@ import axios from "axios";
 import { URL_BACK } from '../config'
 
 function DashboardUser() {
+  const dispatch = useDispatch()
   const [user] = useState(JSON.parse(localStorage.getItem("profile")));
   const { userDetail } = useSelector((state) => state);
-  const dispatch = useDispatch()
-  console.log(userDetail)
+  const { locations } = useSelector((state) => state);
   const [actualizar, setActualizar] = useState(1)
-  const actualiza = ()=>{
-    setActualizar(actualizar+1)
+
+  const actualiza = () => {
+    setActualizar(actualizar + 1)
   }
 
   const deleteReservation= id => {
@@ -31,7 +32,9 @@ function DashboardUser() {
 
   useEffect(() => {
     dispatch(getUserDetail(user.result.id, user.result.role))
+    dispatch(getLocations())
   }, [dispatch, user.result.id, user.result.role, actualizar]);
+
 
   if (!userDetail) {
     return (
@@ -42,14 +45,14 @@ function DashboardUser() {
   } else {
     return (
       <div className="Container-General">
-        
+
         <div>
           <div className="DashboardUser-userInfo">
             <h1>Información General</h1>
             <img src={userDetail.imageUrl || defaultUser} alt="" />
             <p>Nombre: {`${userDetail.firstName} ${userDetail.lastName}`}</p>
             <p>Email: {`${userDetail.email}`}</p>
-            <p>Rol: {userDetail.role}</p>
+            <p>Rol: Cliente</p>
           </div>
           <div className="Container-Favs">
             <h1 className="DashboardUser-section-Title" id="Favs-hotels">
@@ -61,6 +64,7 @@ function DashboardUser() {
               ) : (
                 <div>
                   {userDetail.favs.map((f) => {
+                    const location = locations?.find(e => e.id === f.LocationId)
                     return (
                       <Cards
                         name={f.name}
@@ -68,6 +72,7 @@ function DashboardUser() {
                         id={f.id}
                         img={f.images}
                         price={f.pricePerNight}
+                        location={location?.name}
                       />
                     );
                   })}
@@ -108,13 +113,13 @@ function DashboardUser() {
                 )}
             </div>
           </div>
-            
+
         </div>
-            <div className="reviews-container">
-              <h3>Tus reseñas: </h3>
-                {userDetail?.Reviews?.length ? userDetail.Reviews.map((e)=><ReviewCard actualizar={actualiza} review={e} dash={true} token={user.token} />) 
-                : <p> Aun no has redactado ninguna reseña </p>}
-            </div>
+        <div className="reviews-container">
+          <h3>Tus reseñas: </h3>
+          {userDetail?.Reviews?.length ? userDetail.Reviews.map((e) => <ReviewCard actualizar={actualiza} review={e} dash={true} token={user.token} />)
+            : <p> Aun no has redactado ninguna reseña </p>}
+        </div>
       </div>
     );
   }

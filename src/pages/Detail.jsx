@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail } from "../FilesStore/Actions";
-
 import { PushpinOutlined } from "@ant-design/icons";
 import "../assets/css/Detail/Detail.scss";
 import ReviewCard from "../components/ReviewCard";
+// import Carrousel from "../UI/Carrousel";
+import Loading from "../components/Loading";
 import Reservation from "./Reservation2";
 import IconProvider from "../utils/IconProvider";
 import axios from "axios";
@@ -18,56 +19,57 @@ export default function Detail() {
   const { id } = useParams()
   const { detail } = useSelector((state) => state);
   const [user] = useState(JSON.parse(localStorage.getItem("profile")));
-  if(user){
-    const find  = detail?.Reviews.length ?
-  detail.Reviews.filter((e)=>e.userClientId===user.result.id) : []
-  var comprobante = find.length ? true : false
-  var reviewpropia = find[0]
+  if (user) {
+    const find = detail?.Reviews.length ?
+      detail.Reviews.filter((e) => e.userClientId === user.result.id) : []
+    var comprobante = find.length ? true : false
+    var reviewpropia = find[0]
   }
-  
+
 
   const [reviewDetail, setReviewDetail] = useState({
     stars: 1,
     description: "",
   })
-  const onChangeDescription= (e)=>{
-   
-    setReviewDetail({...reviewDetail,
+  const onChangeDescription = (e) => {
+
+    setReviewDetail({
+      ...reviewDetail,
       description: e.target.value,
     });
-    if(reviewDetail.description.length<=160){
+    if (reviewDetail.description.length <= 160) {
       setReview()
     }
-    else{
+    else {
       setReview(-1)
     }
     console.log(reviewDetail)
   }
 
-  
+
 
   const [haveReview, sethaveReview] = useState(1)
-  const setReview = (e)=>{
-    if(e){
+  const setReview = (e) => {
+    if (e) {
       sethaveReview(-1)
-    }else{sethaveReview(haveReview+1)}
-    
+    } else { sethaveReview(haveReview + 1) }
+
   }
   console.log(haveReview)
 
 
 
-  const onClick= async (e)=>{
-      e.preventDefault();
-      if(reviewDetail.description.length<=160){
+  const onClick = async (e) => {
+    e.preventDefault();
+    if (reviewDetail.description.length <= 160) {
 
-        try{
-         await axios.post(`${URL_BACK}/reviews`,{stars:reviewDetail.stars, description: reviewDetail.description, id_hotel: detail.id },
-        {
-          headers: {
-            Authorization: user.token,
-          },
-        }
+      try {
+        await axios.post(`${URL_BACK}/reviews`, { stars: reviewDetail.stars, description: reviewDetail.description, id_hotel: detail.id },
+          {
+            headers: {
+              Authorization: user.token,
+            },
+          }
         )
         setReviewDetail({
           stars: 1,
@@ -75,39 +77,36 @@ export default function Detail() {
         })
         setReview()
         console.log(haveReview)
- }catch(error){console.log(error)}
-      }
+      } catch (error) { console.log(error) }
+    }
   }
 
-  const onChangeStarsMore= (e)=>{
+  const onChangeStarsMore = (e) => {
     e.preventDefault()
 
-   if(reviewDetail.stars < 5)
-    setReviewDetail({...reviewDetail,
-      stars: reviewDetail.stars + 1
-    }); 
+    if (reviewDetail.stars < 5)
+      setReviewDetail({
+        ...reviewDetail,
+        stars: reviewDetail.stars + 1
+      });
   }
-  const onChangeStarsLess= (e)=>{
+  const onChangeStarsLess = (e) => {
     e.preventDefault()
-    if(reviewDetail.stars>1)
-     setReviewDetail({...reviewDetail,
-       stars: reviewDetail.stars - 1
-     }); 
-   }
-  
+    if (reviewDetail.stars > 1)
+      setReviewDetail({
+        ...reviewDetail,
+        stars: reviewDetail.stars - 1
+      });
+  }
 
-  
-
-  
   useEffect(() => {
-
-    
     dispatch(getDetail(id));
-  }, [dispatch, id, reviewDetail,haveReview]);
-  
-  if (!detail) return (<div>Cargando</div>)
+  }, [dispatch, id, reviewDetail, haveReview]);
+
+  if (!detail) return (<Loading />)
 
   const { name, images, Location, numberOfPeople, houseRules } = detail
+  console.log("name", images)
   return (
     <div className="house-datail">
       <div className="house-datail-container">
@@ -116,11 +115,13 @@ export default function Detail() {
           <p>Publicado por {detail.userMod.firstName}</p>
         </div>
         <div className="carrousel-conteiner">
-          <img src={images[0]} alt="" width="1020px"/>
+          <img src={images[0]} alt="" width="1020px" />
           {/* <Carrousel
-            imgs={images ? images : [imgDefault]}
+            // imgs={images ? images : [imgDefault]}
+            imgs={images}
             dotsBool={true}
             styles="imgDetail"
+            preview={true}
           /> */}
         </div>
         <div className="info-container">
@@ -162,42 +163,42 @@ export default function Detail() {
           <Reservation id={id} user={user} />
         </div>
         <div className="reviews-container">
-            <h3>Reseñas: </h3>
-            {user && (comprobante ? <div>
-              <h4>Tu Reseña:</h4>
-              <ReviewCard actualizar={setReview}  token={user.token} review={reviewpropia}/>
-            </div> : <div>
-              <h4>¿Quieres redactar una reseña?</h4>
-              <form>
+          <h3>Reseñas: </h3>
+          {user && (comprobante ? <div>
+            <h4>Tu Reseña:</h4>
+            <ReviewCard actualizar={setReview} token={user.token} review={reviewpropia} />
+          </div> : <div>
+            <h4>¿Quieres redactar una reseña?</h4>
+            <form>
+              <div>
                 <div>
-                  <div>
-                    <>Estrellas:</> 
+                  <>Estrellas:</>
 
-                    <button onClick={onChangeStarsLess}>-</button>
-                      <>{reviewDetail.stars}</> 
-                    <button  onClick={onChangeStarsMore}>+</button>
-                  </div>
-                  <div>
-                  <textarea placeholder="Description (160 char max)" onChange={(e)=>onChangeDescription(e)} value={reviewDetail.description}></textarea>
-                  {haveReview<0 && <p className="error">Ha excedido el limite de caracteres</p>}
-                  </div>
-                  <button onClick={onClick} >Publicar</button>
+                  <button onClick={onChangeStarsLess}>-</button>
+                  <>{reviewDetail.stars}</>
+                  <button onClick={onChangeStarsMore}>+</button>
                 </div>
-              </form>
-            </div>) }
-            <h4>Resto de reseñas:</h4>
-            <div>
-              { detail.Reviews.length ?
-               detail.Reviews.map((e)=><ReviewCard
-               user={user?.result.id ? user.result.id : true}
+                <div>
+                  <textarea placeholder="Description (160 char max)" onChange={(e) => onChangeDescription(e)} value={reviewDetail.description}></textarea>
+                  {haveReview < 0 && <p className="error">Ha excedido el limite de caracteres</p>}
+                </div>
+                <button onClick={onClick} >Publicar</button>
+              </div>
+            </form>
+          </div>)}
+          <h4>Resto de reseñas:</h4>
+          <div>
+            {detail.Reviews.length ?
+              detail.Reviews.map((e) => <ReviewCard
+                user={user?.result.id ? user.result.id : true}
                 review={e}
-               />) :
+              />) :
               <p> El establecimiento no tiene reseñas de momento reseñas por el momento </p>
-               }
-            </div>
-
-
+            }
           </div>
+
+
+        </div>
       </div>
     </div>
 

@@ -7,8 +7,6 @@ import {
   GOOGLE_LOGOUT,
   ADMIN_STATUS,
   SIGNIN,
-  ADD_FAV,
-  DELETE_FAV,
   LOG_OUT,
   USER_DETAIL,
   GET_SERVICES,
@@ -106,7 +104,7 @@ export function SignIn(values, history) {
         type: ERROR_LOGIN,
         payload: error,
       });
-      console.log(error);
+      console.log("Error", error);
     }
   };
 }
@@ -218,54 +216,6 @@ export function getLocations() {
 
 export function cleanError() {
   return { type: CLEAN_ERROR, payload: {} };
-}
-
-export function AddFav(id, token) {
-  return async function (dispatch) {
-    try {
-      var json = await axios.post(
-        `${URL_BACK}/favs`,
-        { HousingId: id },
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
-      console.log("AGREGAR");
-      return dispatch({
-        type: ADD_FAV,
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log("AddFav:", error);
-    }
-  };
-}
-
-export function DelFav(id, token) {
-  return async function (dispatch) {
-    try {
-      var json = await axios.delete(
-        `${URL_BACK}/favs`,
-        {
-          headers: {
-            Authorization: token,
-          },
-          data: { HousingId: id },
-        }
-      );
-      console.log(json.data);
-
-      console.log("BORRAR");
-      return dispatch({
-        type: DELETE_FAV,
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log("DelFav:", error);
-    }
-  };
 }
 
 export function logOut() {
