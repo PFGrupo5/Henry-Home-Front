@@ -227,7 +227,7 @@ export function patchHouse(payload) {
   return async function (dispatch) {
     try {
       var json = await axios.patch(
-        `https://henry-home-back.herokuapp.com/api/houses`,
+        `${URL_BACK}/houses`,
         payload
       );
       console.log(json);
@@ -242,22 +242,3 @@ export function patchHouse(payload) {
   };
 }
 
-      // var json = await axios.post(
-      //   `https://henry-home-back.herokuapp.com/api/services`,
-      //   payload,
-      //   {
-      //     headers: {
-      //       Authorization: token,
-      //     },
-      //   }
-      // );
-      
-      // var json = await axios.post(
-      //   `https://henry-home-back.herokuapp.com/api/facilities`,
-      //   payload,
-      //   {
-      //     headers: {
-      //       Authorization: token,
-      //     },
-      //   }
-      // );

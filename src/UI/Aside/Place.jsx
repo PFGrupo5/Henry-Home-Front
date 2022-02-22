@@ -40,7 +40,7 @@ export default function Place({ setInfo, Info ,  }) {
                  const style={
                    backgroundColor: suggestion.active ? "#bbbaba" :"#fff"
                  }
-               return <div {...getSuggestionItemProps(suggestion,{style})} >
+               return <div key={suggestion.description} {...getSuggestionItemProps(suggestion,{style})} >
 
                  {suggestion.description}
                  </div>

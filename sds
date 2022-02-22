@@ -1,0 +1,35 @@
+[1mdiff --git a/src/components/NavBarHome2/NavBarHome2.js b/src/components/NavBarHome2/NavBarHome2.js[m
+[1mindex 17a6b73..c0aa97c 100644[m
+[1m--- a/src/components/NavBarHome2/NavBarHome2.js[m
+[1m+++ b/src/components/NavBarHome2/NavBarHome2.js[m
+[36m@@ -14,6 +14,8 @@[m [mimport { useDispatch, useSelector } from "react-redux";[m
+ import { cleanError, googleLogOut } from "../../FilesStore/Actions";[m
+ import { message } from "antd";[m
+ [m
+[32m+[m[32m/* import decode from 'jwt-decode' */[m
+[32m+[m
+ const NavBarHome2 = () => {[m
+   const dispatch = useDispatch();[m
+   const history = useHistory();[m
+[36m@@ -36,13 +38,20 @@[m [mconst NavBarHome2 = () => {[m
+     setUser(null);[m
+   };[m
+ [m
+[32m+[m[32m/*   const token = user?.token; */[m
+[32m+[m
+   useEffect(() => {[m
+     setUser(JSON.parse(localStorage.getItem("profile")));[m
+     if (Object.keys(errors).length) {[m
+       message.error(errors.response.data.message);[m
+       dispatch(cleanError());[m
+     }[m
+[31m-  }, [dispatch, errors, location]);[m
+[32m+[m[32m    /* if(token){[m
+[32m+[m[32m       const decodedToken = decode(token)[m
+[32m+[m[32m       console.log(decodedToken)[m
+[32m+[m[32m       if(decodedToken.exp * 1000 < new Date().getTime()) logout()[m
+[32m+[m[32m    } */[m
+[32m+[m[32m  }, [dispatch, errors, location ]);[m
+ [m
+   const handleForm = (e) => {[m
+     setDisplay(true);[m
