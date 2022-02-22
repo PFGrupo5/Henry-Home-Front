@@ -67,13 +67,12 @@ $font-color: #ffffff;
   margin-top: 0.5rem;
   font-size: 1.25rem;
   font-weight: bold;
-  
-  a{
+
+  a {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 1rem;
-    
   }
 }
 
@@ -98,3 +97,9 @@ $font-color: #ffffff;
     justify-items: center;
   }
 }
+
+// @media screen and (max-width: 458px) {
+//   .foot2Container {
+//     width: 100%;
+//   }
+// }

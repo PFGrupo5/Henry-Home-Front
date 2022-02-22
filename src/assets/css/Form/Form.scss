@@ -3,21 +3,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 5rem ;
-  
+  padding-top: 5rem;
+
   h2 {
-      color: #fff;
-      font-weight: 600;
-      font-size: 2em;
-      margin-top: 1rem;
-      cursor: pointer;
-    }
-    .content-form {
-        background-color: #092c4c;
-        border-radius: 2rem;
-        height: 650px;
-        overflow: hidden;
-        width: 500px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 2em;
+    margin-top: 1rem;
+    cursor: pointer;
+  }
+  .content-form {
+    background-color: #092c4c;
+    border-radius: 2rem;
+    height: 650px;
+    overflow: hidden;
+    width: 500px;
+    min-width: 26.563rem;
   }
   .register-container {
     /* display: flex;
@@ -33,12 +34,12 @@
     align-items: center;
     flex-direction: column; */
     text-align: center;
-    background-color: #f2994a ;
-   
+    background-color: #f2994a;
+
     border-radius: 1rem 1rem 0 0;
-    transition: .8s ease-in-out;
+    transition: 0.8s ease-in-out;
     min-height: 100%;
-   
+
     h2 {
       color: #fff;
     }
@@ -46,6 +47,7 @@
 
   input {
     width: 70%;
+    min-width: 18.125rem;
     background: #fff;
     justify-content: center;
     display: flex;
@@ -58,12 +60,13 @@
 
   button {
     width: 60%;
+    min-width: 16rem;
     height: 40px;
     margin: 10px auto;
     justify-content: center;
     display: block;
     color: #fff;
-    background: #757d87 ;
+    background: #757d87;
     font-size: 1em;
     font-weight: bold;
     margin-top: 20px;
@@ -74,7 +77,7 @@
     cursor: pointer;
   }
 
-  #google-btn{
+  #google-btn {
     background-color: #fff;
     color: #000;
     display: flex;
@@ -84,28 +87,17 @@
     font-size: 1rem;
   }
 
-  .translate{
-      transform: translateY(-500px);
+  .translate {
+    transform: translateY(-500px);
   }
-  .error-message{
-    margin-top: -.7rem;
+  .error-message {
+    margin-top: -0.7rem;
     color: rgb(240, 82, 82);
   }
 }
 
-.passInput{
-  position: relative;
-  .passIcon{
-    position: absolute;
-    bottom: 64%;
-    left: 80%;
-  }
-}
-
 @media screen and (min-width: 446px) {
-  .content-form{
-      min-width: 30%;
+  .content-form {
+    min-width: 30%;
   }
 }
-
-
