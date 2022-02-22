@@ -21,13 +21,13 @@ function DashboardUser() {
     setActualizar(actualizar + 1)
   }
 
-  const deleteReservation = id => {
+  const deleteReservation= id => {
     axios.delete(`${URL_BACK}/reservation/${id}`)
-      .then(res => {
-        dispatch(getUserDetail(user.result.id, user.result.role))
-        console.log(res)
-      })
-      .catch(err => console.log(err))
+    .then(res=>{
+      dispatch(getUserDetail(user.result.id, user.result.role))
+      console.log(res)
+    })
+    .catch(err=>console.log(err))
   }
 
   useEffect(() => {
@@ -85,32 +85,32 @@ function DashboardUser() {
               Ultimas reservaciones
             </h1>
             <div className="Last-reservs">
-              {!userDetail.Reservations ? (
-                <div>{`No Tienes Reservaciones Previas :(`}</div>
-              ) : (
-                <table className="DashboardUser_reservationInfo" >
-                  <thead>
-                    <tr>
-                      <th>Fecha Inicio</th>
-                      <th>Fecha Fin</th>
-                      <th>Estado</th>
-                      <th>Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {userDetail.Reservations.map((f) => {
-                      return (
-                        <tr key={f.id}>
-                          <td>{f.date_start}</td>
-                          <td>{f.date_end}</td>
-                          <td>{f.status}</td>
-                          <td><a href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a><Button type="text" onClick={() => deleteReservation(f.id)}><strong>Eliminar</strong></Button></td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              )}
+                {!userDetail.Reservations ? (
+                  <div>{`No Tienes Reservaciones Previas :(`}</div>
+                ) : (
+                  <table className="DashboardUser_reservationInfo" >
+                    <thead>
+                      <tr>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Fin</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {userDetail.Reservations.map((f) => {
+                        return (
+                          <tr key={f.id}>
+                            <td>{f.date_start}</td>
+                            <td>{f.date_end}</td>
+                            <td>{f.status}</td>
+                            <td><a href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a><Button type="text" onClick={()=>deleteReservation(f.id)}><strong>Eliminar</strong></Button></td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                )}
             </div>
           </div>
 
