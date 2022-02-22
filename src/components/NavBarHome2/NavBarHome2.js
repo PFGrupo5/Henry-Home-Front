@@ -14,6 +14,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { cleanError, googleLogOut } from "../../FilesStore/Actions";
 import { message } from "antd";
 
+/* import decode from 'jwt-decode' */
+
 const NavBarHome2 = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -36,13 +38,20 @@ const NavBarHome2 = () => {
     setUser(null);
   };
 
+/*   const token = user?.token; */
+
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));
     if (Object.keys(errors).length) {
       message.error(errors.response.data.message);
       dispatch(cleanError());
     }
-  }, [dispatch, errors, location]);
+    /* if(token){
+       const decodedToken = decode(token)
+       console.log(decodedToken)
+       if(decodedToken.exp * 1000 < new Date().getTime()) logout()
+    } */
+  }, [dispatch, errors, location ]);
 
   const handleForm = (e) => {
     setDisplay(true);
