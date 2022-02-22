@@ -1,5 +1,5 @@
 import { Redirect, Route, Switch, useLocation } from "react-router-dom";
-import LandingPage2 from "../pages/LandingPage2";
+import LandingPage from "../pages/LandingPage";
 import Home from "../pages/Home";
 import Detail from "../pages/Detail";
 import ErrorPage from "../pages/ErrorPage";
@@ -14,7 +14,7 @@ import NavBarHome2 from "../components/NavBarHome2/NavBarHome2";
 import LandingLog from "../pages/LandingLog";
 import EditPost from "../pages/EditPost";
 import { useEffect, useState } from "react";
-import FromCreate from "../pages/FromCreate";
+import FromCreate from "../pages/FormCreate";
 
 function Routes() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -28,7 +28,7 @@ function Routes() {
     <div className="App">
       <NavBarHome2 />
       <Switch>
-        <Route exact path="/" component={() => (!user ? <LandingPage2 /> : <Redirect to="/home" />)} />
+        <Route exact path="/" component={() => (!user ? <LandingPage /> : <Redirect to="/home" />)} />
         <Route exact path="/owners" component={() => LandingLog("Moderator")} />
         <Route exact path="/admins" component={() => LandingLog("Admin")} />
         <Route exact path="/home" component={Home} />
