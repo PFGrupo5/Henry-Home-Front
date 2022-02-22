@@ -13,101 +13,103 @@ import axios from "axios";
 import { Image } from "antd";
 import { URL_BACK } from "../config";
 
-
 export default function Detail() {
-
   const dispatch = useDispatch();
-  const { id } = useParams()
+  const { id } = useParams();
   const { detail } = useSelector((state) => state);
   const [user] = useState(JSON.parse(localStorage.getItem("profile")));
   if (user) {
-    const find = detail?.Reviews.length ?
-      detail.Reviews.filter((e) => e.userClientId === user.result.id) : []
-    var comprobante = find.length ? true : false
-    var reviewpropia = find[0]
+    const find = detail?.Reviews.length
+      ? detail.Reviews.filter((e) => e.userClientId === user.result.id)
+      : [];
+    var comprobante = find.length ? true : false;
+    var reviewpropia = find[0];
   }
-
 
   const [reviewDetail, setReviewDetail] = useState({
     stars: 1,
     description: "",
-  })
+  });
   const onChangeDescription = (e) => {
-
     setReviewDetail({
       ...reviewDetail,
       description: e.target.value,
     });
     if (reviewDetail.description.length <= 160) {
-      setReview()
+      setReview();
+    } else {
+      setReview(-1);
     }
-    else {
-      setReview(-1)
-    }
-    console.log(reviewDetail)
-  }
+    console.log(reviewDetail);
+  };
 
-
-
-  const [haveReview, sethaveReview] = useState(1)
+  const [haveReview, sethaveReview] = useState(1);
   const setReview = (e) => {
     if (e) {
-      sethaveReview(-1)
-    } else { sethaveReview(haveReview + 1) }
-
-  }
-  console.log(haveReview)
-
-
+      sethaveReview(-1);
+    } else {
+      sethaveReview(haveReview + 1);
+    }
+  };
+  console.log(haveReview);
 
   const onClick = async (e) => {
     e.preventDefault();
     if (reviewDetail.description.length <= 160) {
-
       try {
-        await axios.post(`${URL_BACK}/reviews`, { stars: reviewDetail.stars, description: reviewDetail.description, id_hotel: detail.id },
+        await axios.post(
+          `${URL_BACK}/reviews`,
+          {
+            stars: reviewDetail.stars,
+            description: reviewDetail.description,
+            id_hotel: detail.id,
+          },
           {
             headers: {
               Authorization: user.token,
             },
           }
-        )
+        );
         setReviewDetail({
           stars: 1,
           description: "",
-        })
-        setReview()
-        console.log(haveReview)
-      } catch (error) { console.log(error) }
+        });
+        setReview();
+        console.log(haveReview);
+      } catch (error) {
+        console.log(error);
+      }
     }
-  }
+  };
 
   const onChangeStarsMore = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (reviewDetail.stars < 5)
       setReviewDetail({
         ...reviewDetail,
-        stars: reviewDetail.stars + 1
+        stars: reviewDetail.stars + 1,
       });
-  }
+  };
   const onChangeStarsLess = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (reviewDetail.stars > 1)
       setReviewDetail({
         ...reviewDetail,
-        stars: reviewDetail.stars - 1
+        stars: reviewDetail.stars - 1,
       });
-  }
+  };
 
   useEffect(() => {
     dispatch(getDetail(id));
   }, [dispatch, id, reviewDetail, haveReview]);
 
-  if (!detail) return (<Loading />)
+  if (!detail) return <Loading />;
 
-  const { name, images, Location, numberOfPeople, houseRules } = detail
-  console.log("name", images)
+  const { name, images, Location, numberOfPeople, houseRules } = detail;
+
+  let imgs = images.filter((e) => e !== null);
+  console.log("name", images);
   return (
     <div className="house-datail">
       <div className="house-datail-container">
@@ -116,7 +118,7 @@ export default function Detail() {
           <p>Publicado por {detail.userMod.firstName}</p>
         </div>
         <div className="carrousel-conteiner">
-          <Image src={images[0]} alt="" width="1020px" />
+          <Image src={imgs[0]} alt="" width="1020px" />
           {/* <Carrousel
             // imgs={images ? images : [imgDefault]}
             imgs={images}
@@ -128,7 +130,8 @@ export default function Detail() {
         <div className="info-container">
           <div>
             <div className="location-container">
-              <PushpinOutlined /> {detail.Location ? `Ubicación: ${Location.name}` : null}
+              <PushpinOutlined />{" "}
+              {detail.Location ? `Ubicación: ${Location.name}` : null}
             </div>
             <div className="description-container">
               <h3>Descriptión</h3>
@@ -150,13 +153,22 @@ export default function Detail() {
                 <div>
                   <h4>Instalaciones</h4>
                   <div className="icons-fs-grid">
-                    {detail.Facilities?.map((e) => (<div key={e.id} className="icon-fs-container">  {IconProvider(e.name)} {e.name} </div>)
-                    )}
+                    {detail.Facilities?.map((e) => (
+                      <div key={e.id} className="icon-fs-container">
+                        {" "}
+                        {IconProvider(e.name)} {e.name}{" "}
+                      </div>
+                    ))}
                   </div>
                 </div>
                 <div>
                   <h4>Servicios</h4>
-                  {detail.Services?.map((e) => (<div key={e.id} className="icon-fs-container">  {IconProvider(e.name)} {e.name} </div>))}
+                  {detail.Services?.map((e) => (
+                    <div key={e.id} className="icon-fs-container">
+                      {" "}
+                      {IconProvider(e.name)} {e.name}{" "}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -165,43 +177,64 @@ export default function Detail() {
         </div>
         <div className="reviews-container">
           <h3>Reseñas: </h3>
-          {user && user.result.role==="Client" &&  (comprobante ? <div>
-            <h4>Tu Reseña:</h4>
-            <ReviewCard actualizar={setReview} token={user.token} review={reviewpropia} />
-          </div> : <div>
-            <h4>¿Quieres redactar una reseña?</h4>
-            <form>
+          {user &&
+            user.result.role === "Client" &&
+            (comprobante ? (
               <div>
-                <div>
-                  <>Estrellas:</>
-
-                  <button onClick={onChangeStarsLess}>-</button>
-                  <>{reviewDetail.stars}</>
-                  <button onClick={onChangeStarsMore}>+</button>
-                </div>
-                <div>
-                  <textarea placeholder="Description (160 char max)" onChange={(e) => onChangeDescription(e)} value={reviewDetail.description}></textarea>
-                  {haveReview < 0 && <p className="error">Ha excedido el limite de caracteres</p>}
-                </div>
-                <button onClick={onClick} >Publicar</button>
+                <h4>Tu Reseña:</h4>
+                <ReviewCard
+                  actualizar={setReview}
+                  token={user.token}
+                  review={reviewpropia}
+                />
               </div>
-            </form>
-          </div>)}
+            ) : (
+              <div>
+                <h4>¿Quieres redactar una reseña?</h4>
+                <form>
+                  <div>
+                    <div>
+                      <>Estrellas:</>
+
+                      <button onClick={onChangeStarsLess}>-</button>
+                      <>{reviewDetail.stars}</>
+                      <button onClick={onChangeStarsMore}>+</button>
+                    </div>
+                    <div>
+                      <textarea
+                        placeholder="Description (160 char max)"
+                        onChange={(e) => onChangeDescription(e)}
+                        value={reviewDetail.description}
+                      ></textarea>
+                      {haveReview < 0 && (
+                        <p className="error">
+                          Ha excedido el limite de caracteres
+                        </p>
+                      )}
+                    </div>
+                    <button onClick={onClick}>Publicar</button>
+                  </div>
+                </form>
+              </div>
+            ))}
           <h4>Resto de reseñas:</h4>
           <div>
-            {detail.Reviews.length ?
-              detail.Reviews.map((e) => <ReviewCard
-                user={user?.result.id ? user.result.id : true}
-                review={e}
-              />) :
-              <p> El establecimiento no tiene reseñas de momento por el momento </p>
-            }
+            {detail.Reviews.length ? (
+              detail.Reviews.map((e) => (
+                <ReviewCard
+                  user={user?.result.id ? user.result.id : true}
+                  review={e}
+                />
+              ))
+            ) : (
+              <p>
+                {" "}
+                El establecimiento no tiene reseñas de momento por el momento{" "}
+              </p>
+            )}
           </div>
-
-
         </div>
       </div>
     </div>
-
   );
 }

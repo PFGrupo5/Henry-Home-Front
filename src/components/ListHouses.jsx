@@ -1,7 +1,7 @@
 import axios from "axios";
 import { URL_BACK } from "../config";
 import iconProvider from "../utils/IconProvider";
-import { Popconfirm, message, Alert } from "antd";
+import { Popconfirm, message } from "antd";
 import { useHistory } from "react-router-dom";
 
 const ListHouses = ({ houseInfo, onClick, setHouse, user, setCreateHouse }) => {
