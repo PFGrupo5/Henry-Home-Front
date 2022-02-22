@@ -3,7 +3,7 @@ import Carrousel from "../UI/Carrousel"
 import { Link } from "react-router-dom";
 import "../assets/css/Cards/Cards.scss"
 import { Typography } from 'antd';
-import { PushpinOutlined, DollarOutlined } from "@ant-design/icons"
+import { PushpinOutlined, DollarOutlined, HeartTwoTone, HeartFilled } from "@ant-design/icons"
 
 const { Text } = Typography;
 
@@ -25,12 +25,7 @@ export default function Cards({
     <div key={id} className="containerCards">
 
       <div className="divText">
-        {
-          role === "Client" &&
-          <button className="stars" onClick={() => onClickFav(id, favState)}>
-            {favState ? "💖" : "🤍"}
-          </button>
-        }
+
         <Link to={`/home/${id}`} >
           <h1 className="titleCards" level={2} >
             {renderName}
@@ -41,6 +36,12 @@ export default function Cards({
         <Text className="textCards"><DollarOutlined /> {price}</Text>
       </div>
 
+      {
+        role === "Client" &&
+        <button className="stars" onClick={() => onClickFav(id, favState)}>
+          {favState ? <HeartFilled /> : <HeartTwoTone twoToneColor="#757d87" />}
+        </button>
+      }
       <div className="divImg">
         <Carrousel imgs={img} dotsBool={false} styles="imgCard"></Carrousel>
       </div>

@@ -5,10 +5,10 @@ import Loading from "../components/Loading";
 import { getLocations, getUserDetail } from "../FilesStore/Actions";
 import defaultUser from '../assets/img/user_default.png'
 import Cards from '../components/Cards'
-import { Button } from 'antd'
 import ReviewCard from "../components/ReviewCard";
 import axios from "axios";
 import { URL_BACK } from '../config'
+import { Col, Row } from "antd"
 
 function DashboardUser() {
   const dispatch = useDispatch()
@@ -43,16 +43,17 @@ function DashboardUser() {
       </div>
     );
   } else {
+    // <h1>Información General</h1>
     return (
       <div className="Container-General">
 
         <div>
           <div className="DashboardUser-userInfo">
-            <h1>Información General</h1>
             <img src={userDetail.profile_img || defaultUser} alt="" />
-            <p>Nombre: {`${userDetail.firstName} ${userDetail.lastName}`}</p>
-            <p>Email: {`${userDetail.email}`}</p>
-            <p>Rol: Cliente</p>
+            <div>
+              <p>Perfil</p>
+              <p>{`${userDetail.firstName} ${userDetail.lastName}`}</p>
+            </div>
           </div>
           <div className="Container-Favs">
             <h1 className="DashboardUser-section-Title" id="Favs-hotels">
@@ -85,31 +86,56 @@ function DashboardUser() {
               Ultimas reservaciones
             </h1>
             <div className="Last-reservs">
-              {!userDetail.Reservations ? (
+              {!userDetail?.Reservations.length ? (
                 <div>{`No Tienes Reservaciones Previas :(`}</div>
               ) : (
-                <table className="DashboardUser_reservationInfo" >
-                  <thead>
-                    <tr>
-                      <th>Fecha Inicio</th>
-                      <th>Fecha Fin</th>
-                      <th>Estado</th>
-                      <th>Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody>
+                <div className="DashboardUser_reservationInfo" >
+                  {console.log(userDetail.Reservations)}
+                  <Row className="eachClass">
+                    <Col className="eachSection" xs={0} sm={0} md={6} lg={6}>Fecha Inicio</Col>
+                    <Col className="eachSection" xs={0} sm={0} md={6} lg={6}>Fecha Fin</Col>
+                    <Col className="eachSection" xs={0} sm={0} md={6} lg={6}>Estado</Col>
+                    <Col className="eachSection" xs={0} sm={0} md={6} lg={6}>Acciones</Col>
+                  </Row>
+                  <div>
                     {userDetail.Reservations.map((f) => {
                       return (
-                        <tr key={f.id}>
-                          <td>{f.date_start}</td>
-                          <td>{f.date_end}</td>
-                          <td>{f.status}</td>
-                          <td><a href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a><Button type="text" onClick={() => deleteReservation(f.id)}><strong>Eliminar</strong></Button></td>
-                        </tr>
+                        <div key={f.id} className="each-reservation">
+                          <div className="mobile">
+                            <div>Ingreso: {f.date_start}</div>
+                            <div>Egreso: {f.date_end}</div>
+                            <div>{f.status === "Pending" ? "Pendiente" : "Aprobada"}</div>
+                            <div className="eachInfo">
+                              <div className="userButtons" >
+                                <a className="buttonReservation" href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a>
+                                <button className="buttonReservation" type="text" onClick={() => deleteReservation(f.id)}>
+                                  Eliminar
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="desktop">
+                            <div key={f.id}>
+                              <Row className="eachInfo">
+                                <Col xs={0} sm={0} md={6} lg={6}> {f.date_start}</Col>
+                                <Col xs={0} sm={0} md={6} lg={6}> {f.date_end}</Col>
+                                <Col xs={0} sm={0} md={6} lg={6}>{f.status === "Pending" ? "Pendiente" : "Aprobada"}</Col>
+                                <Col xs={0} sm={0} md={6} lg={6}>
+                                  <div className="userButtons">
+                                    <a className="buttonReservation" href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a>
+                                    <button className="buttonReservation" type="text" onClick={() => deleteReservation(f.id)}>
+                                      Eliminar
+                                    </button>
+                                  </div>
+                                </Col>
+                              </Row>
+                            </div>
+                          </div>
+                        </div>
                       );
                     })}
-                  </tbody>
-                </table>
+                  </div>
+                </div>
               )}
             </div>
           </div>
@@ -120,7 +146,7 @@ function DashboardUser() {
           {userDetail?.Reviews?.length ? userDetail.Reviews.map((e) => <ReviewCard actualizar={actualiza} review={e} dash={true} token={user.token} />)
             : <p> Aun no has redactado ninguna reseña </p>}
         </div>
-      </div>
+      </div >
     );
   }
 }

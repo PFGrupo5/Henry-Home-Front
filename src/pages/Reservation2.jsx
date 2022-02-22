@@ -33,8 +33,6 @@ const Reservation = ({ id, user }) => {
   const [payment, setPayment] = useState(null);
   const [display, setDisplay] = useState(false);
 
-
-
   useEffect(() => {
     dispatch(getDetail(id));
     setDates(daysCalculator(value));
