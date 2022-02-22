@@ -13,8 +13,10 @@
     font-size: 1rem;
     border-radius: .5rem;
     transition: all 0.2s;
-    width: 2rem;
+    width: 3rem;
     cursor:pointer;
+    display: flex;
+    justify-content: center;
 }
 
 .BotonPaginado:hover{
@@ -23,4 +25,8 @@
 
 .BotonPaginado:active{
     transform:translateY(4px);
+}
+
+.CurrentPaginado{
+    font-size: 20px;
 }
