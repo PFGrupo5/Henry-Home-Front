@@ -35,7 +35,7 @@ export default function FromCreate() {
     location: null,
     images: [],
   });
-
+  
   const handlerChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({

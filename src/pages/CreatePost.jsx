@@ -12,6 +12,7 @@ import {
 import axios from "axios";
 import { URL_BACK } from "../config";
 
+
 export default function CreatePost() {
   const dispatch = useDispatch();
 
@@ -36,15 +37,12 @@ export default function CreatePost() {
     houseRules: "",
     services: [],
     facilities: [],
-    location: null,
+    location: "",
     images: [],
-<<<<<<< HEAD
   })
-  
-=======
-  });
 
->>>>>>> ba2711f2f2eb6a3f416396825bb4d7c83dbf56bb
+  
+  
   const onFinish = () => {
     // console.log("Success:", formData);
     // dispatch(createHouse(formData, user.token))
@@ -76,10 +74,7 @@ export default function CreatePost() {
     }
   };
 
-  const locationChange = (e) => {
-    setFormData({ ...formData, location: e[0] });
-    console.log(formData);
-  };
+  
 
   const servicesChange = (e) => {
     let services = e.map((e) => e[0]);
@@ -145,7 +140,10 @@ export default function CreatePost() {
           />
         </Form.Item>
 
-        <Form.Item
+
+          
+        
+        {/* <Form.Item
           name="location"
           rules={[{ required: true, message: "Please pick a province" }]}
           className="input"
@@ -157,7 +155,7 @@ export default function CreatePost() {
             value={formData.location}
             onChange={locationChange}
           />
-        </Form.Item>
+        </Form.Item> */}
 
         <Form.Item
           name="pricePerNight"

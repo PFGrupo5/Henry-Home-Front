@@ -9,20 +9,36 @@ import { URL_BACK } from '../config';
 import iconProvider from '../utils/IconProvider';
 import FileBase from "react-file-base64";
 import { ValidateFormCreate } from '../utils/ValidateFormCreate';
-
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng
+} from "react-places-autocomplete";
 
 export default function Admin() {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
   const { id, role } = user.result
-
   useEffect(() => {
     dispatch(getUserDetail(id, role));
     dispatch(getServices());
     dispatch(getFacilities());
     dispatch(getLocations());
   }, [dispatch, id, role]);
-
+  const [coordinates, setCoordinates] = useState({
+    lat: null,
+    lng: null,
+  })
+  const [location, setLocation] = useState("")
+  const settLocation= async (e)=>{
+    setLocation(e)
+    var results
+    try{
+       results = await geocodeByAddress(e)
+    }catch{ results={lat: null, lng: null,}}
+    setCoordinates(results)
+    setFormErrors(ValidateFormCreate({ ...house, location: e }))
+    console.log(location)
+  }
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [house, setHouse] = useState({
     name: "",
@@ -36,23 +52,33 @@ export default function Admin() {
     location: null,
     images: null,
   });
+  const handleLocSelect = async e=>{
 
+    const results = await geocodeByAddress(e)
+    const ubicacion= await getLatLng(results[0])
+
+    setLocation(e)
+    setCoordinates(ubicacion)
+    setFormErrors(ValidateFormCreate({ ...house, location: e }))
+    console.log(results)
+  }
   const [createHouse, setCreateHouse] = useState(false);
   const [formErrors, setFormErrors] = useState({ msg: "Error" });
 
-  const { services, facilities, locations, userDetail } = useSelector((state) => state);
+  const { services, facilities, userDetail } = useSelector((state) => state);
 
   const optionsServices = services.map((e) => {
     return { label: e.name[0].toUpperCase() + e.name.slice(1), value: e.name };
   });
 
-  const optionsLocations = locations.map((e) => {
-    return { label: e.name, value: e.id };
-  });
+ 
 
   const optionsFacilities = facilities.map((e) => {
     return { label: e.name[0].toUpperCase() + e.name.slice(1), value: e.name };
   });
+
+  
+  
 
   const inputFormHanlder = (e) => {
     const { name, value } = e.target;
@@ -70,13 +96,7 @@ export default function Admin() {
       services: e,
     }));
   }
-  const locationHandler = (e) => {
-    setHouse((prev) => ({
-      ...prev,
-      location: e,
-    }));
-    setFormErrors(ValidateFormCreate({ ...house, location: e }));
-  }
+  
   const facilitiesHandler = (e) => {
     setHouse((prev) => ({
       ...prev,
@@ -102,7 +122,7 @@ export default function Admin() {
     if (Object.keys(formErrors).length) return message.error("Error en los datos")
     if (!houseUpdate.images.some(i => i !== undefined)) return message.error("Subir una imagen del alojamiento")
     if (createHouse) {
-      axios.post(`${URL_BACK}/houses`, houseUpdate, {
+      axios.post(`${URL_BACK}/houses`, {...houseUpdate, location: location, coordinates:coordinates}, {
         headers: {
           authorization: user.token
         }
@@ -151,7 +171,9 @@ export default function Admin() {
       location: null,
       images: [],
     })
+    setLocation(null)
   }
+  console.log(location)
 
   if (!userDetail || userDetail.role !== "Moderator") return (<div>Cargando</div>)
   const { Housings } = userDetail
@@ -300,14 +322,40 @@ export default function Admin() {
 
                       </div>
                       <div className='input-container'>
-                        <Cascader
+                      <PlacesAutocomplete 
+                      value={location} 
+                      onChange={(e)=>settLocation(e)}
+                      onSelect={handleLocSelect}
+                      >
+                      {({ getInputProps, suggestions, getSuggestionItemProps, loading })=>( <div>
+             <input {...getInputProps({ placeholder:"Ubicacion..." })} />
+
+             <div>
+               {loading ? <div>...cargando</div> : null}
+               {suggestions.map((suggestion)=>{
+
+                 const style={
+                   backgroundColor: suggestion.active ? "#bbbaba" :"#fff"
+                 }
+               return <div {...getSuggestionItemProps(suggestion,{style})} >
+
+                 {suggestion.description}
+                 </div>
+                 
+                      })}
+             </div>
+             </div>)
+             }
+
+          </PlacesAutocomplete>
+                        {/* <Cascader
                           options={optionsLocations}
                           maxTagCount="responsive"
                           placeholder="Ubicación"
                           value={house.location}
                           onChange={locationHandler}
                           className="Cascader"
-                        />
+                        /> */}
                         <p className="error-message">
                           {formErrors.location ? formErrors.location : "ㅤㅤ"}
                         </p>
