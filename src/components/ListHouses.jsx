@@ -50,7 +50,7 @@ const ListHouses = ({
   return (
     <div className="row item" key={id}>
       <div className="cell ">
-        <img src={images[0]} alt=""  onClick={()=>history.push(`/home/${id}`)} className="image-home-list"/>
+        <img src={images ? images[0] : null} alt=""  onClick={()=>history.push(`/home/${id}`)} className="image-home-list"/>
       </div >
       <div className="cell">
         {name}

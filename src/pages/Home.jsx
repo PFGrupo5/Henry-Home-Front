@@ -28,7 +28,7 @@ export default function Home() {
     stars: 0, // min de estrellas
     numberOfPeople: null, // numero de gente 
     numberOfBeds: null, // numero de camas
-    location: null, // all-created-notCreated
+    location: "", // all-created-notCreated
     minPrice: null,
     maxPrice: null,
   })
