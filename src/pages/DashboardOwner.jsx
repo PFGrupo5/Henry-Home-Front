@@ -8,11 +8,11 @@ import {
   getServices,
   getUserDetail,
 } from "../FilesStore/Actions";
+import Loading from "../components/Loading"
 import ListHouses from "../components/ListHouses";
 import axios from "axios";
 import { URL_BACK } from "../config";
 import iconProvider from "../utils/IconProvider";
-// import FileBase from "react-file-base64";
 import { ValidateFormCreate } from "../utils/ValidateFormCreate";
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -188,7 +188,7 @@ export default function Admin() {
   console.log(location);
 
   if (!userDetail || userDetail.role !== "Moderator")
-    return <div>Cargando</div>;
+    return <Loading />;
   const { Housings } = userDetail;
 
   return (
@@ -439,6 +439,8 @@ export default function Admin() {
                               });
                             }
                           }}
+                          className="inputFile"
+
                         />
 
                         <input
@@ -463,6 +465,8 @@ export default function Admin() {
                               });
                             }
                           }}
+                          className="inputFile"
+
                         />
 
                         <input
@@ -487,6 +491,7 @@ export default function Admin() {
                               });
                             }
                           }}
+                          className="inputFile"
                         />
                       </div>
                     </div>
