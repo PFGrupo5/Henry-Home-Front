@@ -11,6 +11,7 @@ import "../assets/css/Home/Home.scss";
 import Pages from "../components/Pages";
 import { message } from "antd";
 
+
 export default function Home() {
   const dispatch = useDispatch();
   const User = JSON.parse(localStorage.getItem("profile"));
@@ -136,6 +137,7 @@ export default function Home() {
                       role={userRole}
                       detail={userDetail}
                       onClickFav={onClickFav}
+                      average={e.average}
                     />
                   );
                 })
@@ -145,6 +147,7 @@ export default function Home() {
             ) : (
               <div>
                 <h2>No hay casas disponibles</h2>
+               
               </div>
             )}
           </div>
