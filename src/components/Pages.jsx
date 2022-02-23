@@ -9,7 +9,6 @@ export default function Pages({ pages, changePage, actualPage }) {
   }
 
   let contador = 1;
-  console.log(pages)
 
   const prev = () => {
     contador--

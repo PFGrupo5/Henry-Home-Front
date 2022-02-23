@@ -5,7 +5,6 @@ import { getDetail } from "../FilesStore/Actions";
 import { PushpinOutlined } from "@ant-design/icons";
 import "../assets/css/Detail/Detail.scss";
 import ReviewCard from "../components/ReviewCard";
-// import Carrousel from "../UI/Carrousel";
 import Loading from "../components/Loading";
 import Reservation from "./Reservation2";
 import IconProvider from "../utils/IconProvider";
@@ -102,10 +101,11 @@ export default function Detail() {
 
   useEffect(() => {
     dispatch(getDetail(id));
-   
+
   }, [dispatch, id, reviewDetail, haveReview]);
 
-  if (!detail) return <Loading />;
+
+  if (!detail) return (<Loading />)
 
   const { name, images, Location, numberOfPeople, houseRules } = detail;
 
@@ -120,14 +120,6 @@ export default function Detail() {
         </div>
         <div className="carrousel-conteiner">
           <ImagesDetail images={imgs} />
-          {/* <Image src={imgs[0]} alt="" width="1020px" /> */}
-          {/* <Carrousel
-            // imgs={images ? images : [imgDefault]}
-            imgs={images}
-            dotsBool={true}
-            styles="imgDetail"
-            preview={true}
-          /> */}
         </div>
         <div className="info-container">
           <div>
@@ -178,6 +170,7 @@ export default function Detail() {
           <Reservation id={id} user={user} />
         </div>
         <div className="reviews-container">
+          {detail.average>0 && <h3>Promedio: {detail.average}</h3>}
           <h3>Reseñas: </h3>
           {user &&
             user.result.role === "Client" &&
@@ -214,12 +207,12 @@ export default function Detail() {
                         </p>
                       )}
                     </div>
-                    <button onClick={onClick}>Publicar</button>
+                    <button className="publicar" onClick={onClick}>Publicar</button>
                   </div>
                 </form>
               </div>
             ))}
-          <h4>Resto de reseñas:</h4>
+          {user?.result.role === "Client"  ? <h4>Resto de reseñas:</h4> : null}
           <div>
             {detail.Reviews.length ? (
               detail.Reviews.map((e) => (
@@ -231,7 +224,7 @@ export default function Detail() {
             ) : (
               <p>
                 {" "}
-                El establecimiento no tiene reseñas de momento por el momento{" "}
+                El establecimiento no tiene reseñas por el momento{" "}
               </p>
             )}
           </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Form from '../components/Form'
-import "../assets/css/NavBarHome/styles.scss";
+
 import { ValidateForm } from "../utils/ValidateForm";
 import { message } from "antd";
 import { useHistory } from "react-router-dom";
