@@ -27,3 +27,4 @@ yarn-error.log*
 .map.css
 /harcodeado.json
 node_modules
+.vercel

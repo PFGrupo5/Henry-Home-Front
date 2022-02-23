@@ -9,8 +9,9 @@ import { ValidateForm } from "../utils/ValidateForm";
 import { GoogleLogin } from "react-google-login";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons"
 import { URL_BACK } from "../config";
-
 import "../assets/css/Form/Form.scss";
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID
+
 
 const Form = ({ role, google }) => {
   const history = useHistory();
@@ -77,7 +78,7 @@ const Form = ({ role, google }) => {
     clear();
   };
 
-  const forgotPasswordHandler = async () => {
+  const forgotPasswordHandler = () => {
     if (!inputForm.email.trim().length) return message.info("Colocar email");
     console.log(inputForm.email);
     axios
@@ -253,12 +254,12 @@ const Form = ({ role, google }) => {
               {formErrors.inputPassword ? formErrors.inputPassword : "ㅤㅤ"}
             </p>
           </div>
-          <p onClick={forgotPasswordHandler}>¿Olvidaste la contraseña?</p>
+          <p onClick={forgotPasswordHandler} style={{cursor:"pointer"}}>¿Olvidaste la contraseña?</p>
           <button type="button" onClick={loginHandler}>Ingresar</button>
           {
             google &&
             <GoogleLogin
-              clientId="109526159096-dk6c06q28lkm7uq041ievngdekh1p8k2.apps.googleusercontent.com"
+              clientId={CLIENT_ID}
               render={(renderProps) => (
                 <button
                   onClick={renderProps.onClick}
