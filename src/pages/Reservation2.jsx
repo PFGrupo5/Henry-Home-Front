@@ -12,7 +12,6 @@ import "../assets/css/Reservation/Reservation.scss";
 import { useHistory } from "react-router-dom";
 import { URL_BACK } from "../config";
 
-
 const daysCalculator = (dates) => {
   if (dates.length === 1) return 1;
   const initialDate = moment(dates[0]);
@@ -38,22 +37,23 @@ const Reservation = ({ id, user }) => {
     setDates(daysCalculator(value));
   }, [value, dispatch, id]);
 
-  if (user?.result.role !== "Client") return (
-    <div className="reservation-container">
-      <div>
-        <h2>Reservar</h2>
-      </div>
-      <div className="information-container">
-        <h3>{name}</h3>
+  if (user?.result.role !== "Client")
+    return (
+      <div className="reservation-container">
         <div>
-          <h4>Precio por noche: ${pricePerNight} ARS</h4>
+          <h2>Reservar</h2>
         </div>
-        <div className="need-login">
-          <span>Necesita ingresar como cliente para reservar </span>
+        <div className="information-container">
+          <h3>{name}</h3>
+          <div>
+            <h4>Precio por noche: ${pricePerNight} USD</h4>
+          </div>
+          <div className="need-login">
+            <span>Necesita ingresar como cliente para reservar </span>
+          </div>
         </div>
       </div>
-    </div>
-  )
+    );
 
   const { token } = user;
   const userId = user.result.id;
@@ -62,13 +62,13 @@ const Reservation = ({ id, user }) => {
     (r) => r.userClientId === userId
   ).find((s) => s.status === "Pending");
 
-
   if (userReservations === undefined) {
-    userReservations = {}
+    userReservations = {};
   }
 
-
-  let disabledRanges = detail.Reservations?.filter(e=>e.status==="approved").map(({ date_start, date_end }) => [
+  let disabledRanges = detail.Reservations?.filter(
+    (e) => e.status === "approved"
+  ).map(({ date_start, date_end }) => [
     new Date(date_start),
     new Date(date_end),
   ]);

@@ -95,6 +95,10 @@ $font-color: #ffffff;
   height: 1px;
 }
 
+.modal-terms {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 900px) {
   .foot2Container {
     grid-template-columns: repeat(3, 1fr);
