@@ -12,6 +12,7 @@ import IconProvider from "../utils/IconProvider";
 import axios from "axios";
 import { Image } from "antd";
 import { URL_BACK } from "../config";
+import ImagesDetail from "../components/ImagesDetail";
 
 export default function Detail() {
   const dispatch = useDispatch();
@@ -119,7 +120,8 @@ export default function Detail() {
           <p>Publicado por {detail.userMod.firstName}</p>
         </div>
         <div className="carrousel-conteiner">
-          <Image src={imgs[0]} alt="" width="1020px" />
+          <ImagesDetail images={imgs}/>
+          {/* <Image src={imgs[0]} alt="" width="1020px" /> */}
           {/* <Carrousel
             // imgs={images ? images : [imgDefault]}
             imgs={images}
