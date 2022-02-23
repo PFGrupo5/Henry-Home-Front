@@ -12,12 +12,13 @@ export default function ReviewCard({
     dash,
     token,
     user,
-   review,
-   actualizar,
-})
-{   
-    const [popup , setpopup] = useState(false)
-    const configpop= (e)=>{
+
+    review,
+    actualizar,
+}) {
+    const [popup, setpopup] = useState(false)
+    const configpop = (e) => {
+
         setpopup(!popup)
     }
 

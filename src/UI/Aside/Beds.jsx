@@ -50,7 +50,7 @@ export default function Beds({ setInfo, Info }) {
       className="filter"
       options={options}
       onChange={bedsChange}
-      placeholder="Número habitaciones..."
+      placeholder="Número de camas..."
       allowClear={false}
     />
 

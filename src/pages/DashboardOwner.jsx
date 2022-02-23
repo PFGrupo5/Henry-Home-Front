@@ -110,6 +110,7 @@ export default function Admin() {
   const handleOk = () => {
     const servicesFlat = house.services?.flat();
     const facilitiesFlat = house.facilities?.flat();
+    console.log(house,'aca');
     const houseUpdate = {
       ...house,
       services: servicesFlat,
@@ -120,7 +121,7 @@ export default function Admin() {
         house.image3,
       ] /* .filter(e => e !== undefined) */,
     };
-
+ 
     if (Object.keys(formErrors).length)
       return message.error("Error en los datos");
     if (!houseUpdate.images.some((i) => i !== undefined))
@@ -186,6 +187,8 @@ export default function Admin() {
   if (!userDetail || userDetail.role !== "Moderator")
     return <Loading />;
   const { Housings } = userDetail;
+
+  console.log(house)
 
   return (
     <div className="container-moderator">
@@ -413,7 +416,10 @@ export default function Admin() {
                         </p>
                       </div>
                       <div>
-                        <input
+                        <input type="text" name="image1" value={house.image1} onChange={inputFormHanlder}/>
+                        <input type="text" name="image2" value={house.image2} onChange={inputFormHanlder}/>
+                        <input type="text" name="image3" value={house.image3} onChange={inputFormHanlder}/>
+                        {/* <input
                           type="file"
                           onChange={(e) => {
                             let size = e.target.files[0].size;
@@ -437,9 +443,9 @@ export default function Admin() {
                           }}
                           className="inputFile"
 
-                        />
+                        /> */}
 
-                        <input
+                        {/* <input
                           type="file"
                           onChange={(e) => {
                             let size = e.target.files[0].size;
@@ -488,7 +494,7 @@ export default function Admin() {
                             }
                           }}
                           className="inputFile"
-                        />
+                        /> */}
                       </div>
                     </div>
                   </Modal>

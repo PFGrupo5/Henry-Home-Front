@@ -20,8 +20,8 @@ const PaymentSuccess = () => {
   const decreaseNum = () => setNum((prev) => prev - 1);
   useEffect(() => {
 
+    intervalRef.current = setInterval(decreaseNum, 1000);
     if (sendReservation) {
-      intervalRef.current = setInterval(decreaseNum, 1000);
       if (status === "success") {
         axios
           .put(`${URL_BACK}/reservation/`, {
@@ -53,7 +53,7 @@ const PaymentSuccess = () => {
   return (
     <div className="register-verify-container">
       <div>
-        <h2>Reserva confirmada</h2>
+        <h2>Reserva {status === "success"? "confirmada" : "rechazada"}</h2>
         <p>Redirigiendo al home en {num}...</p>
       </div>
     </div>
