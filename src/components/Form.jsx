@@ -9,8 +9,9 @@ import { ValidateForm } from "../utils/ValidateForm";
 import { GoogleLogin } from "react-google-login";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons"
 import { URL_BACK } from "../config";
-
 import "../assets/css/Form/Form.scss";
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID
+
 
 const Form = ({ role, google }) => {
   const history = useHistory();
@@ -258,7 +259,7 @@ const Form = ({ role, google }) => {
           {
             google &&
             <GoogleLogin
-              clientId="109526159096-dk6c06q28lkm7uq041ievngdekh1p8k2.apps.googleusercontent.com"
+              clientId={CLIENT_ID}
               render={(renderProps) => (
                 <button
                   onClick={renderProps.onClick}

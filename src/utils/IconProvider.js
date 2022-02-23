@@ -5,7 +5,7 @@ const iconObj = {
   catering: <Unicons.UilUtensilsAlt />,
   "room service": <Unicons.UilBedDouble />,
   shops: <Unicons.UilShop />,
-  pool: <Unicons.UilSwimmer />,
+  "pileta": <Unicons.UilSwimmer />,
   gym: <Unicons.UilDumbbell />,
   sauna: <Unicons.UilBath />,
   "detector de humo": <Unicons.UilBan />,
