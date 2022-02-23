@@ -9,6 +9,7 @@ import { deleteDetail, getHotels, getUserDetail } from "../FilesStore/Actions/in
 import Aside from "../components/Aside";
 import "../assets/css/Home/Home.scss";
 import Pages from "../components/Pages";
+import { message } from "antd";
 
 
 export default function Home() {
@@ -40,36 +41,36 @@ export default function Home() {
   const onClickFav = (id, favState) => {
     favState
       ? axios
-          .delete(`${URL_BACK}/favs`, {
+        .delete(`${URL_BACK}/favs`, {
+          headers: {
+            Authorization: User.token,
+          },
+          data: { HousingId: id },
+        })
+        .then((response) => {
+          console.log("Borrado con exito", response);
+          dispatch(getUserDetail(infoUser.id, infoUser.role));
+        })
+        .catch((error) => {
+          console.log({ error });
+        })
+      : axios
+        .post(
+          `${URL_BACK}/favs`,
+          { HousingId: id },
+          {
             headers: {
               Authorization: User.token,
             },
-            data: { HousingId: id },
-          })
-          .then((response) => {
-            console.log("Borrado con exito", response);
-            dispatch(getUserDetail(infoUser.id, infoUser.role));
-          })
-          .catch((error) => {
-            console.log({ error });
-          })
-      : axios
-          .post(
-            `${URL_BACK}/favs`,
-            { HousingId: id },
-            {
-              headers: {
-                Authorization: User.token,
-              },
-            }
-          )
-          .then((response) => {
-            console.log("Agregado con exito", response);
-            dispatch(getUserDetail(infoUser.id, infoUser.role));
-          })
-          .catch((error) => {
-            console.log({ error });
-          });
+          }
+        )
+        .then((response) => {
+          console.log("Agregado con exito", response);
+          dispatch(getUserDetail(infoUser.id, infoUser.role));
+        })
+        .catch((error) => {
+          console.log({ error });
+        });
   };
 
   //paginado
@@ -85,7 +86,13 @@ export default function Home() {
   };
 
   const findHouses = () => {
-    dispatch(getHotels(page, size, Info));
+    try {
+      dispatch(getHotels(page, size, Info));
+      message.success("Filtros aplicados")
+    }
+    catch {
+      message.error("Error al filtrar")
+    }
   };
 
   const findAllHouses = () => {

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import iconProvider from "../utils/IconProvider";
 
 
-export default function ReviewCard ({
+export default function ReviewCard({
     dash,
     token,
     user,
@@ -21,28 +21,28 @@ export default function ReviewCard ({
         setpopup(!popup)
     }
 
-       
+
     var estrellas = ""
-    for(let x=1;x<=review?.stars;x++){
-        estrellas+="⭐"
+    for (let x = 1; x <= review?.stars; x++) {
+        estrellas += "⭐"
     }
     var fecha = moment(review?.updatedAt).fromNow()
-    
-     
-    const borrar = async()=>{
-        try{
-           var json = await axios.delete(`${URL_BACK}/reviews`,{
+
+
+    const borrar = async () => {
+        try {
+            var json = await axios.delete(`${URL_BACK}/reviews`, {
                 headers: {
-                  Authorization: token,
+                    Authorization: token,
                 },
                 data: { id: review.id },
-              })
-             if (json.data) actualizar()
+            })
+            if (json.data) actualizar()
 
-        }catch(error){console.log(error)}
-        
+        } catch (error) { console.log(error) }
+
     }
-    
+
     // dashboard User
     if(dash){
         return(
@@ -70,12 +70,12 @@ export default function ReviewCard ({
     }
     
 
-    </div>
-    )
+            </div>
+        )
     }
     // Detail
-     if(!user || user!==review.userClientId){
-        return(
+    if (!user || user !== review.userClientId) {
+        return (
 
             <div  className="Reviews-div">
                 <div className="botoncitos">
@@ -98,7 +98,7 @@ export default function ReviewCard ({
     
             </div>
         )
-     }
-     return (<div></div>)
-    
+    }
+    return (<div></div>)
+
 }

@@ -1,13 +1,14 @@
 
 .Reviews-div{
     border-radius: 0.3rem;
-    // border: 1px solid #fff;
     text-align: justify;
-      font-weight: 500;
-    position:relative;
-      padding: 1rem;
-      margin: 1rem 0;
-      background-color: #0d4577;
+    font-weight: 500;
+    position:relative;  
+    padding: 1rem;
+    margin: 1rem 0;
+    background-color: #0d4577;
+
+    
       .fecha-review{
           font-weight: 300;
           font-size: small;
@@ -86,3 +87,7 @@
         
 }
 
+.description-review{
+    max-width: 100%;
+    word-wrap: break-word;
+}
