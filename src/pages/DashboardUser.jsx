@@ -90,9 +90,9 @@ function DashboardUser() {
             <h1 className="DashboardUser-section-Title">
               Ultimas reservaciones
             </h1>
-            <div className="Last-reservs">
+            <div >
               {!userDetail?.Reservations.length ? (
-                <div>{`No Tienes Reservaciones Previas :(`}</div>
+                <div className="reservs">{`No Tienes Reservaciones Previas :(`}</div>
               ) : (
                 <div className="DashboardUser_reservationInfo">
                   {console.log(userDetail.Reservations)}

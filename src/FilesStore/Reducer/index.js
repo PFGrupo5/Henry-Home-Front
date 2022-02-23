@@ -43,6 +43,7 @@ cases[ALL_HOTELS] = (state, payload) => {
       ...state,
       hotels: payload.message,
       allHotels: payload.message,
+      count: 1,
     })
   }
 }

@@ -48,10 +48,10 @@ main{
     .cards-container{
       margin-top: .7rem;
       .cardsHome{ 
+        min-height: 60vh;
         grid-template-columns: repeat(2, 1fr);
         justify-items: center;
         align-items: center;
-        
       }
     }
   }
