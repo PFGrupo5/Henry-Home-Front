@@ -14,53 +14,49 @@
     align-items: center;
     flex-direction: column;
     height: 70vh;
-    h2{
+    h2 {
       color: #fff;
-
     }
 
-    .filter{
+    .filter {
       width: 100%;
-   
     }
-    .btn-container{
+    .btn-container {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      gap:1rem;
-      
+      gap: 1rem;
 
-      button{
+      button {
         border: none;
-        padding: .4rem 2rem;
+        padding: 0.4rem 2rem;
         width: 100%;
-        border-radius: .3rem;
+        border-radius: 0.3rem;
         font-size: 1em;
         font-weight: bold;
         cursor: pointer;
-        transition: all 0.5s ;
+        transition: all 0.5s;
       }
 
-      button:hover{
+      button:hover {
         transform: scale(1.05);
       }
-      button:active{
+      button:active {
         transform: translateY(4px);
       }
 
-      .filtrar{
+      .filtrar {
         background-color: var(--main-orange);
       }
-      .resetear{
+      .resetear {
         background-color: var(--main-gray);
       }
     }
   }
- 
 }
 
-.autoComplete{
+.autoComplete {
   width: 13rem;
   height: 2rem;
   border: none;
@@ -68,12 +64,12 @@
   padding: 0.7rem;
   font-size: 0.9rem;
   border-radius: 2px;
-  &::placeholder{
+  &::placeholder {
     color: rgb(179, 180, 180);
   }
 }
 
-.suggestion{
+.suggestion {
   position: absolute;
   width: 13rem;
   z-index: 10000;
