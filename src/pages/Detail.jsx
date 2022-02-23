@@ -165,7 +165,7 @@ export default function Detail() {
                   <h4>Servicios</h4>
                   {detail.Services?.map((e) => (
                     <div key={e.id} className="icon-fs-container">
-                      {" "}
+                      {/* {" "} */}
                       {IconProvider(e.name)} {e.name}{" "}
                     </div>
                   ))}

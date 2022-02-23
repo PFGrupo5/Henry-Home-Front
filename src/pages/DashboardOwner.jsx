@@ -8,11 +8,11 @@ import {
   getServices,
   getUserDetail,
 } from "../FilesStore/Actions";
+import Loading from "../components/Loading"
 import ListHouses from "../components/ListHouses";
 import axios from "axios";
 import { URL_BACK } from "../config";
 import iconProvider from "../utils/IconProvider";
-// import FileBase from "react-file-base64";
 import { ValidateFormCreate } from "../utils/ValidateFormCreate";
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -188,7 +188,7 @@ export default function Admin() {
   console.log(location);
 
   if (!userDetail || userDetail.role !== "Moderator")
-    return <div>Cargando</div>;
+    return <Loading />;
   const { Housings } = userDetail;
 
   return (
@@ -359,7 +359,7 @@ export default function Admin() {
                           className="Cascader"
                         />
                       </div>
-                      <div className="input-container">
+                      <div>
                         <PlacesAutocomplete
                           value={location}
                           onChange={(e) => settLocation(e)}
@@ -376,9 +376,11 @@ export default function Admin() {
                                 {...getInputProps({
                                   placeholder: "Ubicacion...",
                                 })}
+                                className="autoCompleteOwner"
+
                               />
 
-                              <div>
+                              <div className="suggestionOwner">
                                 {loading ? <div>...cargando</div> : null}
                                 {suggestions.map((suggestion) => {
                                   const style = {
@@ -387,11 +389,12 @@ export default function Admin() {
                                       : "#fff",
                                   };
                                   return (
-                                    <div 
-                                    key={suggestion.description}
+                                    <div
+                                      key={suggestion.description}
                                       {...getSuggestionItemProps(suggestion, {
                                         style,
                                       })}
+
                                     >
                                       {suggestion.description}
                                     </div>
@@ -436,6 +439,8 @@ export default function Admin() {
                               });
                             }
                           }}
+                          className="inputFile"
+
                         />
 
                         <input
@@ -460,6 +465,8 @@ export default function Admin() {
                               });
                             }
                           }}
+                          className="inputFile"
+
                         />
 
                         <input
@@ -484,6 +491,7 @@ export default function Admin() {
                               });
                             }
                           }}
+                          className="inputFile"
                         />
                       </div>
                     </div>
