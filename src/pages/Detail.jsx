@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail } from "../FilesStore/Actions";
+import { deleteDetail, getDetail } from "../FilesStore/Actions";
 import { PushpinOutlined } from "@ant-design/icons";
 import "../assets/css/Detail/Detail.scss";
 import ReviewCard from "../components/ReviewCard";
@@ -102,6 +102,7 @@ export default function Detail() {
 
   useEffect(() => {
     dispatch(getDetail(id));
+    return ()=> dispatch(deleteDetail())
   }, [dispatch, id, reviewDetail, haveReview]);
 
   if (!detail) return <Loading />;
