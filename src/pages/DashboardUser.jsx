@@ -8,8 +8,9 @@ import Cards from '../components/Cards'
 import ReviewCard from "../components/ReviewCard";
 import axios from "axios";
 import { URL_BACK } from '../config'
-import { Col, Row } from "antd"
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { Col, Popconfirm, Row } from "antd";
+
 
 function DashboardUser() {
   const dispatch = useDispatch()
@@ -31,11 +32,14 @@ function DashboardUser() {
       .catch(err => console.log(err))
   }
 
+  function cancel(e) {
+    console.log(e);
+  }
+
   useEffect(() => {
     dispatch(getUserDetail(user.result.id, user.result.role))
     dispatch(getLocations())
   }, [dispatch, user.result.id, user.result.role, actualizar]);
-
 
   if (!userDetail) {
     return (
@@ -44,7 +48,6 @@ function DashboardUser() {
       </div>
     );
   } else {
-    // <h1>Información General</h1>
     return (
       <div className="Container-General">
 
@@ -86,14 +89,14 @@ function DashboardUser() {
             <h1 className="DashboardUser-section-Title">
               Ultimas reservaciones
             </h1>
-            <div className="Last-reservs">
+            <div >
               {!userDetail?.Reservations.length ? (
-                <div>{`No Tienes Reservaciones Previas :(`}</div>
+                <div className="reservs">{`No Tienes Reservaciones Previas :(`}</div>
               ) : (
                 <div className="DashboardUser_reservationInfo" >
                   {console.log(userDetail.Reservations)}
                   <Row className="eachClass">
-                    <Col className="eachSection" xs={0} sm={0} md={4} lg={4}>Nombre Alojamiento</Col>
+                    <Col className="eachSection" xs={0} sm={0} md={4} lg={4}>Alojamiento</Col>
                     <Col className="eachSection" xs={0} sm={0} md={4} lg={4}>Fecha Inicio</Col>
                     <Col className="eachSection" xs={0} sm={0} md={4} lg={4}>Fecha Fin</Col>
                     <Col className="eachSection" xs={0} sm={0} md={4} lg={4}>Estado</Col>
@@ -101,36 +104,60 @@ function DashboardUser() {
                   </Row>
                   <div>
                     {userDetail.Reservations.map((f) => {
+                      console.log(f)
                       return (
                         <div key={f.id} className="each-reservation">
                           <div className="mobile">
-                            <div>{f.Housing.name}</div>
+                            <Link to={`/home/${f.Housing?.id}`}><button className="buttonReservation changeColor"> <div>{f.Housing?.name}</div> </button></Link>
                             <div>Ingreso: {f.date_start}</div>
                             <div>Egreso: {f.date_end}</div>
                             <div>{f.status === "Pending" ? "Pendiente" : "Aprobada"}</div>
                             <div className="eachInfo">
                               <div className="userButtons" >
+                                <Link className="buttonReservation" to={`/home/${f.id_hotel}`}>Ir a la casa</Link>
                                 <a className="buttonReservation" href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a>
-                                <button className="buttonReservation" type="text" onClick={() => deleteReservation(f.id)}>
-                                  Eliminar
-                                </button>
+                                <Popconfirm
+                                  onConfirm={() => deleteReservation(f.id)}
+                                  onCancel={cancel}
+                                  title="Seguro que quieres eliminar esta reserva?"
+                                  okText="Si"
+                                  cancelText="No"
+                                >
+                                  <button
+                                    className="buttonReservation"
+                                    type="text"
+                                  >
+                                    Eliminar
+                                  </button>
+                                </Popconfirm>
                               </div>
                             </div>
                           </div>
                           <div className="desktop">
                             <div key={f.id}>
                               <Row className="eachInfo">
-                                <Col xs={0} sm={0} md={4} lg={4}> {f.Housing.name}</Col>
+                                <Col xs={0} sm={0} md={4} lg={4}> <Link to={`/home/${f.Housing?.id}`}><button className="buttonReservation changeColor">{f.Housing?.name} </button></Link></Col>
                                 <Col xs={0} sm={0} md={4} lg={4}> {f.date_start}</Col>
                                 <Col xs={0} sm={0} md={4} lg={4}> {f.date_end}</Col>
                                 <Col xs={0} sm={0} md={4} lg={4}>{f.status === "Pending" ? "Pendiente" : "Aprobada"}</Col>
                                 <Col xs={0} sm={0} md={4} lg={4}>
                                   <div className="userButtons">
-                                    <Link className="buttonReservation" to={`/home/${f.Housing.id}`}>Ir a la casa</Link>
+
                                     <a className="buttonReservation" href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a>
-                                    <button className="buttonReservation" type="text" onClick={() => deleteReservation(f.id)}>
-                                      Eliminar
-                                    </button>
+                                    <Popconfirm
+                                      onConfirm={() => deleteReservation(f.id)}
+                                      onCancel={cancel}
+                                      title="Seguro que quieres eliminar esta reserva?"
+                                      okText="Si"
+                                      cancelText="No"
+                                    >
+                                      <button
+                                        className="buttonReservation"
+                                        type="text"
+                                      >
+                                        Eliminar
+                                      </button>
+                                    </Popconfirm>
                                   </div>
                                 </Col>
                               </Row>
@@ -155,5 +182,4 @@ function DashboardUser() {
     );
   }
 }
-// 
 export default DashboardUser;

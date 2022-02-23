@@ -5,53 +5,58 @@ import "../assets/css/ReviewsCards/ReviewsCards.scss"
 import { URL_BACK } from "../config";
 import { Popup } from "./PopUpReview";
 import { Link } from "react-router-dom";
+import iconProvider from "../utils/IconProvider";
 
 
-export default function ReviewCard ({
+export default function ReviewCard({
     dash,
     token,
     user,
-   review,
-   actualizar,
-})
-{   
-    console.log(review.description)
-    const [popup , setpopup] = useState(false)
-    const configpop= (e)=>{
+
+    review,
+    actualizar,
+}) {
+    const [popup, setpopup] = useState(false)
+    const configpop = (e) => {
+
         setpopup(!popup)
     }
 
-       
+
     var estrellas = ""
-    for(let x=1;x<=review?.stars;x++){
-        estrellas+="⭐"
+    for (let x = 1; x <= review?.stars; x++) {
+        estrellas += "⭐"
     }
     var fecha = moment(review?.updatedAt).fromNow()
-    
-     
-    const borrar = async()=>{
-        try{
-           var json = await axios.delete(`${URL_BACK}/reviews`,{
+
+
+    const borrar = async () => {
+        try {
+            var json = await axios.delete(`${URL_BACK}/reviews`, {
                 headers: {
-                  Authorization: token,
+                    Authorization: token,
                 },
                 data: { id: review.id },
-              })
-             if (json.data) actualizar()
+            })
+            if (json.data) actualizar()
 
-        }catch(error){console.log(error)}
-        
+        } catch (error) { console.log(error) }
+
     }
-    
+
     // dashboard User
     if(dash){
         return(
         <div className="Reviews-div">
-        {!user && <button onClick={borrar} className="deleteReview"> X </button> }
-        {!user && <button className="modificar" onClick={configpop}> Modificar </button> }
+            <div className="botoncitos">
+            {!user && <button onClick={borrar} className="deleteReview">{iconProvider("delete")}</button> }
+            {!user && <button className="modificar" onClick={configpop}>{iconProvider("edit")}</button> }
+            {!popup && <p className="fecha-review2">{fecha}</p>}
+            </div>
+        
         {!user && <Popup setReview={actualizar} setpopup={configpop} token={token} review={review}  e={popup}/> }
     {!popup&&<>
-    <p className="fecha-review2">{fecha}</p>
+    
     <p className="estrellas-review">{estrellas}</p>
     <br/>
     <p >{review?.Housing?.name} :</p>
@@ -66,24 +71,27 @@ export default function ReviewCard ({
     }
     
 
-    </div>
-    )
+            </div>
+        )
     }
     // Detail
-     if(!user || user!==review.userClientId){
-        return(
+    if (!user || user !== review.userClientId) {
+        return (
 
-            <div className="Reviews-div">
-                {!user && <button onClick={borrar} className="deleteReview"> X </button> }
-                {!user && <button className="modificar" onClick={configpop}> Modificar </button> }
+            <div  className="Reviews-div">
+                <div className="botoncitos">
+                    
+            {!popup && <p className="fecha-review2">{fecha}</p>}
+            {!user && <button onClick={borrar} className="deleteReview">{iconProvider("delete")}</button> }
+            {!user && <button className="modificar" onClick={configpop}>{iconProvider("edit")}</button> }
+            </div>
                 {!user && <Popup setReview={actualizar} setpopup={configpop} token={token} review={review}  e={popup}/> }
             {!popup&&<>
-            <p className="fecha-review2">{fecha}</p>
             <p className="estrellas-review">{estrellas}</p>
             <br/>
-            <p >{review?.userClient?.firstName} {review?.userClient?.lastName}:</p>
+            <p >{review?.userClient?.firstName} {review?.userClient?.lastName} :</p>
             <div styles={{display:"flex"}} > 
-            <span className="description-review">{review?.description}</span>
+            <div className="description-review">{review?.description}</div>
             </div>
             </>
             }
@@ -91,7 +99,7 @@ export default function ReviewCard ({
     
             </div>
         )
-     }
-     return (<div></div>)
-    
+    }
+    return (<div></div>)
+
 }

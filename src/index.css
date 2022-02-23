@@ -77,7 +77,12 @@ a:active {
 button{
   cursor:pointer
 }
-
+button:hover{
+  transform: scale(1.05);
+}
+button:active{
+  transform: translateY(4px);
+}
 textarea {
   resize: none;
 }
