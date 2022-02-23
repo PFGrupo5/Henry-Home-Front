@@ -16,6 +16,7 @@ import EditPost from "../pages/EditPost";
 import { useEffect, useState } from "react";
 import FromCreate from "../pages/FormCreate";
 import Footer2 from "../components/Footer2";
+import { BackTop } from 'antd';
 
 function Routes() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -27,6 +28,7 @@ function Routes() {
   return (
     <div className="App">
       <NavBarHome2 />
+      <BackTop/>
       <Switch>
         <Route
           exact
