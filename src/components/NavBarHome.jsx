@@ -31,8 +31,7 @@ export default function NavBar() {
 
   const params = useParams()
   const location = useLocation()
-  console.log({ params });
-  console.log({ location });
+  
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")))

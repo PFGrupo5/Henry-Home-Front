@@ -31,7 +31,6 @@ const NavBarHome2 = () => {
 
   // instancias para los datos de login
 
-  // console.log(location)
   const logout = () => {
     dispatch(googleLogOut());
     history.push("/home");
@@ -48,7 +47,6 @@ const NavBarHome2 = () => {
     }
     /* if(token){
        const decodedToken = decode(token)
-       console.log(decodedToken)
        if(decodedToken.exp * 1000 < new Date().getTime()) logout()
     } */
   }, [dispatch, errors, location ]);
