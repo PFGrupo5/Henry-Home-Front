@@ -7,10 +7,9 @@ import defaultUser from "../assets/img/user_default.png";
 import Cards from "../components/Cards";
 import ReviewCard from "../components/ReviewCard";
 import axios from "axios";
-import { URL_BACK } from '../config'
-import {Link} from 'react-router-dom'
+import { URL_BACK } from "../config";
+import { Link } from "react-router-dom";
 import { Col, Popconfirm, Row } from "antd";
-
 
 function DashboardUser() {
   const dispatch = useDispatch();
@@ -92,20 +91,28 @@ function DashboardUser() {
             <h1 className="DashboardUser-section-Title">
               Ultimas reservaciones
             </h1>
-            <div >
+            <div>
               {!userDetail?.Reservations.length ? (
                 <div className="reservs">{`No Tienes Reservaciones Previas :(`}</div>
               ) : (
                 <div className="DashboardUser_reservationInfo">
                   {console.log(userDetail.Reservations)}
                   <Row className="eachClass">
-
-                    <Col className="eachSection" xs={0} sm={0} md={4} lg={4}>Nombre Alojamiento</Col>
-                    <Col className="eachSection" xs={0} sm={0} md={4} lg={4}>Fecha Inicio</Col>
-                    <Col className="eachSection" xs={0} sm={0} md={4} lg={4}>Fecha Fin</Col>
-                    <Col className="eachSection" xs={0} sm={0} md={4} lg={4}>Estado</Col>
-                    <Col className="eachSection" xs={0} sm={0} md={4} lg={4}>Acciones</Col>
-
+                    <Col className="eachSection" xs={0} sm={0} md={4} lg={4}>
+                      Nombre Alojamiento
+                    </Col>
+                    <Col className="eachSection" xs={0} sm={0} md={4} lg={4}>
+                      Fecha Inicio
+                    </Col>
+                    <Col className="eachSection" xs={0} sm={0} md={4} lg={4}>
+                      Fecha Fin
+                    </Col>
+                    <Col className="eachSection" xs={0} sm={0} md={4} lg={4}>
+                      Estado
+                    </Col>
+                    <Col className="eachSection" xs={0} sm={0} md={4} lg={4}>
+                      Acciones
+                    </Col>
                   </Row>
                   <div>
                     {userDetail.Reservations.map((f) => {
@@ -130,29 +137,64 @@ function DashboardUser() {
                                 >
                                   Pagar
                                 </a>
-                                <button
-                                  className="buttonReservation"
-                                  type="text"
-                                  onClick={() => deleteReservation(f.id)}
+                                <Popconfirm
+                                  onConfirm={() => deleteReservation(f.id)}
+                                  onCancel={cancel}
+                                  title="Seguro que quieres eliminar esta casa?"
+                                  okText="Si"
+                                  cancelText="No"
                                 >
-                                  Eliminar
-                                </button>
+                                  <button
+                                    className="buttonReservation"
+                                    type="text"
+                                  >
+                                    Eliminar
+                                  </button>
+                                </Popconfirm>
                               </div>
                             </div>
                           </div>
                           <div className="desktop">
                             <div key={f.id}>
                               <Row className="eachInfo">
-
-                                <Col xs={0} sm={0} md={4} lg={4}> {f.Housing.name}</Col>
-                                <Col xs={0} sm={0} md={4} lg={4}> {f.date_start}</Col>
-                                <Col xs={0} sm={0} md={4} lg={4}> {f.date_end}</Col>
-                                <Col xs={0} sm={0} md={4} lg={4}>{f.status === "Pending" ? "Pendiente" : "Aprobada"}</Col>
+                                <Col xs={0} sm={0} md={4} lg={4}>
+                                  {" "}
+                                  {f.Housing.name}
+                                </Col>
+                                <Col xs={0} sm={0} md={4} lg={4}>
+                                  {" "}
+                                  {f.date_start}
+                                </Col>
+                                <Col xs={0} sm={0} md={4} lg={4}>
+                                  {" "}
+                                  {f.date_end}
+                                </Col>
+                                <Col xs={0} sm={0} md={4} lg={4}>
+                                  {f.status === "Pending"
+                                    ? "Pendiente"
+                                    : "Aprobada"}
+                                </Col>
                                 <Col xs={0} sm={0} md={4} lg={4}>
                                   <div className="userButtons">
-                                    <Link className="buttonReservation" to={`/home/${f.Housing.id}`}>Ir a la casa</Link>
-                                    <a className="buttonReservation" href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a>
-                                    <button className="buttonReservation" type="text" onClick={() => deleteReservation(f.id)}>
+                                    <Link
+                                      className="buttonReservation"
+                                      to={`/home/${f.Housing.id}`}
+                                    >
+                                      Ir a la casa
+                                    </Link>
+                                    <a
+                                      className="buttonReservation"
+                                      href={f.link_mercado_pago}
+                                      target="_blank"
+                                      rel="noreferrer"
+                                    >
+                                      Pagar
+                                    </a>
+                                    <button
+                                      className="buttonReservation"
+                                      type="text"
+                                      onClick={() => deleteReservation(f.id)}
+                                    >
                                       Eliminar
                                     </button>
                                   </div>
