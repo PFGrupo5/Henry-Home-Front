@@ -80,10 +80,29 @@ export default function Home() {
   const allHotels = useSelector((state) => state.hotels);
   const count = useSelector((state) => state.count);
 
+  const prev = (contador) => {
+    contador--
+    if (contador !== 0) {
+      setPage(contador)
+    } else {
+      contador = 1
+      setPage(contador)
+
+    }
+  }
+
+  const next = (actualPage, pages) => {
+    actualPage++
+    if (actualPage <= pages) {
+      setPage(actualPage)
+    } else {
+      actualPage = pages
+      message.info("Llegaste al final, lamentamos que no haya encontrado su viaje ideal.", 5)
+      setPage(actualPage)
+    }
+  }
+
   const userRole = User?.result.role;
-  const changePage = (e) => {
-    setPage(e);
-  };
 
   const findHouses = () => {
     try {
@@ -147,14 +166,15 @@ export default function Home() {
             ) : (
               <div>
                 <h2>No hay casas disponibles</h2>
-               
+
               </div>
             )}
           </div>
           <Pages
             pages={Math.ceil(count / size)}
             actualPage={page}
-            changePage={changePage}
+            next={next}
+            prev={prev}
           />
         </div>
       </div>
