@@ -5,7 +5,6 @@ import { getDetail } from "../FilesStore/Actions";
 import { PushpinOutlined } from "@ant-design/icons";
 import "../assets/css/Detail/Detail.scss";
 import ReviewCard from "../components/ReviewCard";
-// import Carrousel from "../UI/Carrousel";
 import Loading from "../components/Loading";
 import Reservation from "./Reservation2";
 import IconProvider from "../utils/IconProvider";
@@ -102,7 +101,7 @@ export default function Detail() {
 
   useEffect(() => {
     dispatch(getDetail(id));
-   
+
   }, [dispatch, id, reviewDetail, haveReview]);
 
 
@@ -121,14 +120,6 @@ export default function Detail() {
         </div>
         <div className="carrousel-conteiner">
           <ImagesDetail images={imgs} />
-          {/* <Image src={imgs[0]} alt="" width="1020px" /> */}
-          {/* <Carrousel
-            // imgs={images ? images : [imgDefault]}
-            imgs={images}
-            dotsBool={true}
-            styles="imgDetail"
-            preview={true}
-          /> */}
         </div>
         <div className="info-container">
           <div>
