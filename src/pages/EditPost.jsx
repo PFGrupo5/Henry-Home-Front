@@ -30,7 +30,6 @@ export default function EditPost(props) {
     dispatch(getLocations());
   }, [dispatch, props]);
 
-  // console.log(id);
 
   const services = useSelector((state) => state.services);
   const facilities = useSelector((state) => state.facilities);
@@ -73,7 +72,6 @@ export default function EditPost(props) {
     e.preventDefault();
     // Llamado a la action.
     dispatch(patchHouse(hotelChanges));
-    console.log("Handle");
   };
 
   if (!hotel) return (<div>cargando</div>)

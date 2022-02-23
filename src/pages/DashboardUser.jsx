@@ -26,7 +26,6 @@ function DashboardUser() {
       .delete(`${URL_BACK}/reservation/${id}`)
       .then((res) => {
         dispatch(getUserDetail(user.result.id, user.result.role));
-        console.log(res);
       })
       .catch((err) => console.log(err));
   };
