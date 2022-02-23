@@ -67,7 +67,6 @@ const Reservation = ({ id, user }) => {
     userReservations = {}
   }
 
-console.log(detail.Reservations, 'aca');
 
   let disabledRanges = detail.Reservations?.filter(e=>e.status==="approved").map(({ date_start, date_end }) => [
     new Date(date_start),

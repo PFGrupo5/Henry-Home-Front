@@ -44,7 +44,6 @@ export default function Admin() {
     }
     setCoordinates(results);
     setFormErrors(ValidateFormCreate({ ...house, location: e }));
-    console.log(location);
   };
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [house, setHouse] = useState({
@@ -66,7 +65,6 @@ export default function Admin() {
     setLocation(e);
     setCoordinates(ubicacion);
     setFormErrors(ValidateFormCreate({ ...house, location: e }));
-    console.log(results);
   };
   const [createHouse, setCreateHouse] = useState(false);
   const [formErrors, setFormErrors] = useState({ msg: "Error" });
@@ -162,7 +160,6 @@ export default function Admin() {
   };
 
   const handleCancel = () => {
-    console.log("holis");
     setIsModalVisible(false);
     clean();
   };
@@ -186,7 +183,6 @@ export default function Admin() {
     });
     setLocation(null);
   };
-  console.log(location);
 
   if (!userDetail || userDetail.role !== "Moderator")
     return <Loading />;
