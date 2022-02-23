@@ -42,6 +42,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  position: relative;
 }
 body {
   font-family: var(--body-font);
