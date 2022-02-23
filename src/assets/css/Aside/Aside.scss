@@ -59,3 +59,23 @@
   }
  
 }
+
+.autoComplete{
+  width: 13rem;
+  height: 2rem;
+  border: none;
+  outline: none;
+  padding: 0.7rem;
+  font-size: 0.9rem;
+  border-radius: 2px;
+  &::placeholder{
+    color: rgb(179, 180, 180);
+  }
+}
+
+.suggestion{
+  position: absolute;
+  width: 13rem;
+  z-index: 10000;
+  cursor: pointer;
+}

@@ -359,7 +359,7 @@ export default function Admin() {
                           className="Cascader"
                         />
                       </div>
-                      <div className="input-container">
+                      <div>
                         <PlacesAutocomplete
                           value={location}
                           onChange={(e) => settLocation(e)}
@@ -376,9 +376,11 @@ export default function Admin() {
                                 {...getInputProps({
                                   placeholder: "Ubicacion...",
                                 })}
+                                className="autoCompleteOwner"
+
                               />
 
-                              <div>
+                              <div className="suggestionOwner">
                                 {loading ? <div>...cargando</div> : null}
                                 {suggestions.map((suggestion) => {
                                   const style = {
@@ -387,11 +389,12 @@ export default function Admin() {
                                       : "#fff",
                                   };
                                   return (
-                                    <div 
-                                    key={suggestion.description}
+                                    <div
+                                      key={suggestion.description}
                                       {...getSuggestionItemProps(suggestion, {
                                         style,
                                       })}
+
                                     >
                                       {suggestion.description}
                                     </div>
