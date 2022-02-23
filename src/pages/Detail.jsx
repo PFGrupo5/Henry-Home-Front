@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail } from "../FilesStore/Actions";
+import { deleteDetail, getDetail } from "../FilesStore/Actions";
 import { PushpinOutlined } from "@ant-design/icons";
 import "../assets/css/Detail/Detail.scss";
 import ReviewCard from "../components/ReviewCard";
@@ -12,6 +12,7 @@ import IconProvider from "../utils/IconProvider";
 import axios from "axios";
 import { Image } from "antd";
 import { URL_BACK } from "../config";
+import ImagesDetail from "../components/ImagesDetail";
 
 export default function Detail() {
   const dispatch = useDispatch();
@@ -102,6 +103,7 @@ export default function Detail() {
 
   useEffect(() => {
     dispatch(getDetail(id));
+    return ()=> dispatch(deleteDetail())
   }, [dispatch, id, reviewDetail, haveReview]);
 
   if (!detail) return <Loading />;
@@ -118,7 +120,8 @@ export default function Detail() {
           <p>Publicado por {detail.userMod.firstName}</p>
         </div>
         <div className="carrousel-conteiner">
-          <Image src={imgs[0]} alt="" width="1020px" />
+          <ImagesDetail images={imgs}/>
+          {/* <Image src={imgs[0]} alt="" width="1020px" /> */}
           {/* <Carrousel
             // imgs={images ? images : [imgDefault]}
             imgs={images}
