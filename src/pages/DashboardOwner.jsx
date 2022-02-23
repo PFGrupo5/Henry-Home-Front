@@ -12,7 +12,6 @@ import ListHouses from "../components/ListHouses";
 import axios from "axios";
 import { URL_BACK } from "../config";
 import iconProvider from "../utils/IconProvider";
-import FileBase from "react-file-base64";
 import { ValidateFormCreate } from "../utils/ValidateFormCreate";
 import PlacesAutocomplete, {
   geocodeByAddress,

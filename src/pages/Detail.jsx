@@ -104,6 +104,7 @@ export default function Detail() {
     dispatch(getDetail(id));
   }, [dispatch, id, reviewDetail, haveReview]);
 
+
   if (!detail) return (<Loading />)
 
   const { name, images, Location, numberOfPeople, houseRules } = detail
@@ -164,6 +165,7 @@ export default function Detail() {
           <Reservation id={id} user={user} />
         </div>
         <div className="reviews-container">
+          {detail.average>0 && <h3>Promedio: {detail.average}</h3>}
           <h3>Reseñas: </h3>
           {user && user.result.role==="Client" &&  (comprobante ? <div>
             <h4>Tu Reseña:</h4>
@@ -183,17 +185,22 @@ export default function Detail() {
                   <textarea placeholder="Description (160 char max)" onChange={(e) => onChangeDescription(e)} value={reviewDetail.description}></textarea>
                   {haveReview < 0 && <p className="error">Ha excedido el limite de caracteres</p>}
                 </div>
-                <button onClick={onClick} >Publicar</button>
+                <button className="publicar" onClick={onClick} >Publicar</button>
               </div>
             </form>
           </div>)}
           <h4>Resto de reseñas:</h4>
           <div>
             {detail.Reviews.length ?
+            <div>
+              
+              {
               detail.Reviews.map((e) => <ReviewCard
                 user={user?.result.id ? user.result.id : true}
                 review={e}
-              />) :
+              />)
+              } 
+            </div>:
               <p> El establecimiento no tiene reseñas de momento por el momento </p>
             }
           </div>

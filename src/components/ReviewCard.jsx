@@ -5,6 +5,7 @@ import "../assets/css/ReviewsCards/ReviewsCards.scss"
 import { URL_BACK } from "../config";
 import { Popup } from "./PopUpReview";
 import { Link } from "react-router-dom";
+import iconProvider from "../utils/IconProvider";
 
 
 export default function ReviewCard ({
@@ -47,11 +48,15 @@ export default function ReviewCard ({
     if(dash){
         return(
         <div className="Reviews-div">
-        {!user && <button onClick={borrar} className="deleteReview"> X </button> }
-        {!user && <button className="modificar" onClick={configpop}> Modificar </button> }
+            <div className="botoncitos">
+            {!user && <button onClick={borrar} className="deleteReview">{iconProvider("delete")}</button> }
+            {!user && <button className="modificar" onClick={configpop}>{iconProvider("edit")}</button> }
+            {!popup && <p className="fecha-review2">{fecha}</p>}
+            </div>
+        
         {!user && <Popup setReview={actualizar} setpopup={configpop} token={token} review={review}  e={popup}/> }
     {!popup&&<>
-    <p className="fecha-review2">{fecha}</p>
+    
     <p className="estrellas-review">{estrellas}</p>
     <br/>
     <p >{review?.Housing?.name} :</p>
@@ -74,11 +79,13 @@ export default function ReviewCard ({
         return(
 
             <div className="Reviews-div">
-                {!user && <button onClick={borrar} className="deleteReview"> X </button> }
-                {!user && <button className="modificar" onClick={configpop}> Modificar </button> }
+                <div className="botoncitos">
+            {!popup && <p className="fecha-review2">{fecha}</p>}
+            {!user && <button onClick={borrar} className="deleteReview">{iconProvider("delete")}</button> }
+            {!user && <button className="modificar" onClick={configpop}>{iconProvider("edit")}</button> }
+            </div>
                 {!user && <Popup setReview={actualizar} setpopup={configpop} token={token} review={review}  e={popup}/> }
             {!popup&&<>
-            <p className="fecha-review2">{fecha}</p>
             <p className="estrellas-review">{estrellas}</p>
             <br/>
             <p >{review?.userClient?.firstName} {review?.userClient?.lastName}:</p>

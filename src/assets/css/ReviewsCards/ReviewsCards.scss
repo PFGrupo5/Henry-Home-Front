@@ -12,17 +12,15 @@
       .fecha-review{
           font-weight: 300;
           font-size: small;
-          position:absolute;
-          top: 0.5rem;
-          right: 1rem;
+          
           
         }
         .fecha-review2{
             font-weight: 300;
           font-size: small;
-          position:absolute;
-          top: 0.5rem;
-          right: 2rem;
+          margin:0;
+          display: inline;
+          margin-right: 0.5rem;
             
           }
         .estrellas-review{
@@ -44,36 +42,17 @@
         }
         .deleteReview{
             background-color: 
-            #d10018;
-            font-size: small;
-            margin: 0;
-            padding: 2px;
-            position:absolute;
-            top: 0.5rem;
-            right: 0.5rem;
-            &:hover{
-                background-color: 
-                #b30418;
-            }
-            
+            red;
+            margin:0.2rem;
         }
         .modificar{
-            background-color: var(--main-blue);
-            font-size: small;
-            margin: 0;
-            position:absolute;
-            top: 0.5rem;
-            left: 9.5rem;
-            &:hover{
-                background-color: 
-                #0b3b64;
-            }
+            background-color: var(--main-orange);
+            margin:0.2rem;
         }
         .publicar{
             background-color: var(--main-blue);
             font-size: small;
-            
-            
+            padding: 0.5rem;            
             &:hover{
                 background-color: 
                 #0b3b64;
@@ -96,6 +75,11 @@
             margin: 1rem;
             height: 8rem;
             width: 8rem;
+        }
+        .botoncitos{
+            position:absolute;
+            right: 0.3rem;
+            top:0.3rem;
         }
         
         
