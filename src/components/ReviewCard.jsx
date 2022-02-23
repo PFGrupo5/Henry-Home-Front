@@ -5,17 +5,20 @@ import "../assets/css/ReviewsCards/ReviewsCards.scss"
 import { URL_BACK } from "../config";
 import { Popup } from "./PopUpReview";
 import { Link } from "react-router-dom";
+import iconProvider from "../utils/IconProvider";
 
 
 export default function ReviewCard({
     dash,
     token,
     user,
+
     review,
     actualizar,
 }) {
     const [popup, setpopup] = useState(false)
     const configpop = (e) => {
+
         setpopup(!popup)
     }
 
@@ -42,24 +45,31 @@ export default function ReviewCard({
     }
 
     // dashboard User
-    if (dash) {
-        return (
-            <div className="Reviews-div">
-                {!user && <button onClick={borrar} className="deleteReview"> X </button>}
-                {!user && <button className="modificar" onClick={configpop}> Modificar </button>}
-                {!user && <Popup setReview={actualizar} setpopup={configpop} token={token} review={review} e={popup} />}
-                {!popup && <>
-                    <p className="fecha-review2">{fecha}</p>
-                    <p className="estrellas-review">{estrellas}</p>
-                    <br />
-                    <p >{review?.Housing?.name} :</p>
-                    <Link to={`/home/${review?.Housing?.id}`} >
-                        <img src={review?.Housing?.images[0]} alt="Imagen de la casa" />
-                    </Link>
-                    <div className="description-review">{review?.description}</div>
-                </>
-                }
-
+    if(dash){
+        return(
+        <div className="Reviews-div">
+            <div className="botoncitos">
+            {!user && <button onClick={borrar} className="deleteReview">{iconProvider("delete")}</button> }
+            {!user && <button className="modificar" onClick={configpop}>{iconProvider("edit")}</button> }
+            {!popup && <p className="fecha-review2">{fecha}</p>}
+            </div>
+        
+        {!user && <Popup setReview={actualizar} setpopup={configpop} token={token} review={review}  e={popup}/> }
+    {!popup&&<>
+    
+    <p className="estrellas-review">{estrellas}</p>
+    <br/>
+    <p >{review?.Housing?.name} :</p>
+    <div styles={{display:"flex"}} > 
+    <Link to={`/home/${review?.Housing?.id}`} >
+    <img src={review?.Housing?.images[0]} alt="Imagen de la casa"/>
+    </Link>
+    
+    <span className="description-review">{review?.description}</span>
+    </div>
+    </>
+    }
+    
 
             </div>
         )
@@ -68,22 +78,25 @@ export default function ReviewCard({
     if (!user || user !== review.userClientId) {
         return (
 
-            <div className="Reviews-div">
-                {!user && <button onClick={borrar} className="deleteReview"> X </button>}
-                {!user && <button className="modificar" onClick={configpop}> Modificar </button>}
-                {!user && <Popup setReview={actualizar} setpopup={configpop} token={token} review={review} e={popup} />}
-                {!popup && <>
-                    <p className="fecha-review2">{fecha}</p>
-                    <p className="estrellas-review">{estrellas}</p>
-                    <br />
-                    <p >{review?.userClient?.firstName} {review?.userClient?.lastName}:</p>
-                    <div styles={{ display: "flex" }} >
-                        <span className="description-review">{review?.description}</span>
-                    </div>
-                </>
-                }
-
-
+            <div  className="Reviews-div">
+                <div className="botoncitos">
+                    
+            {!popup && <p className="fecha-review2">{fecha}</p>}
+            {!user && <button onClick={borrar} className="deleteReview">{iconProvider("delete")}</button> }
+            {!user && <button className="modificar" onClick={configpop}>{iconProvider("edit")}</button> }
+            </div>
+                {!user && <Popup setReview={actualizar} setpopup={configpop} token={token} review={review}  e={popup}/> }
+            {!popup&&<>
+            <p className="estrellas-review">{estrellas}</p>
+            <br/>
+            <p >{review?.userClient?.firstName} {review?.userClient?.lastName} :</p>
+            <div styles={{display:"flex"}} > 
+            <div className="description-review">{review?.description}</div>
+            </div>
+            </>
+            }
+            
+    
             </div>
         )
     }
