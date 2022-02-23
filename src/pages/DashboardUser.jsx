@@ -108,7 +108,7 @@ function DashboardUser() {
                       return (
                         <div key={f.id} className="each-reservation">
                           <div className="mobile">
-                            <Link to={`/home/${f.Housing?.id}`}><button className="buttonReservation"> <div>{f.Housing?.name}</div> </button></Link>
+                            <Link to={`/home/${f.Housing?.id}`}><button className="buttonReservation changeColor"> <div>{f.Housing?.name}</div> </button></Link>
                             <div>Ingreso: {f.date_start}</div>
                             <div>Egreso: {f.date_end}</div>
                             <div>{f.status === "Pending" ? "Pendiente" : "Aprobada"}</div>
