@@ -77,7 +77,7 @@ const Form = ({ role, google }) => {
     clear();
   };
 
-  const forgotPasswordHandler = async () => {
+  const forgotPasswordHandler = () => {
     if (!inputForm.email.trim().length) return message.info("Colocar email");
     console.log(inputForm.email);
     axios
@@ -253,7 +253,7 @@ const Form = ({ role, google }) => {
               {formErrors.inputPassword ? formErrors.inputPassword : "ㅤㅤ"}
             </p>
           </div>
-          <p onClick={forgotPasswordHandler}>¿Olvidaste la contraseña?</p>
+          <p onClick={forgotPasswordHandler} style={{cursor:"pointer"}}>¿Olvidaste la contraseña?</p>
           <button type="button" onClick={loginHandler}>Ingresar</button>
           {
             google &&

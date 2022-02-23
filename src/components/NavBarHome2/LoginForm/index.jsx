@@ -7,6 +7,8 @@ import { ValidateForm } from "../../../utils/ValidateForm"
 import { useHistory } from 'react-router-dom'
 import { useState } from 'react';
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons"
+import axios from 'axios';
+import { URL_BACK } from '../../../config';
 
 
 const LoginForm = ({ setDisplay }) => {
@@ -63,6 +65,20 @@ const LoginForm = ({ setDisplay }) => {
         setFormErrors(ValidateForm({ ...loginData, [name]: value }));
     }
 
+    const forgotPasswordHandler = () => {
+        if (!loginData.email.trim().length) return message.info("Colocar email");
+        console.log(loginData.email);
+        axios
+            .post(`${URL_BACK}/user/confirm-update-password`, { email: loginData.email })
+            .then(() => {
+                message.success("Correo enviado");
+            })
+            .catch((error) => {
+                console.log(error.response.data, "aca");
+                message.error(error.response.data.message);
+            });
+    };
+
     return (
         <form onSubmit={e => e.preventDefault()} className="ingresar">
             <h3>Ingreso</h3>
@@ -105,7 +121,7 @@ const LoginForm = ({ setDisplay }) => {
                 </p>
 
             </div>
-            <p type='text'>¿Olvidaste tu contraseña?</p>
+            <p onClick={forgotPasswordHandler} style={{ cursor: "pointer" }}>¿Olvidaste tu contraseña?</p>
             <div className='btn-container-navbar'>
                 <button onClick={login} className='NavBarHome_loginBtn'>Ingresar</button>
                 <GoogleLogin
