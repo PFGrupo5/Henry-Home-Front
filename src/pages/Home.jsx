@@ -5,7 +5,7 @@ import Cards from "../components/Cards";
 import axios from "axios";
 import { URL_BACK } from "../config";
 import Loading from "../components/Loading";
-import { getHotels, getUserDetail } from "../FilesStore/Actions/index.js";
+import { deleteDetail, getHotels, getUserDetail } from "../FilesStore/Actions/index.js";
 import Aside from "../components/Aside";
 import "../assets/css/Home/Home.scss";
 import Pages from "../components/Pages";
@@ -19,6 +19,7 @@ export default function Home() {
 
   useEffect(() => {
     infoUser.id && dispatch(getUserDetail(infoUser.id, infoUser.role));
+    dispatch(deleteDetail())
   }, [dispatch, infoUser.id, infoUser.role]);
 
   //filtros
@@ -129,6 +130,7 @@ export default function Home() {
                       role={userRole}
                       detail={userDetail}
                       onClickFav={onClickFav}
+                      average={e.average}
                     />
                   );
                 })

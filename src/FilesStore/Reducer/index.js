@@ -11,6 +11,7 @@ import {
   LOCATIONS,
   ERROR_LOGIN,
   CLEAN_ERROR,
+  DELETE_DELETE,
 } from "../Const Types/constActions";
 
 const initialState = {
@@ -50,6 +51,11 @@ cases[DETAIL] = (state, payload) => ({
   ...state,
   detail: payload,
 });
+cases[DELETE_DELETE] = (state, payload) => ({
+  ...state,
+  detail: payload,
+});
+
 cases[USER_DETAIL] = (state, payload) => ({
   ...state,
   userDetail: payload,

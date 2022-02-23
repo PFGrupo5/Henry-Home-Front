@@ -16,7 +16,6 @@ export default function ReviewCard ({
    actualizar,
 })
 {   
-    console.log(review.description)
     const [popup , setpopup] = useState(false)
     const configpop= (e)=>{
         setpopup(!popup)
@@ -78,8 +77,9 @@ export default function ReviewCard ({
      if(!user || user!==review.userClientId){
         return(
 
-            <div className="Reviews-div">
+            <div  className="Reviews-div">
                 <div className="botoncitos">
+                    
             {!popup && <p className="fecha-review2">{fecha}</p>}
             {!user && <button onClick={borrar} className="deleteReview">{iconProvider("delete")}</button> }
             {!user && <button className="modificar" onClick={configpop}>{iconProvider("edit")}</button> }
@@ -88,9 +88,9 @@ export default function ReviewCard ({
             {!popup&&<>
             <p className="estrellas-review">{estrellas}</p>
             <br/>
-            <p >{review?.userClient?.firstName} {review?.userClient?.lastName}:</p>
+            <p >{review?.userClient?.firstName} {review?.userClient?.lastName} :</p>
             <div styles={{display:"flex"}} > 
-            <span className="description-review">{review?.description}</span>
+            <div className="description-review">{review?.description}</div>
             </div>
             </>
             }

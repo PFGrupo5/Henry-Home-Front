@@ -61,7 +61,7 @@ export const ValidateFormCreate = ({
     /^\s+$/.test(description)
   ) {
     error.description = "La Descripción es Obligatoria";
-  } else if(description.length >= 500){
+  } else if (description.length >= 500) {
     error.description = "La Descipcion no puede tener mas de 500 Caracteres"
   }
   if (!houseRules) {
@@ -72,13 +72,13 @@ export const ValidateFormCreate = ({
     /^\s+$/.test(houseRules)
   ) {
     error.houseRules = "Las Reglas de la Casa son Obligatorias";
-  } else if(houseRules.length >= 500){
+  } else if (houseRules.length >= 500) {
     error.houseRules = "Las Reglas de la Casa no puede tener mas de 500 Caracteres"
   }
   console.log(location)
-  
- if (!location || !location.length) {
-    error.location = "La Ubicacion es Obligatoriaaaa";
+
+  if (!location || !location.length) {
+    error.location = "La Ubicacion es Obligatoria";
   }
 
 

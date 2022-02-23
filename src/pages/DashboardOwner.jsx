@@ -8,6 +8,7 @@ import {
   getServices,
   getUserDetail,
 } from "../FilesStore/Actions";
+import Loading from "../components/Loading"
 import ListHouses from "../components/ListHouses";
 import axios from "axios";
 import { URL_BACK } from "../config";
@@ -187,7 +188,7 @@ export default function Admin() {
   console.log(location);
 
   if (!userDetail || userDetail.role !== "Moderator")
-    return <div>Cargando</div>;
+    return <Loading />;
   const { Housings } = userDetail;
 
   return (
@@ -358,7 +359,7 @@ export default function Admin() {
                           className="Cascader"
                         />
                       </div>
-                      <div className="input-container">
+                      <div>
                         <PlacesAutocomplete
                           value={location}
                           onChange={(e) => settLocation(e)}
@@ -375,9 +376,11 @@ export default function Admin() {
                                 {...getInputProps({
                                   placeholder: "Ubicacion...",
                                 })}
+                                className="autoCompleteOwner"
+
                               />
 
-                              <div>
+                              <div className="suggestionOwner">
                                 {loading ? <div>...cargando</div> : null}
                                 {suggestions.map((suggestion) => {
                                   const style = {
@@ -386,11 +389,12 @@ export default function Admin() {
                                       : "#fff",
                                   };
                                   return (
-                                    <div 
-                                    key={suggestion.description}
+                                    <div
+                                      key={suggestion.description}
                                       {...getSuggestionItemProps(suggestion, {
                                         style,
                                       })}
+
                                     >
                                       {suggestion.description}
                                     </div>
@@ -419,7 +423,7 @@ export default function Admin() {
                             let size = e.target.files[0].size;
                             let files = e.target.files;
                             if (size > 2000000) {
-                              alert(
+                              message.error(
                                 "El tamaño de la imagen no puede ser mayor a 2MB"
                               );
                               e.target.value = "";
@@ -429,11 +433,14 @@ export default function Admin() {
                                 reader.readAsDataURL(archivo);
                                 reader.onload = function () {
                                   var base64 = reader.result;
-                                  setHouse({ ...house, image1: base64 });
+                                  if (base64 !== null)
+                                    setHouse({ ...house, image1: base64 });
                                 };
                               });
                             }
                           }}
+                          className="inputFile"
+
                         />
 
                         <input
@@ -442,7 +449,7 @@ export default function Admin() {
                             let size = e.target.files[0].size;
                             let files = e.target.files;
                             if (size > 2000000) {
-                              alert(
+                              message.error(
                                 "El tamaño de la imagen no puede ser mayor a 2MB"
                               );
                               e.target.value = "";
@@ -452,11 +459,14 @@ export default function Admin() {
                                 reader.readAsDataURL(archivo);
                                 reader.onload = function () {
                                   var base64 = reader.result;
-                                  setHouse({ ...house, image2: base64 });
+                                  if (base64 !== null)
+                                    setHouse({ ...house, image2: base64 });
                                 };
                               });
                             }
                           }}
+                          className="inputFile"
+
                         />
 
                         <input
@@ -465,7 +475,7 @@ export default function Admin() {
                             let size = e.target.files[0].size;
                             let files = e.target.files;
                             if (size > 2000000) {
-                              alert(
+                              message.error(
                                 "El tamaño de la imagen no puede ser mayor a 2MB"
                               );
                               e.target.value = "";
@@ -475,11 +485,13 @@ export default function Admin() {
                                 reader.readAsDataURL(archivo);
                                 reader.onload = function () {
                                   var base64 = reader.result;
-                                  setHouse({ ...house, image3: base64 });
+                                  if (base64 !== null)
+                                    setHouse({ ...house, image3: base64 });
                                 };
                               });
                             }
                           }}
+                          className="inputFile"
                         />
                       </div>
                     </div>

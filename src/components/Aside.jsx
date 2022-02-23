@@ -17,7 +17,7 @@ export default function Aside({
         <div>
           <h2>Filtrar</h2>
         </div>
-        <Place setInfo={setInfo} Info={Info} className="filter" />
+        <Place setInfo={setInfo} Info={Info} />
         <People setInfo={setInfo} Info={Info} className="filter" />
         <Beds setInfo={setInfo} Info={Info} className="filter" />
         <Calification setInfo={setInfo} Info={Info} className="filter" />
