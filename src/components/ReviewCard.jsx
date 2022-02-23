@@ -14,7 +14,6 @@ export default function ReviewCard({
     review,
     actualizar,
 }) {
-    console.log(review.description)
     const [popup, setpopup] = useState(false)
     const configpop = (e) => {
         setpopup(!popup)

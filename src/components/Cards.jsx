@@ -17,9 +17,7 @@ export default function Cards({
   role,
   onClickFav,
 }) {
-  console.log(location)
   const renderName = name.length <= 12 ? name : `${name.slice(0, 12)}...`
-  // const locationName = location?.length <= 16 ? location : `${location.slice(0, 16)}...`
   var favsIds = detail && detail.favs ? detail.favs.map(e => e.id) : 0;
   const favState = favsIds?.length && favsIds?.includes(id)
 
