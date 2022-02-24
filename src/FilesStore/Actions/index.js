@@ -15,7 +15,7 @@ import {
   ERROR_LOGIN,
   CLEAN_ERROR,
   PATCH_HOUSE,
-  DELETE_DELETE,
+  DELETE_DETAIL,
 } from "../Const Types/constActions";
 import filterUrl from "../../utils/FilterUrl"
 
@@ -48,7 +48,7 @@ export function getDetail(id) {
   };
 }
 export function deleteDetail() {
- return { type : DELETE_DELETE, payload:null}
+ return { type : DELETE_DETAIL, payload:null}
 }
 
 export function googleLogIn(googleInfo, role) {
