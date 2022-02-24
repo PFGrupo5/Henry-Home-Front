@@ -380,7 +380,7 @@ export default function Admin() {
                               />
 
                               <div className="suggestionOwner">
-                                {loading ? <div>...cargando</div> : null}
+                                {loading ? <div>Cargando...</div> : null}
                                 {suggestions.map((suggestion) => {
                                   const style = {
                                     backgroundColor: suggestion.active
