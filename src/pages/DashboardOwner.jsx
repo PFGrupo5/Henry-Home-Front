@@ -8,7 +8,7 @@ import {
   getServices,
   getUserDetail,
 } from "../FilesStore/Actions";
-import Loading from "../components/Loading"
+import Loading from "../components/Loading";
 import ListHouses from "../components/ListHouses";
 import axios from "axios";
 import { URL_BACK } from "../config";
@@ -110,7 +110,7 @@ export default function Admin() {
   const handleOk = () => {
     const servicesFlat = house.services?.flat();
     const facilitiesFlat = house.facilities?.flat();
-    console.log(house,'aca');
+    console.log(house, "aca");
     const houseUpdate = {
       ...house,
       services: servicesFlat,
@@ -121,7 +121,7 @@ export default function Admin() {
         house.image3,
       ] /* .filter(e => e !== undefined) */,
     };
- 
+
     if (Object.keys(formErrors).length)
       return message.error("Error en los datos");
     if (!houseUpdate.images.some((i) => i !== undefined))
@@ -184,11 +184,10 @@ export default function Admin() {
     setLocation(null);
   };
 
-  if (!userDetail || userDetail.role !== "Moderator")
-    return <Loading />;
+  if (!userDetail || userDetail.role !== "Moderator") return <Loading />;
   const { Housings } = userDetail;
 
-  console.log(house)
+  console.log(house);
 
   return (
     <div className="container-moderator">
@@ -217,7 +216,7 @@ export default function Admin() {
                   </div>
                 </div>
                 {Housings.length ? (
-                  Housings?.map((e,index) => (
+                  Housings?.map((e, index) => (
                     <ListHouses
                       key={e.id}
                       user={user}
@@ -304,7 +303,7 @@ export default function Admin() {
                         </p>
                       </div>
                       <div className="input-container">
-                        <span>Descripción</span>
+                        <span>Descripción y contacto</span>
                         <textarea
                           type="text"
                           key="description"
@@ -377,7 +376,6 @@ export default function Admin() {
                                   placeholder: "Ubicacion...",
                                 })}
                                 className="autoCompleteOwner"
-
                               />
 
                               <div className="suggestionOwner">
@@ -394,7 +392,6 @@ export default function Admin() {
                                       {...getSuggestionItemProps(suggestion, {
                                         style,
                                       })}
-
                                     >
                                       {suggestion.description}
                                     </div>
@@ -417,6 +414,25 @@ export default function Admin() {
                         </p>
                       </div>
                       <div>
+                        <input
+                          type="text"
+                          name="image1"
+                          value={house.image1}
+                          onChange={inputFormHanlder}
+                        />
+                        <input
+                          type="text"
+                          name="image2"
+                          value={house.image2}
+                          onChange={inputFormHanlder}
+                        />
+                        <input
+                          type="text"
+                          name="image3"
+                          value={house.image3}
+                          onChange={inputFormHanlder}
+                        />
+                        {/* <input
                        {/*  <input type="text" name="image1" value={house.image1} onChange={inputFormHanlder}/>
                         <input type="text" name="image2" value={house.image2} onChange={inputFormHanlder}/>
                         <input type="text" name="image3" value={house.image3} onChange={inputFormHanlder}/> */}
@@ -443,7 +459,6 @@ export default function Admin() {
                             }
                           }}
                           className="inputFile"
-
                         />
 
                         {/* <input
