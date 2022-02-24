@@ -18,7 +18,7 @@ export default function Cards({
   onClickFav,
   average,
 }) {
-  const renderName = name.length <= 12 ? name : `${name.slice(0, 12)}...`
+  const renderName = name.length <= 10 ? name : `${name.slice(0, 10)}...`
   var favsIds = detail && detail.favs ? detail.favs.map(e => e.id) : 0;
   const favState = favsIds?.length && favsIds?.includes(id)
 
