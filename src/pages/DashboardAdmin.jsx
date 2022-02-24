@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios"
 import { useDispatch, useSelector } from "react-redux";
-import { getHotels, adminStatus } from "../FilesStore/Actions/index.js";
+import { getHotels, adminStatus, deleteDetail } from "../FilesStore/Actions/index.js";
 import { getFacilities, getServices } from "../FilesStore/Actions/index"
 import { Cascader, message } from "antd";
 import Cards from "../components/Cards";
@@ -29,6 +29,7 @@ export default function DashboardAdmin() {
         dispatch(getHotels(page, size, { status: "Pending" }));
         dispatch(getFacilities());
         dispatch(getServices());
+        dispatch(deleteDetail())
     }, [dispatch, page, size]);
 
     const changePage = (e) => {
@@ -113,6 +114,7 @@ export default function DashboardAdmin() {
                                         return (
                                             <div className="adminCards">
                                                 <Cards
+                                                    key={e.id}
                                                     name={e.name}
                                                     id={e.id}
                                                     location={e.Location.name}

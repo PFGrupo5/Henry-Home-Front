@@ -19,7 +19,6 @@ const RegisterVerify = () => {
 
   useEffect(() => {
     intervalRef.current = setInterval(decreaseNum, 1000);
-    console.log(num);
     if (num <= 0) history.push("/");
     return () => clearInterval(intervalRef.current);
   }, [num, history]);

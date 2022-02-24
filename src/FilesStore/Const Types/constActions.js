@@ -19,5 +19,5 @@ export const ADD_FAV = "ADD_FAV"
 export const DELETE_FAV = "DELETE_FAV"
 export const LOG_OUT = "LOG_OUT"
 export const PATCH_HOUSE = "PATCH_HOUSE"
-export const DELETE_DELETE = "DELETE_DELETE";
+export const DELETE_DETAIL = "DELETE_DETAIL";
 

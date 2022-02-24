@@ -9,12 +9,13 @@
     background-color: #0d4577;
 
     
-      .fecha-review{
+        .fecha-review{
           font-weight: 300;
           font-size: small;
           
           
         }
+
         .fecha-review2{
             font-weight: 300;
           font-size: small;
@@ -22,34 +23,39 @@
           display: inline;
           margin-right: 0.5rem;
             
-          }
+        }
+
         .estrellas-review{
-            background-color: var(--main-blue);
+            border: 1px solid var(--main-blue);
             border-radius: 0.3rem;
             font-weight: 300;
             font-size: medium;
             position:absolute;
             top: 0.5rem;
             left: 1rem;
-            
-            
-          }
+        }
           
         .description-review{
             padding:1rem;
             width: 90%;
             font-size: small;
             text-align: justify;
-            
         }
+
+        .houseName{
+            text-transform: capitalize;
+        }
+        .imgReview{
+            border-radius: 10px;
+        }
+
         .deleteReview{
-            background-color: 
-            red;
-            margin:0.2rem;
+            background-color:red;
+            padding: 0.3rem 0.2rem 0rem 0.2rem;
         }
         .modificar{
             background-color: var(--main-orange);
-            margin:0.2rem;
+            padding: 0.3rem 0.2rem 0rem 0.2rem;
         }
         .publicar{
             background-color: var(--main-blue);
@@ -60,19 +66,6 @@
                 #0b3b64;
             }
         }
-        .buttonPoP{
-            border: 1px solid #fff;
-            border-radius: 0.3rem;
-        
-            margin-left: 0.5rem;
-            margin-right: 0.5rem;
-            padding: 0px;
-            background-color: var(--main-blue);
-            &:hover{
-                background-color: 
-                #0b3b64;
-            }
-          }
         img{
             margin: 1rem;
             height: 8rem;
@@ -83,11 +76,17 @@
             right: 0.3rem;
             top:0.3rem;
         }
+
+        .textareaReview{
+            max-width: 100%;
+        
+        }
+        
+        .description-review{
+            max-width: 100%;
+            word-wrap: break-word;
+        }
         
         
 }
 
-.description-review{
-    max-width: 100%;
-    word-wrap: break-word;
-}

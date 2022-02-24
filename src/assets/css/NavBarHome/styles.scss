@@ -114,18 +114,17 @@
       flex-direction: column;
       button {
         border: none;
-        padding: .3rem 1rem;
- 
+        padding: 0.3rem 1rem;
+
         border-radius: 5px;
         font-size: 1em;
         font-weight: 600;
         margin: 0.5rem 1rem;
-        
       }
       .NavBarHome_loginBtn {
         background: #f2994a;
         color: var(--main-blue);
-        padding: .3rem 3rem;
+        padding: 0.3rem 3rem;
         cursor: pointer;
         :hover {
           background: #97897c;
@@ -144,16 +143,14 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    
   }
-  
 }
-  .noShow {
-    display: none;
-  }
-  .user-name {
-    cursor: pointer;
-  }
+.noShow {
+  display: none;
+}
+.user-name {
+  cursor: pointer;
+}
 
 @media screen and (min-width: 600px) {
   .NavBarHome_forms {
@@ -175,6 +172,7 @@
   justify-content: center;
   align-items: center;
   padding-top: 5rem;
+  height: 78.5vh;
 
   h2 {
     color: #fff;
@@ -196,7 +194,8 @@
     padding: 10px;
     border-radius: 1rem 1rem 0 0;
     transition: 0.8s ease-in-out;
-    min-height: 100%;
+    // min-height: 100%;
+    height: 26rem;
 
     h2 {
       color: #fff;
@@ -249,18 +248,18 @@
   }
 }
 
-.passInput{
+.passInput {
   position: relative;
-  .passIcon{
+  .passIcon {
     position: absolute;
     bottom: 64%;
     left: 80%;
   }
 }
 
-.passNav{
+.passNav {
   position: relative;
-  .passIcon{
+  .passIcon {
     position: absolute;
     bottom: 55%;
     left: 95%;

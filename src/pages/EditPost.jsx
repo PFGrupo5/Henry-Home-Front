@@ -10,18 +10,8 @@ import {
 } from "../FilesStore/Actions/index";
 import "../assets/css/EditPost/EditPost.css";
 
-
-
 export default function EditPost(props) {
-  
   let dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     document.location.reload()
-  //   }, 0);
-  //   clearTimeout(timer);
-  // }, []);
 
   useEffect(() => {
     dispatch(getDetail(props.match.params.id));
@@ -30,7 +20,6 @@ export default function EditPost(props) {
     dispatch(getLocations());
   }, [dispatch, props]);
 
-  // console.log(id);
 
   const services = useSelector((state) => state.services);
   const facilities = useSelector((state) => state.facilities);
@@ -73,10 +62,9 @@ export default function EditPost(props) {
     e.preventDefault();
     // Llamado a la action.
     dispatch(patchHouse(hotelChanges));
-    console.log("Handle");
   };
 
-  if (!hotel) return (<div>cargando</div>)
+  if (!hotel) return <div>cargando</div>;
 
   return (
     <Modal visible="true">

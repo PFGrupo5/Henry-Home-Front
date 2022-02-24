@@ -1,42 +1,14 @@
 import React from "react";
 import "../assets/css/Paginado/Paginado.scss";
-import { message } from "antd"
 
-export default function Pages({ pages, changePage, actualPage }) {
-  var pageNumbers = [];
-  for (let x = 1; x <= pages; x++) {
-    pageNumbers.push(x);
-  }
-
-  let contador = 1;
-  console.log(pages)
-
-  const prev = () => {
-    contador--
-    if (!(contador === 0)) {
-      changePage(contador)
-    } else {
-      contador = 1;
-      changePage(contador)
-    }
-  }
-  const next = () => {
-    contador++
-    if (contador > pages) {
-      message.info("Llegaste al final, lamentamos que no haya encontrado su viaje ideal.", 5)
-      contador = pages;
-      changePage(contador)
-    } else {
-      changePage(contador)
-    }
-  }
+export default function Pages({ pages, changePage, actualPage, next, prev }) {
 
   return (
     <div className="allPaginado">
       <div className="ContainerPaginado">
         <button
           key={"prev"}
-          onClick={() => prev()}
+          onClick={() => prev(actualPage)}
           className="BotonPaginado"
         >
           Anterior
@@ -48,7 +20,7 @@ export default function Pages({ pages, changePage, actualPage }) {
         </div>
         <button
           key={"next"}
-          onClick={() => next()}
+          onClick={() => next(actualPage, pages)}
           className="BotonPaginado"
         >
           Siguiente

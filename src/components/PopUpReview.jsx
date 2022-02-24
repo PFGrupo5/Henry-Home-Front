@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import axios from "axios"
 import { URL_BACK } from "../config"
 import "../assets/css/ReviewsCards/ReviewsCards.scss"
+import { PlusCircleOutlined, MinusCircleOutlined } from "@ant-design/icons"
 
 export const Popup = ({ e, review, token, setpopup, setReview }) => {
 
@@ -73,12 +74,12 @@ export const Popup = ({ e, review, token, setpopup, setReview }) => {
           <div>
             <>Estrellas:</>
 
-            <button className="buttonPoP" onClick={onChangeStarsLess}>-</button>
+            <button onClick={onChangeStarsLess}><MinusCircleOutlined /></button>
             <>{newReview.stars}</>
-            <button className="buttonPoP" onClick={onChangeStarsMore}>+</button>
+            <button onClick={onChangeStarsMore}><PlusCircleOutlined /></button>
           </div>
-          <div>
-            <textarea placeholder="Description (160 char max)" onChange={onChangeDescription} value={newReview.description}></textarea>
+          <div >
+            <textarea className="textareaReview" placeholder="Description (160 char max)" onChange={onChangeDescription} value={newReview.description}></textarea>
             {error && <p className="error">Ha excedido el limite de caracteres</p>}
           </div>
           <button className="publicar" onClick={onClick} >Publicar</button>
