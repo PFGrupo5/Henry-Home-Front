@@ -158,7 +158,6 @@ export default function Home() {
                       id={e.id}
                       location={e.Location.name}
                       img={e.images.filter((i) => i !== null)}
-                      // img={e.images}
                       price={e.pricePerNight}
                       role={userRole}
                       detail={userDetail}
