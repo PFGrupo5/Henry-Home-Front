@@ -5,12 +5,15 @@ import Cards from "../components/Cards";
 import axios from "axios";
 import { URL_BACK } from "../config";
 import Loading from "../components/Loading";
-import { deleteDetail, getHotels, getUserDetail } from "../FilesStore/Actions/index.js";
+import {
+  deleteDetail,
+  getHotels,
+  getUserDetail,
+} from "../FilesStore/Actions/index.js";
 import Aside from "../components/Aside";
 import "../assets/css/Home/Home.scss";
 import Pages from "../components/Pages";
 import { message } from "antd";
-
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -20,7 +23,7 @@ export default function Home() {
 
   useEffect(() => {
     infoUser.id && dispatch(getUserDetail(infoUser.id, infoUser.role));
-    dispatch(deleteDetail())
+    dispatch(deleteDetail());
   }, [dispatch, infoUser.id, infoUser.role]);
 
   //filtros
@@ -41,36 +44,36 @@ export default function Home() {
   const onClickFav = (id, favState) => {
     favState
       ? axios
-        .delete(`${URL_BACK}/favs`, {
-          headers: {
-            Authorization: User.token,
-          },
-          data: { HousingId: id },
-        })
-        .then((response) => {
-          console.log("Borrado con exito", response);
-          dispatch(getUserDetail(infoUser.id, infoUser.role));
-        })
-        .catch((error) => {
-          console.log({ error });
-        })
-      : axios
-        .post(
-          `${URL_BACK}/favs`,
-          { HousingId: id },
-          {
+          .delete(`${URL_BACK}/favs`, {
             headers: {
               Authorization: User.token,
             },
-          }
-        )
-        .then((response) => {
-          console.log("Agregado con exito", response);
-          dispatch(getUserDetail(infoUser.id, infoUser.role));
-        })
-        .catch((error) => {
-          console.log({ error });
-        });
+            data: { HousingId: id },
+          })
+          .then((response) => {
+            console.log("Borrado con exito", response);
+            dispatch(getUserDetail(infoUser.id, infoUser.role));
+          })
+          .catch((error) => {
+            console.log({ error });
+          })
+      : axios
+          .post(
+            `${URL_BACK}/favs`,
+            { HousingId: id },
+            {
+              headers: {
+                Authorization: User.token,
+              },
+            }
+          )
+          .then((response) => {
+            console.log("Agregado con exito", response);
+            dispatch(getUserDetail(infoUser.id, infoUser.role));
+          })
+          .catch((error) => {
+            console.log({ error });
+          });
   };
 
   //paginado
@@ -81,36 +84,37 @@ export default function Home() {
   const count = useSelector((state) => state.count);
 
   const prev = (contador) => {
-    contador--
+    contador--;
     if (contador !== 0) {
-      setPage(contador)
+      setPage(contador);
     } else {
-      contador = 1
-      setPage(contador)
-
+      contador = 1;
+      setPage(contador);
     }
-  }
+  };
 
   const next = (actualPage, pages) => {
-    actualPage++
+    actualPage++;
     if (actualPage <= pages) {
-      setPage(actualPage)
+      setPage(actualPage);
     } else {
-      actualPage = pages
-      message.info("Llegaste al final, lamentamos que no haya encontrado su viaje ideal.", 5)
-      setPage(actualPage)
+      actualPage = pages;
+      message.info(
+        "Llegaste al final, lamentamos que no haya encontrado su viaje ideal.",
+        5
+      );
+      setPage(actualPage);
     }
-  }
+  };
 
   const userRole = User?.result.role;
 
   const findHouses = () => {
     try {
       dispatch(getHotels(page, size, Info));
-      message.success("Filtros aplicados")
-    }
-    catch {
-      message.error("Error al filtrar")
+      message.success("Filtros aplicados");
+    } catch {
+      message.error("Error al filtrar");
     }
   };
 
@@ -126,7 +130,7 @@ export default function Home() {
         maxPrice: null,
       })
     );
-    window.location.reload()
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -153,7 +157,8 @@ export default function Home() {
                       name={e.name}
                       id={e.id}
                       location={e.Location.name}
-                      img={e.images}
+                      img={e.images.filter((i) => i !== null)}
+                      // img={e.images}
                       price={e.pricePerNight}
                       role={userRole}
                       detail={userDetail}
@@ -168,7 +173,6 @@ export default function Home() {
             ) : (
               <div>
                 <h2>No hay casas disponibles</h2>
-
               </div>
             )}
           </div>
