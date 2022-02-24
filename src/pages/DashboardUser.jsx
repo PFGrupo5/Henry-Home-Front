@@ -48,7 +48,6 @@ function DashboardUser() {
       </div>
     );
   } else {
-    // <h1>Información General</h1>
     return (
       <div className="Container-General">
         <div>
@@ -99,7 +98,7 @@ function DashboardUser() {
                   {console.log(userDetail.Reservations)}
                   <Row className="eachClass">
                     <Col className="eachSection" xs={0} sm={0} md={4} lg={4}>
-                      Nombre Alojamiento
+                      Alojamiento
                     </Col>
                     <Col className="eachSection" xs={0} sm={0} md={4} lg={4}>
                       Fecha Inicio
@@ -116,10 +115,16 @@ function DashboardUser() {
                   </Row>
                   <div>
                     {userDetail.Reservations.map((f) => {
+                      console.log(f);
                       return (
                         <div key={f.id} className="each-reservation">
                           <div className="mobile">
-                            <div>{f.Housing.name}</div>
+                            <Link to={`/home/${f.Housing?.id}`}>
+                              <button className="buttonReservation changeColor">
+                                {" "}
+                                <div>{f.Housing?.name}</div>{" "}
+                              </button>
+                            </Link>
                             <div>Ingreso: {f.date_start}</div>
                             <div>Egreso: {f.date_end}</div>
                             <div>
@@ -129,6 +134,12 @@ function DashboardUser() {
                             </div>
                             <div className="eachInfo">
                               <div className="userButtons">
+                                <Link
+                                  className="buttonReservation"
+                                  to={`/home/${f.id_hotel}`}
+                                >
+                                  Ir a la casa
+                                </Link>
                                 <a
                                   className="buttonReservation"
                                   href={f.link_mercado_pago}
@@ -140,7 +151,7 @@ function DashboardUser() {
                                 <Popconfirm
                                   onConfirm={() => deleteReservation(f.id)}
                                   onCancel={cancel}
-                                  title="Seguro que quieres eliminar esta casa?"
+                                  title="Seguro que quieres eliminar esta reserva?"
                                   okText="Si"
                                   cancelText="No"
                                 >
@@ -159,7 +170,11 @@ function DashboardUser() {
                               <Row className="eachInfo">
                                 <Col xs={0} sm={0} md={4} lg={4}>
                                   {" "}
-                                  {f.Housing.name}
+                                  <Link to={`/home/${f.Housing?.id}`}>
+                                    <button className="buttonReservation changeColor">
+                                      {f.Housing?.name}{" "}
+                                    </button>
+                                  </Link>
                                 </Col>
                                 <Col xs={0} sm={0} md={4} lg={4}>
                                   {" "}
@@ -176,12 +191,6 @@ function DashboardUser() {
                                 </Col>
                                 <Col xs={0} sm={0} md={4} lg={4}>
                                   <div className="userButtons">
-                                    <Link
-                                      className="buttonReservation"
-                                      to={`/home/${f.Housing.id}`}
-                                    >
-                                      Ir a la casa
-                                    </Link>
                                     <a
                                       className="buttonReservation"
                                       href={f.link_mercado_pago}
@@ -190,13 +199,20 @@ function DashboardUser() {
                                     >
                                       Pagar
                                     </a>
-                                    <button
-                                      className="buttonReservation"
-                                      type="text"
-                                      onClick={() => deleteReservation(f.id)}
+                                    <Popconfirm
+                                      onConfirm={() => deleteReservation(f.id)}
+                                      onCancel={cancel}
+                                      title="Seguro que quieres eliminar esta reserva?"
+                                      okText="Si"
+                                      cancelText="No"
                                     >
-                                      Eliminar
-                                    </button>
+                                      <button
+                                        className="buttonReservation"
+                                        type="text"
+                                      >
+                                        Eliminar
+                                      </button>
+                                    </Popconfirm>
                                   </div>
                                 </Col>
                               </Row>
@@ -230,5 +246,4 @@ function DashboardUser() {
     );
   }
 }
-//
 export default DashboardUser;

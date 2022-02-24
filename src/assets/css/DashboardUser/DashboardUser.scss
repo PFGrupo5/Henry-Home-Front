@@ -82,30 +82,36 @@
       }
     }
   
-.userButtons{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  .buttonReservation{
-    border: none;
-    color: #fff;
-    margin: 5px;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    font-weight: 500;
-    border-radius: 0.3rem;
-    transition: all 0.2s;
-    cursor: pointer;
-    background-color:#092c4c;
-    &:hover{
-      transform:scale(1.05);
+    .userButtons{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 10px;
+      margin-right: 2rem; 
     }
-    &:active{
-      transform:translateY(4px);
+    
+    .buttonReservation{
+      border: none;
+      color: #fff;
+      margin: 5px;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 0.3rem;
+      transition: all 0.2s;
+      cursor: pointer;
+      background-color:#092c4c;
+      &:hover{
+        transform:scale(1.05);
+      }
+      &:active{
+        transform:translateY(4px);
+      }
     }
-  }
-}
+
+    .changeColor{
+      background-color:#6f6f6f;
+    }
   }
 }
 
@@ -132,7 +138,6 @@
       height: 200px;
       display: flex;
       align-content:space-between;
-      // align-items: center;
       flex-direction: column;
     }
   }
