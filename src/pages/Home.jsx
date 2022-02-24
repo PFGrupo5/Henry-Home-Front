@@ -126,6 +126,7 @@ export default function Home() {
         maxPrice: null,
       })
     );
+    window.location.reload()
   };
 
   useEffect(() => {
