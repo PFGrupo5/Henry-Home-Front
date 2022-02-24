@@ -50,7 +50,6 @@ function DashboardUser() {
   } else {
     return (
       <div className="Container-General">
-
         <div>
           <div className="DashboardUser-userInfo">
             <img src={userDetail.profile_img || defaultUser} alt="" />
@@ -114,7 +113,7 @@ function DashboardUser() {
                             <div>{f.status === "Pending" ? "Pendiente" : "Aprobada"}</div>
                             <div className="eachInfo">
                               <div className="userButtons" >
-                                <a className="buttonReservation" href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a>
+                                {f.status !== "approved" && (<a className="buttonReservation" href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a>)}
                                 <Popconfirm
                                   onConfirm={() => deleteReservation(f.id)}
                                   onCancel={cancel}
@@ -142,7 +141,7 @@ function DashboardUser() {
                                 <Col xs={0} sm={0} md={4} lg={4}>
                                   <div className="userButtons">
 
-                                    <a className="buttonReservation" href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a>
+                                    {f.status !== "approved" && (<a className="buttonReservation" href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a>)}
                                     <Popconfirm
                                       onConfirm={() => deleteReservation(f.id)}
                                       onCancel={cancel}
