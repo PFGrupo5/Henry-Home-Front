@@ -44,7 +44,6 @@ export default function Admin() {
     }
     setCoordinates(results);
     setFormErrors(ValidateFormCreate({ ...house, location: e }));
-    console.log(location);
   };
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [house, setHouse] = useState({
@@ -66,7 +65,6 @@ export default function Admin() {
     setLocation(e);
     setCoordinates(ubicacion);
     setFormErrors(ValidateFormCreate({ ...house, location: e }));
-    console.log(results);
   };
   const [createHouse, setCreateHouse] = useState(false);
   const [formErrors, setFormErrors] = useState({ msg: "Error" });
@@ -162,7 +160,6 @@ export default function Admin() {
   };
 
   const handleCancel = () => {
-    console.log("holis");
     setIsModalVisible(false);
     clean();
   };
@@ -186,7 +183,6 @@ export default function Admin() {
     });
     setLocation(null);
   };
-  console.log(location);
 
   if (!userDetail || userDetail.role !== "Moderator") return <Loading />;
   const { Housings } = userDetail;
@@ -220,8 +216,9 @@ export default function Admin() {
                   </div>
                 </div>
                 {Housings.length ? (
-                  Housings?.map((e) => (
+                  Housings?.map((e, index) => (
                     <ListHouses
+                      key={e.id}
                       user={user}
                       houseInfo={e}
                       onClick={showModal}
@@ -306,7 +303,7 @@ export default function Admin() {
                         </p>
                       </div>
                       <div className="input-container">
-                        <span>Descripción y contacto</span>
+                        <span>Descripción</span>
                         <textarea
                           type="text"
                           key="description"
@@ -382,7 +379,7 @@ export default function Admin() {
                               />
 
                               <div className="suggestionOwner">
-                                {loading ? <div>...cargando</div> : null}
+                                {loading ? <div>Cargando...</div> : null}
                                 {suggestions.map((suggestion) => {
                                   const style = {
                                     backgroundColor: suggestion.active
@@ -436,6 +433,10 @@ export default function Admin() {
                           onChange={inputFormHanlder}
                         />
                         {/* <input
+                       {/*  <input type="text" name="image1" value={house.image1} onChange={inputFormHanlder}/>
+                        <input type="text" name="image2" value={house.image2} onChange={inputFormHanlder}/>
+                        <input type="text" name="image3" value={house.image3} onChange={inputFormHanlder}/> */}
+                        <input
                           type="file"
                           onChange={(e) => {
                             let size = e.target.files[0].size;
@@ -458,8 +459,7 @@ export default function Admin() {
                             }
                           }}
                           className="inputFile"
-
-                        /> */}
+                        />
 
                         {/* <input
                           type="file"

@@ -1,9 +1,9 @@
 .reservation-container {
- 
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  margin: 10px;
   
   h2 {
     font-size: 2rem;
@@ -15,6 +15,7 @@
     border-radius: 1rem;
     color: var(--main-white);
     transition: 1s ease-in;
+    // max-width: 20rem;
     // min-height: 521px;
    
     h3 {
@@ -63,4 +64,14 @@
       border-radius: .5rem;
     }
   }
+}
+
+@media screen and (max-width:450px){
+  .reservation-container{
+    margin: 0px;
+  }
+  .information-container {
+    max-width: 20rem;
+  }
+
 }

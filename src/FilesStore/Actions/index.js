@@ -15,7 +15,7 @@ import {
   ERROR_LOGIN,
   CLEAN_ERROR,
   PATCH_HOUSE,
-  DELETE_DELETE,
+  DELETE_DETAIL,
 } from "../Const Types/constActions";
 import filterUrl from "../../utils/FilterUrl"
 
@@ -48,16 +48,14 @@ export function getDetail(id) {
   };
 }
 export function deleteDetail() {
- return { type : DELETE_DELETE, payload:null}
+ return { type : DELETE_DETAIL, payload:null}
 }
 
 export function googleLogIn(googleInfo, role) {
   return async function (dispatch) {
     try {
-      console.log("semando")
       const {email, familyName, givenName, googleId, imageUrl} = googleInfo
       var json = await axios.post(`${URL_BACK}/user/google-login`,{email, familyName, givenName, googleId, imageUrl, role});
-      console.log(json.data)
       
       return dispatch({
         type: GOOGLE_LOGIN,
@@ -83,23 +81,19 @@ export function SignIn(values, history) {
   return async function (dispatch) {
     try {
       const { data } = await axios.post(`${URL_BACK}/user/login`, values);
-      console.log("aaaaa", data);
       dispatch({
         type: SIGNIN,
         payload: data,
       });
 
       if (data.result.role === "Moderator") {
-        console.log('si')
         history.push(`/owner/${data.result.id}`);
         return
       }
       else if (data.result.role === "Admin") {
-        console.log('si')
         history.push(`/adminDash`);
         return
       } else {
-        console.log("noe");
         history.push("/home");
       }
       
@@ -141,13 +135,11 @@ export function getUserDetail(id, role) {
 //           },
 //         }
 //       );
-//       console.log("json", json);
 //       return dispatch({
 //         type: CREATE_HOUSE,
 //         payload: json.data,
 //       });
 //     } catch (error) {
-//       console.log(error);
 //     }
 //   };
 // }
@@ -234,7 +226,6 @@ export function patchHouse(payload) {
         `${URL_BACK}/houses`,
         payload
       );
-      console.log(json);
       return dispatch({
         type: PATCH_HOUSE,
         payload: json.data,

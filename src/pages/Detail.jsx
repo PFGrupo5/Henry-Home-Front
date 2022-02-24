@@ -11,6 +11,7 @@ import IconProvider from "../utils/IconProvider";
 import axios from "axios";
 import { URL_BACK } from "../config";
 import ImagesDetail from "../components/ImagesDetail";
+import { PlusCircleOutlined, MinusCircleOutlined } from "@ant-design/icons"
 
 export default function Detail() {
   const dispatch = useDispatch();
@@ -39,7 +40,6 @@ export default function Detail() {
     } else {
       setReview(-1);
     }
-    console.log(reviewDetail);
   };
 
   const [haveReview, sethaveReview] = useState(1);
@@ -50,7 +50,6 @@ export default function Detail() {
       sethaveReview(haveReview + 1);
     }
   };
-  console.log(haveReview);
 
   const onClick = async (e) => {
     e.preventDefault();
@@ -74,7 +73,6 @@ export default function Detail() {
           description: "",
         });
         setReview();
-        console.log(haveReview);
       } catch (error) {
         console.log(error);
       }
@@ -110,7 +108,6 @@ export default function Detail() {
   const { name, images, Location, numberOfPeople, houseRules } = detail;
 
   let imgs = images.filter((e) => e !== null);
-  console.log("name", images);
   return (
     <div className="house-datail">
       <div className="house-datail-container">
@@ -141,7 +138,7 @@ export default function Detail() {
                 {IconProvider("people")}
               </div>
             </div>
-            <div>
+            <div className="sectionsFS">
               <h3>¿Que ofrece este lugar?</h3>
               <div className="facilities-services-container">
                 <div>
@@ -170,7 +167,7 @@ export default function Detail() {
           <Reservation id={id} user={user} />
         </div>
         <div className="reviews-container">
-          {detail.average>0 && <h3>Promedio: {detail.average}</h3>}
+          {detail.average > 0 && <h3>Promedio: {detail.average}</h3>}
           <h3>Reseñas: </h3>
           {user &&
             user.result.role === "Client" &&
@@ -191,15 +188,16 @@ export default function Detail() {
                     <div>
                       <>Estrellas:</>
 
-                      <button onClick={onChangeStarsLess}>-</button>
+                      <button onClick={onChangeStarsLess} className="changeStars"><MinusCircleOutlined /></button>
                       <>{reviewDetail.stars}</>
-                      <button onClick={onChangeStarsMore}>+</button>
+                      <button onClick={onChangeStarsMore} className="changeStars"><PlusCircleOutlined /></button>
                     </div>
                     <div>
                       <textarea
                         placeholder="Description (160 char max)"
                         onChange={(e) => onChangeDescription(e)}
                         value={reviewDetail.description}
+                        className="textareaReview"
                       ></textarea>
                       {haveReview < 0 && (
                         <p className="error">
@@ -212,11 +210,12 @@ export default function Detail() {
                 </form>
               </div>
             ))}
-          {user?.result.role === "Client"  ? <h4>Resto de reseñas:</h4> : null}
+          {user?.result.role === "Client" ? <h4>Resto de reseñas:</h4> : null}
           <div>
             {detail.Reviews.length ? (
-              detail.Reviews.map((e) => (
+              detail.Reviews.map((e,index) => (
                 <ReviewCard
+                  key={index}
                   user={user?.result.id ? user.result.id : true}
                   review={e}
                 />

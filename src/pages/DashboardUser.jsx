@@ -50,7 +50,6 @@ function DashboardUser() {
   } else {
     return (
       <div className="Container-General">
-
         <div>
           <div className="DashboardUser-userInfo">
             <img src={userDetail.profile_img || defaultUser} alt="" />
@@ -114,12 +113,11 @@ function DashboardUser() {
                             <div>{f.status === "Pending" ? "Pendiente" : "Aprobada"}</div>
                             <div className="eachInfo">
                               <div className="userButtons" >
-                                <Link className="buttonReservation" to={`/home/${f.id_hotel}`}>Ir a la casa</Link>
-                                <a className="buttonReservation" href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a>
+                                {f.status !== "approved" && (<a className="buttonReservation" href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a>)}
                                 <Popconfirm
                                   onConfirm={() => deleteReservation(f.id)}
                                   onCancel={cancel}
-                                  title="Seguro que quieres eliminar esta reserva?"
+                                  title="¿Seguro que quieres eliminar esta reserva?"
                                   okText="Si"
                                   cancelText="No"
                                 >
@@ -143,11 +141,11 @@ function DashboardUser() {
                                 <Col xs={0} sm={0} md={4} lg={4}>
                                   <div className="userButtons">
 
-                                    <a className="buttonReservation" href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a>
+                                    {f.status !== "approved" && (<a className="buttonReservation" href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a>)}
                                     <Popconfirm
                                       onConfirm={() => deleteReservation(f.id)}
                                       onCancel={cancel}
-                                      title="Seguro que quieres eliminar esta reserva?"
+                                      title="¿Seguro que quieres eliminar esta reserva?"
                                       okText="Si"
                                       cancelText="No"
                                     >

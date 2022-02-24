@@ -18,7 +18,7 @@ export default function Cards({
   onClickFav,
   average,
 }) {
-  const renderName = name.length <= 12 ? name : `${name.slice(0, 12)}...`
+  const renderName = name.length <= 10 ? name : `${name.slice(0, 10)}...`
   var favsIds = detail && detail.favs ? detail.favs.map(e => e.id) : 0;
   const favState = favsIds?.length && favsIds?.includes(id)
 
@@ -32,7 +32,7 @@ export default function Cards({
             {renderName}
           </h1>
         </Link>
-        {average && average>0 ? <Text className="textCards" >Estrellas: {average}</Text> : <Text className="textCards" >Estrellas: - </Text> }
+        {average && average > 0 ? <Text className="textCards" >Estrellas: {average}</Text> : <Text className="textCards" >Estrellas: - </Text>}
         {location ? <Text className="textCards"> <PushpinOutlined /> {location.length <= 16 ? location : `${location.slice(0, 12)}...`}</Text> : ''}
         <Text className="textCards"><DollarOutlined /> {price}</Text>
       </div>
