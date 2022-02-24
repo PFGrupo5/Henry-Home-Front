@@ -14,7 +14,7 @@ const ImagesDetail = ({ images }) => {
             />
             <div style={{ display: 'none' }}>
                 <Image.PreviewGroup preview={{ visible, onVisibleChange: vis => setVisible(vis) }}>
-                    {images.map(i => (<Image src={i} />))}
+                    {images.map((i,index) => (<Image key={index} src={i} />))}
                 </Image.PreviewGroup>
             </div>
         </>

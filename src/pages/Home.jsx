@@ -149,6 +149,7 @@ export default function Home() {
                 allHotels.map((e) => {
                   return (
                     <Cards
+                      key={e.id}
                       name={e.name}
                       id={e.id}
                       location={e.Location.name}
