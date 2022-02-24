@@ -217,8 +217,9 @@ export default function Admin() {
                   </div>
                 </div>
                 {Housings.length ? (
-                  Housings?.map((e) => (
+                  Housings?.map((e,index) => (
                     <ListHouses
+                      key={e.id}
                       user={user}
                       houseInfo={e}
                       onClick={showModal}
