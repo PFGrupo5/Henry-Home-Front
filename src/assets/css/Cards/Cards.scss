@@ -80,6 +80,7 @@ $maxWidth2: 1920px;
   position: relative;
   width: max-content;
   max-width: 290px;
+  text-transform: capitalize;
 }
 
 .titleCards::after {
@@ -119,7 +120,7 @@ $maxWidth2: 1920px;
 
 @media (hover) {
   .divText {
-    transform: translateY(55%);
+    transform: translateY(60%);
     transition: transform 500ms ease;
   }
   .titleCards::after {

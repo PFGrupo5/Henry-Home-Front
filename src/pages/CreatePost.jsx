@@ -44,7 +44,6 @@ export default function CreatePost() {
   
   
   const onFinish = () => {
-    // console.log("Success:", formData);
     // dispatch(createHouse(formData, user.token))
     axios
     .post(`${URL_BACK}/houses`, formData, {
@@ -70,7 +69,6 @@ export default function CreatePost() {
       setFormData({ ...formData, images: [value] });
     } else {
       setFormData({ ...formData, [name]: value });
-      console.log(formData);
     }
   };
 
@@ -79,13 +77,11 @@ export default function CreatePost() {
   const servicesChange = (e) => {
     let services = e.map((e) => e[0]);
     setFormData({ ...formData, services });
-    console.log(formData);
   };
 
   const facilitiesChange = (e) => {
     let facilities = e.map((e) => e[0]);
     setFormData({ ...formData, facilities });
-    console.log(formData);
   };
 
   const optionsServices = services?.map((e) => {

@@ -47,7 +47,6 @@ const Form = ({ role, google }) => {
       axios
         .post(`${URL_BACK}/user/register`, inputForm)
         .then(({ data }) => {
-          console.log({ data });
           message.success(data.message);
         })
         .catch((error) => {

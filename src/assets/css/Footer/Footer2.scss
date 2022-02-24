@@ -7,7 +7,7 @@ $font-color: #ffffff;
 }
 .foot2Container {
   position: absolute;
-  bottom: -10rem;
+
   left: 0;
   background-color: $background;
   padding: 20px 50px;
@@ -17,7 +17,6 @@ $font-color: #ffffff;
   width: 100%;
   padding-bottom: 10px;
 }
-
 // -------- Description --------
 
 .foot2Description {
@@ -94,6 +93,10 @@ $font-color: #ffffff;
   background: #839fad none repeat scroll 0 0;
   display: block;
   height: 1px;
+}
+
+.modal-terms {
+  cursor: pointer;
 }
 
 @media screen and (min-width: 900px) {
