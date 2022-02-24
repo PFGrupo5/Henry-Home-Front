@@ -50,13 +50,12 @@ export default function Footer2() {
                 Terminos y condiciones
               </span>
               <Modal
-                title="Basic Modal"
+                title="Términos y condiciones"
                 visible={isModalVisible}
                 onOk={handleOk}
                 onCancel={handleCancel}
               >
-                Términos y condiciones Imprimir todas las secciones Bienvenido a
-                la página web de HenryHome.com (el "Sitio web"). Este Sitio web
+                Bienvenido a la página web de HenryHome.com (el "Sitio web"). Este Sitio web
                 solo se utiliza con el propósito de asesorar a los clientes en
                 lo referido a la recopilación de información sobre viajes, la
                 identificación de disponibilidad de los productos y servicios
