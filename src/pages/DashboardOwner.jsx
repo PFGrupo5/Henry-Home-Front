@@ -303,7 +303,7 @@ export default function Admin() {
                         </p>
                       </div>
                       <div className="input-container">
-                        <span>Descripción</span>
+                        <span>Descripción y contacto</span>
                         <textarea
                           type="text"
                           key="description"
