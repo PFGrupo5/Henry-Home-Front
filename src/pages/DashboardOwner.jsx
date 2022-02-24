@@ -44,7 +44,6 @@ export default function Admin() {
     }
     setCoordinates(results);
     setFormErrors(ValidateFormCreate({ ...house, location: e }));
-    console.log(location);
   };
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [house, setHouse] = useState({
@@ -66,7 +65,6 @@ export default function Admin() {
     setLocation(e);
     setCoordinates(ubicacion);
     setFormErrors(ValidateFormCreate({ ...house, location: e }));
-    console.log(results);
   };
   const [createHouse, setCreateHouse] = useState(false);
   const [formErrors, setFormErrors] = useState({ msg: "Error" });
@@ -112,6 +110,7 @@ export default function Admin() {
   const handleOk = () => {
     const servicesFlat = house.services?.flat();
     const facilitiesFlat = house.facilities?.flat();
+    console.log(house,'aca');
     const houseUpdate = {
       ...house,
       services: servicesFlat,
@@ -122,7 +121,7 @@ export default function Admin() {
         house.image3,
       ] /* .filter(e => e !== undefined) */,
     };
-
+ 
     if (Object.keys(formErrors).length)
       return message.error("Error en los datos");
     if (!houseUpdate.images.some((i) => i !== undefined))
@@ -161,7 +160,6 @@ export default function Admin() {
   };
 
   const handleCancel = () => {
-    console.log("holis");
     setIsModalVisible(false);
     clean();
   };
@@ -185,11 +183,12 @@ export default function Admin() {
     });
     setLocation(null);
   };
-  console.log(location);
 
   if (!userDetail || userDetail.role !== "Moderator")
     return <Loading />;
   const { Housings } = userDetail;
+
+  console.log(house)
 
   return (
     <div className="container-moderator">
@@ -417,7 +416,10 @@ export default function Admin() {
                         </p>
                       </div>
                       <div>
-                        <input
+                        <input type="text" name="image1" value={house.image1} onChange={inputFormHanlder}/>
+                        <input type="text" name="image2" value={house.image2} onChange={inputFormHanlder}/>
+                        <input type="text" name="image3" value={house.image3} onChange={inputFormHanlder}/>
+                        {/* <input
                           type="file"
                           onChange={(e) => {
                             let size = e.target.files[0].size;
@@ -441,9 +443,9 @@ export default function Admin() {
                           }}
                           className="inputFile"
 
-                        />
+                        /> */}
 
-                        <input
+                        {/* <input
                           type="file"
                           onChange={(e) => {
                             let size = e.target.files[0].size;
@@ -492,7 +494,7 @@ export default function Admin() {
                             }
                           }}
                           className="inputFile"
-                        />
+                        /> */}
                       </div>
                     </div>
                   </Modal>

@@ -40,7 +40,6 @@ export default function Detail() {
     } else {
       setReview(-1);
     }
-    console.log(reviewDetail);
   };
 
   const [haveReview, sethaveReview] = useState(1);
@@ -51,7 +50,6 @@ export default function Detail() {
       sethaveReview(haveReview + 1);
     }
   };
-  console.log(haveReview);
 
   const onClick = async (e) => {
     e.preventDefault();
@@ -110,7 +108,6 @@ export default function Detail() {
   const { name, images, Location, numberOfPeople, houseRules } = detail;
 
   let imgs = images.filter((e) => e !== null);
-  console.log("name", images);
   return (
     <div className="house-datail">
       <div className="house-datail-container">

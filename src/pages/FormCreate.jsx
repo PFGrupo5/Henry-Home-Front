@@ -67,7 +67,6 @@ export default function FromCreate() {
   const HandleCreate = (e) => {
     e.preventDefault();
     if (!Object.keys(ValidateFormCreate(formData)).length) {
-      console.log(formData);
       axios
         .post(`${URL_BACK}/houses`, formData, {
           headers: {
