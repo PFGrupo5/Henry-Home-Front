@@ -133,7 +133,6 @@ function DashboardUser() {
                                 : "Aprobada"}
                             </div>
                             <div className="eachInfo">
-
                               <div className="userButtons">
                                 <Link
                                   className="buttonReservation"
@@ -149,13 +148,10 @@ function DashboardUser() {
                                 >
                                   Pagar
                                 </a>
-<div className="userButtons" >
-                                {f.status !== "approved" && (<a className="buttonReservation" href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a>)}
-
                                 <Popconfirm
                                   onConfirm={() => deleteReservation(f.id)}
                                   onCancel={cancel}
-                                  title="¿Seguro que quieres eliminar esta reserva?"
+                                  title="Seguro que quieres eliminar esta reserva?"
                                   okText="Si"
                                   cancelText="No"
                                 >
@@ -195,7 +191,6 @@ function DashboardUser() {
                                 </Col>
                                 <Col xs={0} sm={0} md={4} lg={4}>
                                   <div className="userButtons">
-
                                     <a
                                       className="buttonReservation"
                                       href={f.link_mercado_pago}
@@ -204,13 +199,10 @@ function DashboardUser() {
                                     >
                                       Pagar
                                     </a>
-
-
-                                    {f.status !== "approved" && (<a className="buttonReservation" href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a>)}
                                     <Popconfirm
                                       onConfirm={() => deleteReservation(f.id)}
                                       onCancel={cancel}
-                                      title="¿Seguro que quieres eliminar esta reserva?"
+                                      title="Seguro que quieres eliminar esta reserva?"
                                       okText="Si"
                                       cancelText="No"
                                     >
@@ -254,4 +246,5 @@ function DashboardUser() {
     );
   }
 }
+
 export default DashboardUser;
