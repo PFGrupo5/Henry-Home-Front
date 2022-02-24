@@ -8,7 +8,6 @@ import DashboardAdmin from "../pages/DashboardAdmin";
 import DashboardUser from "../pages/DashboardUser";
 import RegisterVerify from "../pages/RegisterVerify";
 import ChangePassword from "../pages/ChangePassword";
-import Reservation from "../pages/Reservation";
 import PaymentSuccess from "../pages/PaymentSuccess";
 import NavBarHome2 from "../components/NavBarHome2/NavBarHome2";
 import LandingLog from "../pages/LandingLog";
@@ -40,7 +39,6 @@ function Routes() {
         <Route exact path="/home" component={Home} />
         <Route exact path="/home/:id" component={Detail} />
         <Route exact path="/home/:id/editar" component={EditPost} />
-        <Route exact path="/home/:id/reservation" component={Reservation} />
         <Route exact path="/create" component={FromCreate} />
         <Route exact path="/user/:id" component={DashboardUser} />
         <Route exact path="/owner/:id" component={DashboardOwner} />
