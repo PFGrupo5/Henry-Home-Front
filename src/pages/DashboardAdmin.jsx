@@ -114,6 +114,7 @@ export default function DashboardAdmin() {
                                         return (
                                             <div className="adminCards">
                                                 <Cards
+                                                    key={e.id}
                                                     name={e.name}
                                                     id={e.id}
                                                     location={e.Location.name}
