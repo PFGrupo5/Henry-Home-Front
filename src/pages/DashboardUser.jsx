@@ -114,12 +114,11 @@ function DashboardUser() {
                             <div>{f.status === "Pending" ? "Pendiente" : "Aprobada"}</div>
                             <div className="eachInfo">
                               <div className="userButtons" >
-                                <Link className="buttonReservation" to={`/home/${f.id_hotel}`}>Ir a la casa</Link>
                                 <a className="buttonReservation" href={f.link_mercado_pago} target='_blank' rel="noreferrer">Pagar</a>
                                 <Popconfirm
                                   onConfirm={() => deleteReservation(f.id)}
                                   onCancel={cancel}
-                                  title="Seguro que quieres eliminar esta reserva?"
+                                  title="¿Seguro que quieres eliminar esta reserva?"
                                   okText="Si"
                                   cancelText="No"
                                 >
@@ -147,7 +146,7 @@ function DashboardUser() {
                                     <Popconfirm
                                       onConfirm={() => deleteReservation(f.id)}
                                       onCancel={cancel}
-                                      title="Seguro que quieres eliminar esta reserva?"
+                                      title="¿Seguro que quieres eliminar esta reserva?"
                                       okText="Si"
                                       cancelText="No"
                                     >

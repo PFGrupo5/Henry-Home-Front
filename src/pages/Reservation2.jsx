@@ -46,7 +46,7 @@ const Reservation = ({ id, user }) => {
       <div className="information-container">
         <h3>{name}</h3>
         <div>
-          <h4>Precio por noche: ${pricePerNight} ARS</h4>
+          <h4>Precio por noche: ${pricePerNight} USD</h4>
         </div>
         <div className="need-login">
           <span>Necesita ingresar como cliente para reservar </span>
@@ -67,9 +67,9 @@ const Reservation = ({ id, user }) => {
     userReservations = {}
   }
 
-console.log(detail.Reservations, 'aca');
+  console.log(detail.Reservations, 'aca');
 
-  let disabledRanges = detail.Reservations?.filter(e=>e.status==="approved").map(({ date_start, date_end }) => [
+  let disabledRanges = detail.Reservations?.filter(e => e.status === "approved").map(({ date_start, date_end }) => [
     new Date(date_start),
     new Date(date_end),
   ]);
