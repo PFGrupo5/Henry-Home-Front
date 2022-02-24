@@ -213,8 +213,9 @@ export default function Detail() {
           {user?.result.role === "Client" ? <h4>Resto de reseñas:</h4> : null}
           <div>
             {detail.Reviews.length ? (
-              detail.Reviews.map((e) => (
+              detail.Reviews.map((e,index) => (
                 <ReviewCard
+                  key={index}
                   user={user?.result.id ? user.result.id : true}
                   review={e}
                 />
