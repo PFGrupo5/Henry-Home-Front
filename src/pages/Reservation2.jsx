@@ -42,7 +42,7 @@ const Reservation = ({ id, user }) => {
       <div className="reservation-container">
         <div>
           <h2>Reservar</h2>
-        </div >
+        </div>
         <div className="information-container">
           <h3>{name}</h3>
           <div>
@@ -52,7 +52,7 @@ const Reservation = ({ id, user }) => {
             <span>Necesita ingresar como cliente para reservar </span>
           </div>
         </div>
-      </div >
+      </div>
     );
 
   const { token } = user;
@@ -142,7 +142,7 @@ const Reservation = ({ id, user }) => {
           <div className="information-container">
             <h3>{name}</h3>
             <div>
-              <h4>Precio por noche: ${pricePerNight} ARS</h4>
+              <h4>Precio por noche: ${pricePerNight} USD</h4>
               <div>
                 <h4>Fecha de reserva</h4>
                 <Calendar
