@@ -9,7 +9,7 @@ import ReviewCard from "../components/ReviewCard";
 import axios from "axios";
 import { URL_BACK } from "../config";
 import { Link } from "react-router-dom";
-import { Col, Popconfirm, Row } from "antd";
+import { Col, Popconfirm, Row, message } from "antd";
 
 function DashboardUser() {
   const dispatch = useDispatch();
@@ -25,9 +25,9 @@ function DashboardUser() {
   const deleteReservation = (id) => {
     axios
       .delete(`${URL_BACK}/reservation/${id}`)
-      .then((res) => {
+      .then(({data}) => {
         dispatch(getUserDetail(user.result.id, user.result.role));
-        console.log(res);
+        message.info(data.message, 5);
       })
       .catch((err) => console.log(err));
   };
