@@ -18,67 +18,67 @@ export const ValidateFormCreate = ({
   if (!name) {
     error.name = "Nombre del alojamiento es requerido!";
   } else if (name === null || name.length === 0 || /^\s+$/.test(name)) {
-    error.name = "El Nombre es Obligatorio";
+    error.name = "El nombre es obligatorio";
   }
   if (!pricePerNight) {
-    error.pricePerNight = "Precio Por Noche es requerido!";
+    error.pricePerNight = "Precio por noche es requerido!";
   } else if (isNaN(pricePerNight)) {
-    error.pricePerNight = "El Precio Por Noche Tiene que ser un numero";
+    error.pricePerNight = "El precio por noche tiene que ser un número";
   } else if (
     pricePerNight === null ||
     pricePerNight.length === 0 ||
     /^\s+$/.test(pricePerNight)
   ) {
-    error.pricePerNight = "El Precio Por Noche es Obligatorio";
+    error.pricePerNight = "El precio por noche es obligatorio";
   }
   if (!numberOfPeople) {
-    error.numberOfPeople = "Numero De Personas es requerido!";
+    error.numberOfPeople = "Número de personas es requerido!";
   } else if (isNaN(numberOfPeople)) {
-    error.numberOfPeople = "El Numero De Personas Tiene que ser un numero";
+    error.numberOfPeople = "El número de personas tiene que ser un número";
   } else if (
     numberOfPeople === null ||
     numberOfPeople.length === 0 ||
     /^\s+$/.test(numberOfPeople)
   ) {
-    error.numberOfPeople = "El Numero De Personas es Obligatorio";
+    error.numberOfPeople = "El Número de personas es obligatorio";
   }
   if (!numberOfBeds) {
-    error.numberOfBeds = "Numero De Camas es requerido!";
+    error.numberOfBeds = "Número de camas es requerido!";
   } else if (isNaN(numberOfBeds)) {
-    error.numberOfBeds = "El Numero De Camas Tiene que ser un numero";
+    error.numberOfBeds = "El número de camas tiene que ser un número";
   } else if (
     numberOfBeds === null ||
     numberOfBeds.length === 0 ||
     /^\s+$/.test(numberOfBeds)
   ) {
-    error.numberOfBeds = "El Numero De Camas es Obligatorio";
+    error.numberOfBeds = "El número de camas es obligatorio";
   }
   if (!description) {
-    error.description = "La Descripción es requerida!";
+    error.description = "La descripción es requerida!";
   } else if (
     description === null ||
     description.length === 0 ||
     /^\s+$/.test(description)
   ) {
-    error.description = "La Descripción es Obligatoria";
+    error.description = "La descripción es Obligatoria";
   } else if (description.length >= 500) {
-    error.description = "La Descipcion no puede tener mas de 500 Caracteres"
+    error.description = "La descripción no puede tener mas de 500 caracteres";
   }
   if (!houseRules) {
-    error.houseRules = "Las Reglas de la Casa son requerida!";
+    error.houseRules = "Las reglas de la casa son requerida!";
   } else if (
     houseRules === null ||
     houseRules.length === 0 ||
     /^\s+$/.test(houseRules)
   ) {
-    error.houseRules = "Las Reglas de la Casa son Obligatorias";
+    error.houseRules = "Las reglas de la casa son obligatorias";
   } else if (houseRules.length >= 500) {
-    error.houseRules = "Las Reglas de la Casa no puede tener mas de 500 Caracteres"
+    error.houseRules = "Las reglas de la casa no puede tener mas de 500 caracteres"
   }
   console.log(location)
 
   if (!location || !location.length) {
-    error.location = "La Ubicacion es Obligatoria";
+    error.location = "La ubicación es obligatoria";
   }
 
 
