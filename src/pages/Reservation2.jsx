@@ -165,7 +165,7 @@ const Reservation = ({ id, user }) => {
                   )}
                 </p>
               </div>
-              <div>Total ${pricePerNight * days} ARS </div>
+              <div>Total ${pricePerNight * days} USD </div>
               <button
                 className={`btn-confirm ${!display ? "display" : ""}`}
                 onClick={reservationHandler}
