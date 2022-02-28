@@ -401,41 +401,11 @@ export default function Admin() {
                             </div>
                           )}
                         </PlacesAutocomplete>
-                        {/* <Cascader
-                          options={optionsLocations}
-                          maxTagCount="responsive"
-                          placeholder="Ubicación"
-                          value={house.location}
-                          onChange={locationHandler}
-                          className="Cascader"
-                        /> */}
                         <p className="error-message">
                           {formErrors.location ? formErrors.location : "ㅤㅤ"}
                         </p>
                       </div>
                       <div>
-                        <input
-                          type="text"
-                          name="image1"
-                          value={house.image1}
-                          onChange={inputFormHanlder}
-                        />
-                        <input
-                          type="text"
-                          name="image2"
-                          value={house.image2}
-                          onChange={inputFormHanlder}
-                        />
-                        <input
-                          type="text"
-                          name="image3"
-                          value={house.image3}
-                          onChange={inputFormHanlder}
-                        />
-                        {/* <input
-                       {/*  <input type="text" name="image1" value={house.image1} onChange={inputFormHanlder}/>
-                        <input type="text" name="image2" value={house.image2} onChange={inputFormHanlder}/>
-                        <input type="text" name="image3" value={house.image3} onChange={inputFormHanlder}/> */}
                         <input
                           type="file"
                           onChange={(e) => {
@@ -460,57 +430,6 @@ export default function Admin() {
                           }}
                           className="inputFile"
                         />
-
-                        {/* <input
-                          type="file"
-                          onChange={(e) => {
-                            let size = e.target.files[0].size;
-                            let files = e.target.files;
-                            if (size > 2000000) {
-                              message.error(
-                                "El tamaño de la imagen no puede ser mayor a 2MB"
-                              );
-                              e.target.value = "";
-                            } else {
-                              Array.from(files).forEach((archivo) => {
-                                var reader = new FileReader();
-                                reader.readAsDataURL(archivo);
-                                reader.onload = function () {
-                                  var base64 = reader.result;
-                                  if (base64 !== null)
-                                    setHouse({ ...house, image2: base64 });
-                                };
-                              });
-                            }
-                          }}
-                          className="inputFile"
-
-                        />
-
-                        <input
-                          type="file"
-                          onChange={(e) => {
-                            let size = e.target.files[0].size;
-                            let files = e.target.files;
-                            if (size > 2000000) {
-                              message.error(
-                                "El tamaño de la imagen no puede ser mayor a 2MB"
-                              );
-                              e.target.value = "";
-                            } else {
-                              Array.from(files).forEach((archivo) => {
-                                var reader = new FileReader();
-                                reader.readAsDataURL(archivo);
-                                reader.onload = function () {
-                                  var base64 = reader.result;
-                                  if (base64 !== null)
-                                    setHouse({ ...house, image3: base64 });
-                                };
-                              });
-                            }
-                          }}
-                          className="inputFile"
-                        /> */}
                       </div>
                     </div>
                   </Modal>

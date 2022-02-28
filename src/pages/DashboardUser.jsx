@@ -25,7 +25,7 @@ function DashboardUser() {
   const deleteReservation = (id) => {
     axios
       .delete(`${URL_BACK}/reservation/${id}`)
-      .then(({data}) => {
+      .then(({ data }) => {
         dispatch(getUserDetail(user.result.id, user.result.role));
         message.info(data.message, 5);
       })
@@ -115,7 +115,7 @@ function DashboardUser() {
                   </Row>
                   <div>
                     {userDetail.Reservations.map((f) => {
-                      console.log(f);
+                      console.log(f.status);
                       return (
                         <div key={f.id} className="each-reservation">
                           <div className="mobile">
@@ -140,14 +140,15 @@ function DashboardUser() {
                                 >
                                   Ir a la casa
                                 </Link>
-                                <a
+                                {f.status !== "approved" && (<a
                                   className="buttonReservation"
                                   href={f.link_mercado_pago}
                                   target="_blank"
                                   rel="noreferrer"
                                 >
                                   Pagar
-                                </a>
+                                </a>)
+                                }
                                 <Popconfirm
                                   onConfirm={() => deleteReservation(f.id)}
                                   onCancel={cancel}
@@ -191,14 +192,15 @@ function DashboardUser() {
                                 </Col>
                                 <Col xs={0} sm={0} md={4} lg={4}>
                                   <div className="userButtons">
-                                    <a
+                                    {f.status !== "approved" && (<a
                                       className="buttonReservation"
                                       href={f.link_mercado_pago}
                                       target="_blank"
                                       rel="noreferrer"
                                     >
                                       Pagar
-                                    </a>
+                                    </a>)}
+
                                     <Popconfirm
                                       onConfirm={() => deleteReservation(f.id)}
                                       onCancel={cancel}
